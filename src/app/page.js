@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import masterList from '../data/master.json'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { channels } from '@/data/utils/data';
 
 export default function Home() {
