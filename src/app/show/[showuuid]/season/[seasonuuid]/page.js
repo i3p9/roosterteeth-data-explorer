@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants';
+import { getShowInfo } from '@/data/utils/utils';
+import { FaRegCopy } from "react-icons/fa6";
+
 const baseUrl = config.url.BASE_URL;
 
 
@@ -14,6 +17,7 @@ function SeasonPage() {
     const [seasonUuid, setSeasonUuid] = useState('')
     const [showUuid, setShowUuid] = useState('')
     const [seasonData, setSeasonData] = useState()
+    const [showInfo, setShowInfo] = useState('')
     const [loading, setLoading] = useState(false)
     const notify = () => toast.success('Copied to clipboard!');
 
@@ -27,8 +31,19 @@ function SeasonPage() {
                 console.error('Error loading transcript data:', error);
             }
         };
+
+        const fetchShowInfo = async () => {
+            try {
+                const response = await getShowInfo(showUuid)
+                setShowInfo(response)
+            } catch (error) {
+                console.error('Error loading transcript data:', error);
+            }
+        }
+
         if (showUuid) {
             fetchSeasonData();
+            fetchShowInfo();
         }
         //eslint-disable-next-line
     }, [seasonUuid])
@@ -42,9 +57,9 @@ function SeasonPage() {
     }, [])
 
     return (
-        <div>
-            <h1 className='text-zinc-900 font-medium p-2'>
-                showing episodes for: {seasonUuid} {loading && <span>- loading episode data...</span>} <Link href={`/show/${showUuid}`} className='italic border border-3 p-1 text-zinc-900 font-normal'>go back</Link>
+        <div className='container mx-auto px-4 py-2'>
+            <h1 className='text-xl font-black p-2'>
+                {showInfo ? showInfo[0]?.attributes?.title : 'n/a'} ~ season {seasonData ? seasonData?.data[0]?.attributes?.season_number : 'n/a'} {loading && <span>- loading episode data...</span>} <Link href={`/show/${showUuid}`} className='italic border border-2 border-zinc-900 font-normal text-base p-1 ml-8'>go back</Link>
             </h1>
             {seasonData?.data.map((episode, index) => {
                 return (
@@ -53,17 +68,17 @@ function SeasonPage() {
                             Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                         </span>
                         <div>
-                            <p>Air date: {episode?.attributes.original_air_date.split('T')[0]}</p>
-                            <p className='text-sm'>Description: {episode?.attributes?.description}</p>
+                            <div className='p-1'>Air date: {episode?.attributes.original_air_date.split('T')[0]}</div>
+                            <p className='text-sm'><span className='italic'>Description: </span>{episode?.attributes?.description}</p>
                             <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
-                                <button onClick={notify} className='text-blue-400'>Link to episode: https://roosterteeth.com{episode?.canonical_links?.self} (click to copy link)</button>
+                                <button onClick={notify} className='p-1'>Link to episode: <span className='text-blue-400'>https://roosterteeth.com{episode?.canonical_links?.self} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                             </CopyToClipboard>
                         </div>
                     </li>
                 )
             })}
             <Toaster />
-            <span className='italic text-sm'>total items in this page: {seasonData?.data.length}</span>
+            <div className='italic text-sm pt-8'>total items in this page: {seasonData?.data.length}</div>
         </div >
     )
 }

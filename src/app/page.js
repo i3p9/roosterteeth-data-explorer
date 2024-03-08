@@ -1,12 +1,20 @@
 'use client'
 import Link from 'next/link';
 import masterList from '../data/master.json'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { channels } from '@/data/utils/data';
 
 export default function Home() {
-  const [value, setValue] = useState('yes')
-  const [channelFilterValue, setChannelFilterValue] = useState('all')
+  const exclusive_data = window.localStorage.getItem('EXCLUSIVE_FILTER');
+  const channel_filter_data = window.localStorage.getItem('CHANNEL_FILTER');
+
+  const [value, setValue] = useState(exclusive_data ? JSON.parse(exclusive_data) : 'yes')
+  const [channelFilterValue, setChannelFilterValue] = useState(channel_filter_data ? JSON.parse(channel_filter_data) : 'all')
+
+  useEffect(() => {
+    window.localStorage.setItem('EXCLUSIVE_FILTER', JSON.stringify(value))
+    window.localStorage.setItem('CHANNEL_FILTER', JSON.stringify(channelFilterValue))
+  }, [value, channelFilterValue]);
 
   function AllShowList() {
     if (value === 'yes') {
@@ -74,7 +82,7 @@ export default function Home() {
   return (
     <main>
       <div className='container mx-auto px-4 py-2'>
-        <h1 className='text-xl font-black'>List of all shows from roosterteeth.com</h1>
+        <h1 className='text-xl font-black p-2'>List of all shows from roosterteeth.com</h1>
         <form className='p-2 border border-2'>
           <fieldset>
             <legend>Filter by First exclusive</legend>
