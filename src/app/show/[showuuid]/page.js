@@ -6,6 +6,9 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
 import { getShowInfo } from '@/data/utils/utils'
+import { FaRegCopy } from "react-icons/fa6";
+
+
 const baseUrl = config.url.BASE_URL;
 
 
@@ -43,7 +46,7 @@ function ShowPage() {
 
         if (showUuid) {
             fetchSeasonData();
-            fetchShowInfo()
+            fetchShowInfo();
         }
     }, [showUuid])
 
@@ -63,12 +66,14 @@ function ShowPage() {
     }
 
     return (
-        <div>
-            <h1 className='p-2'>showing seasons for: {showInfo ? showInfo[0]?.attributes?.title : 'n/a'} {loading && <>- loading...</>} | <Link href="/" className='italic border border-3 p-1'>go back</Link>
+        <div className='container mx-auto px-4 py-2'>
+            <h1 className='text-xl font-black  p-2'>{showInfo ? showInfo[0]?.attributes?.title : 'n/a'} ~ all seasons {loading && <>- loading...</>}<Link href="/" className='italic border border-2 border-zinc-900 font-normal text-base p-1 ml-8'>go back</Link>
             </h1>
             {showData && <p>
                 <CopyToClipboard text={copyAllLinks()}>
-                    <button className='italic border border-3 p-1 mb-5' onClick={notify}>copy links to all seasons</button>
+                    <button className='italic border border-2 border-zinc-900 font-normal text-base p-1 mb-5' onClick={notify}>
+                        <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
+                    </button>
                 </CopyToClipboard>
             </p>
             }
@@ -81,7 +86,7 @@ function ShowPage() {
                         </Link>
                         <div>
                             <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
-                                <button onClick={notify} className='text-blue-400'>Link: https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} (click to copy link)</button>
+                                <button onClick={notify} className='p-1'>Link: <span className='text-blue-400 text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                             </CopyToClipboard>
                         </div>
 
@@ -89,7 +94,7 @@ function ShowPage() {
                 )
             })}
             <Toaster />
-            <span className='italic text-sm'>total items in this page: {showData?.data.length}</span>
+            <div className='italic text-sm pt-8'>total items in this page: {showData?.data.length}</div>
         </div>
     )
 }
