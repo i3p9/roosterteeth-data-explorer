@@ -1,1 +1,152 @@
-{"data": [{"id": 1334, "uuid": "99f22ad7-275b-4248-9b46-a1a7d9e88421", "type": "season", "attributes": {"title": "Season 5", "description": "", "slug": "camp-camp-season-5", "number": 5, "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4", "show_slug": "camp-camp", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 2, "published_at": "2024-02-29T18:20:40.000Z"}, "links": {"self": "/api/v1/seasons/camp-camp-season-5", "episodes": "/api/v1/seasons/camp-camp-season-5/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 739, "uuid": "a0e0f75f-d7f4-4dd7-941e-d2eefb5bcf21", "type": "season", "attributes": {"title": "Season 4", "description": "", "slug": "camp-camp-season-4", "number": 4, "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4", "show_slug": "camp-camp", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 21, "published_at": "2019-05-23T17:46:00.000Z"}, "links": {"self": "/api/v1/seasons/camp-camp-season-4", "episodes": "/api/v1/seasons/camp-camp-season-4/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 577, "uuid": "1f0ca83a-7c55-4f66-823a-f706bce99179", "type": "season", "attributes": {"title": "Season 3", "description": "", "slug": "camp-camp-season-3", "number": 3, "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4", "show_slug": "camp-camp", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 14, "published_at": "2018-05-22T18:14:44.000Z"}, "links": {"self": "/api/v1/seasons/camp-camp-season-3", "episodes": "/api/v1/seasons/camp-camp-season-3/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 373, "uuid": "ffa3535a-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 2", "description": "", "slug": "camp-camp-season-2", "number": 2, "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4", "show_slug": "camp-camp", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 14, "published_at": "2017-05-24T20:36:59.000Z"}, "links": {"self": "/api/v1/seasons/camp-camp-season-2", "episodes": "/api/v1/seasons/camp-camp-season-2/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 377, "uuid": "ffa2ca79-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 1", "description": "", "slug": "camp-camp-season-1", "number": 1, "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4", "show_slug": "camp-camp", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 12, "published_at": "2016-06-09T15:37:19.000Z"}, "links": {"self": "/api/v1/seasons/camp-camp-season-1", "episodes": "/api/v1/seasons/camp-camp-season-1/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 1334,
+      "uuid": "99f22ad7-275b-4248-9b46-a1a7d9e88421",
+      "type": "season",
+      "attributes": {
+        "title": "Season 5",
+        "description": "",
+        "slug": "camp-camp-season-5",
+        "number": 5,
+        "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4",
+        "show_slug": "camp-camp",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 2,
+        "published_at": "2024-02-29T18:20:40.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/camp-camp-season-5",
+        "episodes": "/api/v1/seasons/camp-camp-season-5/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 739,
+      "uuid": "a0e0f75f-d7f4-4dd7-941e-d2eefb5bcf21",
+      "type": "season",
+      "attributes": {
+        "title": "Season 4",
+        "description": "",
+        "slug": "camp-camp-season-4",
+        "number": 4,
+        "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4",
+        "show_slug": "camp-camp",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 21,
+        "published_at": "2019-05-23T17:46:00.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/camp-camp-season-4",
+        "episodes": "/api/v1/seasons/camp-camp-season-4/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 577,
+      "uuid": "1f0ca83a-7c55-4f66-823a-f706bce99179",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "camp-camp-season-3",
+        "number": 3,
+        "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4",
+        "show_slug": "camp-camp",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 14,
+        "published_at": "2018-05-22T18:14:44.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/camp-camp-season-3",
+        "episodes": "/api/v1/seasons/camp-camp-season-3/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 373,
+      "uuid": "ffa3535a-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "camp-camp-season-2",
+        "number": 2,
+        "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4",
+        "show_slug": "camp-camp",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 14,
+        "published_at": "2017-05-24T20:36:59.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/camp-camp-season-2",
+        "episodes": "/api/v1/seasons/camp-camp-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 377,
+      "uuid": "ffa2ca79-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "camp-camp-season-1",
+        "number": 1,
+        "show_id": "ff93b8a4-464d-11e7-a302-065410f210c4",
+        "show_slug": "camp-camp",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 12,
+        "published_at": "2016-06-09T15:37:19.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/camp-camp-season-1",
+        "episodes": "/api/v1/seasons/camp-camp-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-camp-camp",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-camp-camp",
+        "description": "",
+        "episode_count": 27,
+        "number": 99,
+        "show_slug": "camp-camp",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}

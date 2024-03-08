@@ -1,1 +1,44 @@
-{"data": [{"id": 654, "uuid": "d29145ac-5302-4e20-9240-baa7cf112ff1", "type": "season", "attributes": {"title": "2019", "description": "", "slug": "the-weird-place-2019", "number": 1, "show_id": "db189aa8-41b3-44cd-9139-bbad2b5be8ad", "show_slug": "the-weird-place", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 5, "published_at": "2019-02-01T14:16:41.000Z"}, "links": {"self": "/api/v1/seasons/the-weird-place-2019", "episodes": "/api/v1/seasons/the-weird-place-2019/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 654,
+      "uuid": "d29145ac-5302-4e20-9240-baa7cf112ff1",
+      "type": "season",
+      "attributes": {
+        "title": "2019",
+        "description": "",
+        "slug": "the-weird-place-2019",
+        "number": 1,
+        "show_id": "db189aa8-41b3-44cd-9139-bbad2b5be8ad",
+        "show_slug": "the-weird-place",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 5,
+        "published_at": "2019-02-01T14:16:41.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/the-weird-place-2019",
+        "episodes": "/api/v1/seasons/the-weird-place-2019/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-the-weird-place",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-the-weird-place",
+        "description": "",
+        "episode_count": 2,
+        "number": 99,
+        "show_slug": "the-weird-place",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}

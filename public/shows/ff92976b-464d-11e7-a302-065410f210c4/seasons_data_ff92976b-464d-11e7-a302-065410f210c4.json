@@ -1,1 +1,71 @@
-{"data": [{"id": 1291, "uuid": "4990c0f3-ef7a-43fb-8bc5-fb16f300c373", "type": "season", "attributes": {"title": "Season 2", "description": "", "slug": "a-simple-walk-season-2", "number": 2, "show_id": "ff92976b-464d-11e7-a302-065410f210c4", "show_slug": "a-simple-walk", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 15, "published_at": "2023-09-08T19:05:19.000Z"}, "links": {"self": "/api/v1/seasons/a-simple-walk-season-2", "episodes": "/api/v1/seasons/a-simple-walk-season-2/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 131, "uuid": "ffa155bf-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "A Simple Walk", "description": "", "slug": "a-simple-walk-a-simple-walk", "number": 1, "show_id": "ff92976b-464d-11e7-a302-065410f210c4", "show_slug": "a-simple-walk", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 5, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/a-simple-walk-a-simple-walk", "episodes": "/api/v1/seasons/a-simple-walk-a-simple-walk/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 1291,
+      "uuid": "4990c0f3-ef7a-43fb-8bc5-fb16f300c373",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "a-simple-walk-season-2",
+        "number": 2,
+        "show_id": "ff92976b-464d-11e7-a302-065410f210c4",
+        "show_slug": "a-simple-walk",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 15,
+        "published_at": "2023-09-08T19:05:19.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/a-simple-walk-season-2",
+        "episodes": "/api/v1/seasons/a-simple-walk-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 131,
+      "uuid": "ffa155bf-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "A Simple Walk",
+        "description": "",
+        "slug": "a-simple-walk-a-simple-walk",
+        "number": 1,
+        "show_id": "ff92976b-464d-11e7-a302-065410f210c4",
+        "show_slug": "a-simple-walk",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 5,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/a-simple-walk-a-simple-walk",
+        "episodes": "/api/v1/seasons/a-simple-walk-a-simple-walk/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-a-simple-walk",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-a-simple-walk",
+        "description": "",
+        "episode_count": 2,
+        "number": 99,
+        "show_slug": "a-simple-walk",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}

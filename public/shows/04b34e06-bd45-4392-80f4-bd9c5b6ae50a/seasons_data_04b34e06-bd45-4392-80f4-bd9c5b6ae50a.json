@@ -1,1 +1,152 @@
-{"data": [{"id": 7, "uuid": "ffa12595-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 5", "description": "", "slug": "red-vs-blue-season-5", "number": 5, "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a", "show_slug": "blood-gulch-chronicles", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 23, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/red-vs-blue-season-5", "episodes": "/api/v1/seasons/red-vs-blue-season-5/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 3, "uuid": "ffa12464-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 4", "description": "", "slug": "red-vs-blue-season-4", "number": 4, "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a", "show_slug": "blood-gulch-chronicles", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 20, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/red-vs-blue-season-4", "episodes": "/api/v1/seasons/red-vs-blue-season-4/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 5, "uuid": "ffa12270-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 3", "description": "", "slug": "red-vs-blue-season-3", "number": 3, "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a", "show_slug": "blood-gulch-chronicles", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 19, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/red-vs-blue-season-3", "episodes": "/api/v1/seasons/red-vs-blue-season-3/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 1, "uuid": "ffa12128-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 2", "description": "", "slug": "red-vs-blue-season-2", "number": 2, "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a", "show_slug": "blood-gulch-chronicles", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 20, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/red-vs-blue-season-2", "episodes": "/api/v1/seasons/red-vs-blue-season-2/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 2, "uuid": "ffa11de8-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 1", "description": "", "slug": "red-vs-blue-season-1", "number": 1, "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a", "show_slug": "blood-gulch-chronicles", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 19, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/red-vs-blue-season-1", "episodes": "/api/v1/seasons/red-vs-blue-season-1/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 7,
+      "uuid": "ffa12595-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 5",
+        "description": "",
+        "slug": "red-vs-blue-season-5",
+        "number": 5,
+        "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a",
+        "show_slug": "blood-gulch-chronicles",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 23,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-season-5",
+        "episodes": "/api/v1/seasons/red-vs-blue-season-5/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 3,
+      "uuid": "ffa12464-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 4",
+        "description": "",
+        "slug": "red-vs-blue-season-4",
+        "number": 4,
+        "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a",
+        "show_slug": "blood-gulch-chronicles",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 20,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-season-4",
+        "episodes": "/api/v1/seasons/red-vs-blue-season-4/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 5,
+      "uuid": "ffa12270-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "red-vs-blue-season-3",
+        "number": 3,
+        "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a",
+        "show_slug": "blood-gulch-chronicles",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 19,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-season-3",
+        "episodes": "/api/v1/seasons/red-vs-blue-season-3/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 1,
+      "uuid": "ffa12128-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "red-vs-blue-season-2",
+        "number": 2,
+        "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a",
+        "show_slug": "blood-gulch-chronicles",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 20,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-season-2",
+        "episodes": "/api/v1/seasons/red-vs-blue-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 2,
+      "uuid": "ffa11de8-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "red-vs-blue-season-1",
+        "number": 1,
+        "show_id": "04b34e06-bd45-4392-80f4-bd9c5b6ae50a",
+        "show_slug": "blood-gulch-chronicles",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 19,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-season-1",
+        "episodes": "/api/v1/seasons/red-vs-blue-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-blood-gulch-chronicles",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-blood-gulch-chronicles",
+        "description": "",
+        "episode_count": 16,
+        "number": 99,
+        "show_slug": "blood-gulch-chronicles",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}

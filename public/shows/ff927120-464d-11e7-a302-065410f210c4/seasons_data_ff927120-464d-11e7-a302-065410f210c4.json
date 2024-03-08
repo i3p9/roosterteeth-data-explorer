@@ -1,1 +1,152 @@
-{"data": [{"id": 35, "uuid": "ffa34135-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 5", "description": "", "slug": "immersion-season-5", "number": 5, "show_id": "ff927120-464d-11e7-a302-065410f210c4", "show_slug": "immersion", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 5, "published_at": "2017-03-17T15:44:03.000Z"}, "links": {"self": "/api/v1/seasons/immersion-season-5", "episodes": "/api/v1/seasons/immersion-season-5/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 31, "uuid": "ffa2e497-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 4", "description": "", "slug": "immersion-season-4", "number": 4, "show_id": "ff927120-464d-11e7-a302-065410f210c4", "show_slug": "immersion", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 17, "published_at": "2016-10-07T21:46:22.000Z"}, "links": {"self": "/api/v1/seasons/immersion-season-4", "episodes": "/api/v1/seasons/immersion-season-4/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 38, "uuid": "ffa253a3-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 3", "description": "", "slug": "immersion-season-3", "number": 3, "show_id": "ff927120-464d-11e7-a302-065410f210c4", "show_slug": "immersion", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 17, "published_at": "2015-11-02T04:30:35.000Z"}, "links": {"self": "/api/v1/seasons/immersion-season-3", "episodes": "/api/v1/seasons/immersion-season-3/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 36, "uuid": "ffa15ec0-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 2", "description": "", "slug": "immersion-season-2", "number": 2, "show_id": "ff927120-464d-11e7-a302-065410f210c4", "show_slug": "immersion", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 7, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/immersion-season-2", "episodes": "/api/v1/seasons/immersion-season-2/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 32, "uuid": "ffa137fe-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 1", "description": "", "slug": "immersion-season-1", "number": 1, "show_id": "ff927120-464d-11e7-a302-065410f210c4", "show_slug": "immersion", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 9, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/immersion-season-1", "episodes": "/api/v1/seasons/immersion-season-1/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 35,
+      "uuid": "ffa34135-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 5",
+        "description": "",
+        "slug": "immersion-season-5",
+        "number": 5,
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
+        "show_slug": "immersion",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 5,
+        "published_at": "2017-03-17T15:44:03.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/immersion-season-5",
+        "episodes": "/api/v1/seasons/immersion-season-5/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 31,
+      "uuid": "ffa2e497-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 4",
+        "description": "",
+        "slug": "immersion-season-4",
+        "number": 4,
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
+        "show_slug": "immersion",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 17,
+        "published_at": "2016-10-07T21:46:22.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/immersion-season-4",
+        "episodes": "/api/v1/seasons/immersion-season-4/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 38,
+      "uuid": "ffa253a3-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "immersion-season-3",
+        "number": 3,
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
+        "show_slug": "immersion",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 17,
+        "published_at": "2015-11-02T04:30:35.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/immersion-season-3",
+        "episodes": "/api/v1/seasons/immersion-season-3/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 36,
+      "uuid": "ffa15ec0-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "immersion-season-2",
+        "number": 2,
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
+        "show_slug": "immersion",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 7,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/immersion-season-2",
+        "episodes": "/api/v1/seasons/immersion-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 32,
+      "uuid": "ffa137fe-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "immersion-season-1",
+        "number": 1,
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
+        "show_slug": "immersion",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 9,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/immersion-season-1",
+        "episodes": "/api/v1/seasons/immersion-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-immersion",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-immersion",
+        "description": "",
+        "episode_count": 3,
+        "number": 99,
+        "show_slug": "immersion",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}
