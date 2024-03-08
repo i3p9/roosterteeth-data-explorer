@@ -23,7 +23,6 @@ function ShowPage() {
         const fetchSeasonData = async () => {
             try {
                 setLoading(true);
-                // Load the JSON file and parse it into an object
                 const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons_data_${showUuid}.json`);
                 const data = await response.json();
                 setShowData(data);
@@ -47,18 +46,6 @@ function ShowPage() {
             fetchShowInfo()
         }
     }, [showUuid])
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         setLoading(true);
-    //         const data = await getSeasonData();
-    //         setShowData(data)
-    //         setLoading(false);
-    //     };
-
-    //     fetchData();
-    //     // eslint-disable-next-line
-    // }, [showSlug]);
 
 
     useEffect(() => {
