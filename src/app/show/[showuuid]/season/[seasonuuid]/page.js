@@ -43,13 +43,13 @@ function SeasonPage() {
 
     return (
         <div>
-            <h1 className='p-2'>
-                showing episodes for: {seasonUuid} {loading && <span>- loading episode data...</span>} <Link href={`/show/${showUuid}`} className='italic border border-3 p-1'>go back</Link>
+            <h1 className='text-zinc-900 font-medium p-2'>
+                showing episodes for: {seasonUuid} {loading && <span>- loading episode data...</span>} <Link href={`/show/${showUuid}`} className='italic border border-3 p-1 text-zinc-900 font-normal'>go back</Link>
             </h1>
             {seasonData?.data.map((episode, index) => {
                 return (
                     <li key={index} className='p-2'>
-                        <span className='text-lg font-bold'>
+                        <span className='text-zinc-900 font-medium'>
                             Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
                         </span>
                         <div>
