@@ -1,0 +1,2813 @@
+{
+    "data": [
+        {
+            "id": 32098,
+            "type": "episode",
+            "attributes": {
+                "title": "Season 5 Teaser",
+                "slug": "all-your-history-are-belong-to-us-season-3-season-5-teaser",
+                "rating": null,
+                "caption": "",
+                "number": 1,
+                "description": "",
+                "display_title": "Season 5 Teaser",
+                "length": 126,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30001,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-season-5-teaser",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-season-5-teaser/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-season-5-teaser/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "7a5d6452-1060-4651-afe7-b3c266a25154",
+            "included": {
+                "images": [
+                    {
+                        "id": 92993,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/25588e58-b58a-42f7-a5a7-143b6b916681/original/1555969236.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/25588e58-b58a-42f7-a5a7-143b6b916681/original/1555969236.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/25588e58-b58a-42f7-a5a7-143b6b916681/original/1555969236.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/25588e58-b58a-42f7-a5a7-143b6b916681/original/1555969236.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "25588e58-b58a-42f7-a5a7-143b6b916681",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-season-5-teaser",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32185,
+            "type": "episode",
+            "attributes": {
+                "title": "Devil May Cry - Part I",
+                "slug": "all-your-history-are-belong-to-us-season-3-devil-may-cry-part-i",
+                "rating": null,
+                "caption": "",
+                "number": 1,
+                "description": "From Biohazard to next gen Beat 'Em Up; witness the story of how a half-demon named Dante captured the hearts and minds of a generation.",
+                "display_title": "Devil May Cry - Part I",
+                "length": 489,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "244.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30001,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-i",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-i/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-i/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "ca574576-aba1-4c50-922b-e6b453a2e44a",
+            "included": {
+                "images": [
+                    {
+                        "id": 240156,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/069aae39-2932-40be-a867-e40f692c348a/original/1555969262.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/069aae39-2932-40be-a867-e40f692c348a/original/1555969262.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/069aae39-2932-40be-a867-e40f692c348a/original/1555969262.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/069aae39-2932-40be-a867-e40f692c348a/original/1555969262.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "069aae39-2932-40be-a867-e40f692c348a",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-i",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32172,
+            "type": "episode",
+            "attributes": {
+                "title": "Devil May Cry - Part II",
+                "slug": "all-your-history-are-belong-to-us-season-3-devil-may-cry-part-ii",
+                "rating": null,
+                "caption": "",
+                "number": 2,
+                "description": "Dante goes Hi-Def, crosses the console aisle, and gets re-imagined for a post-modern generation.",
+                "display_title": "Devil May Cry - Part II",
+                "length": 674,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "337.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30002,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-ii",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-ii/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-ii/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "a3a0d3c6-7152-4009-b2cd-fb072ff8ca99",
+            "included": {
+                "images": [
+                    {
+                        "id": 240157,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ddfe3f73-8905-4550-85cf-63c0aa9f8591/original/1555969289.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ddfe3f73-8905-4550-85cf-63c0aa9f8591/original/1555969289.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ddfe3f73-8905-4550-85cf-63c0aa9f8591/original/1555969289.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ddfe3f73-8905-4550-85cf-63c0aa9f8591/original/1555969289.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "ddfe3f73-8905-4550-85cf-63c0aa9f8591",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-devil-may-cry-part-ii",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32137,
+            "type": "episode",
+            "attributes": {
+                "title": "Retro City Rampage",
+                "slug": "all-your-history-are-belong-to-us-season-3-retro-city-rampage",
+                "rating": null,
+                "caption": "",
+                "number": 3,
+                "description": "Find out how the dude next door became one of the video game industry's most celebrated do-it-yourself developers and turned a love letter to his childhood into an arcade sensation. Carjack the '80s at 88mph and go on a Retro City Rampage!",
+                "display_title": "Retro City Rampage",
+                "length": 814,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "407.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30003,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-retro-city-rampage",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-retro-city-rampage/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-retro-city-rampage/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "ba4374b0-105d-4dde-856d-177a6d4d9125",
+            "included": {
+                "images": [
+                    {
+                        "id": 240158,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/3a0f4eae-f7de-4f45-8770-935a30e90e15/original/1555969333.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/3a0f4eae-f7de-4f45-8770-935a30e90e15/original/1555969333.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/3a0f4eae-f7de-4f45-8770-935a30e90e15/original/1555969333.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/3a0f4eae-f7de-4f45-8770-935a30e90e15/original/1555969333.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "3a0f4eae-f7de-4f45-8770-935a30e90e15",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-retro-city-rampage",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32210,
+            "type": "episode",
+            "attributes": {
+                "title": "Aliens Part I: Heart of Darkness",
+                "slug": "all-your-history-are-belong-to-us-season-3-aliens-part-i-heart-of-darkness",
+                "rating": null,
+                "caption": "",
+                "number": 4,
+                "description": "In space no one can hear you scream... From the Atari 2600 to Colonial Marines, find out how it all began.",
+                "display_title": "Aliens Part I: Heart of Darkness",
+                "length": 713,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "356.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30004,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-i-heart-of-darkness",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-aliens-part-i-heart-of-darkness/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-i-heart-of-darkness/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "c236070b-061b-457e-8caf-4e2a2a6b3094",
+            "included": {
+                "images": [
+                    {
+                        "id": 240159,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/78d5480b-90f4-41e2-ad34-bf0998bb5681/original/1555969506.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/78d5480b-90f4-41e2-ad34-bf0998bb5681/original/1555969506.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/78d5480b-90f4-41e2-ad34-bf0998bb5681/original/1555969506.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/78d5480b-90f4-41e2-ad34-bf0998bb5681/original/1555969506.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "78d5480b-90f4-41e2-ad34-bf0998bb5681",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-aliens-part-i-heart-of-darkness",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32230,
+            "type": "episode",
+            "attributes": {
+                "title": "Aliens Part II: Deadliest of the Species",
+                "slug": "all-your-history-are-belong-to-us-season-3-aliens-part-ii-deadliest-of-the-species",
+                "rating": null,
+                "caption": "",
+                "number": 5,
+                "description": "Enter the Predator. Journey deeper into the heart of darkness and find out how the Alien met his worst enemy.",
+                "display_title": "Aliens Part II: Deadliest of the Species",
+                "length": 485,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "242.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30005,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-ii-deadliest-of-the-species",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-aliens-part-ii-deadliest-of-the-species/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-ii-deadliest-of-the-species/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "5978f5e4-9ee3-4caa-bee5-4391fc3c54e7",
+            "included": {
+                "images": [
+                    {
+                        "id": 240160,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/0c224785-8c4b-4fa9-899e-4d12d45ebd06/original/1555969536.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/0c224785-8c4b-4fa9-899e-4d12d45ebd06/original/1555969536.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/0c224785-8c4b-4fa9-899e-4d12d45ebd06/original/1555969536.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/0c224785-8c4b-4fa9-899e-4d12d45ebd06/original/1555969536.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "0c224785-8c4b-4fa9-899e-4d12d45ebd06",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-aliens-part-ii-deadliest-of-the-species",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32159,
+            "type": "episode",
+            "attributes": {
+                "title": "Aliens Part III: Versus Predator",
+                "slug": "all-your-history-are-belong-to-us-season-3-aliens-part-iii-versus-predator",
+                "rating": null,
+                "caption": "",
+                "number": 6,
+                "description": "\"The enemy of my enemy... is my friend.\" Find out how a series of counter-culture comic books led to the birth of a new, united franchise.",
+                "display_title": "Aliens Part III: Versus Predator",
+                "length": 494,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "247.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30006,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iii-versus-predator",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-aliens-part-iii-versus-predator/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iii-versus-predator/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "df9ce189-f5f0-4d1d-a5b1-41716f8156cb",
+            "included": {
+                "images": [
+                    {
+                        "id": 240161,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/c5946ffe-769e-4947-aa7f-dbe602933dd7/original/1555969556.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/c5946ffe-769e-4947-aa7f-dbe602933dd7/original/1555969556.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/c5946ffe-769e-4947-aa7f-dbe602933dd7/original/1555969556.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/c5946ffe-769e-4947-aa7f-dbe602933dd7/original/1555969556.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "c5946ffe-769e-4947-aa7f-dbe602933dd7",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iii-versus-predator",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32166,
+            "type": "episode",
+            "attributes": {
+                "title": "Aliens Part IV: Another Bug Hunt",
+                "slug": "all-your-history-are-belong-to-us-season-3-aliens-part-iv-another-bug-hunt",
+                "rating": null,
+                "caption": "",
+                "number": 7,
+                "description": "Stop your grinnin' and drop your linen! This week we're chasing the Xeno back to where it all began. Don't miss the explosive finale to our ultimate Aliens retrospective!",
+                "display_title": "Aliens Part IV: Another Bug Hunt",
+                "length": 499,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "249.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30007,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iv-another-bug-hunt",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-aliens-part-iv-another-bug-hunt/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iv-another-bug-hunt/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "0311914a-91c2-4fe6-8e41-5c56798a1c6c",
+            "included": {
+                "images": [
+                    {
+                        "id": 240162,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/24bdfa26-8b33-41fd-addd-7751d8b253a4/original/1555969588.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/24bdfa26-8b33-41fd-addd-7751d8b253a4/original/1555969588.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/24bdfa26-8b33-41fd-addd-7751d8b253a4/original/1555969588.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/24bdfa26-8b33-41fd-addd-7751d8b253a4/original/1555969588.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "24bdfa26-8b33-41fd-addd-7751d8b253a4",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-aliens-part-iv-another-bug-hunt",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32221,
+            "type": "episode",
+            "attributes": {
+                "title": "Tomb Raider Part 1: Hard Core Design",
+                "slug": "all-your-history-are-belong-to-us-season-3-tomb-raider-part-1-hard-core-design",
+                "rating": null,
+                "caption": "",
+                "number": 8,
+                "description": "Find out how developer Core Design led a British invasion that dropped a bombshell on the world of video games.",
+                "display_title": "Tomb Raider Part 1: Hard Core Design",
+                "length": 483,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "241.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30008,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-tomb-raider-part-1-hard-core-design",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-tomb-raider-part-1-hard-core-design/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-tomb-raider-part-1-hard-core-design/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "0248634a-9bd1-48b7-b45c-826900495f5f",
+            "included": {
+                "images": [
+                    {
+                        "id": 240163,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a2ab47b4-a3d9-46eb-b8e6-026507216b50/original/1555969613.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a2ab47b4-a3d9-46eb-b8e6-026507216b50/original/1555969613.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a2ab47b4-a3d9-46eb-b8e6-026507216b50/original/1555969613.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a2ab47b4-a3d9-46eb-b8e6-026507216b50/original/1555969613.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "a2ab47b4-a3d9-46eb-b8e6-026507216b50",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-tomb-raider-part-1-hard-core-design",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32138,
+            "type": "episode",
+            "attributes": {
+                "title": "The History of Tomb Raider Part 2: A Survivor Is Born",
+                "slug": "all-your-history-are-belong-to-us-season-3-the-history-of-tomb-raider-part-2-a-survivor-is-born",
+                "rating": null,
+                "caption": "",
+                "number": 9,
+                "description": "Find out how developer Crystal Dynamics remodeled Miss Lara Croft and showed us all how a survivor was born.",
+                "display_title": "The History of Tomb Raider Part 2: A Survivor Is Born",
+                "length": 493,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "246.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30009,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-tomb-raider-part-2-a-survivor-is-born",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-the-history-of-tomb-raider-part-2-a-survivor-is-born/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-tomb-raider-part-2-a-survivor-is-born/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "efe17958-68d2-49b3-88b1-7a23ea47c10c",
+            "included": {
+                "images": [
+                    {
+                        "id": 240164,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/dd54d67a-9be5-401f-81aa-70c85d573bfe/original/1555969638.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/dd54d67a-9be5-401f-81aa-70c85d573bfe/original/1555969638.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/dd54d67a-9be5-401f-81aa-70c85d573bfe/original/1555969638.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/dd54d67a-9be5-401f-81aa-70c85d573bfe/original/1555969638.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "dd54d67a-9be5-401f-81aa-70c85d573bfe",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-the-history-of-tomb-raider-part-2-a-survivor-is-born",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32240,
+            "type": "episode",
+            "attributes": {
+                "title": "Gears of War Part 1: Emergence Day",
+                "slug": "all-your-history-are-belong-to-us-season-3-gears-of-war-part-1-emergence-day",
+                "rating": null,
+                "caption": "",
+                "number": 10,
+                "description": "Find out how Epic MegaGames took a chance on a young developer who 'dared to dream' and created a modern action-horror masterpiece.",
+                "display_title": "Gears of War Part 1: Emergence Day",
+                "length": 493,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "246.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30010,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-1-emergence-day",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-gears-of-war-part-1-emergence-day/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-1-emergence-day/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "8003d4a5-a974-48ee-a875-458d014617d3",
+            "included": {
+                "images": [
+                    {
+                        "id": 240165,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/4ab6368d-119b-4ab4-9a85-fbe37c52bc5b/original/1555969660.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/4ab6368d-119b-4ab4-9a85-fbe37c52bc5b/original/1555969660.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/4ab6368d-119b-4ab4-9a85-fbe37c52bc5b/original/1555969660.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/4ab6368d-119b-4ab4-9a85-fbe37c52bc5b/original/1555969660.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "4ab6368d-119b-4ab4-9a85-fbe37c52bc5b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-1-emergence-day",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32199,
+            "type": "episode",
+            "attributes": {
+                "title": "Gears of War Part 2: Hope Runs Deep",
+                "slug": "all-your-history-are-belong-to-us-season-3-gears-of-war-part-2-hope-runs-deep",
+                "rating": null,
+                "caption": "",
+                "number": 11,
+                "description": "With a runaway hit on their hands, Epic Games had no intention of slowing down. Delta Squad is in your house!",
+                "display_title": "Gears of War Part 2: Hope Runs Deep",
+                "length": 411,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "205.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30011,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-2-hope-runs-deep",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-gears-of-war-part-2-hope-runs-deep/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-2-hope-runs-deep/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "ace673e2-e746-4e10-a7c5-2420dc9f36ff",
+            "included": {
+                "images": [
+                    {
+                        "id": 240166,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/2b851fd3-4762-4537-80ea-b6928e321389/original/1555969683.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/2b851fd3-4762-4537-80ea-b6928e321389/original/1555969683.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/2b851fd3-4762-4537-80ea-b6928e321389/original/1555969683.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/2b851fd3-4762-4537-80ea-b6928e321389/original/1555969683.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "2b851fd3-4762-4537-80ea-b6928e321389",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-2-hope-runs-deep",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32242,
+            "type": "episode",
+            "attributes": {
+                "title": "Gears of War Part 3: Trust Your Guts",
+                "slug": "all-your-history-are-belong-to-us-season-3-gears-of-war-part-3-trust-your-guts",
+                "rating": null,
+                "caption": "",
+                "number": 12,
+                "description": "With Gears creator Cliff Bleszinski on his way out of the industry, would Epic Games be able to carry a torch for the fans he'd left behind? Find out how Gears of War faced Judgment and forged ahead by looking to the past.",
+                "display_title": "Gears of War Part 3: Trust Your Guts",
+                "length": 422,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "211.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30012,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-3-trust-your-guts",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-gears-of-war-part-3-trust-your-guts/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-3-trust-your-guts/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "175d9a46-6f8a-47ef-8869-145926f3fe35",
+            "included": {
+                "images": [
+                    {
+                        "id": 240167,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/906e1dde-2992-4094-8f2a-b5d9e0bf2a09/original/1555969715.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/906e1dde-2992-4094-8f2a-b5d9e0bf2a09/original/1555969715.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/906e1dde-2992-4094-8f2a-b5d9e0bf2a09/original/1555969715.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/906e1dde-2992-4094-8f2a-b5d9e0bf2a09/original/1555969715.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "906e1dde-2992-4094-8f2a-b5d9e0bf2a09",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-gears-of-war-part-3-trust-your-guts",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32195,
+            "type": "episode",
+            "attributes": {
+                "title": "The History of \"All Your History\" Part 1: In the Beginning",
+                "slug": "all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-1-in-the-beginning",
+                "rating": null,
+                "caption": "",
+                "number": 13,
+                "description": "Join us as we explore the genesis of this do-it-yourself YouTube darling that dared to document the stuff gaming dreams are made of.",
+                "display_title": "The History of \"All Your History\" Part 1: In the Beginning",
+                "length": 660,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "330.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30013,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-1-in-the-beginning",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-1-in-the-beginning/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-1-in-the-beginning/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "1727be33-f078-48cd-afcb-bbe2629bde1c",
+            "included": {
+                "images": [
+                    {
+                        "id": 240168,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/42fbf464-e05e-41f2-b318-407c6dbf583a/original/1555969735.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/42fbf464-e05e-41f2-b318-407c6dbf583a/original/1555969735.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/42fbf464-e05e-41f2-b318-407c6dbf583a/original/1555969735.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/42fbf464-e05e-41f2-b318-407c6dbf583a/original/1555969735.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "42fbf464-e05e-41f2-b318-407c6dbf583a",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-1-in-the-beginning",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        },
+        {
+            "id": 32216,
+            "type": "episode",
+            "attributes": {
+                "title": "The History of \"All Your History\" Part 2: Ashes To Ashes",
+                "slug": "all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-2-ashes-to-ashes",
+                "rating": null,
+                "caption": "",
+                "number": 14,
+                "description": "\"The only thing Chris Lockey is guilty of is not being Rob Talbert.\" - Brian \"AND LARSON\" Larsen. Five seasons of \"All Your History\" culminate with this very special retrospective finale. Don't miss it!",
+                "display_title": "The History of \"All Your History\" Part 2: Ashes To Ashes",
+                "length": 726,
+                "advert_config": "",
+                "advertising": true,
+                "ad_timestamps": "363.00",
+                "public_golive_at": "2019-02-22T17:13:55.000Z",
+                "sponsor_golive_at": "2019-02-22T17:13:55.000Z",
+                "member_golive_at": "2019-02-22T17:13:55.000Z",
+                "original_air_date": "2019-02-22T17:13:55.000Z",
+                "channel_id": "cb748682-3335-4faf-8fce-1273da49aa20",
+                "channel_slug": "friends-of-rt",
+                "season_id": "f32400e5-d54d-4033-875a-38616f8872c8",
+                "season_slug": "all-your-history-are-belong-to-us-season-3",
+                "season_number": 3,
+                "show_title": "All Your History Are Belong To Us",
+                "show_id": "110ca286-6034-4abf-a390-ebd9039b3043",
+                "show_slug": "all-your-history-are-belong-to-us",
+                "is_sponsors_only": false,
+                "member_tier_i": -1,
+                "sort_number": 30014,
+                "genres": [
+                    "Podcasts"
+                ],
+                "is_live": true,
+                "is_schedulable": false,
+                "season_order": "asc",
+                "episode_order": "asc",
+                "downloadable": true,
+                "blacklisted_countries": [],
+                "upsell_next": false,
+                "trending_score": 1.0,
+                "time_boost": 19.0222171355,
+                "credits_start_at": null,
+                "trending_carousel": null
+            },
+            "links": {
+                "self": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-2-ashes-to-ashes",
+                "show": "/api/v1/shows/all-your-history-are-belong-to-us",
+                "related_shows": "/api/v1/shows/all-your-history-are-belong-to-us/related",
+                "channel": "/api/v1/channels/friends-of-rt",
+                "season": "/api/v1/seasons/all-your-history-are-belong-to-us-season-3",
+                "next": "/api/v1/episodes/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-2-ashes-to-ashes/next",
+                "videos": "/api/v1/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-2-ashes-to-ashes/videos",
+                "products": "/api/v1/shows/all-your-history-are-belong-to-us/products?channel_id=friends-of-rt"
+            },
+            "uuid": "437a1642-c989-46f1-a783-bc6f433a398c",
+            "included": {
+                "images": [
+                    {
+                        "id": 240169,
+                        "type": "episode_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/312fd328-a008-4065-8f6e-2363134aa1c2/original/1555969758.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/312fd328-a008-4065-8f6e-2363134aa1c2/original/1555969758.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/312fd328-a008-4065-8f6e-2363134aa1c2/original/1555969758.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/312fd328-a008-4065-8f6e-2363134aa1c2/original/1555969758.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "312fd328-a008-4065-8f6e-2363134aa1c2",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217494,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08978efb-8044-48a2-8f2b-e72747aff890/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "mobile_hero"
+                        },
+                        "uuid": "08978efb-8044-48a2-8f2b-e72747aff890",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217495,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/663f3c5c-74a1-4bc0-99bb-8c9d25dd9959/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "profile"
+                        },
+                        "uuid": "663f3c5c-74a1-4bc0-99bb-8c9d25dd9959",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217496,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/a4e1b8e8-8e44-4336-bc00-5f8866736ef5/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "poster"
+                        },
+                        "uuid": "a4e1b8e8-8e44-4336-bc00-5f8866736ef5",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217497,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/ac4972cb-a93f-489d-9268-19a06f27ce3b/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "title_card"
+                        },
+                        "uuid": "ac4972cb-a93f-489d-9268-19a06f27ce3b",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217498,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/08eb44dd-81d2-41bf-896d-3bfc0e1d919c/original/1553097516.png",
+                            "orientation": "wide",
+                            "image_type": "logo"
+                        },
+                        "uuid": "08eb44dd-81d2-41bf-896d-3bfc0e1d919c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217499,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/35a21a28-455f-4c92-a6ea-96a191599d6c/original/1553097516.jpg",
+                            "orientation": "wide",
+                            "image_type": "hero"
+                        },
+                        "uuid": "35a21a28-455f-4c92-a6ea-96a191599d6c",
+                        "links": {},
+                        "included": {}
+                    },
+                    {
+                        "id": 217500,
+                        "type": "show_image",
+                        "attributes": {
+                            "thumb": "https://cdn.roosterteeth.com/image/upload/t_t/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "small": "https://cdn.roosterteeth.com/image/upload/t_sm/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "medium": "https://cdn.roosterteeth.com/image/upload/t_m/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "large": "https://cdn.roosterteeth.com/image/upload/t_l/f_auto/3/01ee93de-9e61-4172-9d9a-fd073319cc08/original/1553097544.jpg",
+                            "orientation": "wide",
+                            "image_type": "cover"
+                        },
+                        "uuid": "01ee93de-9e61-4172-9d9a-fd073319cc08",
+                        "links": {},
+                        "included": {}
+                    }
+                ],
+                "tags": [],
+                "cast_members": []
+            },
+            "canonical_links": {
+                "self": "/watch/all-your-history-are-belong-to-us-season-3-the-history-of-all-your-history-part-2-ashes-to-ashes",
+                "show": "/series/all-your-history-are-belong-to-us"
+            }
+        }
+    ],
+    "page": 1,
+    "per_page": 999,
+    "total_pages": 1,
+    "total_results": 15
+}
