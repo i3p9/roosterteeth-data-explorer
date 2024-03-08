@@ -5,16 +5,22 @@ import { useState, useEffect } from 'react';
 import { channels } from '@/data/utils/data';
 
 export default function Home() {
-  const exclusive_data = window.localStorage.getItem('EXCLUSIVE_FILTER');
-  const channel_filter_data = window.localStorage.getItem('CHANNEL_FILTER');
+  const [value, setValue] = useState('yes')
+  const [channelFilterValue, setChannelFilterValue] = useState('all')
 
-  const [value, setValue] = useState(exclusive_data ? JSON.parse(exclusive_data) : 'yes')
-  const [channelFilterValue, setChannelFilterValue] = useState(channel_filter_data ? JSON.parse(channel_filter_data) : 'all')
+  // useEffect(() => {
+  //   window.localStorage.setItem('EXCLUSIVE_FILTER', JSON.stringify(value))
+  //   window.localStorage.setItem('CHANNEL_FILTER', JSON.stringify(channelFilterValue))
+  // }, [value, channelFilterValue]);
 
-  useEffect(() => {
-    window.localStorage.setItem('EXCLUSIVE_FILTER', JSON.stringify(value))
-    window.localStorage.setItem('CHANNEL_FILTER', JSON.stringify(channelFilterValue))
-  }, [value, channelFilterValue]);
+  // useEffect(() => {
+  //   const exclusive_data = window.localStorage.getItem('EXCLUSIVE_FILTER');
+  //   const channel_filter_data = window.localStorage.getItem('CHANNEL_FILTER');
+  //   if (typeof window !== "undefined") {
+  //     setValue(JSON.parse(exclusive_data))
+  //     setChannelFilterValue(JSON.parse(channel_filter_data))
+  //   }
+  // }, [])
 
   function AllShowList() {
     if (value === 'yes') {
