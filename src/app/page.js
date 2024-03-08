@@ -5,8 +5,8 @@ import { useState } from 'react';
 import { channels } from '@/data/utils/data';
 
 export default function Home() {
-  const [value, setValue] = useState('no')
-  const [channelFilterValue, setChannelFilterValue] = useState('dd838359-a0e0-405f-b18b-5b0ed16ef852')
+  const [value, setValue] = useState('yes')
+  const [channelFilterValue, setChannelFilterValue] = useState('all')
 
   function AllShowList() {
     if (value === 'yes') {
