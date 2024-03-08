@@ -19,23 +19,23 @@ function ShowPage() {
         try {
             if (showSlug) {
                 const myHeaders = new Headers();
-                myHeaders.append("authority", "svod-be.roosterteeth.com");
+                // myHeaders.append("authority", "svod-be.roosterteeth.com");
                 myHeaders.append("accept", "application/json");
-                myHeaders.append("accept-language", "en-US,en;q=0.9");
-                myHeaders.append("cache-control", "no-cache");
-                myHeaders.append("client-debug-id", "0.9053162591183688");
-                myHeaders.append("client-id", "4338d2b4bdc8db1239360f28e72f0d9ddb1fd01e7a38fbb07b4b1f4ba4564cc5");
-                myHeaders.append("client-type", "web");
-                myHeaders.append("content-type", "application/json");
-                myHeaders.append("origin", "https://roosterteeth.com");
-                myHeaders.append("pragma", "no-cache");
-                myHeaders.append("sec-ch-ua", "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"");
-                myHeaders.append("sec-ch-ua-mobile", "?0");
-                myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
-                myHeaders.append("sec-fetch-dest", "empty");
-                myHeaders.append("sec-fetch-mode", "cors");
-                myHeaders.append("sec-fetch-site", "same-site");
-                myHeaders.append("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
+                // myHeaders.append("accept-language", "en-US,en;q=0.9");
+                // myHeaders.append("cache-control", "no-cache");
+                // myHeaders.append("client-debug-id", "0.9053162591183688");
+                // myHeaders.append("client-id", "4338d2b4bdc8db1239360f28e72f0d9ddb1fd01e7a38fbb07b4b1f4ba4564cc5");
+                // myHeaders.append("client-type", "web");
+                // myHeaders.append("content-type", "application/json");
+                // myHeaders.append("origin", "https://roosterteeth.com");
+                // myHeaders.append("pragma", "no-cache");
+                // myHeaders.append("sec-ch-ua", "\"Chromium\";v=\"122\", \"Not(A:Brand\";v=\"24\", \"Google Chrome\";v=\"122\"");
+                // myHeaders.append("sec-ch-ua-mobile", "?0");
+                // myHeaders.append("sec-ch-ua-platform", "\"macOS\"");
+                // myHeaders.append("sec-fetch-dest", "empty");
+                // myHeaders.append("sec-fetch-mode", "cors");
+                // myHeaders.append("sec-fetch-site", "same-site");
+                // myHeaders.append("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
 
                 const requestOptions = {
                     method: "GET",
