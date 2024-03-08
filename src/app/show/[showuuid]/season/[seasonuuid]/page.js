@@ -46,7 +46,7 @@ function SeasonPage() {
             <h1 className='p-2'>
                 showing episodes for: {seasonUuid} {loading && <span>- loading episode data...</span>} <Link href={`/show/${showUuid}`} className='italic border border-3 p-1'>go back</Link>
             </h1>
-            {seasonData?.data.reverse().map((episode, index) => {
+            {seasonData?.data.map((episode, index) => {
                 return (
                     <li key={index} className='p-2'>
                         <span className='text-lg font-bold'>
