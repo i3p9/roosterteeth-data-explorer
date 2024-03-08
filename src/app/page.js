@@ -16,20 +16,20 @@ export default function Home() {
             if (channelFilterValue !== 'all') {
               if (show?.attributes?.channel_id === channelFilterValue) {
                 return (
-                  <li key={index} className='text-gray-900 p-0.5'>
+                  <li key={index} className='text-zinc-900 font-medium p-0.5'>
                     <Link
-                      href={`/show/${show?.attributes?.slug}`}>
-                      {show?.attributes?.title} <span className='text-sm italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
+                      href={`/show/${show?.uuid}`}>
+                      {show?.attributes?.title} <span className='text-xs italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span> <span className='text-xs italic text-blue-300'>[seasons: {show?.attributes?.season_count} | episodes: {show?.attributes?.episode_count}]</span>
                     </Link>
                   </li>
                 )
               }
             } else {
               return (
-                <li key={index} className='text-gray-900 text-lg p-0.5'>
+                <li key={index} className='text-zinc-900 font-medium p-0.5'>
                   <Link
-                    href={`/show/${show?.attributes?.slug}`}>
-                    {show?.attributes?.title} <span className='text-sm italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
+                    href={`/show/${show?.uuid}`}>
+                    {show?.attributes?.title} <span className='text-xs italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span> <span className='text-xs italic text-blue-300'>[seasons: {show?.attributes?.season_count} | episodes: {show?.attributes?.episode_count}]</span>
                   </Link>
                 </li>
               )
@@ -44,19 +44,21 @@ export default function Home() {
             if (channelFilterValue !== 'all') {
               if (show?.attributes?.is_sponsors_only && show?.attributes?.channel_id === channelFilterValue) {
                 return (
-                  <li key={index} className='text-gray-900 p-0.5'>
-                    <Link href={`/show/${show?.attributes?.slug}`}>
-                      {show?.attributes?.title} <span className='text-sm italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
+                  <li key={index} className='text-zinc-900 font-medium p-0.5'>
+                    <Link
+                      href={`/show/${show?.uuid}`}
+                    >
+                      {show?.attributes?.title} <span className='text-xs italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span> <span className='text-xs italic text-blue-300'>[seasons: {show?.attributes?.season_count} | episodes: {show?.attributes?.episode_count}]</span>
                     </Link>
-                  </li>
+                  </li >
                 );
               }
             } else {
               if (show?.attributes?.is_sponsors_only) {
                 return (
-                  <li key={index} className='text-gray-900 p-0.5'>
+                  <li key={index} className='text-zinc-900 font-medium p-0.5'>
                     <Link href={`/show/${show?.attributes?.slug}`}>
-                      {show?.attributes?.title} <span className='text-sm italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
+                      {show?.attributes?.title} <span className='text-xs italic text-red-300'>{show?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span> <span className='text-xs italic text-blue-300'>[seasons: {show?.attributes?.season_count} | episodes: {show?.attributes?.episode_count}]</span>
                     </Link>
                   </li>
                 );
@@ -149,7 +151,6 @@ export default function Home() {
             })}
           </fieldset>
         </form>
-
         <AllShowList />
       </div>
 
