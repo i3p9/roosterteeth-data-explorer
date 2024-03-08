@@ -1,1 +1,314 @@
-{"data": [{"id": 1168, "uuid": "8595c77a-145b-4d7e-a6ca-879b39f1f194", "type": "season", "attributes": {"title": "2022", "description": "", "slug": "rt-shorts-2022", "number": 11, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 1, "published_at": "2022-03-25T22:23:09.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-2022", "episodes": "/api/v1/seasons/rt-shorts-2022/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 928, "uuid": "df8d376c-5f82-44c6-ac0d-d02732b890fc", "type": "season", "attributes": {"title": "2020", "description": "", "slug": "rt-shorts-2020", "number": 10, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 4, "published_at": "2020-07-07T16:33:48.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-2020", "episodes": "/api/v1/seasons/rt-shorts-2020/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 659, "uuid": "33bc9675-4ab9-4389-9fdc-4b07a8fc5baf", "type": "season", "attributes": {"title": "2019", "description": "", "slug": "rt-shorts-2019", "number": 9, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 40, "published_at": "2019-02-06T23:02:18.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-2019", "episodes": "/api/v1/seasons/rt-shorts-2019/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 592, "uuid": "ffa2d5d7-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 8", "description": "", "slug": "rt-shorts-season-8", "number": 8, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 3, "published_at": "2016-08-24T21:00:47.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-8", "episodes": "/api/v1/seasons/rt-shorts-season-8/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 227, "uuid": "ffa2ae93-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 7", "description": "", "slug": "rt-shorts-season-7", "number": 7, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 46, "published_at": "2016-02-19T20:11:07.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-7", "episodes": "/api/v1/seasons/rt-shorts-season-7/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 222, "uuid": "ffa17b53-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 6", "description": "", "slug": "rt-shorts-season-6", "number": 6, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 34, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-6", "episodes": "/api/v1/seasons/rt-shorts-season-6/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 223, "uuid": "ffa15a84-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 5", "description": "", "slug": "rt-shorts-season-5", "number": 5, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 23, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-5", "episodes": "/api/v1/seasons/rt-shorts-season-5/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 225, "uuid": "ffa145bb-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 4", "description": "", "slug": "rt-shorts-season-4", "number": 4, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 10, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-4", "episodes": "/api/v1/seasons/rt-shorts-season-4/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 221, "uuid": "ffa138cf-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 3", "description": "", "slug": "rt-shorts-season-3", "number": 3, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 32, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-3", "episodes": "/api/v1/seasons/rt-shorts-season-3/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 216, "uuid": "ffa13729-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 2", "description": "", "slug": "rt-shorts-season-2", "number": 2, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 24, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-2", "episodes": "/api/v1/seasons/rt-shorts-season-2/episodes?order=asc&order_by=number"}, "included": {"images": []}}, {"id": 219, "uuid": "ffa130fe-464d-11e7-a302-065410f210c4", "type": "season", "attributes": {"title": "Season 1", "description": "", "slug": "rt-shorts-season-1", "number": 1, "show_id": "ff92cbae-464d-11e7-a302-065410f210c4", "show_slug": "rt-shorts", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 25, "published_at": "2015-07-02T16:46:12.000Z"}, "links": {"self": "/api/v1/seasons/rt-shorts-season-1", "episodes": "/api/v1/seasons/rt-shorts-season-1/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 1168,
+      "uuid": "8595c77a-145b-4d7e-a6ca-879b39f1f194",
+      "type": "season",
+      "attributes": {
+        "title": "2022",
+        "description": "",
+        "slug": "rt-shorts-2022",
+        "number": 11,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 1,
+        "published_at": "2022-03-25T22:23:09.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-2022",
+        "episodes": "/api/v1/seasons/rt-shorts-2022/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 928,
+      "uuid": "df8d376c-5f82-44c6-ac0d-d02732b890fc",
+      "type": "season",
+      "attributes": {
+        "title": "2020",
+        "description": "",
+        "slug": "rt-shorts-2020",
+        "number": 10,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 4,
+        "published_at": "2020-07-07T16:33:48.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-2020",
+        "episodes": "/api/v1/seasons/rt-shorts-2020/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 659,
+      "uuid": "33bc9675-4ab9-4389-9fdc-4b07a8fc5baf",
+      "type": "season",
+      "attributes": {
+        "title": "2019",
+        "description": "",
+        "slug": "rt-shorts-2019",
+        "number": 9,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 40,
+        "published_at": "2019-02-06T23:02:18.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-2019",
+        "episodes": "/api/v1/seasons/rt-shorts-2019/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 592,
+      "uuid": "ffa2d5d7-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 8",
+        "description": "",
+        "slug": "rt-shorts-season-8",
+        "number": 8,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 3,
+        "published_at": "2016-08-24T21:00:47.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-8",
+        "episodes": "/api/v1/seasons/rt-shorts-season-8/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 227,
+      "uuid": "ffa2ae93-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 7",
+        "description": "",
+        "slug": "rt-shorts-season-7",
+        "number": 7,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 46,
+        "published_at": "2016-02-19T20:11:07.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-7",
+        "episodes": "/api/v1/seasons/rt-shorts-season-7/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 222,
+      "uuid": "ffa17b53-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 6",
+        "description": "",
+        "slug": "rt-shorts-season-6",
+        "number": 6,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 34,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-6",
+        "episodes": "/api/v1/seasons/rt-shorts-season-6/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 223,
+      "uuid": "ffa15a84-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 5",
+        "description": "",
+        "slug": "rt-shorts-season-5",
+        "number": 5,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 23,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-5",
+        "episodes": "/api/v1/seasons/rt-shorts-season-5/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 225,
+      "uuid": "ffa145bb-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 4",
+        "description": "",
+        "slug": "rt-shorts-season-4",
+        "number": 4,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 10,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-4",
+        "episodes": "/api/v1/seasons/rt-shorts-season-4/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 221,
+      "uuid": "ffa138cf-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "rt-shorts-season-3",
+        "number": 3,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 32,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-3",
+        "episodes": "/api/v1/seasons/rt-shorts-season-3/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 216,
+      "uuid": "ffa13729-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "rt-shorts-season-2",
+        "number": 2,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 24,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-2",
+        "episodes": "/api/v1/seasons/rt-shorts-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 219,
+      "uuid": "ffa130fe-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "rt-shorts-season-1",
+        "number": 1,
+        "show_id": "ff92cbae-464d-11e7-a302-065410f210c4",
+        "show_slug": "rt-shorts",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 25,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rt-shorts-season-1",
+        "episodes": "/api/v1/seasons/rt-shorts-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-rt-shorts",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-rt-shorts",
+        "description": "",
+        "episode_count": 1,
+        "number": 99,
+        "show_slug": "rt-shorts",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}

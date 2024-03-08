@@ -50,7 +50,7 @@ function SeasonPage() {
                 return (
                     <li key={index} className='p-2'>
                         <span className='text-zinc-900 font-medium'>
-                            Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '(First Exclusive)' : ''}</span>
+                            Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                         </span>
                         <div>
                             <p>Air date: {episode?.attributes.original_air_date.split('T')[0]}</p>

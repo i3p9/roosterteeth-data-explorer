@@ -76,7 +76,7 @@ function ShowPage() {
                 return (
                     <li key={index}>
                         <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
-                            <span className='font-bold'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '(First Exclusive)' : ''}</span>
+                            <span className='font-bold'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                             </span>
                         </Link>
                         <div>

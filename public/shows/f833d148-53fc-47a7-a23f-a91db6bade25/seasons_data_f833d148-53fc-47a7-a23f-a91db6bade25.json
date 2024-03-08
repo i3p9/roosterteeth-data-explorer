@@ -1,1 +1,44 @@
-{"data": [{"id": 1207, "uuid": "5db88af2-a26c-41ca-a771-38d020f72cf4", "type": "season", "attributes": {"title": "Season 1", "description": "The fast food dudes from the wildly popular podcast Face Jam, judge a reality cooking competition where four teams of two must recreate classic drive thru dishes. No friends. No eliminations. No throwing up.", "slug": "face-jam-s-truck-d-up-season-1", "number": 1, "show_id": "f833d148-53fc-47a7-a23f-a91db6bade25", "show_slug": "face-jam-s-truck-d-up", "episodes_available": {"sponsor": true, "member": true, "public": true}, "episode_count": 6, "published_at": "2022-11-17T00:50:02.000Z"}, "links": {"self": "/api/v1/seasons/face-jam-s-truck-d-up-season-1", "episodes": "/api/v1/seasons/face-jam-s-truck-d-up-season-1/episodes?order=asc&order_by=number"}, "included": {"images": []}}]}
+{
+  "data": [
+    {
+      "id": 1207,
+      "uuid": "5db88af2-a26c-41ca-a771-38d020f72cf4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "The fast food dudes from the wildly popular podcast Face Jam, judge a reality cooking competition where four teams of two must recreate classic drive thru dishes. No friends. No eliminations. No throwing up.",
+        "slug": "face-jam-s-truck-d-up-season-1",
+        "number": 1,
+        "show_id": "f833d148-53fc-47a7-a23f-a91db6bade25",
+        "show_slug": "face-jam-s-truck-d-up",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 6,
+        "published_at": "2022-11-17T00:50:02.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/face-jam-s-truck-d-up-season-1",
+        "episodes": "/api/v1/seasons/face-jam-s-truck-d-up-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-face-jam-s-truck-d-up",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-face-jam-s-truck-d-up",
+        "description": "",
+        "episode_count": 1,
+        "number": 99,
+        "show_slug": "face-jam-s-truck-d-up",
+        "has_bonus_content": true
+      }
+    }
+  ]
+}
