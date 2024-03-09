@@ -3,6 +3,12 @@ import Link from 'next/link';
 import masterList from '../data/master.json'
 import { useState } from 'react';
 import { channels } from '@/data/utils/data';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import { FaRegQuestionCircle } from "react-icons/fa";
+import AboutPopUpContainer from './components/AboutPopUpContainer/AboutPopUpContainer';
+
+
 
 export default function Home() {
   const [value, setValue] = useState('yes')
@@ -85,10 +91,18 @@ export default function Home() {
     }
   }
 
+
   return (
     <main>
       <div className='container mx-auto px-4 py-2'>
-        <h1 className='text-xl font-black p-2'>List of all shows from roosterteeth.com</h1>
+        <h1 className='text-xl font-black p-2'>
+          List of all shows from roosterteeth.com
+          <AboutPopUpContainer />
+          {/* <Popup trigger={<button className="button float-right"> <span className='text-sm font-normal italic'>what is it <FaRegQuestionCircle style={{ display: 'inline' }} /></span> </button>} modal>
+            <PopUpContent />
+          </Popup> */}
+
+        </h1>
         <form className='p-2 border border-2'>
           <fieldset>
             <legend>Filter by First exclusive</legend>

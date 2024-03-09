@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
 import { getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
+import AboutPopUpContainer from '@/app/components/AboutPopUpContainer/AboutPopUpContainer'
 
 
 const baseUrl = config.url.BASE_URL;
@@ -68,6 +69,7 @@ function ShowPage() {
     return (
         <div className='container mx-auto px-4 py-2'>
             <h1 className='text-xl font-black  p-2'>{showInfo ? showInfo[0]?.attributes?.title : 'n/a'} ~ all seasons {loading && <>- loading...</>}<Link href="/" className='italic border border-2 border-zinc-900 font-normal text-base p-1 ml-8'>go back</Link>
+                <AboutPopUpContainer />
             </h1>
             {showData && <p>
                 <CopyToClipboard text={copyAllLinks()}>
