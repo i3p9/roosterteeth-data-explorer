@@ -96,7 +96,7 @@ function ShowPage() {
                 )
             })}
             <Toaster />
-            <div className='italic text-sm pt-8'>total items in this page: {showData?.data.length}</div>
+            <div className='italic text-sm pt-8 text-zinc-500'>total items in this page: {showData?.data.length}</div>
         </div>
     )
 }

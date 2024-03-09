@@ -5,9 +5,11 @@ import { useState, useEffect } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants';
-import { getShowInfo } from '@/data/utils/utils';
+import { getShowInfo, formatSecondToRunTime } from '@/data/utils/utils';
 import { FaRegCopy } from "react-icons/fa6";
 import AboutPopUpContainer from '@/app/components/AboutPopUpContainer/AboutPopUpContainer';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -50,12 +52,19 @@ function SeasonPage() {
     }, [seasonUuid])
 
 
-
     useEffect(() => {
         setSeasonUuid(params.seasonuuid)
         setShowUuid(params.showuuid)
         //eslint-disable-next-line
     }, [])
+
+    const MoreInfoModal = () => {
+        return (
+            <>
+                sup
+            </>
+        )
+    }
 
     return (
         <div className='container mx-auto px-4 py-2'>
@@ -70,17 +79,22 @@ function SeasonPage() {
                             Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                         </span>
                         <div>
-                            <div className='p-1'>Air date: {episode?.attributes.original_air_date.split('T')[0]}</div>
-                            <p className='text-sm'><span className='italic'>Description: </span>{episode?.attributes?.description}</p>
+                            <div className='p-1 text-zinc-600'>Air date: {episode?.attributes.original_air_date.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
+                            <p className='text-sm text-zinc-800'><span className='italic'>Description: </span>{episode?.attributes?.description ? episode?.attributes?.description : 'N/A'}</p>
                             <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
                                 <button onClick={notify} className='p-1'>Link to episode: <span className='text-blue-400'>https://roosterteeth.com{episode?.canonical_links?.self} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                             </CopyToClipboard>
+                            <div>
+                                <Popup trigger={<button className="button"> <span className='text-sm font-normal italic'>more info</span> </button>} modal>
+                                    <MoreInfoModal />
+                                </Popup>
+                            </div>
                         </div>
                     </li>
                 )
             })}
             <Toaster />
-            <div className='italic text-sm pt-8'>total items in this page: {seasonData?.data.length}</div>
+            <div className='italic text-sm pt-8 text-zinc-500'>total items in this page: {seasonData?.data.length}</div>
         </div >
     )
 }
