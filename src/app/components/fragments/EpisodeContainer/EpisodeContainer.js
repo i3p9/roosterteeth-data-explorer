@@ -99,7 +99,7 @@ const EpisodeContainer = ({ episode, toaster }) => {
                         </Link>
                     </p>
                     <p className='text-xs font-medium text-zinc-600'>Archive Link: {' '}
-                        <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://archive.org`}>
+                        <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://archive.org/details/roosterteetharchive`}>
                             <span className='text-blue-200'>N/A</span>
                             {/* Click here <GoLinkExternal style={{ display: 'inline' }} /> */}
                         </Link>
