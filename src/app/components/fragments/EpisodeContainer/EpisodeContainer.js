@@ -1,5 +1,4 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { config } from '@/app/Constants';
 import { getShowInfo, formatSecondToRunTime } from '@/data/utils/utils';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -48,10 +47,7 @@ const EpisodeContainer = ({ episode, toaster }) => {
             <code className='text-sm'>{JSON.stringify(value, replacer, space)}</code>
         </pre>
     )
-
     const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id}/${episode?.uuid}.jpg`
-
-    console.log(`https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id}/${episode?.uuid}.jpg`);
 
     return (
         <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">
@@ -61,8 +57,6 @@ const EpisodeContainer = ({ episode, toaster }) => {
                     className="aspect-video overflow-hidden rounded-lg object-cover border w-full"
                     height={112}
                     src={thumbnailUrl}
-                    // src={`https://cdn.ffaisal.com/thumbnail/00188879-f0df-4caf-b542-c30c84885f3a/427f9958-888f-4a12-aa8f-7b7b1e6b9f61/24b0a90c-bed7-45f6-9776-eb3b9caf31ef.jpg`}
-                    //src={`https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id}/${episode?.uuid}.jpg`}
                     width={200}
                 />
             </div>
@@ -139,8 +133,6 @@ const EpisodeContainer = ({ episode, toaster }) => {
                             </div>
                         )}
                     </Popup>
-
-
                 </div>
                 <div>
                     {episode?.attributes.is_sponsors_only && <FirstBadge />}

@@ -5,7 +5,7 @@ const SearchResultContainer = ({ data }) => {
     const notify = () => toast.success('Copied to clipboard!');
     return (
         <>
-            {data?.map((episode, index) => {
+            {data?.map((episode) => {
                 return <EpisodeContainer episode={episode} key={episode?.uuid} toaster={notify} />
             })}
             <Toaster />
@@ -14,5 +14,4 @@ const SearchResultContainer = ({ data }) => {
     )
 }
 
-
-export default SearchResultContainer
+export default SearchResultContainer;
