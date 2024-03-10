@@ -8,7 +8,6 @@ import { config } from '@/app/Constants';
 import { getShowInfo, formatSecondToRunTime } from '@/data/utils/utils';
 import { FaRegCopy } from "react-icons/fa6";
 import AboutPopUpContainer from '@/app/components/AboutPopUpContainer/AboutPopUpContainer';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 const baseUrl = config.url.BASE_URL;
@@ -58,14 +57,6 @@ function SeasonPage() {
         //eslint-disable-next-line
     }, [])
 
-    const MoreInfoModal = () => {
-        return (
-            <>
-                sup
-            </>
-        )
-    }
-
     return (
         <div className='container mx-auto px-4 py-2'>
             <h1 className='text-xl font-black p-2'>
@@ -85,9 +76,6 @@ function SeasonPage() {
                                 <button onClick={notify} className='p-1'>Link to episode: <span className='text-blue-400'>https://roosterteeth.com{episode?.canonical_links?.self} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                             </CopyToClipboard>
                             <div>
-                                <Popup trigger={<button className="button"> <span className='text-sm font-normal italic'>more info</span> </button>} modal>
-                                    <MoreInfoModal />
-                                </Popup>
                             </div>
                         </div>
                     </li>

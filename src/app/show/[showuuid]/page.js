@@ -41,7 +41,7 @@ function ShowPage() {
                 const response = await getShowInfo(showUuid)
                 setShowInfo(response)
             } catch (error) {
-                console.error('Error loading transcript data:', error);
+                console.error('Error loading show info:', error);
             }
         }
 

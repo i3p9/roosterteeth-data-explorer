@@ -3,9 +3,7 @@ import Link from 'next/link';
 import masterList from '../data/master.json'
 import { useState } from 'react';
 import { channels } from '@/data/utils/data';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import { FaRegQuestionCircle } from "react-icons/fa";
 import AboutPopUpContainer from './components/AboutPopUpContainer/AboutPopUpContainer';
 
 
