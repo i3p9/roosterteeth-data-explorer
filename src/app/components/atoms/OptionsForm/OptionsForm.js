@@ -25,7 +25,7 @@ const OptionsForm = ({ data, header, value, setValue }) => {
                                     />
                                     {' '}
                                     <label htmlFor={option.id}>
-                                        <span class="toggle"></span>
+                                        <span className="toggle"></span>
                                         {option.title}
                                     </label>
                                 </span>
