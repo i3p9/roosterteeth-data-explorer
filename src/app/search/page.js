@@ -10,6 +10,7 @@ import { IoMdArrowBack } from "react-icons/io";
 import SearchResultSkeleton from "../components/atoms/Skeleton/SearchResultSkeleton/SearchResultSkeleton";
 import DisplayTitleMessage from "../components/atoms/DisplayTitleMessage/DisplayTitleMessage";
 import NavBar from "../components/molecules/NavBar/NavBar";
+import { sanitizeInput } from "@/data/utils/utils";
 
 const BASE_API_URL = config.url.API_URL
 
@@ -24,7 +25,7 @@ const SearchPage = () => {
         let config = {
             method: 'GET',
             maxBodyLength: Infinity,
-            url: `${BASE_API_URL}/search?q=${searchTerm}&channel_key=${selectedChannel}&limit=${limit}`,
+            url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${selectedChannel}&limit=${limit}`,
             headers: {
                 'Accept': 'application/json, text/plain, */*'
             }
