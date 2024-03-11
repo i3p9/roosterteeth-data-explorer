@@ -1,6 +1,6 @@
 import { channels } from "@/data/utils/data";
 import { useState } from "react";
-import DotPulse from "../fragments/DotPulse/DotPulse";
+import DotPulse from "../../atoms/DotPulse/DotPulse";
 
 const SearchContainer = ({ runSearch, loading }) => {
     const [searchTerm, setSearchTerm] = useState('')

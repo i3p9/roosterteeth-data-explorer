@@ -7,7 +7,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
 import { getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
-import AboutPopUpContainer from '@/app/components/AboutPopUpContainer/AboutPopUpContainer'
+import AboutPopUpContainer from '@/app/components/atoms/AboutPopUpContainer/AboutPopUpContainer'
+import NavBar from '@/app/components/molecules/NavBar/NavBar'
 
 
 const baseUrl = config.url.BASE_URL;
@@ -67,37 +68,41 @@ function ShowPage() {
     }
 
     return (
-        <div className='container mx-auto px-4 py-2'>
-            <h1 className='text-xl font-black  p-2'>{showInfo ? showInfo[0]?.attributes?.title : 'n/a'} ~ all seasons {loading && <>- loading...</>}<Link href="/" className='italic border border-2 border-zinc-900 font-normal text-base p-1 ml-8'>go back</Link>
-                <AboutPopUpContainer />
-            </h1>
-            {showData && <p>
-                <CopyToClipboard text={copyAllLinks()}>
-                    <button className='italic border border-2 border-zinc-900 font-normal text-base p-1 mb-5' onClick={notify}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
-                    </button>
-                </CopyToClipboard>
-            </p>
-            }
-            {showData?.data?.map((season, index) => {
-                return (
-                    <li key={index}>
-                        <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
-                            <span className='font-bold'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
-                            </span>
-                        </Link>
-                        <div>
-                            <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
-                                <button onClick={notify} className='p-1'>Link: <span className='text-blue-400 text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                            </CopyToClipboard>
-                        </div>
-
-                    </li>
-                )
-            })}
+        <>
+            <NavBar
+                title={showInfo ? `${showInfo[0]?.attributes?.title} ~ All Seasons` : 'Show Title Loading...'}
+                previousLink={"/"}
+            />
+            {/* add a loading skeleton here */}
+            {/* and change this awful copy all links button */}
+            <div className='p-2'>
+                {showData && <p>
+                    <CopyToClipboard text={copyAllLinks()}>
+                        <button className='italic border border-2 border-zinc-900 font-normal text-base p-1 mb-5' onClick={notify}>
+                            <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
+                        </button>
+                    </CopyToClipboard>
+                </p>
+                }
+                {showData?.data?.map((season, index) => {
+                    return (
+                        <li key={index}>
+                            <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
+                                <span className='font-bold'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
+                                </span>
+                            </Link>
+                            <div>
+                                <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
+                                    <button onClick={notify} className='p-1'>Link: <span className='text-blue-400 text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
+                                </CopyToClipboard>
+                            </div>
+                        </li>
+                    )
+                })}
+            </div>
             <Toaster />
             <div className='italic text-sm pt-8 text-zinc-500'>total items in this page: {showData?.data.length}</div>
-        </div>
+        </>
     )
 }
 
