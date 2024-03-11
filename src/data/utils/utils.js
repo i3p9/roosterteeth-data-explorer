@@ -28,3 +28,14 @@ export function formatSecondToRunTime(seconds) {
 
     return result.trim();
 }
+
+
+export const sanitizeInput = (input) => {
+    var pattern = /[^a-zA-Z0-9\s]/g;
+    var allowedExtensions = /\.(mp4|mkv|srt|vtt|json|jpg|gif|png|jpeg|txt)$/i;
+    var sanitizedString = input.replace(allowedExtensions, '');
+    sanitizedString = sanitizedString.replace(pattern, '');
+
+    return sanitizedString
+
+}
