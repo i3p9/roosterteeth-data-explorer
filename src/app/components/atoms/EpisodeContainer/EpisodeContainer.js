@@ -47,8 +47,8 @@ const EpisodeContainer = ({ episode, toaster }) => {
             <code className='text-sm'>{JSON.stringify(value, replacer, space)}</code>
         </pre>
     )
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id}/${episode?.uuid}.jpg`
-
+    const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id ? episode?.attributes.season_id : `bonus-content-${episode?.attributes?.parent_content_slug}`}/${episode?.uuid}.jpg`
+    console.log(thumbnailUrl)
     return (
         <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">
             <div className="flex items-start gap-4 col-span-1">
