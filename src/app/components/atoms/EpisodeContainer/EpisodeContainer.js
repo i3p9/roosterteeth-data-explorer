@@ -32,14 +32,14 @@ const EpisodeContainer = ({ episode, toaster }) => {
     }, [showUuid])
 
     const FirstBadge = () => {
-        return <span class="p-2 bg-red-100 text-red-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-red-400">First</span>
+        return <span className="p-2 bg-red-100 text-red-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-red-400">First</span>
     }
     const BonusContentBadge = () => {
-        return <span class="p-2 bg-gray-100 text-gray-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-gray-500">Bonus</span>
+        return <span className="p-2 bg-gray-100 text-gray-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-gray-500">Bonus</span>
     }
 
     const ArchivedBadge = () => {
-        return <span class="p-2 bg-green-100 text-green-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-green-400">Archived</span>
+        return <span className="p-2 bg-green-100 text-green-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-green-400">Archived</span>
     }
 
     const Log = ({ value, replacer = null, space = 2 }) => (
@@ -47,8 +47,8 @@ const EpisodeContainer = ({ episode, toaster }) => {
             <code className='text-sm'>{JSON.stringify(value, replacer, space)}</code>
         </pre>
     )
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id}/${episode?.uuid}.jpg`
-
+    const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id ? episode?.attributes.season_id : `bonus-content-${episode?.attributes?.parent_content_slug}`}/${episode?.uuid}.jpg`
+    console.log(thumbnailUrl)
     return (
         <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">
             <div className="flex items-start gap-4 col-span-1">
@@ -61,7 +61,7 @@ const EpisodeContainer = ({ episode, toaster }) => {
                 />
             </div>
             <div className="grid gap-2 col-span-2">
-                <h3 class="font-bold text-xl sm:text-xl leading-none" style={{ display: 'flex', alignItems: 'center' }}>
+                <h3 className="font-bold text-xl sm:text-xl leading-none" style={{ display: 'flex', alignItems: 'center' }}>
                     {episode?.attributes?.title}
                 </h3>
                 <p className="text-sm font-medium leading-none text-zinc-600">Show: {showInfo ? showInfo[0]?.attributes?.title : 'Show Data not available'} • Channel: {channelInfo[0]?.name}</p>
@@ -87,9 +87,9 @@ const EpisodeContainer = ({ episode, toaster }) => {
                         </div>
                     )}
                 </Popup>
-                <div id="tooltip-light" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
+                <div id="tooltip-light" role="tooltip" className="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 tooltip">
                     Tooltip content
-                    <div class="tooltip-arrow" data-popper-arrow></div>
+                    <div className="tooltip-arrow" data-popper-arrow></div>
                 </div>
 
                 <div className='flex gap-8'>

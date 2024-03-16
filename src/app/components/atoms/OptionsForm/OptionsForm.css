@@ -1,0 +1,45 @@
+.toggle-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+}
+
+/* .toggle-label {
+  display: flex;
+  align-items: center;
+} */
+
+.toggle-container input[type="radio"] {
+  display: none; /* Hide the actual radio buttons */
+}
+
+.toggle-container label {
+  padding: 8px 8px;
+  cursor: pointer;
+  display: flex; /* Make label a flex container */
+  align-items: center; /* Align content within label vertically */
+}
+
+/* Style for the toggle itself */
+.toggle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  /* background-color: #ccc; */
+  border: 2px solid black;
+  margin-right: 8px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.toggle-container input[type="radio"]:checked + label .toggle {
+  background-color: black;
+  /* https://stackoverflow.com/a/13517809 */
+  -webkit-box-shadow: inset 0px 0px 0px 1px white;
+  -moz-box-shadow: inset 0px 0px 0px 1px white;
+  box-shadow: inset 0px 0px 0px 1px white;
+}
+
+.longer-label {
+  grid-column: span 2; /* Makes this label span 2 columns */
+  grid-column-span: 2; /* Makes this label span 2 columns */
+}
