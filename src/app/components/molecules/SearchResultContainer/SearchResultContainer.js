@@ -1,12 +1,12 @@
 import toast, { Toaster } from 'react-hot-toast';
-import EpisodeContainer from "../../atoms/EpisodeContainer/EpisodeContainer"
+import SearchEpisodeContainer from '../../atoms/SearchEpisodeContainer/SearchEpisodeContainer';
 
 const SearchResultContainer = ({ data }) => {
     const notify = () => toast.success('Copied to clipboard!');
     return (
         <>
             {data?.map((episode) => {
-                return <EpisodeContainer episode={episode} key={episode?.uuid} toaster={notify} />
+                return <SearchEpisodeContainer episode={episode} key={episode?.uuid} toaster={notify} />
             })}
             <Toaster />
 
