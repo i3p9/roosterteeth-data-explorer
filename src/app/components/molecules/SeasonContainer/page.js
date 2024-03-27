@@ -39,7 +39,7 @@ const SeasonContainer = (props) => {
         //eslint-disable-next-line
     }, [seasonUuid])
 
-    console.log('season Data: ', seasonData);
+    // console.log('season Data: ', seasonData);
 
     return (
         <>

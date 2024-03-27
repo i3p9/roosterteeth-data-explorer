@@ -60,11 +60,11 @@ const BrowseAllShows = () => {
         const filteredList = filterShows(masterShowData);
         setAllShows(filteredList.slice(0, 20));
         // Check if there are more items to load initially
-        console.log('filteredlist: ', filteredList.length);
-        console.log('masterShowdata: ', masterShowData.length);
-        console.log('allShows: ', allShows.length);
+        // console.log('filteredlist: ', filteredList.length);
+        // console.log('masterShowdata: ', masterShowData.length);
+        // console.log('allShows: ', allShows.length);
 
-        console.log('setting useEffetc hasMore to: ', filteredList.length < masterShowData.length);
+        // console.log('setting useEffetc hasMore to: ', filteredList.length < masterShowData.length);
         setHasMore(allShows.length < masterShowData?.length);
     }, [exclusiveFilterValue, channelFilterValue]);
 
@@ -76,24 +76,19 @@ const BrowseAllShows = () => {
         setHasMore(filteredList.length < masterShowData.length);
     }, []);
 
-    console.log(allShows);
-
 
 
     const fetchMoreData = () => {
-        console.log('fetch more data');
+        // console.log('fetch more data');
         const additionalData = masterDataFiltered.slice(allShows.length, allShows.length + 20);
         setAllShows(prevShows => [...prevShows, ...additionalData]);
         if (allShows.length + 20 >= masterDataFiltered.length) {
-            console.log('setting hasMore to false');
+            // console.log('setting hasMore to false');
             setHasMore(false);
         }
     };
 
 
-
-
-    console.log('masterfiltered len: ', masterDataFiltered?.length);
     return (
         <>
             <NavBar title={'Browse Shows'} />

@@ -55,7 +55,7 @@ const BrowseShows = () => {
         //eslint-disable-next-line
     }, [])
 
-    console.log('show datatata: ', showData);
+    // console.log('show datatata: ', showData);
 
     return (
         <>
