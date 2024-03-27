@@ -49,6 +49,7 @@ const SearchPage = () => {
             <NavBar
                 title={"Search for Episodes"}
                 previousLink={"/"}
+                renderAdditionalMenu
             />
             <SearchContainer
                 runSearch={runSearch}

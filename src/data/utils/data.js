@@ -255,7 +255,7 @@ const allOptionObject = {
     name: "All Channels",
     slug: "all-channels",
     uuid: "all",
-    id: "all-channels",
+    id: "all",
     value: "all",
     title: "All Channels",
 }
@@ -265,11 +265,13 @@ export const channelsWithAllAsOption = [allOptionObject, ...channels]
 export const firstOrNoOptions = [
     {
         title: "Show All Shows",
+        name: "Show All Shows",
         value: "show_all", //yes - show_all
         id: "show_all_shows"
     },
     {
         title: "Show only First Exclusive Shows",
+        name: "Show only First Exclusive Shows",
         value: "show_first", //no - show_first
         id: "show_first_shows"
     }

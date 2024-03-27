@@ -80,7 +80,7 @@ const RandomPage = () => {
 
     return (
         <>
-            <NavBar title={'Radnom wheel of "fortune"'} />
+            <NavBar title={'Radnom wheel of "fortune"'} renderAdditionalMenu />
             <div className="grid place-items-center">
                 <ChannelSelector
                     channels={channels}
