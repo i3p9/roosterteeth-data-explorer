@@ -1,18 +1,21 @@
 'use client'
 import { useEffect, useState } from "react"
 import NavBar from "../components/molecules/NavBar/NavBar"
-import { Wheel } from "react-custom-roulette"
+// import { Wheel } from "react-custom-roulette"
 import { getRandomEpisodes } from "@/data/utils/api"
 import { channels } from "@/data/utils/data"
 import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector"
 import Popup from "reactjs-popup"
 import Link from "next/link"
+import dynamic from 'next/dynamic'
+
 
 
 const SpinResult = (data) => {
     console.log('result data: ', data)
     const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${data?.data.attributes.show_id}/${data?.data.attributes.season_id ? data?.data.attributes.season_id : `bonus-content-${data?.data.attributes?.parent_content_slug}`}/${data?.data.uuid}.jpg`
     const watchUrl = `/watch/${data?.data.episode_type === 'episode' ? data?.data.id : `${data?.data.id}-bonus`}`
+
     return (
         <>
             <div className='p-4 flex flex-col items-center gap-2'>
@@ -33,6 +36,8 @@ const SpinResult = (data) => {
 }
 
 const RandomPage = () => {
+    const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Wheel), { ssr: false })
+
     const [episodes, setEpisodes] = useState()
     const [mustSpin, setMustSpin] = useState(false);
     const [prizeNumber, setPrizeNumber] = useState(0);
