@@ -1,16 +1,13 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-import { channels } from '@/data/utils/data'
-
-
+import { FaChevronDown } from "react-icons/fa";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 export default function ChannelSelector(props) {
-    const { channels, selected, setSelected, nolabel = false } = props
-    // const [selected, setSelected] = useState(channels[0])
+    const { channels, selected, setSelected, nolabel = false, noimage = false } = props
 
     return (
         <Listbox value={selected} onChange={setSelected}>
@@ -18,15 +15,16 @@ export default function ChannelSelector(props) {
                 <>
                     {!nolabel && <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">Select a Channel</Listbox.Label>
                     }
-                    <div className="relative mt-2">
-                        <Listbox.Button className="relative w-full cursor-default bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-zinc-900 sm:text-sm sm:leading-6">
+                    <div className="relative mt-2 border-2 border-zinc-800">
+                        {/* focus:ring-2 focus:ring-zinc-900 */}
+                        <Listbox.Button className="relative w-full cursor-default bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
                             <span className="flex items-center">
-                                <img src={`https://cdn.ffaisal.com/channels_small/${selected.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />
-                                <span className="ml-3 block truncate">{selected.name}</span>
+                                {!noimage && <img src={`https://cdn.ffaisal.com/channels_small/${selected.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
+                                <span className={classNames(noimage ? '' : 'ml-3', 'block truncate')}>{selected.name}</span>
                             </span>
-                            {/* <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
-                                <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                            </span> */}
+                            <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
+                                <FaChevronDown className="h-5 w-5 text-zinc-800" aria-hidden="true" />
+                            </span>
                         </Listbox.Button>
 
                         <Transition
@@ -51,9 +49,9 @@ export default function ChannelSelector(props) {
                                         {({ selected, active }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    <img src={`https://cdn.ffaisal.com/channels_small/${channel.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />
+                                                    {!noimage && <img src={`https://cdn.ffaisal.com/channels_small/${channel.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
                                                     <span
-                                                        className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                                                        className={classNames(selected ? 'font-semibold' : 'font-normal', noimage ? '' : 'ml-3', 'block truncate')}
                                                     >
                                                         {channel.name}
                                                     </span>

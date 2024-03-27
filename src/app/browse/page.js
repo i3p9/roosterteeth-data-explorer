@@ -6,29 +6,30 @@ import OptionsForm from "../components/atoms/OptionsForm/OptionsForm"
 import { channelsWithAllAsOption, firstOrNoOptions } from '@/data/utils/data';
 import Link from "next/link"
 import InfiniteScroll from "react-infinite-scroll-component"
+import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector"
 
 const BrowseAllShows = () => {
     const masterShowData = masterList.data
     const [masterDataFiltered, setMasterDataFiltered] = useState()
     const [allShows, setAllShows] = useState(masterShowData)
-    const [exclusiveFilterValue, setExclusiveFilterValue] = useState('show_all')
-    const [channelFilterValue, setChannelFilterValue] = useState('all')
+    const [exclusiveFilterValue, setExclusiveFilterValue] = useState(firstOrNoOptions[0])
+    const [channelFilterValue, setChannelFilterValue] = useState(channelsWithAllAsOption[0])
     const [hasMore, setHasMore] = useState(true);
 
 
     const filterShows = () => {
-        if (exclusiveFilterValue === 'show_first') {
+        if (exclusiveFilterValue.value === 'show_first') {
             const filteredShow = masterShowData.filter((show) => show.attributes.is_sponsors_only === true)
-            if (channelFilterValue != 'all') {
-                const filteredByChannel = filteredShow.filter((show) => show.attributes.channel_id === channelFilterValue)
+            if (channelFilterValue.uuid != 'all') {
+                const filteredByChannel = filteredShow.filter((show) => show.attributes.channel_id === channelFilterValue.uuid)
                 setMasterDataFiltered(filteredByChannel)
                 return filteredByChannel
             }
             setMasterDataFiltered(filteredShow)
             return filteredShow
         } else {
-            if (channelFilterValue != 'all') {
-                const filteredByChannel = masterShowData.filter((show) => show.attributes.channel_id === channelFilterValue)
+            if (channelFilterValue.uuid != 'all') {
+                const filteredByChannel = masterShowData.filter((show) => show.attributes.channel_id === channelFilterValue.uuid)
                 setMasterDataFiltered(filteredByChannel)
                 return filteredByChannel
             }
@@ -36,24 +37,6 @@ const BrowseAllShows = () => {
             return masterShowData
         }
     }
-
-    // useEffect(() => {
-    //     const filteredList = filterShows()
-    //     setAllShows(filteredList)
-    //     //eslint-disbale-next-line
-    // }, [exclusiveFilterValue, channelFilterValue])
-
-    const handleFiltersChange = (exclusiveValue, channelValue) => {
-        // Filter the master list based on new filters
-        const filteredList = filterShows(masterShowData.slice(0, 20));
-        setAllShows(filteredList);
-        // Check if there are more items to load initially
-        setHasMore(filteredList.length < masterShowData.length);
-        // Set filter values
-        setExclusiveFilterValue(exclusiveValue);
-        setChannelFilterValue(channelValue);
-    };
-
 
     useEffect(() => {
         // Filter the master list based on initial filters
@@ -66,6 +49,7 @@ const BrowseAllShows = () => {
 
         // console.log('setting useEffetc hasMore to: ', filteredList.length < masterShowData.length);
         setHasMore(allShows.length < masterShowData?.length);
+        //eslint-disable-next-line
     }, [exclusiveFilterValue, channelFilterValue]);
 
     useEffect(() => {
@@ -91,19 +75,37 @@ const BrowseAllShows = () => {
 
     return (
         <>
-            <NavBar title={'Browse Shows'} />
-            <OptionsForm
-                data={firstOrNoOptions}
-                header={'Filter by First Exclusive'}
-                value={exclusiveFilterValue}
-                setValue={setExclusiveFilterValue}
-            />
-            <OptionsForm
-                data={channelsWithAllAsOption}
-                header={'Filter by Channels'}
-                value={channelFilterValue}
-                setValue={setChannelFilterValue}
-            />
+            <NavBar title={'Browse Shows'} renderAdditionalMenu />
+            <div className="hidden md:block">
+                <OptionsForm
+                    data={firstOrNoOptions}
+                    header={'Filter by First Exclusive'}
+                    value={exclusiveFilterValue}
+                    setValue={setExclusiveFilterValue}
+                />
+                <OptionsForm
+                    data={channelsWithAllAsOption}
+                    header={'Filter by Channels'}
+                    value={channelFilterValue}
+                    setValue={setChannelFilterValue}
+                />
+            </div>
+            <div className="md:hidden my-2">
+                <ChannelSelector
+                    channels={channelsWithAllAsOption}
+                    selected={channelFilterValue}
+                    setSelected={setChannelFilterValue}
+                />
+                <ChannelSelector
+                    channels={firstOrNoOptions}
+                    selected={exclusiveFilterValue}
+                    setSelected={setExclusiveFilterValue}
+                    noimage
+                    nolabel
+                />
+
+
+            </div>
             <InfiniteScroll
                 dataLength={allShows.length}
                 next={fetchMoreData}

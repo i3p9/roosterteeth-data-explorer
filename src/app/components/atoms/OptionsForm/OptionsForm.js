@@ -17,10 +17,10 @@ const OptionsForm = ({ data, header, value, setValue }) => {
                                         type="radio"
                                         name={kebabCase(option.title)}
                                         id={option.id}
-                                        value={option.value}
-                                        checked={value === option.value}
+                                        value={option.id}
+                                        checked={value.id === option.id}
                                         onChange={event => {
-                                            setValue(event.target.value)
+                                            setValue(option)
                                         }}
                                     />
                                     {' '}
