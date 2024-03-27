@@ -3,12 +3,12 @@ import Link from 'next/link'
 import PropTypes from 'prop-types'
 
 const FilteredShowListBulk = ({ exclusiveFilterValue, channelFilterValue }) => {
-    if (exclusiveFilterValue === 'show_all') {
+    if (exclusiveFilterValue.value === 'show_all') {
         return (
             <>
                 {masterList.data.map((show, index) => {
-                    if (channelFilterValue !== 'all') {
-                        if (show?.attributes?.channel_id === channelFilterValue) {
+                    if (channelFilterValue.uuid !== 'all') {
+                        if (show?.attributes?.channel_id === channelFilterValue.uuid) {
                             return (
                                 <li key={index} className='text-zinc-900 font-medium p-0.5'>
                                     <Link
@@ -31,12 +31,12 @@ const FilteredShowListBulk = ({ exclusiveFilterValue, channelFilterValue }) => {
                 })}
             </>
         )
-    } else if (exclusiveFilterValue === 'show_first') {
+    } else if (exclusiveFilterValue.value === 'show_first') {
         return (<>
             {
                 masterList.data.map((show, index) => {
-                    if (channelFilterValue !== 'all') {
-                        if (show?.attributes?.is_sponsors_only && show?.attributes?.channel_id === channelFilterValue) {
+                    if (channelFilterValue.uuid !== 'all') {
+                        if (show?.attributes?.is_sponsors_only && show?.attributes?.channel_id === channelFilterValue.uuid) {
                             return (
                                 <li key={index} className='text-zinc-900 font-medium p-0.5'>
                                     <Link
