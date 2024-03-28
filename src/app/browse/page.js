@@ -103,8 +103,6 @@ const BrowseAllShows = () => {
                     noimage
                     nolabel
                 />
-
-
             </div>
             <InfiniteScroll
                 dataLength={allShows.length}

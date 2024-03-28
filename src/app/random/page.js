@@ -8,6 +8,8 @@ import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector
 import Popup from "reactjs-popup"
 import Link from "next/link"
 import dynamic from 'next/dynamic'
+const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Wheel), { ssr: false })
+
 
 
 
@@ -36,8 +38,6 @@ const SpinResult = (data) => {
 }
 
 const RandomPage = () => {
-    const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Wheel), { ssr: false })
-
     const [episodes, setEpisodes] = useState()
     const [mustSpin, setMustSpin] = useState(false);
     const [prizeNumber, setPrizeNumber] = useState(0);
