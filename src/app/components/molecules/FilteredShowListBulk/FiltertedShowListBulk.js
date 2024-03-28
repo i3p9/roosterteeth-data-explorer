@@ -66,8 +66,8 @@ const FilteredShowListBulk = ({ exclusiveFilterValue, channelFilterValue }) => {
 }
 
 FilteredShowListBulk.propTypes = {
-    exclusiveFilterValue: PropTypes.string,
-    channelFilterValue: PropTypes.string
+    exclusiveFilterValue: PropTypes.object,
+    channelFilterValue: PropTypes.object
 }
 
 export default FilteredShowListBulk;
