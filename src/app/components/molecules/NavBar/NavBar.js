@@ -57,7 +57,6 @@ const AdditionalMenuComponent = ({ pathname }) => {
 
 const NavBar = ({ title, previousLink, renderAdditionalMenu = false }) => {
     const pathname = usePathname()
-    console.log(pathname);
 
     return (
         <h1 className='text-xl font-black p-2 border-b-2 border-zinc-900'>

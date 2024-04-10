@@ -50,7 +50,6 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
         </pre>
     )
     const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${episode?.attributes.show_id}/${episode?.attributes.season_id ? episode?.attributes.season_id : `bonus-content-${episode?.attributes?.parent_content_slug}`}/${episode?.uuid}.jpg`
-    console.log(thumbnailUrl)
     return (
         <>
             <Link href={`/watch/${episodeId}`}>

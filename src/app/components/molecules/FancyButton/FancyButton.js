@@ -3,20 +3,26 @@ import { useState, useEffect } from 'react'
 
 const FancyButton = (props) => {
     const [audioElement, setAudioElement] = useState(null)
-    const { title, path } = props
+    const { title, path, giant } = props
     useEffect(() => {
         setAudioElement(new Audio(path))
     }, [path])
 
-    console.log(audioElement)
     const playSound = () => {
-        audioElement.play()
+        if (audioElement) {
+            audioElement.currentTime = 0; // Reset the audio to the beginning
+            audioElement.play();
+        }
     }
 
     return (
         <>
             <div>
-                <button className={styles.pushable} onClick={playSound}>
+                <button
+                    style={giant ? { width: '100%' } : null}
+                    className={styles.pushable}
+                    onClick={playSound}
+                >
                     <span className={styles.shadow}></span>
                     <span className={styles.edge}></span>
                     <span className={styles.front}>
