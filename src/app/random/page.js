@@ -14,8 +14,8 @@ const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Whee
 
 
 const SpinResult = (data) => {
-    console.log('result data: ', data)
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbnail/${data?.data.attributes.show_id}/${data?.data.attributes.season_id ? data?.data.attributes.season_id : `bonus-content-${data?.data.attributes?.parent_content_slug}`}/${data?.data.uuid}.jpg`
+    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${data?.data.uuid}.jpg`
+    console.log(thumbnailUrl);
     const watchUrl = `/watch/${data?.data.episode_type === 'episode' ? data?.data.id : `${data?.data.id}-bonus`}`
 
     return (
@@ -64,7 +64,7 @@ const RandomPage = () => {
             const data = episodes.map((item, index) => ({
                 option: String(index),
                 image: {
-                    uri: `https://cdn.ffaisal.com/thumbnail/${item?.attributes.show_id}/${item?.attributes.season_id ? item?.attributes.season_id : `bonus-content-${item?.attributes?.parent_content_slug}`}/${item?.uuid}.jpg`,
+                    uri: `https://cdn.ffaisal.com/thumbs_medium/${item?.uuid}.jpg`,
                     landscape: true,
                     sizeMultiplier: 0.9
                 }
