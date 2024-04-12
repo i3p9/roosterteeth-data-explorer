@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 29,
+        "episode_count": 38,
         "published_at": "2023-12-23T03:52:37.000Z"
       },
       "links": {
@@ -172,7 +172,8 @@
         "episode_count": 7,
         "number": 99,
         "show_slug": "face-jam",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

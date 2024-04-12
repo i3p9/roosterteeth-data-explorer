@@ -469,7 +469,8 @@
         "episode_count": 7,
         "number": 99,
         "show_slug": "on-the-spot",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

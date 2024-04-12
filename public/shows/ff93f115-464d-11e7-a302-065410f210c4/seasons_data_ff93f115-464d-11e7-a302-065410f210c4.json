@@ -64,7 +64,8 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "enjoy-the-show",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

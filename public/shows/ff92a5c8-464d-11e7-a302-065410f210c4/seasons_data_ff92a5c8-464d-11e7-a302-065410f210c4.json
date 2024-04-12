@@ -91,7 +91,8 @@
         "episode_count": 6,
         "number": 99,
         "show_slug": "rt-sponsor-cut",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

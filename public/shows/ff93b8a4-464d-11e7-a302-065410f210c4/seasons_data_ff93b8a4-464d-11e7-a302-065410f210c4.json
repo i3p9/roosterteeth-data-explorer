@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 2,
+        "episode_count": 4,
         "published_at": "2024-02-29T18:20:40.000Z"
       },
       "links": {
@@ -145,7 +145,8 @@
         "episode_count": 27,
         "number": 99,
         "show_slug": "camp-camp",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

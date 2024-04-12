@@ -307,7 +307,8 @@
         "episode_count": 8,
         "number": 99,
         "show_slug": "death-battle",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

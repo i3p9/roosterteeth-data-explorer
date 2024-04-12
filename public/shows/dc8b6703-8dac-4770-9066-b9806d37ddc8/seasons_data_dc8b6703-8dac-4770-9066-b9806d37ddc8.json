@@ -64,7 +64,8 @@
         "episode_count": 4,
         "number": 99,
         "show_slug": "mini-series",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

@@ -64,7 +64,8 @@
         "episode_count": 10,
         "number": 99,
         "show_slug": "the-strangerhood",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

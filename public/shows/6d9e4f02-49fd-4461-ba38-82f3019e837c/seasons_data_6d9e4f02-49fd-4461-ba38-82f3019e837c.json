@@ -91,7 +91,8 @@
         "episode_count": 15,
         "number": 99,
         "show_slug": "annual-pass",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

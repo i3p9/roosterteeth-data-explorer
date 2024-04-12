@@ -91,7 +91,8 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "hard-mode",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

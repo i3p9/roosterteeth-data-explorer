@@ -1,6 +1,33 @@
 {
   "data": [
     {
+      "id": 1333,
+      "uuid": "59f0fa72-5363-4356-bdbc-90a897eab002",
+      "type": "season",
+      "attributes": {
+        "title": "Volume 9",
+        "description": "",
+        "slug": "rwby-volume-9",
+        "number": 9,
+        "show_id": "ff92963b-464d-11e7-a302-065410f210c4",
+        "show_slug": "rwby",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 11,
+        "published_at": "2024-03-29T17:20:06.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rwby-volume-9",
+        "episodes": "/api/v1/seasons/rwby-volume-9/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
       "id": 962,
       "uuid": "27ff1490-a702-4b1d-9ef0-5c43f208203b",
       "type": "season",
@@ -226,7 +253,8 @@
         "episode_count": 48,
         "number": 99,
         "show_slug": "rwby",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]
