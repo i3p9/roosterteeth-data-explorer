@@ -76,7 +76,7 @@ const BrowseAllShows = () => {
     return (
         <>
             <NavBar title={'Browse Shows'} renderAdditionalMenu />
-            <div className="hidden md:block">
+            {/* <div className="hidden md:block">
                 <OptionsForm
                     data={firstOrNoOptions}
                     header={'Filter by First Exclusive'}
@@ -89,20 +89,26 @@ const BrowseAllShows = () => {
                     value={channelFilterValue}
                     setValue={setChannelFilterValue}
                 />
-            </div>
-            <div className="md:hidden my-2">
-                <ChannelSelector
-                    channels={channelsWithAllAsOption}
-                    selected={channelFilterValue}
-                    setSelected={setChannelFilterValue}
-                />
-                <ChannelSelector
-                    channels={firstOrNoOptions}
-                    selected={exclusiveFilterValue}
-                    setSelected={setExclusiveFilterValue}
-                    noimage
-                    nolabel
-                />
+            </div> */}
+            <div className="my-2 flex flex-col md:flex-row md:gap-4">
+                <div className="flex-1">
+                    <ChannelSelector
+                        channels={channelsWithAllAsOption}
+                        selected={channelFilterValue}
+                        setSelected={setChannelFilterValue}
+                        nolabel
+                    />
+
+                </div>
+                <div className="flex-1">
+                    <ChannelSelector
+                        channels={firstOrNoOptions}
+                        selected={exclusiveFilterValue}
+                        setSelected={setExclusiveFilterValue}
+                        noimage
+                        nolabel
+                    />
+                </div>
             </div>
             <InfiniteScroll
                 dataLength={allShows.length}
