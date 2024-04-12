@@ -145,7 +145,8 @@
         "episode_count": 16,
         "number": 99,
         "show_slug": "blood-gulch-chronicles",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

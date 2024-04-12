@@ -442,7 +442,8 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "achievement-hunter",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

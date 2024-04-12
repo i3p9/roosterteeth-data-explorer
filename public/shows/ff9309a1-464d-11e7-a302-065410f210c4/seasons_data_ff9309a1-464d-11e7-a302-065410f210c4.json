@@ -91,7 +91,8 @@
         "episode_count": 11,
         "number": 99,
         "show_slug": "sportsball",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

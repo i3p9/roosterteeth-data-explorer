@@ -64,7 +64,8 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "social-disorder",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

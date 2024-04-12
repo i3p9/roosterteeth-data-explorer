@@ -37,7 +37,8 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "past-cast",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

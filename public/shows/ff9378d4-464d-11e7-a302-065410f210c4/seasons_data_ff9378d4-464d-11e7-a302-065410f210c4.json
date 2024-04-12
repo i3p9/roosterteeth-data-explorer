@@ -145,7 +145,8 @@
         "episode_count": 4,
         "number": 99,
         "show_slug": "fan-service",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 57,
+        "episode_count": 62,
         "published_at": "2023-02-07T00:12:33.000Z"
       },
       "links": {
@@ -169,10 +169,11 @@
         "title": "Bonus Content",
         "slug": "bonus-content-f-kface",
         "description": "",
-        "episode_count": 59,
+        "episode_count": 60,
         "number": 99,
         "show_slug": "f-kface",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]

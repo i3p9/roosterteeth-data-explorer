@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 10,
+        "episode_count": 15,
         "published_at": "2023-12-20T00:21:01.000Z"
       },
       "links": {
@@ -172,7 +172,8 @@
         "episode_count": 4,
         "number": 99,
         "show_slug": "red-web",
-        "has_bonus_content": true
+        "has_bonus_content": true,
+        "show_title": "s"
       }
     }
   ]
