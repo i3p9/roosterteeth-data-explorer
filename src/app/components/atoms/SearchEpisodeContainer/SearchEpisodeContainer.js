@@ -14,7 +14,8 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
     const [showInfo, setShowInfo] = useState()
     const [showUuid, setShowUuid] = useState(episode?.attributes.show_id)
     const channelInfo = channels.filter((channel) => channel.uuid === episode?.attributes.channel_id)
-    const episodeId = episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`;
+    // const episodeId = episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`;
+    const episodeId = `roosterteeth-${episode?.id}`
 
 
     const fetchShowInfo = async () => {
@@ -107,9 +108,9 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                             </Link>
                         </p>
                         <p className='text-xs font-medium text-zinc-600'>Archive Link: {' '}
-                            <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://archive.org/details/roosterteetharchive`}>
-                                <span className='text-blue-200'>N/A</span>
-                                {/* Click here <GoLinkExternal style={{ display: 'inline' }} /> */}
+                            <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
+                                {/* <span className='text-blue-200'>N/A</span> */}
+                                Click here <GoLinkExternal style={{ display: 'inline' }} />
                             </Link>
                         </p>
                         <Popup

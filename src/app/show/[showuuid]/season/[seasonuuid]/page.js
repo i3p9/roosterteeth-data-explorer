@@ -77,6 +77,9 @@ function SeasonPage() {
                                 <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
                                     <button onClick={notify} className='p-1'>Link to episode: <span className='text-blue-400'>https://roosterteeth.com{episode?.canonical_links?.self} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                                 </CopyToClipboard>
+                                <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
+                                    <button onClick={notify} className='p-1'>Link to Archive: <span className='text-blue-400'>https://archive.org/details/roosterteeth-{episode?.type === "bonus_feature" ? `${episode?.id}-bonus` : episode?.id} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
+                                </CopyToClipboard>
                                 <div>
                                 </div>
                             </div>
