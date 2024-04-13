@@ -47,7 +47,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
             <code className='text-sm'>{JSON.stringify(value, replacer, space)}</code>
         </pre>
     )
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`
+    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
     return (
         <>
             <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">

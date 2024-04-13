@@ -61,7 +61,7 @@ const WatchEpisodePage = () => {
                             <img
                                 alt={`logo of channel ${episode?.attributes.channel_slug}`}
                                 className="w-10 h-10 rounded-full"
-                                src={`https://cdn.ffaisal.com/channels_small/${episode?.attributes.channel_id}.png`}
+                                src={`https://cdn.rtarchive.xyz/channels_small/${episode?.attributes.channel_id}.png`}
                             />
                             <span className="ml-2">{makeTitle(episode?.attributes?.channel_slug)}</span>
 

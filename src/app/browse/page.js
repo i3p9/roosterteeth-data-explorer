@@ -175,7 +175,7 @@ const BrowseAllShows = () => {
                         <div className="relative">
                             <img
                                 className="h-auto max-w-full rounded-lg"
-                                src={`https://cdn.ffaisal.com/poster_medium/${item.uuid}/poster.jpg`}
+                                src={`https://cdn.rtarchive.xyz/poster_medium/${item.uuid}/poster.jpg`}
                                 alt=""
                             />
                             <Link href={`/browseshow/${item?.uuid}`}>

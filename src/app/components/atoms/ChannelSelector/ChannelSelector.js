@@ -21,7 +21,7 @@ export default function ChannelSelector(props) {
                             style={{ lineHeight: height }}
                             className={`relative w-full cursor-default bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none ${height ? '' : 'sm:leading-6 leading-6'}`}>
                             <span className="flex items-center">
-                                {!noimage && <img src={`https://cdn.ffaisal.com/channels_small/${selected.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
+                                {!noimage && <img src={`https://cdn.rtarchive.xyz/channels_small/${selected.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
                                 <span className={classNames(noimage ? '' : 'ml-3', 'block truncate')}>{selected.name}</span>
                             </span>
                             <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
@@ -51,7 +51,7 @@ export default function ChannelSelector(props) {
                                         {({ selected, active }) => (
                                             <>
                                                 <div className="flex items-center">
-                                                    {!noimage && <img src={`https://cdn.ffaisal.com/channels_small/${channel.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
+                                                    {!noimage && <img src={`https://cdn.rtarchive.xyz/channels_small/${channel.uuid}.png`} alt="" className="h-5 w-5 flex-shrink-0 rounded-full" />}
                                                     <span
                                                         className={classNames(selected ? 'font-semibold' : 'font-normal', noimage ? '' : 'ml-3', 'block truncate')}
                                                     >

@@ -98,7 +98,7 @@ function SeasonPage() {
                 }
 
                 {seasonData?.data.map((episode, index) => {
-                    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`
+                    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
                     return (
                         <li key={index} className='p-2 text-color-primary'>
                             <div className='bg-color-primary p-2 rounded flex items-start'>
