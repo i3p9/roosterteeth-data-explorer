@@ -39,13 +39,13 @@ const SeasonContainer = (props) => {
         //eslint-disable-next-line
     }, [seasonUuid])
 
-    // console.log('season Data: ', seasonData);
+    console.log('season Data: ', seasonData?.data.toReversed());
 
     return (
         <>
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
-                    {seasonData?.data.map((episode, index) => {
+                    {seasonData?.data.toReversed().map((episode, index) => {
                         return (
                             <>
                                 <SeasonEpisodeContainer episode={episode} />

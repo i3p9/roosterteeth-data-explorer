@@ -112,7 +112,7 @@ function ShowPage() {
                         copyAllRTSeasonLinks()
                         notify()
                     }}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all links
+                        <FaRegCopy style={{ display: "inline" }} /> copy all rt links
                     </button>
                     <button className='italic button-primary p-1 mb-5 ml-1' onClick={() => {
                         copyAllArchivedListPerShow()
@@ -143,7 +143,7 @@ function ShowPage() {
                                     </button>
                                 </div>
                                 <div>
-                                    <button onClick={() => copyAllArchivedListPerSeason(season?.uuid)} className='p-1 text-color-secondary'>Download Archived Version: Copy all episodes of this season<FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
+                                    <button onClick={() => copyAllArchivedListPerSeason(season?.uuid)} className='p-1 text-color-secondary'>Download Archived copy: <span className='italic link-color-primary'>Get links to episodes of this season </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
                                 </div>
 
                             </div>
