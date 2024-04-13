@@ -1,12 +1,12 @@
 const prod = {
     url: {
-        API_URL: 'https://roosterteeth.fhm.workers.dev',
+        API_URL: 'https://api.rtarchive.xyz',
         BASE_URL: 'https://www.rtarchive.xyz'
     }
 };
 const dev = {
     url: {
-        API_URL: 'https://roosterteeth.fhm.workers.dev',
+        API_URL: 'https://api.rtarchive.xyz',
         BASE_URL: 'http://localhost:3000'
     }
 };
