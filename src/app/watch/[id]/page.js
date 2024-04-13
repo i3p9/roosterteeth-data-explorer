@@ -70,9 +70,11 @@ const WatchEpisodePage = () => {
                                 <span className="ml-2">{makeTitle(episode?.attributes?.channel_slug)}</span>
                             </div>
                         </div>
-                        <div className="">
-                            <DownloadButton downloadData={downloadData} />
-                        </div>
+                        {downloadData && (
+                            <div className="">
+                                <DownloadButton downloadData={downloadData} />
+                            </div>
+                        )}
                     </div>
                     <div className="flex flex-col rounded-lg p-2 bg-color-primary text-sm">
                         <p className="font-medium text-color-primary">Published: {episode?.attributes.original_air_date.split('T')[0]} • Runtime: {formatSecondToRunTime(episode?.attributes?.length)} </p>
