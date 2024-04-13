@@ -1,7 +1,7 @@
 const prod = {
     url: {
         API_URL: 'https://roosterteeth.fhm.workers.dev',
-        BASE_URL: 'https://rtarchive.xyz'
+        BASE_URL: 'https://www.rtarchive.xyz'
     }
 };
 const dev = {
