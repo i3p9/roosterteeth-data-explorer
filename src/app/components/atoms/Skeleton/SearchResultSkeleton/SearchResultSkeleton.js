@@ -9,17 +9,17 @@ const SearchResultSkeleton = () => {
                 </div>
             </div>
             <div className="grid gap-2 col-span-2">
-                <h3 className="h-6 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></h3>
-                <p className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-80"></p>
-                <p className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-60"></p>
-                <p className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></p>
-                <p className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full mb-2"></p>
+                <h3 className="h-6 skeleton-color-primary rounded-full w-full mb-2"></h3>
+                <p className="h-4 skeleton-color-primary rounded-full w-80"></p>
+                <p className="h-4 skeleton-color-primary rounded-full w-60"></p>
+                <p className="h-2.5 skeleton-color-primary rounded-full w-full"></p>
+                <p className="h-2.5 skeleton-color-primary rounded-full w-full mb-2"></p>
                 <div className="flex gap-8">
-                    <p className="h-4.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></p>
-                    <p className="h-4.5 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></p>
-                    <p className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-full"></p>
+                    <p className="h-4.5 skeleton-color-primary rounded-full w-full"></p>
+                    <p className="h-4.5 skeleton-color-primary rounded-full w-full"></p>
+                    <p className="h-4 skeleton-color-primary rounded-full w-full"></p>
                 </div>
-                <p className="h-4 bg-gray-200 rounded-full dark:bg-gray-700 w-10"></p>
+                <p className="h-4 skeleton-color-primary rounded-full w-10"></p>
             </div>
         </div>
 

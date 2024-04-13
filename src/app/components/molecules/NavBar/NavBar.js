@@ -3,6 +3,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from 'prop-types';
+import ThemeToggle from "../../atoms/ThemeToggle/ThemeToggle";
 
 const additionalMenu = [
     {
@@ -32,7 +33,7 @@ const AdditionalMenuComponent = ({ pathname }) => {
                 }
                 return (
                     <Link key={index} href={menu.path}>
-                        <button className="text-base font-light border-b border-zinc-900 ml-4 sm:hidden">
+                        <button className="text-base font-light border-b border-color-primary ml-4 sm:hidden">
                             {menu.short}
                         </button>
                     </Link>
@@ -44,7 +45,7 @@ const AdditionalMenuComponent = ({ pathname }) => {
                 }
                 return (
                     <Link key={index} href={menu.path}>
-                        <button className="text-base font-light border-b border-zinc-900 ml-4 hidden sm:inline-block">
+                        <button className="text-base font-light border-b border-color-primary ml-4 hidden sm:inline-block">
                             {menu.title}
                         </button>
                     </Link>
@@ -57,14 +58,14 @@ const AdditionalMenuComponent = ({ pathname }) => {
 
 const NavBar = ({ title, previousLink, renderAdditionalMenu = false }) => {
     const pathname = usePathname()
-
     return (
-        <h1 className='text-xl font-black p-2 border-b-2 border-zinc-900'>
-            {previousLink && <Link href={previousLink} className='font-black text-xl p2'>
+        <h1 className='font-bold text-xl text-color-primary p-2 border-b-2 border-color-primary'>
+            {previousLink && <Link href={previousLink} className='font-black text-color-primary text-xl p2'>
                 <IoMdArrowBack size={"1.5em"} style={{ display: 'inline' }} />
             </Link>}
             {title}
             {renderAdditionalMenu && <AdditionalMenuComponent pathname={pathname} />}
+            {/* <ThemeToggle /> */}
             <AboutPopUpContainer />
         </h1>
 

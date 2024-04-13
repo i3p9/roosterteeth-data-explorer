@@ -78,7 +78,7 @@ function ShowPage() {
             <div className='p-2'>
                 {showData && <p>
                     <CopyToClipboard text={copyAllLinks()}>
-                        <button className='italic border border-2 border-zinc-900 font-normal text-base p-1 mb-5' onClick={notify}>
+                        <button className='italic border border-2 text-color-primary border-color-primary font-normal text-base p-1 mb-5' onClick={notify}>
                             <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
                         </button>
                     </CopyToClipboard>
@@ -86,22 +86,26 @@ function ShowPage() {
                 }
                 {showData?.data?.map((season, index) => {
                     return (
-                        <li key={index}>
-                            <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
-                                <span className='font-bold'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
-                                </span>
-                            </Link>
-                            <div>
-                                <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
-                                    <button onClick={notify} className='p-1'>Link: <span className='text-blue-400 text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                                </CopyToClipboard>
+                        <li className='text-color-primary' key={index}>
+                            <div className='bg-color-primary p-2 rounded flex flex-col items-start mb-4'>
+                                <div>
+                                    <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
+                                        <span className='font-bold text-color-primary'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
+                                        </span>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
+                                        <button onClick={notify} className='p-1 text-color-secondary'>Link: <span className='link-color-primary text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
+                                    </CopyToClipboard>
+                                </div>
                             </div>
                         </li>
                     )
                 })}
             </div>
             <Toaster />
-            <div className='italic text-sm pt-8 text-zinc-500'>total items in this page: {showData?.data.length}</div>
+            <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {showData?.data.length}</div>
         </>
     )
 }

@@ -270,9 +270,23 @@ export const firstOrNoOptions = [
         id: "show_all_shows"
     },
     {
-        title: "Show only First Exclusive Shows",
-        name: "Show only First Exclusive Shows",
+        title: "Show First Exclusive Shows",
+        name: "Show First Exclusive Shows",
         value: "show_first", //no - show_first
         id: "show_first_shows"
     }
+]
+
+export const sortFilterOptions = [
+    {
+        title: "Last Updated",
+        name: "Last Updated",
+        value: "last_updated",
+        id: "last_updated"
+    }, {
+        title: "Alphabetically",
+        name: "Alphabetically",
+        value: "alphabetically",
+        id: "alphabetically"
+    },
 ]

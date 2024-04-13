@@ -51,3 +51,10 @@ export function makeTitle(slug) {
 
     return words.join(' ');
 }
+
+export function truncateDescription(description) {
+    const words = description.split(' ');
+    const truncatedDescription = words.slice(0, 20).join(' ');
+
+    return `${truncatedDescription}...`;
+}
