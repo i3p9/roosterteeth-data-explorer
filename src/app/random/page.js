@@ -15,7 +15,8 @@ const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Whee
 
 const SpinResult = (data) => {
     const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${data?.data.uuid}.jpg`
-    const watchUrl = `/watch/${data?.data.episode_type === 'episode' ? data?.data.id : `${data?.data.id}-bonus`}`
+    const watchUrl = `/watch/${data?.data.type === 'episode' ? `roosterteeth-${data?.data.id}` : `roosterteeth-${data?.data.id}-bonus`}?uuid=${data?.data.uuid}`
+    console.log('watch url:', watchUrl);
 
     return (
         <>
@@ -59,7 +60,6 @@ const RandomPage = () => {
 
     useEffect(() => {
         if (episodes) {
-            console.log(episodes);
             const data = episodes.map((item, index) => ({
                 option: String(index),
                 image: {
