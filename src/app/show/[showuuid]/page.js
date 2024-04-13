@@ -2,12 +2,10 @@
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
-import { getArchivedLinksBySeasonId, getArchivedLinksByShowId, getShowInfo } from '@/data/utils/utils'
+import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
-import AboutPopUpContainer from '@/app/components/atoms/AboutPopUpContainer/AboutPopUpContainer'
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 
 
@@ -65,7 +63,7 @@ function ShowPage() {
             links.push(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
         })
         const textToCopy = links.join('\n')
-        navigator.clipboard.writeText(textToCopy)
+        copyToClipboard(textToCopy)
     }
 
     const [clipBoard, setClipBoard] = useState({
@@ -82,7 +80,7 @@ function ShowPage() {
         }
         )
     }
-    const copyAllArchivedListPerShow = async (seasonId) => {
+    const copyAllArchivedListPerShow = async () => {
         const archivedSeasonLinks = await getArchivedLinksByShowId(showUuid)
         const textToCopy = archivedSeasonLinks.join('\n')
         setClipBoard({
@@ -95,7 +93,7 @@ function ShowPage() {
 
     useEffect(() => {
         if (clipBoard.copied) {
-            navigator.clipboard.writeText(clipBoard.value)
+            copyToClipboard(clipBoard.value)
             notify()
         }
     }, [clipBoard])
@@ -137,7 +135,7 @@ function ShowPage() {
                                 <div>
                                     <button
                                         onClick={() => {
-                                            navigator.clipboard.writeText(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
+                                            copyToClipboard(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
                                             notify()
                                         }}
                                         className='p-1 text-color-secondary'>

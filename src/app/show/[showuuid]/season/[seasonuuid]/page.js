@@ -1,10 +1,9 @@
 "use client"
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants';
-import { getShowInfo, formatSecondToRunTime, truncateDescription } from '@/data/utils/utils';
+import { getShowInfo, formatSecondToRunTime, truncateDescription, copyToClipboard } from '@/data/utils/utils';
 import { FaRegCopy } from "react-icons/fa6";
 import 'reactjs-popup/dist/index.css';
 import NavBar from '@/app/components/molecules/NavBar/NavBar';
@@ -65,7 +64,7 @@ function SeasonPage() {
             links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
         })
         const textToCopy = links.join('\n')
-        return (textToCopy)
+        copyToClipboard(textToCopy)
     }
 
 
@@ -82,11 +81,14 @@ function SeasonPage() {
                     (
                         <div className='flex'>
                             <div>
-                                <CopyToClipboard text={copyAllLinks()}>
-                                    <button className='italic button-primary text-base p-1 mb-5' onClick={notify}>
-                                        <FaRegCopy style={{ display: "inline" }} /> copy all archive links for downloading
-                                    </button>
-                                </CopyToClipboard>
+                                <button
+                                    className='italic button-primary p-1 mb-5'
+                                    onClick={() => {
+                                        copyAllLinks()
+                                        notify()
+                                    }}>
+                                    <FaRegCopy style={{ display: "inline" }} /> copy all archive links for downloading
+                                </button>
                             </div>
                             <div>
                                 <DownloadHelpPopUp />
