@@ -58,3 +58,54 @@ export function truncateDescription(description) {
 
     return `${truncatedDescription}...`;
 }
+
+import { config } from '@/app/Constants';
+const baseUrl = config.url.BASE_URL;
+
+export const getArchivedLinksByShowId = async (showId) => {
+    try {
+        const response = await fetch(`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`)
+        const showData = await response.json();
+        const allSeasons = showData.data.map((season) => season.uuid);
+        let allEpisodeLinks = []
+        for (const seasonId of allSeasons) {
+            const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
+            const episodeData = await seasonResponse.json()
+            const seasonEpisodeData = episodeData.data.map((episode) => {
+                if (episode.type === 'episode') {
+                    return `https://archive.org/details/roosterteeth-${episode.id}`
+                } else {
+                    return `https://archive.org/details/roosterteeth-${episode.id}-bonus`
+                }
+            })
+            allEpisodeLinks = allEpisodeLinks.concat(seasonEpisodeData)
+        }
+        return allEpisodeLinks
+    } catch (error) {
+        console.error('Error loading season data:', error);
+        return []
+    }
+}
+
+
+export const getArchivedLinksBySeasonId = async (showId, seasonId) => {
+    try {
+        let allEpisodeLinks = []
+        const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
+        const episodeData = await seasonResponse.json()
+        const seasonEpisodeData = episodeData.data.map((episode) => {
+            if (episode.type === 'episode') {
+                return `https://archive.org/details/roosterteeth-${episode.id}`
+            } else {
+                return `https://archive.org/details/roosterteeth-${episode.id}-bonus`
+            }
+        })
+        allEpisodeLinks = allEpisodeLinks.concat(seasonEpisodeData)
+        console.log('by season id: ', allEpisodeLinks);
+        return allEpisodeLinks
+    } catch (error) {
+        console.error('Error loading season data:', error);
+        return []
+    }
+}
+
