@@ -13,14 +13,14 @@ const FilteredShowListBulk = ({ showListData }) => {
         <>
             {showListData?.data.map((show, index) => {
                 return (
-                    <>
+                    <div key={index}>
                         <li key={index} style={{ listStyleType: 'disc' }} className='text-color-primary font-medium p-0.5'>
                             <Link
                                 href={`/show/${show?.uuid}`}>
                                 {show?.attributes?.title} <span className='text-xs italic text-red-300'>{show?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span> <span className='text-xs italic text-purple-300'>{show?.attributes?.has_bonus_feature ? '[incl. bonus]' : ''}</span> <span className='text-xs italic text-blue-300'>[seasons: {show?.attributes?.season_count} | episodes: {show?.attributes?.episode_count}]</span>
                             </Link>
                         </li>
-                    </>
+                    </div>
                 )
             })}
         </>
