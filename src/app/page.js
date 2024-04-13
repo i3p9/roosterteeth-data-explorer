@@ -6,11 +6,13 @@ import OptionsForm from './components/atoms/OptionsForm/OptionsForm';
 import FilteredShowListBulk from './components/molecules/FilteredShowListBulk/FiltertedShowListBulk';
 import ChannelSelector from './components/atoms/ChannelSelector/ChannelSelector';
 import masterList from '../data/master.json'
+import Fuse from 'fuse.js';
 
 export default function Home() {
   const [exclusiveFilterValue, setExclusiveFilterValue] = useState(firstOrNoOptions[0])
   const [channelFilterValue, setChannelFilterValue] = useState(channelsWithAllAsOption[0])
   const [sortFilterValue, setSortFilterValue] = useState(sortFilterOptions[0])
+  const [searchTerm, setSearchTerm] = useState('')
   const [allShowData, setAllShowData] = useState(masterList)
 
   useEffect(() => {
@@ -31,8 +33,20 @@ export default function Home() {
       filteredData = filteredData.filter((show) => show.attributes?.channel_id === channelFilterValue.uuid);
     }
 
+    if (searchTerm) {
+      const fuse = new Fuse(filteredData, {
+        keys: ['attributes.title'],
+        includeScore: true,
+        threshold: 0.4,
+      });
+
+      const result = fuse.search(searchTerm.toLowerCase());
+
+      filteredData = result.map((item) => item.item);
+    }
+
     setAllShowData({ ...masterList, data: filteredData });
-  }, [sortFilterValue, exclusiveFilterValue, channelFilterValue]);
+  }, [sortFilterValue, exclusiveFilterValue, channelFilterValue, searchTerm]);
 
 
   return (
@@ -80,6 +94,17 @@ export default function Home() {
               noimage
               nolabel
             />
+          </div>
+          <div>
+            <input
+              type="search"
+              id="search-bar"
+              key="search-bar"
+              onChange={(event) => setSearchTerm(event.target.value)}
+              class="block w-full p-2 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500"
+              placeholder="Filter..."
+            >
+            </input>
           </div>
 
         </div>
