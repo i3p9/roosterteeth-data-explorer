@@ -79,7 +79,12 @@ const RandomPage = () => {
             const newPrizeNumber = Math.floor(Math.random() * 10);
             setPrizeNumber(newPrizeNumber);
             setMustSpin(true);
+            setOpenResultPopup(false)
         }
+    }
+
+    const reloadWheel = () => {
+        getRandomEpisodeData()
     }
 
     return (
@@ -111,6 +116,8 @@ const RandomPage = () => {
                         //TODO: fix bug of result not showing after first spin
                         />
                         <button className="border-4 text-2xl font-black border-color-primary p-2 px-8 text-color-primary bg-color-primary" onClick={handleSpinClick}>SPIN</button>
+                        <button className="border-2 text-base font-semibold border-color-primary p-2 px-4 mt-2 text-color-primary bg-color-primary" onClick={reloadWheel}>Reload Wheel</button>
+
                     </>
                 )}
             </div>
