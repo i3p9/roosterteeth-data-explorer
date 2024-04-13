@@ -5,9 +5,9 @@ import './OptionsForm.css'
 const OptionsForm = ({ data, header, value, setValue }) => {
     return (
         <>
-            <form className='p-2'>
+            <form className='p-2 text-color-primary'>
                 {/* https://stackoverflow.com/a/67868779 */}
-                <fieldset className='border-2 border-solid border-zinc-900 p-1'>
+                <fieldset className='border-2 border-solid border-color-primary p-1'>
                     {header && <legend>{header}</legend>}
                     <div className='toggle-container'>
                         {data?.map((option) => {
@@ -25,7 +25,7 @@ const OptionsForm = ({ data, header, value, setValue }) => {
                                     />
                                     {' '}
                                     <label htmlFor={option.id}>
-                                        <span className="toggle"></span>
+                                        <span className="toggle border-2 border-color-primary"></span>
                                         {option.title}
                                     </label>
                                 </span>

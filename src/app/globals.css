@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .text-color-primary {
+    @apply text-zinc-900 dark:text-zinc-100;
+  }
+  .text-color-secondary {
+    @apply text-zinc-600 dark:text-zinc-400;
+  }
+  .text-color-faded {
+    @apply text-zinc-500 dark:text-zinc-500;
+  }
+  .text-color-reversed {
+    @apply text-zinc-50 dark:text-zinc-900;
+  }
+  .bg-color-primary {
+    @apply bg-zinc-200 dark:bg-zinc-800;
+  }
+  .bg-color-reverse {
+    @apply bg-zinc-800 dark:bg-zinc-200;
+  }
+  .bg-color-hover {
+    @apply hover:bg-zinc-200 dark:hover:bg-zinc-800;
+  }
+  .border-color-primary {
+    @apply border-zinc-900 dark:border-zinc-100;
+  }
+  .skeleton-color-primary {
+    @apply bg-gray-200 rounded-full dark:bg-gray-700;
+  }
+
+  .link-color-primary {
+    @apply text-blue-500 dark:text-blue-700;
+  }
+  .without-ring {
+    @apply focus:ring-0 focus:ring-offset-0;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -39,4 +76,16 @@ body {
 .popup-content {
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9)
     forwards;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }

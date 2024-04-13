@@ -1,12 +1,9 @@
 'use client'
-import AboutPopUpContainer from "../components/atoms/AboutPopUpContainer/AboutPopUpContainer"
-import Link from "next/link";
 import SearchContainer from "../components/molecules/SearchContainer/SearchContainer";
 import { useState } from "react";
 import axios from "axios";
 import { config } from "../Constants";
 import SearchResultContainer from "../components/molecules/SearchResultContainer/SearchResultContainer";
-import { IoMdArrowBack } from "react-icons/io";
 import SearchResultSkeleton from "../components/atoms/Skeleton/SearchResultSkeleton/SearchResultSkeleton";
 import DisplayTitleMessage from "../components/atoms/DisplayTitleMessage/DisplayTitleMessage";
 import NavBar from "../components/molecules/NavBar/NavBar";
@@ -22,10 +19,11 @@ const SearchPage = () => {
 
     const runSearch = (selectedChannel, searchTerm, limit) => {
         setLoading(true)
+        const channelKey = selectedChannel === 'all-channels' ? 'all' : selectedChannel
         let config = {
             method: 'GET',
             maxBodyLength: Infinity,
-            url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${selectedChannel}&limit=${limit}`,
+            url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
             headers: {
                 'Accept': 'application/json, text/plain, */*'
             }

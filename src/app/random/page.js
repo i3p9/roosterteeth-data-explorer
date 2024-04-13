@@ -15,22 +15,21 @@ const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Whee
 
 const SpinResult = (data) => {
     const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${data?.data.uuid}.jpg`
-    console.log(thumbnailUrl);
     const watchUrl = `/watch/${data?.data.episode_type === 'episode' ? data?.data.id : `${data?.data.id}-bonus`}`
 
     return (
         <>
-            <div className='p-4 flex flex-col items-center gap-2'>
-                <h1 className="font-black text-lg text-center">Your results are in!</h1>
+            <div className='p-4 flex flex-col items-center gap-2 bg-color-primary'>
+                <h1 className="font-black text-lg text-color-primary text-center">Your results are in!</h1>
                 <img
                     alt={''}
                     height={200}
                     src={thumbnailUrl}
                     width={400}
                 />
-                <p className="text-md font-bold">{data.data.attributes.title}</p>
+                <p className="text-md font-bold text-color-primary">{data.data.attributes.title}</p>
                 <br />
-                <Link href={watchUrl} className='text-white bg-zinc-900 p-4'>WATCH NOW</Link>
+                <Link href={watchUrl} className='font-black border-2 border-color-primary p-2 px-8 text-color-primary bg-color-primary'>WATCH NOW</Link>
             </div >
         </>
     )
@@ -87,12 +86,15 @@ const RandomPage = () => {
         <>
             <NavBar title={'Radnom wheel of "fortune"'} renderAdditionalMenu />
             <div className="grid place-items-center">
-                <ChannelSelector
-                    channels={channels}
-                    selected={selectedChannel}
-                    setSelected={setSelectedChannel}
-                    nolabel
-                />
+                <div className="mt-2">
+                    <ChannelSelector
+                        channels={channels}
+                        selected={selectedChannel}
+                        setSelected={setSelectedChannel}
+                        nolabel
+                    />
+                </div>
+
             </div>
             <div className="h-screen flex items-center justify-center flex-col"
                 style={{ marginTop: '-60px' }}>
@@ -106,8 +108,9 @@ const RandomPage = () => {
                                 setMustSpin(false);
                                 setOpenResultPopup(true);
                             }}
+                        //TODO: fix bug of result not showing after first spin
                         />
-                        <button className="border-4 text-2xl font-black border-zinc-900 p-2 px-8 text-zinc-900" onClick={handleSpinClick}>SPIN</button>
+                        <button className="border-4 text-2xl font-black border-color-primary p-2 px-8 text-color-primary bg-color-primary" onClick={handleSpinClick}>SPIN</button>
                     </>
                 )}
             </div>
@@ -115,7 +118,6 @@ const RandomPage = () => {
                 <Popup open={openResultPopup} modal>
                     <SpinResult data={episodes[prizeNumber]} />
                 </Popup>
-
             )}
 
         </>

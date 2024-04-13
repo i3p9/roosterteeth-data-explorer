@@ -46,9 +46,9 @@ const SeasonEpisodeContainer = (props) => {
                             />
                         </div>
 
-                        <h1 className="font-bold pb-0.5">{episode?.attributes.title}</h1>
-                        <h2 className="text-sm text-zinc-600">{makeTitle(episode?.attributes.channel_slug)}</h2>
-                        <p className="text-sm text-zinc-600">{formatSecondToRunTime(episode?.attributes?.length)} • {episode?.attributes.original_air_date.split('T')[0]}</p>
+                        <h1 className="font-bold pb-0.5 text-color-primary">{episode?.attributes.title}</h1>
+                        <h2 className="text-sm text-color-secondary">{makeTitle(episode?.attributes.channel_slug)}</h2>
+                        <p className="text-sm text-color-secondary">{formatSecondToRunTime(episode?.attributes?.length)} • {episode?.attributes.original_air_date.split('T')[0]}</p>
                     </div>
                 </Link >
             </div>

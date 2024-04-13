@@ -35,14 +35,14 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
     }, [showUuid])
 
     const FirstBadge = () => {
-        return <span className="p-2 bg-red-100 text-red-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-red-400">First</span>
+        return <span className="p-2 bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">First</span>
     }
     const BonusContentBadge = () => {
-        return <span className="p-2 bg-gray-100 text-gray-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-gray-500">Bonus</span>
+        return <span className="p-2 bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Bonus</span>
     }
 
     const ArchivedBadge = () => {
-        return <span className="p-2 bg-green-100 text-green-800 text-xs font-light me-2 px-1 py-0.5 rounded border border-green-400">Archived</span>
+        return <span className="p-2 bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Archived</span>
     }
 
     const Log = ({ value, replacer = null, space = 2 }) => (
@@ -54,7 +54,11 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
     return (
         <>
             <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">
-                <Link href={`/watch/${episodeId}`}>
+                <Link href={{
+                    pathname: `/watch/${episodeId}`,
+                    query: { uuid: episode?.uuid },
+                }}
+                >
                     <div className="flex items-start gap-4 col-span-1">
                         <img
                             alt="Episode thumbnail"
@@ -67,20 +71,24 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                 </Link>
 
                 <div className="grid gap-2 col-span-2">
-                    <Link href={`/watch/${episodeId}`}>
-                        <h3 className="font-bold text-xl sm:text-xl leading-none" style={{ display: 'flex', alignItems: 'center' }}>
+                    <Link href={{
+                        pathname: `/watch/${episodeId}`,
+                        query: { uuid: episode?.uuid },
+                    }}
+                    >
+                        <h3 className="font-bold text-xl text-color-primary sm:text-xl leading-none" style={{ display: 'flex', alignItems: 'center' }}>
                             {episode?.attributes?.title}
                         </h3>
                     </Link>
 
-                    <p className="text-sm font-medium leading-none text-zinc-600">Show: {showInfo ? showInfo[0]?.attributes?.title : 'Show Data not available'} • Channel: {channelInfo[0]?.name}</p>
-                    <p className="text-xs font-medium leading-none text-zinc-600">{formatSecondToRunTime(episode?.attributes?.length)} • {episode?.attributes.original_air_date.split('T')[0]}</p>
+                    <p className="text-sm font-medium leading-none text-color-secondary">Show: {showInfo ? showInfo[0]?.attributes?.title : 'Show Data not available'} • Channel: {channelInfo[0]?.name}</p>
+                    <p className="text-xs font-medium leading-none text-color-secondary">{formatSecondToRunTime(episode?.attributes?.length)} • {episode?.attributes.original_air_date.split('T')[0]}</p>
                     <Popup
-                        trigger={<p className="text-sm leading-snug line-clamp-1 text-zinc-600">{episode?.attributes?.description}</p>}
+                        trigger={<p className="text-sm leading-snug line-clamp-1 text-color-secondary">{episode?.attributes?.description}</p>}
                         modal
                     >
                         {(close) => (
-                            <div className='p-4'>
+                            <div className='p-4 text-color-primary bg-color-primary'>
                                 <p data-tooltip-target="tooltip-light" data-tooltip-style="light">{episode?.attributes.description}</p>
                                 <CopyToClipboard text={episode?.attributes.description}>
                                     <button
@@ -88,7 +96,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                                             toaster()
                                             close()
                                         }}
-                                        className='w-full p-1 mt-2 border border-2 border-zinc-900 hover:bg-zinc-200'
+                                        className='w-full p-1 mt-2 border border-2 border-color-primary hover:bg-color-primary'
                                     >
                                         Copy to clipboard
                                     </button>
@@ -102,20 +110,20 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                     </div>
 
                     <div className='flex gap-8'>
-                        <p className='text-xs font-medium text-zinc-600'>RoosterTeeth Link: {' '}
-                            <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://roosterteeth.com/watch/${episode?.attributes.slug}`}>
+                        <p className='text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}
+                            <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://roosterteeth.com/watch/${episode?.attributes.slug}`}>
                                 Click here <GoLinkExternal style={{ display: 'inline' }} />
                             </Link>
                         </p>
-                        <p className='text-xs font-medium text-zinc-600'>Archive Link: {' '}
-                            <Link className="text-xs font-medium text-blue-500" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
+                        <p className='text-xs font-medium text-color-faded'>Archive Link: {' '}
+                            <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
                                 {/* <span className='text-blue-200'>N/A</span> */}
                                 Click here <GoLinkExternal style={{ display: 'inline' }} />
                             </Link>
                         </p>
                         <Popup
-                            trigger={<p className='text-xs font-medium text-zinc-600'>Extended Metadata: {' '}
-                                <button className="text-xs font-medium text-blue-500">
+                            trigger={<p className='text-xs font-medium text-color-faded'>Extended Metadata: {' '}
+                                <button className="text-xs font-medium link-color-primary">
                                     Click here <GoLinkExternal style={{ display: 'inline' }} />
                                 </button>
                             </p>
@@ -130,7 +138,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                                                 toaster()
                                                 close()
                                             }}
-                                            className='static w-full p-1 mt-2 border border-2 border-zinc-900 hover:bg-zinc-200'
+                                            className='static w-full p-1 mt-2 border-2 border-color-primary bg-color-hover'
                                         >
                                             Copy to clipboard
                                         </button>
