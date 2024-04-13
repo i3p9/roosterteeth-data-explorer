@@ -6,6 +6,7 @@ import { getSingleEpisodeByUuid } from "@/data/utils/api"
 import { formatSecondToRunTime, makeTitle } from "@/data/utils/utils"
 import Link from "next/link"
 import PlayerSkeleton from "@/app/components/atoms/Skeleton/PlayerSkeleton/PlayerSkeleton"
+import DownloadButton from "@/app/components/atoms/DownloadButton/DownloadButton"
 
 const WatchEpisodePage = () => {
     const params = useParams()
@@ -13,6 +14,7 @@ const WatchEpisodePage = () => {
     const episodeUuid = searchParams.get('uuid')
     const [iframeLoaded, setIframeLoaded] = useState(false);
     const [episode, setEpisode] = useState()
+    const [downloadData, setDownloadData] = useState({})
 
     const handleIframeLoad = () => {
         setIframeLoaded(true);
@@ -21,6 +23,7 @@ const WatchEpisodePage = () => {
     const getEpisodeData = async () => {
         const result = await getSingleEpisodeByUuid(episodeUuid);
         setEpisode(result.data.documents[0])
+        setDownloadData(result.data.documents[0].archive)
     }
 
     useEffect(() => {
@@ -51,20 +54,24 @@ const WatchEpisodePage = () => {
             {!episode && <PlayerSkeleton />}
             {episode && (
                 <>
-                    <div className="p-2">
-                        <h1 className="font-bold text-xl text-color-primary">{episode?.attributes.title}</h1>
-                        <Link href={`/browseshow/${episode?.attributes.show_id}`}>
-                            <p className="font-medium text-md text-color-secondary">{episode?.attributes.show_title} {episode?.attributes.season_number && <span>• S{episode?.attributes.season_number} - E{episode?.attributes.number}</span>}</p>
+                    <div className="p-2 flex justify-between flex-col md:flex-row gap-4">
+                        <div className="flex flex-col">
+                            <h1 className="font-bold text-xl text-color-primary">{episode?.attributes.title}</h1>
+                            <Link href={`/browseshow/${episode?.attributes.show_id}`}>
+                                <p className="font-medium text-md text-color-secondary">{episode?.attributes.show_title} {episode?.attributes.season_number && <span>• S{episode?.attributes.season_number} - E{episode?.attributes.number}</span>}</p>
 
-                        </Link>
-                        <div className="flex items-center font-medium text-md text-color-secondary">
-                            <img
-                                alt={`logo of channel ${episode?.attributes.channel_slug}`}
-                                className="w-10 h-10 rounded-full"
-                                src={`https://cdn.rtarchive.xyz/channels_small/${episode?.attributes.channel_id}.png`}
-                            />
-                            <span className="ml-2">{makeTitle(episode?.attributes?.channel_slug)}</span>
-
+                            </Link>
+                            <div className="flex items-center font-medium text-md text-color-secondary">
+                                <img
+                                    alt={`logo of channel ${episode?.attributes.channel_slug}`}
+                                    className="w-10 h-10 rounded-full"
+                                    src={`https://cdn.rtarchive.xyz/channels_small/${episode?.attributes.channel_id}.png`}
+                                />
+                                <span className="ml-2">{makeTitle(episode?.attributes?.channel_slug)}</span>
+                            </div>
+                        </div>
+                        <div className="">
+                            <DownloadButton downloadData={downloadData} />
                         </div>
                     </div>
                     <div className="flex flex-col rounded-lg p-2 bg-color-primary text-sm">
