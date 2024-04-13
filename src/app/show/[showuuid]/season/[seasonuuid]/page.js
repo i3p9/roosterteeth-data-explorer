@@ -10,6 +10,7 @@ import 'reactjs-popup/dist/index.css';
 import NavBar from '@/app/components/molecules/NavBar/NavBar';
 import Link from 'next/link';
 import { GoLinkExternal } from "react-icons/go";
+import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -58,6 +59,16 @@ function SeasonPage() {
         //eslint-disable-next-line
     }, [])
 
+    const copyAllLinks = () => {
+        let links = []
+        seasonData?.data.map((episode) => {
+            links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
+        })
+        const textToCopy = links.join('\n')
+        return (textToCopy)
+    }
+
+
     const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData?.data[0]?.attributes?.season_number : 'N/A'}`
 
     return (
@@ -67,6 +78,23 @@ function SeasonPage() {
                 previousLink={`/show/${showUuid}`}
             />
             <div className='p-2'>
+                {seasonData &&
+                    (
+                        <div className='flex'>
+                            <div>
+                                <CopyToClipboard text={copyAllLinks()}>
+                                    <button className='italic button-primary text-base p-1 mb-5' onClick={notify}>
+                                        <FaRegCopy style={{ display: "inline" }} /> copy all archive links for downloading
+                                    </button>
+                                </CopyToClipboard>
+                            </div>
+                            <div>
+                                <DownloadHelpPopUp />
+                            </div>
+                        </div>
+                    )
+                }
+
                 {seasonData?.data.map((episode, index) => {
                     const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`
                     return (

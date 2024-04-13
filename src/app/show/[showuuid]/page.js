@@ -78,7 +78,7 @@ function ShowPage() {
             <div className='p-2'>
                 {showData && <p>
                     <CopyToClipboard text={copyAllLinks()}>
-                        <button className='italic border border-2 text-color-primary border-color-primary font-normal text-base p-1 mb-5' onClick={notify}>
+                        <button className='italic button-primary p-1 mb-5' onClick={notify}>
                             <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
                         </button>
                     </CopyToClipboard>
