@@ -114,3 +114,40 @@ export const copyToClipboard = (text) => {
         navigator.clipboard.writeText(text)
     }
 }
+
+
+export const extDescribed = (ext) => {
+    const lowerCasedExt = ext.toLowerCase()
+    if (lowerCasedExt === 'mp4' || lowerCasedExt === 'mkv' || lowerCasedExt === 'webm') {
+        return 'Video File'
+    } else if (lowerCasedExt === 'vtt' || lowerCasedExt === 'srt') {
+        return 'Subtitle'
+    }
+    else if (lowerCasedExt === 'jpg' ||
+        lowerCasedExt === 'png' ||
+        lowerCasedExt === 'webp' ||
+        lowerCasedExt === 'gif' ||
+        lowerCasedExt === 'jpeg') {
+        return 'Thumbnail'
+    } else if (lowerCasedExt === 'json') {
+        return 'Info JSON'
+    } else if (lowerCasedExt === 'description') {
+        return 'Description'
+    }
+    return ext
+}
+
+
+export const bytesToReadableSize = (sizeInByte) => {
+    const bytes = Number(sizeInByte);
+
+    if (bytes < 1024) {
+        return bytes + "B";
+    } else if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(2) + "KB";
+    } else if (bytes < 1024 * 1024 * 1024) {
+        return (bytes / (1024 * 1024)).toFixed(2) + "MB";
+    } else {
+        return (bytes / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+    }
+}

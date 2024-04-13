@@ -27,10 +27,14 @@
   .border-color-primary {
     @apply border-zinc-900 dark:border-zinc-100;
   }
+
+  .border-color-secondary {
+    @apply border-zinc-400 dark:border-zinc-300;
+  }
+
   .skeleton-color-primary {
     @apply bg-gray-200 rounded-full dark:bg-gray-700;
   }
-
   .link-color-primary {
     @apply text-blue-500 dark:text-blue-700;
   }
