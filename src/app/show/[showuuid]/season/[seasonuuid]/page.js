@@ -1,15 +1,15 @@
 "use client"
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants';
-import { getShowInfo, formatSecondToRunTime, truncateDescription } from '@/data/utils/utils';
+import { getShowInfo, formatSecondToRunTime, truncateDescription, copyToClipboard } from '@/data/utils/utils';
 import { FaRegCopy } from "react-icons/fa6";
 import 'reactjs-popup/dist/index.css';
 import NavBar from '@/app/components/molecules/NavBar/NavBar';
 import Link from 'next/link';
 import { GoLinkExternal } from "react-icons/go";
+import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -58,6 +58,16 @@ function SeasonPage() {
         //eslint-disable-next-line
     }, [])
 
+    const copyAllLinks = () => {
+        let links = []
+        seasonData?.data.map((episode) => {
+            links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
+        })
+        const textToCopy = links.join('\n')
+        copyToClipboard(textToCopy)
+    }
+
+
     const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData?.data[0]?.attributes?.season_number : 'N/A'}`
 
     return (
@@ -67,8 +77,28 @@ function SeasonPage() {
                 previousLink={`/show/${showUuid}`}
             />
             <div className='p-2'>
+                {seasonData &&
+                    (
+                        <div className='flex'>
+                            <div>
+                                <button
+                                    className='italic button-primary p-1 mb-5'
+                                    onClick={() => {
+                                        copyAllLinks()
+                                        notify()
+                                    }}>
+                                    <FaRegCopy style={{ display: "inline" }} /> copy all archive links for downloading
+                                </button>
+                            </div>
+                            <div>
+                                <DownloadHelpPopUp />
+                            </div>
+                        </div>
+                    )
+                }
+
                 {seasonData?.data.map((episode, index) => {
-                    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`
+                    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
                     return (
                         <li key={index} className='p-2 text-color-primary'>
                             <div className='bg-color-primary p-2 rounded flex items-start'>

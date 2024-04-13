@@ -1,9 +1,7 @@
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { getShowInfo, formatSecondToRunTime } from '@/data/utils/utils';
+import { getShowInfo, formatSecondToRunTime, copyToClipboard } from '@/data/utils/utils';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { channels } from '@/data/utils/data';
 import { GoLinkExternal } from "react-icons/go";
@@ -14,7 +12,6 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
     const [showInfo, setShowInfo] = useState()
     const [showUuid, setShowUuid] = useState(episode?.attributes.show_id)
     const channelInfo = channels.filter((channel) => channel.uuid === episode?.attributes.channel_id)
-    // const episodeId = episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`;
     const episodeId = `roosterteeth-${episode?.id}`
 
 
@@ -50,7 +47,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
             <code className='text-sm'>{JSON.stringify(value, replacer, space)}</code>
         </pre>
     )
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`
+    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
     return (
         <>
             <div className="grid md:grid-cols-3 items-start max-w-6xl mx-auto px-4 gap-2 lg:gap-4 m-4 ">
@@ -90,17 +87,16 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                         {(close) => (
                             <div className='p-4 text-color-primary bg-color-primary'>
                                 <p data-tooltip-target="tooltip-light" data-tooltip-style="light">{episode?.attributes.description}</p>
-                                <CopyToClipboard text={episode?.attributes.description}>
-                                    <button
-                                        onClick={() => {
-                                            toaster()
-                                            close()
-                                        }}
-                                        className='w-full p-1 mt-2 border border-2 border-color-primary hover:bg-color-primary'
-                                    >
-                                        Copy to clipboard
-                                    </button>
-                                </CopyToClipboard>
+                                <button
+                                    onClick={() => {
+                                        copyToClipboard(episode?.attributes.description)
+                                        toaster()
+                                        close()
+                                    }}
+                                    className='w-full p-1 mt-2 border border-2 border-color-primary hover:bg-color-primary'
+                                >
+                                    Copy to clipboard
+                                </button>
                             </div>
                         )}
                     </Popup>
@@ -132,17 +128,16 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                         >
                             {(close) => (
                                 <div>
-                                    <CopyToClipboard text={JSON.stringify(episode, null, 2)}>
-                                        <button
-                                            onClick={() => {
-                                                toaster()
-                                                close()
-                                            }}
-                                            className='static w-full p-1 mt-2 border-2 border-color-primary bg-color-hover'
-                                        >
-                                            Copy to clipboard
-                                        </button>
-                                    </CopyToClipboard>
+                                    <button
+                                        onClick={() => {
+                                            copyToClipboard(JSON.stringify(episode, null, 2))
+                                            toaster()
+                                            close()
+                                        }}
+                                        className='static w-full p-1 mt-2 border-2 border-color-primary bg-color-hover'
+                                    >
+                                        Copy to clipboard
+                                    </button>
                                     <div className='p-4' style={{ maxHeight: '80vh', overflowY: 'auto' }}>
                                         <Log value={episode} />
                                     </div>

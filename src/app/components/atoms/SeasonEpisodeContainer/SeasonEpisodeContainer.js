@@ -40,7 +40,7 @@ const SeasonEpisodeContainer = (props) => {
                                 onLoad={() => setLoading(false)}
                                 alt="thumbnail"
                                 className="aspect-video overflow-hidden rounded-lg object-cover-w-full"
-                                src={`https://cdn.ffaisal.com/thumbs_medium/${episode?.uuid}.jpg`}
+                                src={`https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`}
                                 width={320}
                                 height={180}
                             />

@@ -2,12 +2,10 @@
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { CopyToClipboard } from 'react-copy-to-clipboard'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
-import { getShowInfo } from '@/data/utils/utils'
+import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
-import AboutPopUpContainer from '@/app/components/atoms/AboutPopUpContainer/AboutPopUpContainer'
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 
 
@@ -22,6 +20,7 @@ function ShowPage() {
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
+    const [archivedLinks, setArchivedLinks] = useState([])
     const notify = () => toast.success('Copied to clipboard!');
 
     useEffect(() => {
@@ -58,14 +57,46 @@ function ShowPage() {
         //eslint-disable-next-line
     }, [])
 
-    const copyAllLinks = () => {
+    const copyAllRTSeasonLinks = () => {
         let links = []
         showData?.data.map((season) => {
             links.push(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
         })
         const textToCopy = links.join('\n')
-        return (textToCopy)
+        copyToClipboard(textToCopy)
     }
+
+    const [clipBoard, setClipBoard] = useState({
+        value: '',
+        copied: false,
+    })
+
+    const copyAllArchivedListPerSeason = async (seasonId) => {
+        const archivedSeasonLinks = await getArchivedLinksBySeasonId(showUuid, seasonId)
+        const textToCopy = archivedSeasonLinks.join('\n')
+        setClipBoard({
+            value: textToCopy,
+            copied: true,
+        }
+        )
+    }
+    const copyAllArchivedListPerShow = async () => {
+        const archivedSeasonLinks = await getArchivedLinksByShowId(showUuid)
+        const textToCopy = archivedSeasonLinks.join('\n')
+        setClipBoard({
+            value: textToCopy,
+            copied: true,
+        }
+        )
+    }
+
+
+    useEffect(() => {
+        if (clipBoard.copied) {
+            copyToClipboard(clipBoard.value)
+            notify()
+        }
+    }, [clipBoard])
 
     return (
         <>
@@ -77,11 +108,18 @@ function ShowPage() {
             {/* and change this awful copy all links button */}
             <div className='p-2'>
                 {showData && <p>
-                    <CopyToClipboard text={copyAllLinks()}>
-                        <button className='italic border border-2 text-color-primary border-color-primary font-normal text-base p-1 mb-5' onClick={notify}>
-                            <FaRegCopy style={{ display: "inline" }} /> copy all links to clipboard
-                        </button>
-                    </CopyToClipboard>
+                    <button className='italic button-primary p-1 mb-5' onClick={() => {
+                        copyAllRTSeasonLinks()
+                        notify()
+                    }}>
+                        <FaRegCopy style={{ display: "inline" }} /> copy all links
+                    </button>
+                    <button className='italic button-primary p-1 mb-5 ml-1' onClick={() => {
+                        copyAllArchivedListPerShow()
+                    }}>
+                        <FaRegCopy style={{ display: "inline" }} /> copy all archived links
+                    </button>
+
                 </p>
                 }
                 {showData?.data?.map((season, index) => {
@@ -95,10 +133,19 @@ function ShowPage() {
                                     </Link>
                                 </div>
                                 <div>
-                                    <CopyToClipboard text={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`}>
-                                        <button onClick={notify} className='p-1 text-color-secondary'>Link: <span className='link-color-primary text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                                    </CopyToClipboard>
+                                    <button
+                                        onClick={() => {
+                                            copyToClipboard(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
+                                            notify()
+                                        }}
+                                        className='p-1 text-color-secondary'>
+                                        RT Link: <span className='link-color-primary text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} />
+                                    </button>
                                 </div>
+                                <div>
+                                    <button onClick={() => copyAllArchivedListPerSeason(season?.uuid)} className='p-1 text-color-secondary'>Download Archived Version: Copy all episodes of this season<FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
+                                </div>
+
                             </div>
                         </li>
                     )

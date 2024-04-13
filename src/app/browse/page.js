@@ -6,6 +6,7 @@ import { channelsWithAllAsOption, firstOrNoOptions, sortFilterOptions } from '@/
 import Link from "next/link"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector"
+import Fuse from "fuse.js";
 
 const BrowseAllShows = () => {
     const masterShowData = masterList.data
@@ -14,6 +15,7 @@ const BrowseAllShows = () => {
     const [exclusiveFilterValue, setExclusiveFilterValue] = useState(firstOrNoOptions[0])
     const [channelFilterValue, setChannelFilterValue] = useState(channelsWithAllAsOption[0])
     const [sortFilterValue, setSortFilterValue] = useState(sortFilterOptions[0])
+    const [searchTerm, setSearchTerm] = useState('')
     const [hasMore, setHasMore] = useState(true);
 
     const [allShowData, setAllShowData] = useState(masterList)
@@ -37,8 +39,20 @@ const BrowseAllShows = () => {
             filteredData = filteredData.filter((show) => show.attributes?.channel_id === channelFilterValue.uuid);
         }
 
+        if (searchTerm) {
+            const fuse = new Fuse(filteredData, {
+                keys: ['attributes.title'],
+                includeScore: true,
+                threshold: 0.4,
+            });
+
+            const result = fuse.search(searchTerm.toLowerCase());
+            filteredData = result.map((item) => item.item);
+        }
+
+
         setAllShowData({ ...masterList, data: filteredData })
-    }, [sortFilterValue, exclusiveFilterValue, channelFilterValue]);
+    }, [sortFilterValue, exclusiveFilterValue, channelFilterValue, searchTerm]);
 
 
 
@@ -135,6 +149,18 @@ const BrowseAllShows = () => {
                     />
                 </div>
 
+                <div>
+                    <input
+                        type="search"
+                        id="search-bar"
+                        key="search-bar"
+                        onChange={(event) => setSearchTerm(event.target.value)}
+                        className="block w-full p-2 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500"
+                        placeholder="Filter..."
+                    >
+                    </input>
+                </div>
+
             </div>
             {/* <InfiniteScroll
                 dataLength={allShows.length}
@@ -149,7 +175,7 @@ const BrowseAllShows = () => {
                         <div className="relative">
                             <img
                                 className="h-auto max-w-full rounded-lg"
-                                src={`https://cdn.ffaisal.com/poster_medium/${item.uuid}/poster.jpg`}
+                                src={`https://cdn.rtarchive.xyz/poster_medium/${item.uuid}/poster.jpg`}
                                 alt=""
                             />
                             <Link href={`/browseshow/${item?.uuid}`}>

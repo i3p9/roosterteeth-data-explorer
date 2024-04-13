@@ -14,7 +14,7 @@ const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Whee
 
 
 const SpinResult = (data) => {
-    const thumbnailUrl = `https://cdn.ffaisal.com/thumbs_medium/${data?.data.uuid}.jpg`
+    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${data?.data.uuid}.jpg`
     const watchUrl = `/watch/${data?.data.episode_type === 'episode' ? data?.data.id : `${data?.data.id}-bonus`}`
 
     return (
@@ -63,7 +63,7 @@ const RandomPage = () => {
             const data = episodes.map((item, index) => ({
                 option: String(index),
                 image: {
-                    uri: `https://cdn.ffaisal.com/thumbs_medium/${item?.uuid}.jpg`,
+                    uri: `https://cdn.rtarchive.xyz/thumbs_medium/${item?.uuid}.jpg`,
                     landscape: true,
                     sizeMultiplier: 0.9
                 }
