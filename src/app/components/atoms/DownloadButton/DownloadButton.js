@@ -6,7 +6,6 @@ import { LuDownload } from "react-icons/lu";
 
 export default function DownloadButton({ downloadData, minimal = false }) {
     const videoFile = downloadData?.files.filter(file => file.file_ext === 'mp4' || file.file_ext === 'mkv')
-    console.log('video file: ', videoFile);
     function download(name) {
         const url = `https://archive.org/download/${downloadData.id}/${name}`
         const a = document.createElement('a')
@@ -41,10 +40,10 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                     >
                         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
                             <div className="px-1 py-1 ">
-                                {downloadData?.files.map((file) => {
+                                {downloadData?.files.map((file, index) => {
                                     return (
                                         <>
-                                            <Menu.Item>
+                                            <Menu.Item key={index}>
                                                 {({ active }) => (
                                                     <button
                                                         onClick={() => download(file.name)}
@@ -100,9 +99,9 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                 >
                     <Menu.Items className="absolute right-0 mt-2 w-96 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none">
                         <div className="px-1 py-1 ">
-                            {downloadData?.files.map((file) => {
+                            {downloadData?.files.map((file, index) => {
                                 return (
-                                    <>
+                                    <div key={index}>
                                         <Menu.Item>
                                             {({ active }) => (
                                                 <button
@@ -118,7 +117,7 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                                                 </button>
                                             )}
                                         </Menu.Item>
-                                    </>
+                                    </div>
                                 )
                             })}
                         </div>
