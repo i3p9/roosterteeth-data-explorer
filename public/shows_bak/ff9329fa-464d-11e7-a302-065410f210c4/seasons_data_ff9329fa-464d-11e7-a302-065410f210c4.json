@@ -1,0 +1,315 @@
+{
+  "data": [
+    {
+      "id": 1267,
+      "uuid": "db6d8e04-08d3-4bfe-ac7d-22e72f09eeb4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 10",
+        "description": "",
+        "slug": "death-battle-season-10",
+        "number": 11,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2023-05-19T21:35:54.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-10",
+        "episodes": "/api/v1/seasons/death-battle-season-10/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 1169,
+      "uuid": "5e4a9a22-261a-44f0-97cb-067d9b0d681e",
+      "type": "season",
+      "attributes": {
+        "title": "Season 9",
+        "description": "",
+        "slug": "death-battle-season-9",
+        "number": 10,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 17,
+        "published_at": "2022-03-27T03:01:27.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-9",
+        "episodes": "/api/v1/seasons/death-battle-season-9/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 1060,
+      "uuid": "42b5f7d7-1b9f-48b6-9252-e5145444b253",
+      "type": "season",
+      "attributes": {
+        "title": "Season 8",
+        "description": "",
+        "slug": "death-battle-season-8",
+        "number": 9,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2021-03-05T23:13:13.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-8",
+        "episodes": "/api/v1/seasons/death-battle-season-8/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 844,
+      "uuid": "33a9705c-645d-4e95-8c0f-0f89a41dbf8d",
+      "type": "season",
+      "attributes": {
+        "title": "Season 7",
+        "description": "",
+        "slug": "death-battle-season-7",
+        "number": 8,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 22,
+        "published_at": "2020-01-24T21:57:45.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-7",
+        "episodes": "/api/v1/seasons/death-battle-season-7/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 656,
+      "uuid": "5ff636ee-9f6d-4041-a150-2481d28fd280",
+      "type": "season",
+      "attributes": {
+        "title": "Season 6",
+        "description": "",
+        "slug": "death-battle-season-6",
+        "number": 6,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2019-02-04T18:14:54.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-6",
+        "episodes": "/api/v1/seasons/death-battle-season-6/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 505,
+      "uuid": "b3cbaf95-5bf7-452e-a161-3e9cc35f7ee4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 5",
+        "description": "",
+        "slug": "death-battle-season-5",
+        "number": 5,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2018-01-05T18:04:05.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-5",
+        "episodes": "/api/v1/seasons/death-battle-season-5/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 323,
+      "uuid": "ffa31863-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 4",
+        "description": "",
+        "slug": "death-battle-season-4",
+        "number": 4,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2017-01-12T23:34:02.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-4",
+        "episodes": "/api/v1/seasons/death-battle-season-4/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 324,
+      "uuid": "ffa2b63a-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "death-battle-season-3",
+        "number": 3,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 14,
+        "published_at": "2016-03-07T20:45:26.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-3",
+        "episodes": "/api/v1/seasons/death-battle-season-3/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 316,
+      "uuid": "ffa2b544-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "death-battle-season-2",
+        "number": 2,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 32,
+        "published_at": "2016-03-07T20:44:43.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-2",
+        "episodes": "/api/v1/seasons/death-battle-season-2/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 320,
+      "uuid": "ffa28f36-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "death-battle-season-1",
+        "number": 1,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 25,
+        "published_at": "2016-02-16T01:01:30.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-season-1",
+        "episodes": "/api/v1/seasons/death-battle-season-1/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 321,
+      "uuid": "ffa2bec8-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Extras",
+        "description": "",
+        "slug": "death-battle-extras",
+        "number": 0,
+        "show_id": "ff9329fa-464d-11e7-a302-065410f210c4",
+        "show_slug": "death-battle",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 32,
+        "published_at": "2016-05-03T16:05:00.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/death-battle-extras",
+        "episodes": "/api/v1/seasons/death-battle-extras/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-death-battle",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-death-battle",
+        "description": "",
+        "episode_count": 8,
+        "number": 99,
+        "show_slug": "death-battle",
+        "has_bonus_content": true,
+        "show_title": "s"
+      }
+    }
+  ]
+}

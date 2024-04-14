@@ -145,8 +145,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "red-vs-blue-psa",
+        "show_id": "b5233975-f136-4166-b427-78dfacd4b1e6",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

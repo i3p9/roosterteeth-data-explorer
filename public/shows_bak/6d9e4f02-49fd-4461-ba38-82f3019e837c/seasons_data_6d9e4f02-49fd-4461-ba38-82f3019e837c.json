@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "id": 1222,
+      "uuid": "3542194f-e944-47fe-a36b-e5bce0ad2040",
+      "type": "season",
+      "attributes": {
+        "title": "2023",
+        "description": "",
+        "slug": "annual-pass-2023",
+        "number": 3,
+        "show_id": "6d9e4f02-49fd-4461-ba38-82f3019e837c",
+        "show_slug": "annual-pass",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 22,
+        "published_at": "2023-01-04T00:17:14.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/annual-pass-2023",
+        "episodes": "/api/v1/seasons/annual-pass-2023/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 1116,
+      "uuid": "337fcb5f-0514-4549-8440-f44fb5c13b7a",
+      "type": "season",
+      "attributes": {
+        "title": "2022",
+        "description": "",
+        "slug": "annual-pass-2022",
+        "number": 2,
+        "show_id": "6d9e4f02-49fd-4461-ba38-82f3019e837c",
+        "show_slug": "annual-pass",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 51,
+        "published_at": "2022-01-04T19:30:31.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/annual-pass-2022",
+        "episodes": "/api/v1/seasons/annual-pass-2022/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 1067,
+      "uuid": "1f7f6991-61b2-4a3b-9698-c10c29f6112a",
+      "type": "season",
+      "attributes": {
+        "title": "2021",
+        "description": "",
+        "slug": "annual-pass-2021",
+        "number": 1,
+        "show_id": "6d9e4f02-49fd-4461-ba38-82f3019e837c",
+        "show_slug": "annual-pass",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 40,
+        "published_at": "2021-03-30T15:00:35.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/annual-pass-2021",
+        "episodes": "/api/v1/seasons/annual-pass-2021/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-annual-pass",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-annual-pass",
+        "description": "",
+        "episode_count": 15,
+        "number": 99,
+        "show_slug": "annual-pass",
+        "has_bonus_content": true,
+        "show_title": "s"
+      }
+    }
+  ]
+}

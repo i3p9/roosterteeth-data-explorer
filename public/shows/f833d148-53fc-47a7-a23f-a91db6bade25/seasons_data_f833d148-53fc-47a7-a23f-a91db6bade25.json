@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "face-jam-s-truck-d-up",
+        "show_id": "f833d148-53fc-47a7-a23f-a91db6bade25",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

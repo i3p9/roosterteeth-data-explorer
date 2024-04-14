@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 15,
+        "episode_count": 16,
         "published_at": "2024-01-05T20:15:57.000Z"
       },
       "links": {
@@ -64,8 +64,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "dogbark-plays",
+        "show_id": "181d24f0-c751-48c0-8dfb-a6fdc7f68405",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

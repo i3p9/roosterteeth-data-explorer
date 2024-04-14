@@ -145,8 +145,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "rt-extras",
+        "show_id": "19bcee52-b201-4497-9e4c-48f30fba260f",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

@@ -37,8 +37,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "anthology",
+        "show_id": "fbc8581b-67cc-4221-90c5-2f783b111d92",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

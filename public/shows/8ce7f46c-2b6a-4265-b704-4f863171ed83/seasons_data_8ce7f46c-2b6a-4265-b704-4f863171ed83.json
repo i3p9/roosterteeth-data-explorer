@@ -37,8 +37,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "dead-little-roosters",
+        "show_id": "8ce7f46c-2b6a-4265-b704-4f863171ed83",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

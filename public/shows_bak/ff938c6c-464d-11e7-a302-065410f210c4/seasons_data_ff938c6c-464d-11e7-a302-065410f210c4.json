@@ -1,0 +1,99 @@
+{
+  "data": [
+    {
+      "id": 521,
+      "uuid": "5e5eb889-e537-4c27-8b46-34c81191c843",
+      "type": "season",
+      "attributes": {
+        "title": "Season 3",
+        "description": "",
+        "slug": "rwby-chibi-season-3",
+        "number": 3,
+        "show_id": "ff938c6c-464d-11e7-a302-065410f210c4",
+        "show_slug": "rwby-chibi",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 16,
+        "published_at": "2018-01-23T17:37:35.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rwby-chibi-season-3",
+        "episodes": "/api/v1/seasons/rwby-chibi-season-3/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 356,
+      "uuid": "ffa34e3a-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 2",
+        "description": "",
+        "slug": "rwby-chibi-season-2",
+        "number": 2,
+        "show_id": "ff938c6c-464d-11e7-a302-065410f210c4",
+        "show_slug": "rwby-chibi",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 24,
+        "published_at": "2017-05-03T15:29:39.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rwby-chibi-season-2",
+        "episodes": "/api/v1/seasons/rwby-chibi-season-2/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 368,
+      "uuid": "ffa2c091-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "rwby-chibi-season-1",
+        "number": 1,
+        "show_id": "ff938c6c-464d-11e7-a302-065410f210c4",
+        "show_slug": "rwby-chibi",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 24,
+        "published_at": "2016-05-06T17:53:25.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rwby-chibi-season-1",
+        "episodes": "/api/v1/seasons/rwby-chibi-season-1/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-rwby-chibi",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-rwby-chibi",
+        "description": "",
+        "episode_count": 3,
+        "number": 99,
+        "show_slug": "rwby-chibi",
+        "has_bonus_content": true,
+        "show_title": "s"
+      }
+    }
+  ]
+}

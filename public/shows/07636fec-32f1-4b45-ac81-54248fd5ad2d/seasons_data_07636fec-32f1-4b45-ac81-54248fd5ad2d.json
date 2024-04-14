@@ -91,8 +91,10 @@
         "episode_count": 16,
         "number": 99,
         "show_slug": "the-chorus-trilogy",
+        "show_id": "07636fec-32f1-4b45-ac81-54248fd5ad2d",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 16
       }
     }
   ]

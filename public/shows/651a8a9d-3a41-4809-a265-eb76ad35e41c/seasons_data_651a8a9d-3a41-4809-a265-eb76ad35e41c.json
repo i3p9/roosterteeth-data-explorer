@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "hardcore-mini-golf",
+        "show_id": "651a8a9d-3a41-4809-a265-eb76ad35e41c",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

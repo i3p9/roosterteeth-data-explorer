@@ -145,8 +145,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "immersion",
+        "show_id": "ff927120-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

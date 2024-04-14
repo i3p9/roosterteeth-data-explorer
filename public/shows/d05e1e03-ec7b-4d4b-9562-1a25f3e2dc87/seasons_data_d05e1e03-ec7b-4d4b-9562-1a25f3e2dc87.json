@@ -118,8 +118,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "black-box-down",
+        "show_id": "d05e1e03-ec7b-4d4b-9562-1a25f3e2dc87",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

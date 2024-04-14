@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "blood-fest",
+        "show_id": "b252c402-ba4c-4c47-9a0d-c1cf940724f2",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

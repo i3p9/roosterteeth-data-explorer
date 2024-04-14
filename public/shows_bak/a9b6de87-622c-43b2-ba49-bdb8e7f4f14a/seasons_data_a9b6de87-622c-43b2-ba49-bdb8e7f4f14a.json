@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": 1091,
+      "uuid": "98342dec-562f-4ac2-afc6-509cffd635e4",
+      "type": "season",
+      "attributes": {
+        "title": "Season 1",
+        "description": "",
+        "slug": "red-vs-blue-family-shatters-2021",
+        "number": 1,
+        "show_id": "a9b6de87-622c-43b2-ba49-bdb8e7f4f14a",
+        "show_slug": "red-vs-blue-family-shatters",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 11,
+        "published_at": "2021-09-30T03:00:38.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/red-vs-blue-family-shatters-2021",
+        "episodes": "/api/v1/seasons/red-vs-blue-family-shatters-2021/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-red-vs-blue-family-shatters",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-red-vs-blue-family-shatters",
+        "description": "",
+        "episode_count": 2,
+        "number": 99,
+        "show_slug": "red-vs-blue-family-shatters",
+        "has_bonus_content": true,
+        "show_title": "s"
+      }
+    }
+  ]
+}

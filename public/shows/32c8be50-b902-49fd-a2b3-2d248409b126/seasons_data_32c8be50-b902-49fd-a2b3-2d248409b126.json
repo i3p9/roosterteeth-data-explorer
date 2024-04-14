@@ -64,8 +64,10 @@
         "episode_count": 8,
         "number": 99,
         "show_slug": "achievement-haunter",
+        "show_id": "32c8be50-b902-49fd-a2b3-2d248409b126",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 8
       }
     }
   ]

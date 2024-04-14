@@ -64,8 +64,10 @@
         "episode_count": 10,
         "number": 99,
         "show_slug": "project-freelancer-saga",
+        "show_id": "d7f8cb9d-8aa9-4ff9-a119-d34662d91851",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 10
       }
     }
   ]

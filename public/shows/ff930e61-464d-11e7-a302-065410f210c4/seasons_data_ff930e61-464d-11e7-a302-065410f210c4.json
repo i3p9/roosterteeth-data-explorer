@@ -37,8 +37,10 @@
         "episode_count": 28,
         "number": 99,
         "show_slug": "rt-docs",
+        "show_id": "ff930e61-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 28
       }
     }
   ]

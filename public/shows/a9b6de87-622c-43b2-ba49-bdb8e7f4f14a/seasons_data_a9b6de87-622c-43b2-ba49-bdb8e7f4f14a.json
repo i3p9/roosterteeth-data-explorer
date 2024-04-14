@@ -37,8 +37,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "red-vs-blue-family-shatters",
+        "show_id": "a9b6de87-622c-43b2-ba49-bdb8e7f4f14a",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

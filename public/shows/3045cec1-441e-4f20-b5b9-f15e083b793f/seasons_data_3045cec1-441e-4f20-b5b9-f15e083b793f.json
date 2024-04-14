@@ -37,8 +37,10 @@
         "episode_count": 4,
         "number": 99,
         "show_slug": "recorded-by-arizal",
+        "show_id": "3045cec1-441e-4f20-b5b9-f15e083b793f",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 4
       }
     }
   ]

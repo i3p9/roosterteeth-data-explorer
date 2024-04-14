@@ -91,8 +91,10 @@
         "episode_count": 29,
         "number": 99,
         "show_slug": "the-recollection",
+        "show_id": "a74226fc-edcb-489e-9487-95a32ed7ed58",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 29
       }
     }
   ]

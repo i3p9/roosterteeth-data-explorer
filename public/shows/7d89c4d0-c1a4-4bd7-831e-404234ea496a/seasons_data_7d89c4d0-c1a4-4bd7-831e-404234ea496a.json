@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "the-real-canon",
+        "show_id": "7d89c4d0-c1a4-4bd7-831e-404234ea496a",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

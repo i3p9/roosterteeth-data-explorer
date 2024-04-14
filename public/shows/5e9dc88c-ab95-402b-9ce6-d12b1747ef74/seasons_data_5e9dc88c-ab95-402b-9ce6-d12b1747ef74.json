@@ -172,8 +172,10 @@
         "episode_count": 7,
         "number": 99,
         "show_slug": "face-jam",
+        "show_id": "5e9dc88c-ab95-402b-9ce6-d12b1747ef74",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 7
       }
     }
   ]

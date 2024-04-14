@@ -64,8 +64,10 @@
         "episode_count": 4,
         "number": 99,
         "show_slug": "hardcore-tabletop",
+        "show_id": "f8955194-8a83-4f54-be73-89045298c681",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 4
       }
     }
   ]

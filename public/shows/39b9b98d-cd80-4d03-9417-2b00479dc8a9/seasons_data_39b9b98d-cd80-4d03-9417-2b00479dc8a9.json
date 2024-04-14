@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 33,
+        "episode_count": 34,
         "published_at": "2023-09-11T15:38:30.000Z"
       },
       "links": {
@@ -37,8 +37,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "best-friends-tv",
+        "show_id": "39b9b98d-cd80-4d03-9417-2b00479dc8a9",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

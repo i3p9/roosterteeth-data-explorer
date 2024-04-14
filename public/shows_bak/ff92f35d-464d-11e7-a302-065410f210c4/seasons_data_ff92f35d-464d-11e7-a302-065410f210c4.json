@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "id": 575,
+      "uuid": "50cb05e2-317c-4700-94c4-fee988d8f4a8",
+      "type": "season",
+      "attributes": {
+        "title": "2018",
+        "description": "",
+        "slug": "pilot-program-2018",
+        "number": 2,
+        "show_id": "ff92f35d-464d-11e7-a302-065410f210c4",
+        "show_slug": "pilot-program",
+        "episodes_available": {
+          "sponsor": true,
+          "member": false,
+          "public": false
+        },
+        "episode_count": 3,
+        "published_at": "2018-05-02T19:08:50.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/pilot-program-2018",
+        "episodes": "/api/v1/seasons/pilot-program-2018/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "id": 248,
+      "uuid": "ffa18cd3-464d-11e7-a302-065410f210c4",
+      "type": "season",
+      "attributes": {
+        "title": "2015",
+        "description": "",
+        "slug": "pilot-program-season-1",
+        "number": 1,
+        "show_id": "ff92f35d-464d-11e7-a302-065410f210c4",
+        "show_slug": "pilot-program",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 7,
+        "published_at": "2015-07-02T16:46:12.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/pilot-program-season-1",
+        "episodes": "/api/v1/seasons/pilot-program-season-1/episodes?order=desc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
+      "type": "bonus",
+      "uuid": "bonus-content-pilot-program",
+      "attributes": {
+        "title": "Bonus Content",
+        "slug": "bonus-content-pilot-program",
+        "description": "",
+        "episode_count": 2,
+        "number": 99,
+        "show_slug": "pilot-program",
+        "has_bonus_content": true,
+        "show_title": "s"
+      }
+    }
+  ]
+}
