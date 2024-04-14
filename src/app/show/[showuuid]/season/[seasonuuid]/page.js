@@ -121,6 +121,7 @@ function SeasonPage() {
                 title={pageTitle}
                 previousLink={`/show/${showUuid}`}
             />
+            {/* TODO: implement skeleton */}
             {seasonLoading && <div>LOADING. please wait... (also wait for me to add a skeleton here)</div>}
             {seasonNetworkError && <div>Network error, shoot</div>}
 
