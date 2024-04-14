@@ -26,7 +26,7 @@ export function formatSecondToRunTime(seconds) {
 
     result += `${remainingSeconds}s`;
 
-    return result.trim();
+    return result === '0s' ? 'N/A' : result.trim();
 }
 
 
@@ -72,10 +72,8 @@ export const getArchivedLinksByShowId = async (showId) => {
             const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
             const episodeData = await seasonResponse.json()
             const seasonEpisodeData = episodeData.data.map((episode) => {
-                if (episode.type === 'episode') {
-                    return `https://archive.org/details/roosterteeth-${episode.id}`
-                } else {
-                    return `https://archive.org/details/roosterteeth-${episode.id}-bonus`
+                if (episode?.archive) {
+                    return `https://archive.org/details/${episode?.archive.id}`
                 }
             })
             allEpisodeLinks = allEpisodeLinks.concat(seasonEpisodeData)
@@ -149,5 +147,29 @@ export const bytesToReadableSize = (sizeInByte) => {
         return (bytes / (1024 * 1024)).toFixed(2) + "MB";
     } else {
         return (bytes / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+    }
+}
+
+export function percentage(partialValue, totalValue) {
+    return (100 * partialValue) / totalValue;
+}
+
+
+export const getArchivedPercentageBySeasonId = async (showId, seasonId) => {
+    console.log('in pct util');
+    try {
+        let archivedCount = 0
+        const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
+        const episodeData = await seasonResponse.json()
+        const seasonEpisodeData = episodeData.data.map((episode) => {
+            if (episode?.archive) {
+                archivedCount++
+            }
+        })
+        const percentageResult = percentage(archivedCount, episodeData.data.length)
+        return percentageResult
+    } catch (error) {
+        console.error('Error loading season data:', error);
+        return 0
     }
 }

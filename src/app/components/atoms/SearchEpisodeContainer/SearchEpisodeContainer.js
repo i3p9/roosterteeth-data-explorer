@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { channels } from '@/data/utils/data';
 import { GoLinkExternal } from "react-icons/go";
+import { CgInternal } from "react-icons/cg";
+import DownloadButton from '../DownloadButton/DownloadButton';
+import { ArchivedBadge, BonusContentBadge, FirstBadge } from '../Badges/Badges';
 
 
 const SearchEpisodeContainer = ({ episode, toaster }) => {
@@ -30,17 +33,6 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
         }
         //eslint-disable-next-line
     }, [showUuid])
-
-    const FirstBadge = () => {
-        return <span className="p-2 bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">First</span>
-    }
-    const BonusContentBadge = () => {
-        return <span className="p-2 bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Bonus</span>
-    }
-
-    const ArchivedBadge = () => {
-        return <span className="p-2 bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">Archived</span>
-    }
 
     const Log = ({ value, replacer = null, space = 2 }) => (
         <pre>
@@ -112,15 +104,19 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                             </Link>
                         </p>
                         <p className='text-xs font-medium text-color-faded'>Archive Link: {' '}
-                            <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
-                                {/* <span className='text-blue-200'>N/A</span> */}
-                                Click here <GoLinkExternal style={{ display: 'inline' }} />
-                            </Link>
+                            {episode?.archive ? (
+                                <>
+                                    <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
+                                        Click here <GoLinkExternal style={{ display: 'inline' }} />
+                                    </Link>
+
+                                </>
+                            ) : (<span className='text-blue-200 dark:text-blue-900'>N/A</span>)}
                         </p>
                         <Popup
                             trigger={<p className='text-xs font-medium text-color-faded'>Extended Metadata: {' '}
                                 <button className="text-xs font-medium link-color-primary">
-                                    Click here <GoLinkExternal style={{ display: 'inline' }} />
+                                    Click here <CgInternal style={{ display: 'inline' }} />
                                 </button>
                             </p>
                             }
@@ -141,7 +137,6 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                                     <div className='p-4' style={{ maxHeight: '80vh', overflowY: 'auto' }}>
                                         <Log value={episode} />
                                     </div>
-
                                 </div>
                             )}
                         </Popup>
@@ -149,6 +144,12 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
                     <div>
                         {episode?.attributes.is_sponsors_only && <FirstBadge />}
                         {episode?.type === "bonus_feature" && <BonusContentBadge />}
+                        {episode?.archive && <ArchivedBadge />}
+                        {episode?.archive && (
+                            <div className='mt-1'>
+                                <DownloadButton downloadData={episode?.archive} minimal />
+                            </div>
+                        )}
                     </div>
                 </div>
             </div >
