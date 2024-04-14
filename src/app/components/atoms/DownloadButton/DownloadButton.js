@@ -42,8 +42,8 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                             <div className="px-1 py-1 ">
                                 {downloadData?.files.map((file, index) => {
                                     return (
-                                        <>
-                                            <Menu.Item key={index}>
+                                        <div key={index}>
+                                            <Menu.Item>
                                                 {({ active }) => (
                                                     <button
                                                         onClick={() => download(file.name)}
@@ -58,7 +58,7 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                                                     </button>
                                                 )}
                                             </Menu.Item>
-                                        </>
+                                        </div>
                                     )
                                 })}
                             </div>

@@ -4,6 +4,10 @@ export async function GET(request, { params }) {
     const apiKey = process.env.DB_API
     const mongoUrl = process.env.DB_HOST
 
+    if (!channel_id) {
+        return new NextResponse(`bad request, params not found: channel_id`, { status: 400 })
+    }
+
     const RandomEpisodepipeline = [
         {
             "$match": {

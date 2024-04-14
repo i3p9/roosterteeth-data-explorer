@@ -12,6 +12,7 @@ import { GoLinkExternal } from "react-icons/go";
 import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp';
 import { ArchivedBadge, BonusContentBadge, FirstBadge } from '@/app/components/atoms/Badges/Badges';
 import DownloadButton from '@/app/components/atoms/DownloadButton/DownloadButton';
+import axios from 'axios';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -23,36 +24,76 @@ function SeasonPage() {
     const [showUuid, setShowUuid] = useState('')
     const [seasonData, setSeasonData] = useState()
     const [showInfo, setShowInfo] = useState('')
-    const [loading, setLoading] = useState(false)
+    const [seasonLoading, setSeasonLoading] = useState(false)
+    const [seasonNetworkError, setSeasonNetworkError] = useState(false)
+    const [showInfoLoading, setShowInfoLoading] = useState(false)
+    const [showInfoNetworkError, setShowInfoNetworkError] = useState(false)
+
+
     const notify = () => toast.success('Copied to clipboard!');
 
     useEffect(() => {
-        const fetchSeasonData = async () => {
-            try {
-                const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
-                const data = await response.json();
-                setSeasonData(data);
-            } catch (error) {
-                console.error('Error loading transcript data:', error);
-            }
-        };
+        //local json method
+        // const fetchSeasonData = async () => {
+        //     try {
+        //         const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
+        //         const data = await response.json();
+        //         setSeasonData(data);
+        //     } catch (error) {
+        //         console.error('Error loading transcript data:', error);
+        //     }
+        // };
 
-        const fetchShowInfo = async () => {
+        const fetchSeasonDataNext = async () => {
             try {
-                const response = await getShowInfo(showUuid)
-                setShowInfo(response)
+                setSeasonLoading(true)
+                const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid, show_id: showUuid, request_origin: 'season' } })
+                if (response) {
+                    setSeasonData(response.data.documents)
+                }
             } catch (error) {
-                console.error('Error loading transcript data:', error);
+                console.error(error);
+                setSeasonLoading(false)
+                setSeasonNetworkError(true)
+            } finally {
+                setSeasonNetworkError(false)
+                setSeasonLoading(false)
+            }
+        }
+        //local json method
+        // const fetchShowInfo = async () => {
+        //     try {
+        //         const response = await getShowInfo(showUuid)
+        //         setShowInfo(response)
+        //     } catch (error) {
+        //         console.error('Error loading transcript data:', error);
+        //     }
+        // }
+
+        const fetchShowInfoNext = async () => {
+            try {
+                setShowInfoLoading(true)
+                const response = await axios.get(`/api/v1/show/${showUuid}`)
+                if (response) {
+                    setShowInfo(response.data.documents)
+                }
+            } catch (error) {
+                console.error(error);
+                setSeasonLoading(false)
+                setShowInfoLoading(true)
+            } finally {
+                setShowInfoNetworkError(false)
+                setShowInfoLoading(false)
             }
         }
 
+
         if (showUuid) {
-            fetchSeasonData();
-            fetchShowInfo();
+            fetchSeasonDataNext();
+            fetchShowInfoNext();
         }
         //eslint-disable-next-line
     }, [seasonUuid])
-
 
     useEffect(() => {
         setSeasonUuid(params.seasonuuid)
@@ -72,7 +113,7 @@ function SeasonPage() {
         copyToClipboard(textToCopy)
     }
 
-    const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData?.data[0]?.attributes?.season_number : 'N/A'}`
+    const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData[0]?.attributes?.season_number : 'N/A'}`
 
     return (
         <>
@@ -80,6 +121,9 @@ function SeasonPage() {
                 title={pageTitle}
                 previousLink={`/show/${showUuid}`}
             />
+            {seasonLoading && <div>LOADING. please wait... (also wait for me to add a skeleton here)</div>}
+            {seasonNetworkError && <div>Network error, shoot</div>}
+
             <div className='p-2'>
                 {seasonData &&
                     (
@@ -101,7 +145,7 @@ function SeasonPage() {
                     )
                 }
 
-                {seasonData?.data.map((episode, index) => {
+                {seasonData?.map((episode, index) => {
                     const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
                     return (
                         <li key={index} className='p-2 text-color-primary'>
@@ -120,7 +164,7 @@ function SeasonPage() {
                                         Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                                     </span>
                                     <div>
-                                        <div className='text-color-secondary text-sm'>Air date: {episode?.attributes.original_air_date.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
+                                        <div className='text-color-secondary text-sm'>Air date: {episode?.attributes.original_air_date?.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
                                         <p className='text-sm text-color-faded line-clamp-1'><span className='italic'></span>{episode?.attributes?.description ? truncateDescription(episode?.attributes?.description) : 'N/A'}</p>
                                         <div className='flex gap-8 mt-1'>
                                             <p className='text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}
@@ -154,7 +198,7 @@ function SeasonPage() {
                     )
                 })}
                 <Toaster />
-                <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {seasonData?.data.length}</div>
+                <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {seasonData?.length}</div>
             </div>
         </>
     )

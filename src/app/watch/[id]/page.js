@@ -33,7 +33,7 @@ const WatchEpisodePage = () => {
 
     const getEpisodeDataNext = async () => {
         try {
-            const response = await axios.get(`/api/episode/${episodeUuid}`);
+            const response = await axios.get(`/api/v1/episode/${episodeUuid}`);
             if (response.data.documents) {
                 setEpisode(response.data.documents[0])
                 setDownloadData(response.data.documents[0].archive)
