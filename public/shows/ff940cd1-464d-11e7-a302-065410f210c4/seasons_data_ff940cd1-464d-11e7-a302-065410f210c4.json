@@ -64,8 +64,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "glitch-please",
+        "show_id": "ff940cd1-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

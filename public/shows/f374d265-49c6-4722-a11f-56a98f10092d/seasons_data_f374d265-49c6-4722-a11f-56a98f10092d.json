@@ -64,8 +64,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "arizona-circle",
+        "show_id": "f374d265-49c6-4722-a11f-56a98f10092d",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

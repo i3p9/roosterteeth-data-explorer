@@ -1,6 +1,33 @@
 {
   "data": [
     {
+      "id": 1336,
+      "uuid": "45e306f9-ce9a-49dc-8ef8-48a0cc4301d7",
+      "type": "season",
+      "attributes": {
+        "title": "RWBY Beyond",
+        "description": "RWBY Beyond",
+        "slug": "rwby-rwby-beyond",
+        "number": 10,
+        "show_id": "ff92963b-464d-11e7-a302-065410f210c4",
+        "show_slug": "rwby",
+        "episodes_available": {
+          "sponsor": true,
+          "member": true,
+          "public": true
+        },
+        "episode_count": 1,
+        "published_at": "2024-04-12T22:54:55.000Z"
+      },
+      "links": {
+        "self": "/api/v1/seasons/rwby-rwby-beyond",
+        "episodes": "/api/v1/seasons/rwby-rwby-beyond/episodes?order=asc&order_by=number"
+      },
+      "included": {
+        "images": []
+      }
+    },
+    {
       "id": 1333,
       "uuid": "59f0fa72-5363-4356-bdbc-90a897eab002",
       "type": "season",
@@ -253,8 +280,10 @@
         "episode_count": 48,
         "number": 99,
         "show_slug": "rwby",
+        "show_id": "ff92963b-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 48
       }
     }
   ]

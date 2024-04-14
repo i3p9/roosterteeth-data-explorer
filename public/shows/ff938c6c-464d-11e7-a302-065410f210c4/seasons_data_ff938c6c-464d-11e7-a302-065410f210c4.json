@@ -91,8 +91,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "rwby-chibi",
+        "show_id": "ff938c6c-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

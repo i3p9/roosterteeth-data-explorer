@@ -27,11 +27,9 @@
   .border-color-primary {
     @apply border-zinc-900 dark:border-zinc-100;
   }
-
   .border-color-secondary {
     @apply border-zinc-400 dark:border-zinc-300;
   }
-
   .skeleton-color-primary {
     @apply bg-gray-200 rounded-full dark:bg-gray-700;
   }
@@ -43,6 +41,9 @@
   }
   .button-primary {
     @apply text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-100;
+  }
+  .button-secondary {
+    @apply text-zinc-50 dark:text-zinc-900 bg-zinc-900 dark:bg-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 border-2 border-zinc-900 dark:border-zinc-100;
   }
 }
 

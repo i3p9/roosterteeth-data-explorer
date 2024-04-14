@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 28,
+        "episode_count": 29,
         "published_at": "2023-12-20T21:22:02.000Z"
       },
       "links": {
@@ -469,8 +469,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "rt-podcast",
+        "show_id": "ff92f50c-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

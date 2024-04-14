@@ -64,8 +64,10 @@
         "episode_count": 19,
         "number": 99,
         "show_slug": "gen-lock",
+        "show_id": "79340471-4d4f-41f8-a463-e18ddf1f4053",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 19
       }
     }
   ]

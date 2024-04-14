@@ -10,6 +10,8 @@ import NavBar from '@/app/components/molecules/NavBar/NavBar';
 import Link from 'next/link';
 import { GoLinkExternal } from "react-icons/go";
 import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp';
+import { ArchivedBadge, BonusContentBadge, FirstBadge } from '@/app/components/atoms/Badges/Badges';
+import DownloadButton from '@/app/components/atoms/DownloadButton/DownloadButton';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -61,12 +63,14 @@ function SeasonPage() {
     const copyAllLinks = () => {
         let links = []
         seasonData?.data.map((episode) => {
-            links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
+            // links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
+            if (episode?.archive) {
+                links.push(`https://archive.org/details/${episode?.archive.id}`)
+            }
         })
         const textToCopy = links.join('\n')
         copyToClipboard(textToCopy)
     }
-
 
     const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData?.data[0]?.attributes?.season_number : 'N/A'}`
 
@@ -101,7 +105,7 @@ function SeasonPage() {
                     const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
                     return (
                         <li key={index} className='p-2 text-color-primary'>
-                            <div className='bg-color-primary p-2 rounded flex items-start'>
+                            <div className=' p-2 bg-color-primary rounded flex items-start'>
                                 <div className='flex items-center justify-center mr-2'>
                                     <img
                                         src={thumbnailUrl}
@@ -111,34 +115,38 @@ function SeasonPage() {
                                         height={90}
                                     />
                                 </div>
-                                <div>
-                                    <span className='font-medium'>
+                                <div className='p-1'>
+                                    <span className='font-bold'>
                                         Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
                                     </span>
                                     <div>
-                                        <div className='p-1 text-color-secondary'>Air date: {episode?.attributes.original_air_date.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
-                                        <p className='text-sm text-color-secondary line-clamp-1'><span className='italic'>Description: </span>{episode?.attributes?.description ? truncateDescription(episode?.attributes?.description) : 'N/A'}</p>
-                                        <div className='flex gap-8 mt-2'>
+                                        <div className='text-color-secondary text-sm'>Air date: {episode?.attributes.original_air_date.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
+                                        <p className='text-sm text-color-faded line-clamp-1'><span className='italic'></span>{episode?.attributes?.description ? truncateDescription(episode?.attributes?.description) : 'N/A'}</p>
+                                        <div className='flex gap-8 mt-1'>
                                             <p className='text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}
                                                 <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://roosterteeth.com/watch/${episode?.attributes.slug}`}>
                                                     Click here <GoLinkExternal style={{ display: 'inline' }} />
                                                 </Link>
                                             </p>
                                             <p className='text-xs font-medium text-color-faded'>Archive Link: {' '}
-                                                <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
-                                                    {/* <span className='text-blue-200'>N/A</span> */}
-                                                    Click here <GoLinkExternal style={{ display: 'inline' }} />
-                                                </Link>
+                                                {episode?.archive ? (
+                                                    <>
+                                                        <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
+                                                            Click here <GoLinkExternal style={{ display: 'inline' }} />
+                                                        </Link>
+
+                                                    </>
+                                                ) : (<span className='text-blue-200 dark:text-blue-900'>N/A</span>)}
                                             </p>
                                         </div>
-                                        {/* <div>
-                                        <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
-                                            <button onClick={notify} className='p-1 text-color-secondary'>Link to episode: <span className='link-color-primary'>https://roosterteeth.com{episode?.canonical_links?.self} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                                        </CopyToClipboard>
-                                        <CopyToClipboard text={`https://roosterteeth.com${episode?.canonical_links?.self}`}>
-                                            <button onClick={notify} className='p-1 text-color-secondary'>Link to Archive: <span className='link-color-primary'>https://archive.org/details/roosterteeth-{episode?.type === "bonus_feature" ? `${episode?.id}-bonus` : episode?.id} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                                        </CopyToClipboard>
-                                    </div> */}
+                                        <div className='flex'>
+                                            {episode?.attributes.is_sponsors_only && <div><FirstBadge /></div>}
+                                            {episode?.type === "bonus_feature" && <div><BonusContentBadge /></div>}
+                                            {episode?.archive && <div><ArchivedBadge /></div>}
+                                            {episode?.archive && (
+                                                <DownloadButton downloadData={episode?.archive} minimal />
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

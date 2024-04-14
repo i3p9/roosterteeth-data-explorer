@@ -172,8 +172,10 @@
         "episode_count": 60,
         "number": 99,
         "show_slug": "f-kface",
+        "show_id": "a1e355c7-2d86-4a62-a7ab-240bdae40b04",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 60
       }
     }
   ]

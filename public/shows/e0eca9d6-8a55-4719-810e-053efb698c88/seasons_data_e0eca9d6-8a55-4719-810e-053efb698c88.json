@@ -37,8 +37,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "zero",
+        "show_id": "e0eca9d6-8a55-4719-810e-053efb698c88",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

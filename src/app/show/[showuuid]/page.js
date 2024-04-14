@@ -1,12 +1,12 @@
 "use client"
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
-import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getShowInfo } from '@/data/utils/utils'
+import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getArchivedPercentageBySeasonId, getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
+import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
 
 
 const baseUrl = config.url.BASE_URL;
@@ -80,6 +80,7 @@ function ShowPage() {
         }
         )
     }
+
     const copyAllArchivedListPerShow = async () => {
         const archivedSeasonLinks = await getArchivedLinksByShowId(showUuid)
         const textToCopy = archivedSeasonLinks.join('\n')
@@ -88,6 +89,11 @@ function ShowPage() {
             copied: true,
         }
         )
+    }
+
+    const getArchivedPctPerSeason = async (seasonId) => {
+        const result = getArchivedPercentageBySeasonId(showUuid, seasonId)
+        return result
     }
 
 
@@ -122,34 +128,19 @@ function ShowPage() {
 
                 </p>
                 }
-                {showData?.data?.map((season, index) => {
-                    return (
-                        <li className='text-color-primary' key={index}>
-                            <div className='bg-color-primary p-2 rounded flex flex-col items-start mb-4'>
-                                <div>
-                                    <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
-                                        <span className='font-bold text-color-primary'>Season: {season?.attributes.number} - {season?.attributes?.title} ({season?.attributes?.episode_count} Episodes) <span className='text-sm font-normal italic text-red-300'>{season?.attributes?.episodes_available?.sponsor ? '[First Exclusive]' : ''}</span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
-                                        </span>
-                                    </Link>
-                                </div>
-                                <div>
-                                    <button
-                                        onClick={() => {
-                                            copyToClipboard(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
-                                            notify()
-                                        }}
-                                        className='p-1 text-color-secondary'>
-                                        RT Link: <span className='link-color-primary text-base'>https://roosterteeth.com/series/{season?.attributes.show_slug}?season={season?.attributes.number} </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} />
-                                    </button>
-                                </div>
-                                <div>
-                                    <button onClick={() => copyAllArchivedListPerSeason(season?.uuid)} className='p-1 text-color-secondary'>Download Archived copy: <span className='italic link-color-primary'>Get links to episodes of this season </span><FaRegCopy style={{ display: "inline", paddingBottom: "2px" }} /></button>
-                                </div>
-
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
+                    {showData?.data?.map((season, index) => {
+                        return (
+                            <div key={index}>
+                                <BrowseSeasonContainer
+                                    season={season}
+                                    showUuid={showUuid}
+                                    copyAllArchivedListPerSeason={copyAllArchivedListPerSeason}
+                                />
                             </div>
-                        </li>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
             <Toaster />
             <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {showData?.data.length}</div>

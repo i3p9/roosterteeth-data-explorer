@@ -91,8 +91,10 @@
         "episode_count": 13,
         "number": 99,
         "show_slug": "the-shisno-trilogy",
+        "show_id": "74380adc-64e7-4a4b-8461-cf295ff3ce77",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 13
       }
     }
   ]

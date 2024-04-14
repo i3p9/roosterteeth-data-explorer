@@ -37,8 +37,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "get-fact",
+        "show_id": "15bc310c-1048-4a7b-9bc6-ef2d2dcecc8c",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

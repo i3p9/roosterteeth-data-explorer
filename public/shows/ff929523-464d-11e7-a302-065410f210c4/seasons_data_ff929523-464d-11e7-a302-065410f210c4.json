@@ -64,8 +64,10 @@
         "episode_count": 3,
         "number": 99,
         "show_slug": "the-gauntlet",
+        "show_id": "ff929523-464d-11e7-a302-065410f210c4",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 3
       }
     }
   ]

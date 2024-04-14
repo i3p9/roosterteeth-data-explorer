@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "rooster-teeth-celebrates-20-years-of-making-fun",
+        "show_id": "f3ea0d70-1d4d-4731-b80e-7fda55672b95",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

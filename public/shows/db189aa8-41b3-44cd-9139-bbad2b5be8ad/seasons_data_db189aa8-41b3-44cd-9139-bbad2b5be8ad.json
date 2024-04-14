@@ -37,8 +37,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "the-weird-place",
+        "show_id": "db189aa8-41b3-44cd-9139-bbad2b5be8ad",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]

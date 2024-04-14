@@ -16,7 +16,7 @@
           "member": true,
           "public": true
         },
-        "episode_count": 32,
+        "episode_count": 33,
         "published_at": "2023-08-24T17:10:50.000Z"
       },
       "links": {
@@ -37,8 +37,10 @@
         "episode_count": 1,
         "number": 99,
         "show_slug": "hypothetical-nonsense",
+        "show_id": "f865721c-d160-4006-9488-410ee30e5cfa",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 1
       }
     }
   ]

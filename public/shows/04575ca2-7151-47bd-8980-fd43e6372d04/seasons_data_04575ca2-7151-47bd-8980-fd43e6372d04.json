@@ -64,8 +64,10 @@
         "episode_count": 2,
         "number": 99,
         "show_slug": "last-laugh",
+        "show_id": "04575ca2-7151-47bd-8980-fd43e6372d04",
         "has_bonus_content": true,
-        "show_title": "s"
+        "has_bonus_feature": true,
+        "bonus_feature_number": 2
       }
     }
   ]
