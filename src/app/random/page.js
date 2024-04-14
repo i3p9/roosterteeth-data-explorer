@@ -73,7 +73,8 @@ const RandomPage = () => {
 
     const getRandomEpisodeData = async () => {
         setLoading(true)
-        const result = await axios.get('/api/random', { params: { channel_id: selectedChannel.uuid } })
+        // const result = await axios.get('/api/random', { params: { channel_id: selectedChannel.uuid } })
+        const result = await getRandomEpisodes(selectedChannel.uuid);
         setEpisodes(result.data.documents)
         setLoading(false)
     }
