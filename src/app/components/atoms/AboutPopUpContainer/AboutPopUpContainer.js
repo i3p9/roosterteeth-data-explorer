@@ -21,7 +21,7 @@ const AboutPopUpContainer = () => {
 
     return (
         <>
-            <Popup trigger={<button className="button float-right"> <span className='text-sm font-normal italic'>what is it <FaRegQuestionCircle style={{ display: 'inline' }} /></span> </button>} modal>
+            <Popup trigger={<button className="button float-right"> <span className='text-sm font-normal italic'><FaRegQuestionCircle style={{ display: 'inline' }} /></span> </button>} modal>
                 <PopUpContent />
             </Popup>
         </>
