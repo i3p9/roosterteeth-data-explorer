@@ -3,7 +3,7 @@ import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants';
-import { getShowInfo, formatSecondToRunTime, truncateDescription, copyToClipboard } from '@/data/utils/utils';
+import { copyToClipboard } from '@/data/utils/utils';
 import { FaRegCopy } from "react-icons/fa6";
 import 'reactjs-popup/dist/index.css';
 import NavBar from '@/app/components/molecules/NavBar/NavBar';
@@ -13,6 +13,13 @@ import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/Download
 import { ArchivedBadge, BonusContentBadge, FirstBadge } from '@/app/components/atoms/Badges/Badges';
 import DownloadButton from '@/app/components/atoms/DownloadButton/DownloadButton';
 import axios from 'axios';
+import DataEpisodeContainer from '@/app/components/atoms/DataEpisodeContainer/DataEpisodeContainer';
+import DataEpisodeContainerSkeleton from '@/app/components/atoms/DataEpisodeContainer/DataEpisodeContainerSkeleton';
+import DisplayTitleMessage from '@/app/components/atoms/DisplayTitleMessage/DisplayTitleMessage';
+import { ButtonSkeleton } from '@/app/components/atoms/Skeleton/ButtonSkeleton/ButtonSkeleton';
+import SortSelector from '@/app/components/atoms/SortSelector/SortSelector';
+import { episodeSortOptions } from '@/data/utils/data';
+import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -28,6 +35,8 @@ function SeasonPage() {
     const [seasonNetworkError, setSeasonNetworkError] = useState(false)
     const [showInfoLoading, setShowInfoLoading] = useState(false)
     const [showInfoNetworkError, setShowInfoNetworkError] = useState(false)
+    const [selectedSortOption, setSelectedSortOption] = useState(episodeSortOptions[0])
+
 
 
     const notify = () => toast.success('Copied to clipboard!');
@@ -79,7 +88,7 @@ function SeasonPage() {
                 }
             } catch (error) {
                 console.error(error);
-                setSeasonLoading(false)
+                setShowInfoLoading(false)
                 setShowInfoLoading(true)
             } finally {
                 setShowInfoNetworkError(false)
@@ -103,7 +112,7 @@ function SeasonPage() {
 
     const copyAllLinks = () => {
         let links = []
-        seasonData?.data.map((episode) => {
+        seasonData?.map((episode) => {
             // links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
             if (episode?.archive) {
                 links.push(`https://archive.org/details/${episode?.archive.id}`)
@@ -121,86 +130,30 @@ function SeasonPage() {
                 title={pageTitle}
                 previousLink={`/show/${showUuid}`}
             />
-            {/* TODO: implement skeleton */}
-            {seasonLoading && <div>LOADING. please wait... (also wait for me to add a skeleton here)</div>}
-            {seasonNetworkError && <div>Network error, shoot</div>}
 
-            <div className='p-2'>
-                {seasonData &&
+            <div className='p-1 md:p-2'>
+                {seasonData ?
                     (
-                        <div className='flex'>
-                            <div>
-                                <button
-                                    className='italic button-primary p-1 mb-5'
-                                    onClick={() => {
-                                        copyAllLinks()
-                                        notify()
-                                    }}>
-                                    <FaRegCopy style={{ display: "inline" }} /> copy all archive links for downloading
-                                </button>
-                            </div>
-                            <div>
-                                <DownloadHelpPopUp />
-                            </div>
+                        <div className='flex flex-start'>
+                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            <PrimaryButton
+                                title={'copy all archive links for downloading'}
+                                onClickFunc={copyAllLinks}
+                                successToastMessage={'Copied to clipboard!'}
+                                startIcon={<FaRegCopy />}
+                            />
+                            <DownloadHelpPopUp />
                         </div>
-                    )
+                    ) : <ButtonSkeleton width={'72'} />
                 }
 
-                {seasonData?.map((episode, index) => {
-                    const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`
-                    return (
-                        <li key={index} className='p-2 text-color-primary'>
-                            <div className=' p-2 bg-color-primary rounded flex items-start'>
-                                <div className='flex items-center justify-center mr-2'>
-                                    <img
-                                        src={thumbnailUrl}
-                                        alt={`Episode Thumbnail for ${episode?.attributes.title}`}
-                                        className="mr-2 rounded"
-                                        width={190}
-                                        height={90}
-                                    />
-                                </div>
-                                <div className='p-1'>
-                                    <span className='font-bold'>
-                                        Episode: {episode?.attributes.number} - {episode?.attributes.title} <span className='text-sm italic text-red-300'>{episode?.attributes?.is_sponsors_only ? '[First Exclusive]' : ''}</span><span className='text-sm italic text-purple-300'>{episode?.attributes?.has_bonus_content ? '[Bonus Content]' : ''}</span>
-                                    </span>
-                                    <div>
-                                        <div className='text-color-secondary text-sm'>Air date: {episode?.attributes.original_air_date?.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
-                                        <p className='text-sm text-color-faded line-clamp-1'><span className='italic'></span>{episode?.attributes?.description ? truncateDescription(episode?.attributes?.description) : 'N/A'}</p>
-                                        <div className='flex gap-8 mt-1'>
-                                            <p className='text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}
-                                                <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://roosterteeth.com/watch/${episode?.attributes.slug}`}>
-                                                    Click here <GoLinkExternal style={{ display: 'inline' }} />
-                                                </Link>
-                                            </p>
-                                            <p className='text-xs font-medium text-color-faded'>Archive Link: {' '}
-                                                {episode?.archive ? (
-                                                    <>
-                                                        <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://archive.org/details/roosterteeth-${episode?.id}`}>
-                                                            Click here <GoLinkExternal style={{ display: 'inline' }} />
-                                                        </Link>
+                {seasonNetworkError && <DisplayTitleMessage message={'Something went wrong, please try again later.'} />}
 
-                                                    </>
-                                                ) : (<span className='text-blue-200 dark:text-blue-900'>N/A</span>)}
-                                            </p>
-                                        </div>
-                                        <div className='flex'>
-                                            {episode?.attributes.is_sponsors_only && <div><FirstBadge /></div>}
-                                            {episode?.type === "bonus_feature" && <div><BonusContentBadge /></div>}
-                                            {episode?.archive && <div><ArchivedBadge /></div>}
-                                            {episode?.archive && (
-                                                <DownloadButton downloadData={episode?.archive} minimal />
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    )
-                })}
+                <DataEpisodeContainer seasonData={seasonData} loading={seasonLoading} />
+
                 <Toaster />
                 <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {seasonData?.length}</div>
-            </div>
+            </div >
         </>
     )
 }

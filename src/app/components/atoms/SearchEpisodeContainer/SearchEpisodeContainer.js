@@ -15,7 +15,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
     const [showInfo, setShowInfo] = useState()
     const [showUuid, setShowUuid] = useState(episode?.attributes.show_id)
     const channelInfo = channels.filter((channel) => channel.uuid === episode?.attributes.channel_id)
-    const episodeId = `roosterteeth-${episode?.id}`
+    const episodeId = `${episode?.id}`
 
 
     const fetchShowInfo = async () => {

@@ -7,6 +7,7 @@ import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, 
 import { FaRegCopy } from "react-icons/fa6";
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
+import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
 
 
 const baseUrl = config.url.BASE_URL;
@@ -100,7 +101,6 @@ function ShowPage() {
     useEffect(() => {
         if (clipBoard.copied) {
             copyToClipboard(clipBoard.value)
-            notify()
         }
     }, [clipBoard])
 
@@ -112,23 +112,23 @@ function ShowPage() {
             />
             {/* add a loading skeleton here */}
             {/* and change this awful copy all links button */}
-            <div className='p-2'>
-                {showData && <p>
-                    <button className='italic button-primary p-1 mb-5' onClick={() => {
-                        copyAllRTSeasonLinks()
-                        notify()
-                    }}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all rt links
-                    </button>
-                    <button className='italic button-primary p-1 mb-5 ml-1' onClick={() => {
-                        copyAllArchivedListPerShow()
-                    }}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all archived links
-                    </button>
-
-                </p>
+            <div className=''>
+                {showData && <div className='flex'>
+                    <PrimaryButton
+                        title='copy all rt links'
+                        successToastMessage='Copied to clipboard!'
+                        onClickFunc={copyAllRTSeasonLinks}
+                        startIcon={<FaRegCopy />}
+                    />
+                    <PrimaryButton
+                        title='copy all archived links'
+                        successToastMessage='Copied to clipboard!'
+                        onClickFunc={copyAllArchivedListPerShow}
+                        startIcon={<FaRegCopy />}
+                    />
+                </div>
                 }
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
+                <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
                     {showData?.data?.map((season, index) => {
                         return (
                             <div key={index}>
