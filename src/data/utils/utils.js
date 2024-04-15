@@ -173,3 +173,17 @@ export const getArchivedPercentageBySeasonId = async (showId, seasonId) => {
         return 0
     }
 }
+
+
+export const extractEpisodeInfoFromIAItemName = (str) => {
+    const regex = /^(?:roosterteeth-)?(\d+)(-bonus)?$/; // Updated regex pattern with optional "roosterteeth-" prefix
+    const match = str.match(regex); // Match the string against the regex pattern
+
+    if (match) {
+        const numericValue = parseInt(match[1]); // Extract numeric value from the first capturing group
+        const hasBonus = match[2] !== undefined; // Check if "-bonus" exists and set hasBonus accordingly
+        return { numericValue, hasBonus };
+    } else {
+        return { numericValue: null, hasBonus: false }; // Return default values if no match is found
+    }
+};

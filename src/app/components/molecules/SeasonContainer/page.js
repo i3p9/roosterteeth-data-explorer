@@ -3,55 +3,97 @@ import React, { useEffect, useState } from "react"
 import { config } from "@/app/Constants";
 import { formatSecondToRunTime } from "@/data/utils/utils";
 import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
+import axios from "axios";
 
 const baseUrl = config.url.BASE_URL;
 
+const SkeletonLoader = () => {
+    return (
+        <div className="flex flex-col">
+            <div className="aspect-video overflow-hidden rounded-lg object-cover-w-full mb-1">
+                <div className="bg-gray-300 animate-pulse w-full h-40"></div>
+            </div>
+            <div className="animate-pulse bg-gray-300 h-5 w-4/5 rounded"></div>
+            <div className="animate-pulse bg-gray-300 h-3 w-3/5 rounded mt-1"></div>
+            <div className="animate-pulse bg-gray-300 h-3 w-2/5 rounded mt-1"></div>
+        </div>
+    );
+};
+
+
 const SeasonContainer = (props) => {
-    const { seasonUuid, showUuid } = props
+    const { seasonUuid, showUuid, selectedSortOption } = props
     const [seasonData, setSeasonData] = useState()
-    const [showInfo, setShowInfo] = useState('')
+    const [seasonLoading, setSeasonLoading] = useState(false)
+    const [seasonNetworkError, setSeasonNetworkError] = useState(false)
 
 
     useEffect(() => {
-        const fetchSeasonData = async () => {
-            try {
-                const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
-                const data = await response.json();
-                setSeasonData(data);
-            } catch (error) {
-                console.error('Error loading transcript data:', error);
-            }
-        };
+        // const fetchSeasonData = async () => {
+        //     try {
+        //         const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
+        //         const data = await response.json();
+        //         setSeasonData(data)
+        //     } catch (error) {
+        //         console.error('Error loading transcript data:', error);
+        //     } finally {
+        //         console.log('all loaded up bitches');
+        //     }
+        // };
 
-        const fetchShowInfo = async () => {
+        const fetchSeasonDataNext = async () => {
             try {
-                const response = await getShowInfo(showUuid)
-                setShowInfo(response)
+                setSeasonLoading(true)
+                const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid, show_id: showUuid, request_origin: 'season' } })
+                if (response) {
+                    setSeasonData(response.data.documents)
+                }
             } catch (error) {
-                console.error('Error loading transcript data:', error);
+                console.error(error);
+                setSeasonLoading(false)
+                setSeasonNetworkError(true)
+            } finally {
+                setSeasonNetworkError(false)
+                setSeasonLoading(false)
             }
         }
 
+
         if (seasonUuid) {
-            fetchSeasonData();
-            fetchShowInfo();
+            //fetchSeasonData();
+            fetchSeasonDataNext()
         }
         //eslint-disable-next-line
     }, [seasonUuid])
 
-    console.log('season Data: ', seasonData?.data.toReversed());
+    console.log('season data new: ', seasonData);
+
+    if (seasonLoading) {
+        return (
+            <>
+                <div className="container mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
+                        {[...Array(20)].map((_, index) => (
+                            <SkeletonLoader key={index} />
+                        ))}
+                    </div>
+                </div>
+            </>
+        )
+    }
 
     return (
         <>
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
-                    {seasonData?.data.toReversed().map((episode, index) => {
-                        return (
-                            <>
-                                <SeasonEpisodeContainer episode={episode} />
-                            </>
-                        )
-                    })}
+                    {selectedSortOption.value === 'new'
+                        ? seasonData?.toReversed().map((episode, index) => (
+                            <SeasonEpisodeContainer key={episode.id} episode={episode} />
+                        ))
+                        : seasonData?.map((episode, index) => (
+                            <SeasonEpisodeContainer key={episode.id} episode={episode} />
+                        ))
+                    }
                 </div>
             </div>
         </>

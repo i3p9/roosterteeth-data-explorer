@@ -290,3 +290,14 @@ export const sortFilterOptions = [
         id: "alphabetically"
     },
 ]
+
+export const episodeSortOptions = [
+    {
+        title: 'Newest First',
+        value: 'new'
+    },
+    {
+        title: 'Oldest First',
+        value: 'old'
+    }
+]
