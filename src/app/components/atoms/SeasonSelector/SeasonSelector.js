@@ -9,9 +9,6 @@ function classNames(...classes) {
 export default function SeasonSelector(props) {
     const { data, selected, setSelected } = props
 
-    console.log('selected: ', selected);
-    console.log('data in selector: ', data);
-
     return (
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (

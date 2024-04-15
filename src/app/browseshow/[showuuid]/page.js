@@ -5,9 +5,8 @@ import { useEffect, useState } from "react"
 import { config } from '@/app/Constants'
 import NavBar from "@/app/components/molecules/NavBar/NavBar"
 import { getShowInfo, makeTitle } from "@/data/utils/utils"
-import SeasonContainer from "@/app/components/molecules/SeasonContainer/page"
+import SeasonContainer from "@/app/components/molecules/SeasonContainer/SeasonContainer"
 import { motion } from "framer-motion"
-import ChannelSelector from "@/app/components/atoms/ChannelSelector/ChannelSelector"
 import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector"
 import SortSelector from "@/app/components/atoms/SortSelector/SortSelector"
 import { episodeSortOptions } from "@/data/utils/data"
@@ -20,7 +19,6 @@ const BrowseShows = () => {
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
-    const notify = () => toast.success('Copied to clipboard!');
 
     const [selectedSeason, setSelectedSeason] = useState({})
     const [selectedSortOption, setSelectedSortOption] = useState(episodeSortOptions[0])

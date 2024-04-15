@@ -1,11 +1,7 @@
 'use client'
 import React, { useEffect, useState } from "react"
-import { config } from "@/app/Constants";
-import { formatSecondToRunTime } from "@/data/utils/utils";
 import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
 import axios from "axios";
-
-const baseUrl = config.url.BASE_URL;
 
 const SkeletonLoader = () => {
     return (
@@ -65,8 +61,6 @@ const SeasonContainer = (props) => {
         }
         //eslint-disable-next-line
     }, [seasonUuid])
-
-    console.log('season data new: ', seasonData);
 
     if (seasonLoading) {
         return (
