@@ -20,17 +20,6 @@ const SearchPage = () => {
     const runSearch = (selectedChannel, searchTerm, limit) => {
         setLoading(true)
         const channelKey = selectedChannel === 'all-channels' ? 'all' : selectedChannel
-        //serverless config
-        // let config = {
-        //     method: 'GET',
-        //     maxBodyLength: Infinity,
-        //     url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
-        //     headers: {
-        //         'Accept': 'application/json, text/plain, */*'
-        //     }
-        // };
-
-        //base config
         let config = {
             method: 'GET',
             url: `/api/v1/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
@@ -61,7 +50,8 @@ const SearchPage = () => {
                 runSearch={runSearch}
                 loading={loading}
             />
-            {loading ? <SearchResultSkeleton /> : <SearchResultContainer data={searchResult} />}
+            {/* TODO: fix mobile layout of skeleton and episode container */}
+            <SearchResultContainer data={searchResult} loading={loading} />
             {searchResult?.length === 0 && <DisplayTitleMessage message="No results found. Try again later." />}
             {networkError && <DisplayTitleMessage message="Something went wrong. Try again later." />}
         </>
