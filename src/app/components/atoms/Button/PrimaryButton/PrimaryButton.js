@@ -3,7 +3,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import PropTypes from 'prop-types'
 
 
-const PrimaryButton = ({ title, successToastMessage, failedToastMessage, onClickFunc, startIcon, endIcon }) => {
+const PrimaryButton = ({ title, shortTitle, successToastMessage, failedToastMessage, onClickFunc, startIcon, endIcon }) => {
 
     const handleOnClick = () => {
         onClickFunc()
@@ -18,11 +18,17 @@ const PrimaryButton = ({ title, successToastMessage, failedToastMessage, onClick
             <div className='m-2 relative border font-semibold rounded-md border-color-primary'>
                 <button
                     className='relative w-full button-styled text-color-primary bg-color-primary py-1.5 px-3 shadow-sm'
-                    onClick={() => handleOnClick()}>
+                    onClick={() => handleOnClick()}
+                >
                     {startIcon && React.cloneElement(startIcon, { style: { display: "inline", marginRight: "0.5rem" } })}
-                    {title}
+                    {shortTitle ? (
+                        <>
+                            <span className='hidden md:block md:inline'>{title}</span><span className='block md:hidden inline'>{shortTitle}</span>
+                        </>
+                    ) : (
+                        <span className='inline'>{title}</span>
+                    )}
                     {endIcon && React.cloneElement(endIcon, { style: { display: "inline", marginLeft: "0.5rem" } })}
-
                 </button>
             </div>
             <Toaster />
@@ -32,6 +38,7 @@ const PrimaryButton = ({ title, successToastMessage, failedToastMessage, onClick
 
 PrimaryButton.propTypes = {
     title: PropTypes.string,
+    shortTitle: PropTypes.string,
     onClickFunc: PropTypes.func,
     successToastMessage: PropTypes.string,
     failedToastMessage: PropTypes.string,

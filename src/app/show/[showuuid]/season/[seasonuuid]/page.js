@@ -138,6 +138,7 @@ function SeasonPage() {
                             <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
                             <PrimaryButton
                                 title={'copy all archive links for downloading'}
+                                shortTitle={'archive links'}
                                 onClickFunc={copyAllLinks}
                                 successToastMessage={'Copied to clipboard!'}
                                 startIcon={<FaRegCopy />}
