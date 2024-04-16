@@ -50,12 +50,13 @@ const DataEpisodeContainer = ({ seasonData, loading }) => {
                                     )}
                                 </div>
                                 <div className='p-1 w-8/12 md:w-10/12'>
-                                    <span className='font-semibold text-md'>
-                                        {episode?.attributes.title}
-                                    </span>
                                     <div>
-                                        <div className='text-color-secondary text-sm'>Air date: {episode?.attributes.original_air_date?.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
-                                        <p className='hidden md:block text-sm text-color-faded line-clamp-1'>{episode?.attributes?.description ? episode?.attributes?.description : 'N/A'}</p>
+                                        <div className='font-semibold text-xs md:text-lg leading-1 line-clamp-2'>
+                                            {episode?.attributes.title}
+                                        </div>
+                                        <div className='hidden md:block text-color-secondary text-xs md:text-sm'>Air date: {episode?.attributes.original_air_date?.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
+                                        <div className='block md:hidden text-color-secondary text-xs'>{episode?.attributes.original_air_date?.split('T')[0]} • {formatSecondToRunTime(episode?.attributes.length)}</div>
+                                        <p className='md:line-clamp-1 hidden text-sm text-color-faded '>{episode?.attributes?.description ? episode?.attributes?.description : 'N/A'}</p>
                                         <div className='flex gap-8 mt-1'>
                                             <p className='hidden md:block text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}
                                                 <Link className="text-xs font-medium link-color-primary" target='_blank' href={`https://roosterteeth.com/watch/${episode?.attributes.slug}`}>
