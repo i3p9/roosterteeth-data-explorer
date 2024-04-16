@@ -135,7 +135,9 @@ function SeasonPage() {
                 {seasonData ?
                     (
                         <div className='flex flex-start'>
-                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            <div className='m-2'>
+                                <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            </div>
                             <PrimaryButton
                                 title={'copy all archive links for downloading'}
                                 shortTitle={'archive links'}

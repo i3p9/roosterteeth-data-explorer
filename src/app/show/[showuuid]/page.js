@@ -112,7 +112,7 @@ function ShowPage() {
             />
             {/* add a loading skeleton here */}
             {/* and change this awful copy all links button */}
-            <div className=''>
+            <div className='p-1 md:p-2'>
                 {showData && <div className='flex'>
                     <PrimaryButton
                         title='copy all rt links'

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
 import axios from "axios";
+import SeasonEpisodeSkeleton from "../../atoms/Skeleton/SeasonEpisodeSkeleton/SeasonEpisodeSkeleton";
 
 const SkeletonLoader = () => {
     return (
@@ -52,9 +53,9 @@ const SeasonContainer = (props) => {
         return (
             <>
                 <div className="container mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
                         {[...Array(20)].map((_, index) => (
-                            <SkeletonLoader key={index} />
+                            <SeasonEpisodeSkeleton key={index} />
                         ))}
                     </div>
                 </div>
@@ -65,7 +66,7 @@ const SeasonContainer = (props) => {
     return (
         <>
             <div className="container mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
                     {selectedSortOption.value === 'new'
                         ? seasonData?.toReversed().map((episode, index) => (
                             <SeasonEpisodeContainer key={episode.id} episode={episode} />

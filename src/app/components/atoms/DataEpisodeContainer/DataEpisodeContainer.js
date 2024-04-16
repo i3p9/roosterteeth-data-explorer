@@ -3,7 +3,7 @@ import { ArchivedBadge, BonusContentBadge, FirstBadge } from "../Badges/Badges";
 import DownloadButton from "../DownloadButton/DownloadButton";
 import { GoLinkExternal } from "react-icons/go";
 import Link from "next/link";
-import { formatSecondToRunTime } from "@/data/utils/utils";
+import { formatSecondToRunTime, formatSecondsToDuration } from "@/data/utils/utils";
 import DataEpisodeContainerSkeleton from "./DataEpisodeContainerSkeleton";
 
 const DataEpisodeContainer = ({ seasonData, loading }) => {
@@ -28,9 +28,10 @@ const DataEpisodeContainer = ({ seasonData, loading }) => {
                     <div key={index}>
                         <li className='p-1 text-color-primary'>
                             <div className=' p-2 bg-color-primary rounded flex items-start'>
-                                <div className='self-center mr-2 2-4/12 md:w-2/12'>
+                                <div className='self-center relative mr-2 2-4/12 md:w-2/12'>
                                     {episode.archive ? (
                                         <Link href={`/watch/${episode.id}`}>
+
                                             <img
                                                 src={thumbnailUrl}
                                                 alt={`Episode Thumbnail for ${episode?.attributes.title}`}
@@ -38,6 +39,10 @@ const DataEpisodeContainer = ({ seasonData, loading }) => {
                                                 width={190}
                                                 height={90}
                                             />
+                                            <div className="absolute bottom-1 left-1 bg-zinc-900/80 text-white px-2 py-1 rounded-lg text-xs">
+                                                {formatSecondsToDuration(episode?.attributes?.length)}
+                                            </div>
+
                                         </Link>
                                     ) : (
                                         <img
@@ -55,7 +60,7 @@ const DataEpisodeContainer = ({ seasonData, loading }) => {
                                             {episode?.attributes.title}
                                         </div>
                                         <div className='hidden md:block text-color-secondary text-xs md:text-sm'>Air date: {episode?.attributes.original_air_date?.split('T')[0]} | Runtime: {formatSecondToRunTime(episode?.attributes.length)}</div>
-                                        <div className='block md:hidden text-color-secondary text-xs'>{episode?.attributes.original_air_date?.split('T')[0]} • {formatSecondToRunTime(episode?.attributes.length)}</div>
+                                        <div className='block md:hidden text-color-secondary text-xs'>{episode?.attributes.original_air_date?.split('T')[0]}</div>
                                         <p className='md:line-clamp-1 hidden text-sm text-color-faded '>{episode?.attributes?.description ? episode?.attributes?.description : 'N/A'}</p>
                                         <div className='flex gap-8 mt-1'>
                                             <p className='hidden md:block text-xs font-medium text-color-faded'>RoosterTeeth Link: {' '}

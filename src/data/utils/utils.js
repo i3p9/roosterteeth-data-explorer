@@ -29,6 +29,33 @@ export function formatSecondToRunTime(seconds) {
     return result === '0s' ? 'N/A' : result.trim();
 }
 
+export function formatSecondsToDuration(seconds) {
+    if (seconds < 0) {
+        return "Invalid input";
+    }
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    let result = "";
+
+    if (hours < 0 || minutes < 0) {
+        result = `00:${remainingSeconds.toString().padStart(2, "0")}`;
+    }
+
+    if (hours < 0 || minutes > 0) {
+        result = `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`
+    }
+
+    if (hours > 0) {
+        result = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`
+    }
+
+    return result.trim();
+}
+
+
 
 export const sanitizeInput = (input) => {
     var pattern = /[^a-zA-Z0-9\s]/g;

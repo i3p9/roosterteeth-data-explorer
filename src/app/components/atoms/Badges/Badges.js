@@ -1,6 +1,11 @@
 export const FirstBadge = () => {
     return <span className="p-2 bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">First</span>
 }
+
+export const FirstBadgeOnPoster = () => {
+    return <span className="p-2 bg-red-500 text-zinc-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded">First</span>
+}
+
 export const BonusContentBadge = () => {
     return <span className="p-2 bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">Bonus</span>
 }

@@ -66,19 +66,24 @@ const BrowseShows = () => {
         <>
             <NavBar
                 previousLink={`/browse`}
-                title={`Browsing: ${showData && makeTitle(showData?.data[0].attributes.show_slug)}`} />
-            <div className="m-2">
-                {showData && selectedSeason && (
-                    <div className="flex gap-1">
-                        <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
-                        <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
-                    </div>)
-                }
-                <motion.div
-                    transition={{ duration: 0.5, type: 'spring', stiffness: 100, delay: 0.5 }}
-                >
-                    <SeasonContainer seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
-                </motion.div>
+                title={`${showData && makeTitle(showData?.data[0].attributes.show_slug)}`} />
+            <div className="p-1 md:p-2">
+                <div className="m-2">
+                    {showData && selectedSeason && (
+                        <div className="flex gap-1">
+                            <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
+                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                        </div>)
+                    }
+                </div>
+
+                <div>
+                    <motion.div
+                        transition={{ duration: 0.5, type: 'spring', stiffness: 100, delay: 0.5 }}
+                    >
+                        <SeasonContainer seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
+                    </motion.div>
+                </div>
             </div>
         </>
     )

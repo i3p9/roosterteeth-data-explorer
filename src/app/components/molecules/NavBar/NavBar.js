@@ -44,7 +44,7 @@ const AdditionalMenuComponent = ({ pathname }) => {
                 }
                 return (
                     <Link key={index} href={menu.path}>
-                        <button className="text-base font-light border-b border-color-primary ml-4 hidden sm:inline-block">
+                        <button className="text-base stretch-90 font-medium border-b border-color-primary ml-4 hidden sm:inline-block">
                             {menu.title}
                         </button>
                     </Link>
@@ -58,7 +58,7 @@ const AdditionalMenuComponent = ({ pathname }) => {
 const NavBar = ({ title, previousLink, renderAdditionalMenu = false }) => {
     const pathname = usePathname()
     return (
-        <h1 className='font-bold text-xl text-color-primary p-2 border-b-2 border-color-primary'>
+        <h1 className='font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary'>
             {previousLink && <Link href={previousLink} className='font-black text-color-primary text-xl p2'>
                 <IoMdArrowBack size={"1.5em"} style={{ display: 'inline' }} />
             </Link>}

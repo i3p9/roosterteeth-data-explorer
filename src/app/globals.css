@@ -12,7 +12,7 @@
   .text-color-faded {
     @apply text-zinc-500 dark:text-zinc-500;
   }
-  .text-color-reversed {
+  .text-color-reverse {
     @apply text-zinc-50 dark:text-zinc-900;
   }
   .text-color-primary-hover {
@@ -27,11 +27,11 @@
   .bg-color-reverse {
     @apply bg-zinc-800 dark:bg-zinc-200;
   }
-  .bg-color-hover-2 {
-    @apply bg-zinc-400 dark:bg-zinc-200;
-  }
   .bg-color-hover {
     @apply hover:bg-zinc-200 dark:hover:bg-zinc-800;
+  }
+  .bg-color-hover-2 {
+    @apply bg-zinc-400 dark:bg-zinc-200;
   }
   .border-color-primary {
     @apply border-zinc-900 dark:border-zinc-100;
@@ -57,6 +57,21 @@
 
   .button-styled {
     @apply rounded-md text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800;
+  }
+}
+
+@layer utilities {
+  .stretch-75 {
+    font-stretch: 75%;
+  }
+  .stretch-90 {
+    font-stretch: 90%;
+  }
+  .stretch-110 {
+    font-stretch: 110%;
+  }
+  .stretch-125 {
+    font-stretch: 125%;
   }
 }
 

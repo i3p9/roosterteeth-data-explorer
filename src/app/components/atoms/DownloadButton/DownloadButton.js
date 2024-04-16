@@ -47,7 +47,7 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                                                 {({ active }) => (
                                                     <button
                                                         onClick={() => download(file.name)}
-                                                        className={`${active ? 'bg-color-reverse text-color-reversed' : 'text-color-primary'
+                                                        className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
                                                             } group flex w-full justify-between rounded-md px-1 py-1 text-sm`}
                                                     >
                                                         <div className=''>
@@ -107,7 +107,7 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                                                     {({ active }) => (
                                                         <button
                                                             onClick={() => download(file.name)}
-                                                            className={`${active ? 'bg-color-reverse text-color-reversed' : 'text-color-primary'
+                                                            className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
                                                                 } group flex w-full justify-between rounded-md px-2 py-2 text-sm`}
                                                         >
                                                             <div className=''>

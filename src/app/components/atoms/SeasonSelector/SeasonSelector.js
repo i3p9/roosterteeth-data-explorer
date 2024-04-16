@@ -12,7 +12,7 @@ export default function SeasonSelector(props) {
     return (
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
-                <div className='m-2'>
+                <div className=''>
                     <div className="relative border font-bold rounded-md border-color-primary w-36">
                         <Listbox.Button
                             className={`relative w-full cursor-default rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm focus:outline-none sm:leading-6 leading-6'}`}>
@@ -42,7 +42,7 @@ export default function SeasonSelector(props) {
                                         key={season.uuid}
                                         className={({ active }) =>
                                             classNames(
-                                                active ? 'bg-color-hover-2 text-color-primary' : 'text-color-primary',
+                                                active ? 'bg-color-hover-2 text-color-reverse' : 'text-color-primary',
                                                 'relative cursor-default select-none p-2'
                                             )
                                         }
@@ -62,7 +62,7 @@ export default function SeasonSelector(props) {
                                                 {selected ? (
                                                     <span
                                                         className={classNames(
-                                                            active ? 'text-color-primary' : 'text-color-reversed',
+                                                            active ? 'text-color-primary' : 'text-color-reverse',
                                                             'absolute inset-y-0 right-0 flex items-center pr-4'
                                                         )}
                                                     >

@@ -7,6 +7,7 @@ import Link from "next/link"
 import InfiniteScroll from "react-infinite-scroll-component"
 import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector"
 import Fuse from "fuse.js";
+import { FirstBadge, FirstBadgeOnPoster } from "../components/atoms/Badges/Badges";
 
 const BrowseAllShows = () => {
     const masterShowData = masterList.data
@@ -160,13 +161,33 @@ const BrowseAllShows = () => {
                     <div key={index} className="relative">
                         <div className="relative">
                             <img
-                                className="h-auto max-w-full rounded-lg"
+                                className="hidden md:block h-auto max-w-full rounded-lg"
                                 src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card.jpg`}
                                 alt=""
                             />
+                            <img
+                                className="block md:hidden h-auto max-w-full rounded-lg"
+                                src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster.jpg`}
+                                alt=""
+                            />
+
                             <Link href={`/browseshow/${item?.uuid}`}>
                                 <div
-                                    className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
+                                    className="absolute bottom-1 left-1 rounded-lg text-xs">
+                                    {item?.attributes.is_sponsors_only ? <FirstBadgeOnPoster /> : ''}
+                                </div>
+
+                                <div
+                                    className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                                    <div >
+                                        <span className="bg-zinc-900 text-sm stretch-90 text-zinc-50 rounded-br-lg px-2 py-1">
+                                            {item?.attributes.title}
+                                        </span>
+                                    </div>
+                                    <span className="bg-zinc-900 text-xs pt-2 stretch-90 text-zinc-300 rounded-br-lg px-2 py-1">
+                                        <span>{item?.attributes.season_count} Seasons</span>
+                                    </span>
+                                </div>
                             </Link>
                         </div>
                     </div>
