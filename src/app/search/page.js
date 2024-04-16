@@ -9,7 +9,7 @@ import DisplayTitleMessage from "../components/atoms/DisplayTitleMessage/Display
 import NavBar from "../components/molecules/NavBar/NavBar";
 import { sanitizeInput } from "@/data/utils/utils";
 import { channelsWithAllAsOption } from "@/data/utils/data";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import SearchBarNew from "../components/molecules/SearchBarNew/SearchBarNew";
 
 const BASE_API_URL = config.url.API_URL
@@ -17,7 +17,6 @@ const BASE_API_URL = config.url.API_URL
 
 const SearchPage = () => {
     const router = useRouter()
-    const params = useSearchParams()
 
     const [loading, setLoading] = useState(false)
     const [networkError, setNetworkError] = useState(false)
@@ -67,9 +66,33 @@ const SearchPage = () => {
             });
     }
 
+    // useEffect(() => {
+    //     const searchQ = params.get('q');
+    //     const slugFilter = params.get('filter');
+
+    //     if (searchQ && slugFilter) {
+    //         console.log('has search+filter query: ', searchQ, slugFilter);
+    //         setSearchTerm(decodeURIComponent(searchQ));
+    //         setSelectedChannel(channelsWithAllAsOption.find(channel => channel.slug === decodeURIComponent(slugFilter)));
+    //         runSearch(slugFilter, searchQ, 10);
+    //     } else if (searchQ) {
+    //         console.log('has only search query: ', searchQ);
+    //         setSearchTerm(decodeURIComponent(searchQ));
+    //         runSearch(selectedChannel.slug, decodeURIComponent(searchQ), 10);
+    //     } else if (slugFilter) {
+    //         console.log('has only channel filter in url: ', slugFilter);
+    //         setSelectedChannel(channelsWithAllAsOption.find(channel => channel.slug === decodeURIComponent(slugFilter)));
+    //         // runSearch(slugFilter, '', 10);
+    //     }
+    // }, [params]);
+
     useEffect(() => {
-        const searchQ = params.get('q');
-        const slugFilter = params.get('filter');
+        const paramsNew = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+        console.log('new params: ', paramsNew);
+        const searchQ = paramsNew.q;
+        const slugFilter = paramsNew.filter;
 
         if (searchQ && slugFilter) {
             console.log('has search+filter query: ', searchQ, slugFilter);
@@ -85,7 +108,9 @@ const SearchPage = () => {
             setSelectedChannel(channelsWithAllAsOption.find(channel => channel.slug === decodeURIComponent(slugFilter)));
             // runSearch(slugFilter, '', 10);
         }
-    }, [params]);
+        //eslint-disable-next-line
+    }, [])
+
 
     return (
         <>
