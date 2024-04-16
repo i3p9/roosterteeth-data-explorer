@@ -3,7 +3,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from 'prop-types';
-import ThemeToggle from "../../atoms/ThemeToggle/ThemeToggle";
 
 const additionalMenu = [
     {
@@ -65,7 +64,6 @@ const NavBar = ({ title, previousLink, renderAdditionalMenu = false }) => {
             </Link>}
             {title}
             {renderAdditionalMenu && <AdditionalMenuComponent pathname={pathname} />}
-            {/* <ThemeToggle /> */}
             <AboutPopUpContainer />
         </h1>
 

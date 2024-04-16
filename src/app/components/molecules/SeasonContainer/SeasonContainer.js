@@ -25,18 +25,6 @@ const SeasonContainer = (props) => {
 
 
     useEffect(() => {
-        // const fetchSeasonData = async () => {
-        //     try {
-        //         const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
-        //         const data = await response.json();
-        //         setSeasonData(data)
-        //     } catch (error) {
-        //         console.error('Error loading transcript data:', error);
-        //     } finally {
-        //         console.log('all loaded up bitches');
-        //     }
-        // };
-
         const fetchSeasonDataNext = async () => {
             try {
                 setSeasonLoading(true)
@@ -54,9 +42,7 @@ const SeasonContainer = (props) => {
             }
         }
 
-
         if (seasonUuid) {
-            //fetchSeasonData();
             fetchSeasonDataNext()
         }
         //eslint-disable-next-line

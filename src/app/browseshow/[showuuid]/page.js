@@ -33,7 +33,6 @@ const BrowseShows = () => {
                 const data = await response.json();
                 const reversedData = [...data.data].reverse()
                 setShowData({ ...data, data: reversedData });
-                // setSelectedSeason(data.data[0].uuid)
                 setSelectedSeason(data.data[0])
                 setLoading(false);
             } catch (error) {
@@ -55,14 +54,6 @@ const BrowseShows = () => {
             fetchShowInfo();
         }
     }, [showUuid])
-
-    // useEffect(() => {
-    //     if (showData) {
-    //         setSelectedSeasonNext(showData.data[0])
-    //     }
-
-    // }, [showData])
-
 
     useEffect(() => {
         setShowUuid(params.showuuid)
