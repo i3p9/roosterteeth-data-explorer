@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-stone-100 dark:bg-neutral-900`}>
         <Theme>
-          <div className="container mx-auto px-4 py-2">
+          <div className="container mx-auto px-2 md:px-4 py-2">
             {children}
           </div>
         </Theme>

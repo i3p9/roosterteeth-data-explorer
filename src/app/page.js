@@ -51,24 +51,10 @@ export default function Home() {
 
   return (
     <>
-      <NavBar title={"List of all shows from roosterteeth.com"} />
+      <NavBar title={"rt-archive"} renderAdditionalMenu />
       <div className='p-2'>
-        {/* <div className="hidden md:block">
-          <OptionsForm
-            data={firstOrNoOptions}
-            header={'Filter by First Exclusive'}
-            value={exclusiveFilterValue}
-            setValue={setExclusiveFilterValue}
-          />
-          <OptionsForm
-            data={channelsWithAllAsOption}
-            header={'Filter by Channels'}
-            value={channelFilterValue}
-            setValue={setChannelFilterValue}
-          />
-        </div> */}
         <div className=" my-4 flex flex-col md:flex-row gap-2 md:gap-4">
-          <div className="basis-3/5">
+          <div className="basis-1/5">
             <ChannelSelector
               channels={channelsWithAllAsOption}
               selected={channelFilterValue}
@@ -95,14 +81,14 @@ export default function Home() {
               nolabel
             />
           </div>
-          <div>
+          <div className="basis-2/5">
             <input
               type="search"
               id="search-bar"
               key="search-bar"
               onChange={(event) => setSearchTerm(event.target.value)}
               className="block w-full p-2 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500"
-              placeholder="Filter..."
+              placeholder="Search..."
             >
             </input>
           </div>
