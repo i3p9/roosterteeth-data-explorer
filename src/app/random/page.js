@@ -8,14 +8,15 @@ import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector
 import Popup from "reactjs-popup"
 import Link from "next/link"
 import dynamic from 'next/dynamic'
+import axios from "axios"
 const Wheel = dynamic(() => import('react-custom-roulette').then(mod => mod.Wheel), { ssr: false })
 
 
 const WheelSkeleton = () => {
     return (
         <>
-            <div role="status" class="mt-4 space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
-                <div class="flex items-center ml-10 md:ml-0 w-[300px] h-[300px] md:w-[445px] md:h-[445px] justify-center bg-gray-300 rounded-full dark:bg-gray-700">
+            <div role="status" className="mt-4 space-y-8 animate-pulse md:space-y-0 md:space-x-8 rtl:space-x-reverse md:flex md:items-center">
+                <div className="flex items-center ml-10 md:ml-0 w-[300px] h-[300px] md:w-[445px] md:h-[445px] justify-center bg-gray-300 rounded-full dark:bg-gray-700">
                 </div>
             </div>
         </>
@@ -72,13 +73,16 @@ const RandomPage = () => {
 
     const getRandomEpisodeData = async () => {
         setLoading(true)
+        // const result = await axios.get('/api/random', { params: { channel_id: selectedChannel.uuid } })
         const result = await getRandomEpisodes(selectedChannel.uuid);
         setEpisodes(result.data.documents)
         setLoading(false)
     }
 
     useEffect(() => {
-        getRandomEpisodeData()
+        if (selectedChannel) {
+            getRandomEpisodeData()
+        }
         //eslint-disable-next-line
     }, [selectedChannel])
 

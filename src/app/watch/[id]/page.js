@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react"
 import NavBar from "../../components/molecules/NavBar/NavBar"
 import { useParams, useSearchParams } from "next/navigation"
-import { getSingleEpisodeByUuid } from "@/data/utils/api"
+import { getSingleEpisode, getSingleEpisodeByUuid } from "@/data/utils/api"
 import { formatSecondToRunTime, makeTitle } from "@/data/utils/utils"
 import Link from "next/link"
 import PlayerSkeleton from "@/app/components/atoms/Skeleton/PlayerSkeleton/PlayerSkeleton"
 import DownloadButton from "@/app/components/atoms/DownloadButton/DownloadButton"
+import axios from "axios"
 
 const WatchEpisodePage = () => {
     const params = useParams()
@@ -14,22 +15,39 @@ const WatchEpisodePage = () => {
     const episodeUuid = searchParams.get('uuid')
     const [iframeLoaded, setIframeLoaded] = useState(false);
     const [episode, setEpisode] = useState()
+    const [episodeNext, setEpisodeNext] = useState()
+
     const [downloadData, setDownloadData] = useState({})
 
     const handleIframeLoad = () => {
         setIframeLoaded(true);
     };
 
-    const getEpisodeData = async () => {
-        const result = await getSingleEpisodeByUuid(episodeUuid);
-        setEpisode(result.data.documents[0])
-        setDownloadData(result.data.documents[0].archive)
+    // const getEpisodeData = async () => {
+    //     const result = await getSingleEpisodeByUuid(episodeUuid);
+    //     setEpisode(result.data.documents[0])
+    //     setDownloadData(result.data.documents[0].archive)
+    // }
+
+
+
+    const getEpisodeDataNext = async () => {
+        try {
+            const response = await axios.get(`/api/v1/episode/${episodeUuid}`);
+            if (response.data.documents) {
+                setEpisode(response.data.documents[0])
+                setDownloadData(response.data.documents[0].archive)
+            }
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     useEffect(() => {
-        getEpisodeData()
+        console.log("Effect triggered");
+        getEpisodeDataNext()
         //eslint-disable-next-line
-    }, [])
+    }, [episodeUuid])
 
     const navbarTitle = episode ? `${episode?.attributes.title}` : 'Loading...'
 

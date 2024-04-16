@@ -20,14 +20,22 @@ const SearchPage = () => {
     const runSearch = (selectedChannel, searchTerm, limit) => {
         setLoading(true)
         const channelKey = selectedChannel === 'all-channels' ? 'all' : selectedChannel
+        //serverless config
+        // let config = {
+        //     method: 'GET',
+        //     maxBodyLength: Infinity,
+        //     url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
+        //     headers: {
+        //         'Accept': 'application/json, text/plain, */*'
+        //     }
+        // };
+
+        //base config
         let config = {
             method: 'GET',
-            maxBodyLength: Infinity,
-            url: `${BASE_API_URL}/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
-            headers: {
-                'Accept': 'application/json, text/plain, */*'
-            }
+            url: `/api/v1/search?q=${sanitizeInput(searchTerm)}&channel_key=${channelKey}&limit=${limit}`,
         };
+
 
         axios.request(config)
             .then((response) => {

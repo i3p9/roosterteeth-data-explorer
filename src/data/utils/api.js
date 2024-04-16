@@ -29,6 +29,30 @@ export const getSingleEpisodeByUuid = async (uuid) => {
         });
 }
 
+export const getSingleEpisode = async (uuid) => {
+    let config = {
+        method: 'get',
+        url: `/api/episode/${uuid}`,
+    };
+
+    try {
+        const res = await axios.request(config);
+        // const episoddata = JSON.stringify(res.data)
+        return res
+    } catch (error) {
+        return error
+    }
+
+
+    axios.request(config)
+        .then((response) => {
+            return JSON.stringify(response.data)
+        })
+        .catch((error) => {
+            return error
+        });
+}
+
 
 export const getRandomEpisodes = async (channel_id) => {
     let config = {
