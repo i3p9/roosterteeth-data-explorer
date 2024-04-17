@@ -20,6 +20,7 @@ import { ButtonSkeleton } from '@/app/components/atoms/Skeleton/ButtonSkeleton/B
 import SortSelector from '@/app/components/atoms/SortSelector/SortSelector';
 import { episodeSortOptions } from '@/data/utils/data';
 import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
+import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -49,7 +50,7 @@ function SeasonPage() {
         //         const data = await response.json();
         //         setSeasonData(data);
         //     } catch (error) {
-        //         console.error('Error loading transcript data:', error);
+        //         console.error('Error loading season data:', error);
         //     }
         // };
 
@@ -75,7 +76,7 @@ function SeasonPage() {
         //         const response = await getShowInfo(showUuid)
         //         setShowInfo(response)
         //     } catch (error) {
-        //         console.error('Error loading transcript data:', error);
+        //         console.error('Error loading show data:', error);
         //     }
         // }
 
@@ -145,6 +146,10 @@ function SeasonPage() {
                                 successToastMessage={'Copied to clipboard!'}
                                 startIcon={<FaRegCopy />}
                             />
+                            <div className='m-2'>
+                                <BulkDownloadButton data={seasonData} />
+                            </div>
+
                             <DownloadHelpPopUp />
                         </div>
                     ) : <ButtonSkeleton width={'72'} />

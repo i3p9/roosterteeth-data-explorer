@@ -19,8 +19,8 @@ const SkeletonLoader = () => {
 
 
 const SeasonContainer = (props) => {
-    const { seasonUuid, showUuid, selectedSortOption } = props
-    const [seasonData, setSeasonData] = useState()
+    const { seasonUuid, showUuid, selectedSortOption, seasonData, setSeasonData } = props
+    // const [seasonData, setSeasonData] = useState()
     const [seasonLoading, setSeasonLoading] = useState(false)
     const [seasonNetworkError, setSeasonNetworkError] = useState(false)
 

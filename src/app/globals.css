@@ -18,6 +18,10 @@
   .text-color-primary-hover {
     @apply hover:text-zinc-50 hover:dark:text-zinc-900 hover:bg-zinc-800 hover:dark:bg-zinc-200;
   }
+  .text-color-secondary-hover {
+    @apply hover:text-zinc-50 hover:bg-zinc-800 hover:dark:text-zinc-900 hover:dark:bg-zinc-200;
+  }
+
   .bg-color-primary {
     @apply bg-zinc-200 dark:bg-zinc-800;
   }

@@ -112,6 +112,28 @@ export const getArchivedLinksByShowId = async (showId) => {
     }
 }
 
+export const getAllEpisodesByShowId = async (showId) => {
+    try {
+        const response = await fetch(`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`)
+        const showData = await response.json();
+        const allSeasons = showData.data.map((season) => season.uuid);
+        let allEpisodes = [];
+        for (const seasonId of allSeasons) {
+            const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
+            const episodeData = await seasonResponse.json()
+            const seasonEpisodeData = episodeData.data.map((episode) => {
+                return episode
+            })
+            allEpisodes = allEpisodes.concat(seasonEpisodeData)
+        }
+        return allEpisodes
+    } catch (error) {
+        console.error('Error loading show data:', error);
+        return []
+    }
+}
+
+
 
 export const getArchivedLinksBySeasonId = async (showId, seasonId) => {
     try {
@@ -172,8 +194,10 @@ export const bytesToReadableSize = (sizeInByte) => {
         return (bytes / 1024).toFixed(2) + "KB";
     } else if (bytes < 1024 * 1024 * 1024) {
         return (bytes / (1024 * 1024)).toFixed(2) + "MB";
-    } else {
+    } else if (bytes < 1024 * 1024 * 1024 * 1024) {
         return (bytes / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+    } else {
+        return (bytes / (1024 * 1024 * 1024 * 1024)).toFixed(2) + "TB";
     }
 }
 
@@ -182,19 +206,24 @@ export function percentage(partialValue, totalValue) {
 }
 
 
-export const getArchivedPercentageBySeasonId = async (showId, seasonId) => {
-    console.log('in pct util');
+export const getArchivedPercentageAndDataBySeasonId = async (showId, seasonId) => {
     try {
-        let archivedCount = 0
+        let archivedCount = 0;
+        let allEpisodesBySeason = [];
+        let totalSizeInByte = 0;
         const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
         const episodeData = await seasonResponse.json()
-        const seasonEpisodeData = episodeData.data.map((episode) => {
+        episodeData.data.forEach(episode => {
+            allEpisodesBySeason.push(episode)
             if (episode?.archive) {
                 archivedCount++
+                for (const file of episode.archive.files) {
+                    totalSizeInByte = totalSizeInByte + Number(file.filesize)
+                }
             }
         })
         const percentageResult = percentage(archivedCount, episodeData.data.length)
-        return percentageResult
+        return { percentageResult, allEpisodesBySeason, totalSizeInByte };
     } catch (error) {
         console.error('Error loading season data:', error);
         return 0
