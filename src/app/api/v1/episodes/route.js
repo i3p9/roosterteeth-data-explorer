@@ -45,7 +45,7 @@ export async function GET(request, { params }) {
         database: "roosterteeth_site",
         collection: "episodes",
         filter,
-        sort: { "attributes.public_golive_at": 1 }
+        sort: { "attributes.original_air_date": -1 }
     });
 
     try {
