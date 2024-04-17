@@ -10,7 +10,7 @@ function getSearchPipeline(query, channelKey, limit) {
                         {
                             "text": {
                                 "query": query,
-                                "path": "attributes.display_title"
+                                "path": "attributes.title"
                             },
                         }
                     ]
