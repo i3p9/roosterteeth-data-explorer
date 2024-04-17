@@ -13,12 +13,10 @@ export default function SortSelector(props) {
         <Listbox value={selected} onChange={setSelected}>
             {({ open }) => (
                 <div className=''>
-                    <div className="relative border font-bold rounded-md border-color-primary w-42">
+                    <div className="relative border font-semibold rounded-md border-color-primary w-42">
                         <Listbox.Button
                             className={`relative w-full cursor-default rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm focus:outline-none sm:leading-6 leading-6'}`}>
-                            <span className="flex items-center">
-                                {selected && <span className='block truncate'>{selected?.title}</span>}
-                            </span>
+                            {selected && <span className='block truncate'>{selected?.shortTitle}</span>}
                             <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                                 {open ? <FaChevronUp className="h-5 w-5 text-color-primary" aria-hidden="true" />
                                     : <FaChevronDown className="h-5 w-5 text-color-primary" aria-hidden="true" />

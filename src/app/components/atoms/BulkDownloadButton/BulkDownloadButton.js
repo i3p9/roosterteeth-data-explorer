@@ -5,7 +5,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
 import toast, { Toaster } from 'react-hot-toast';
 
-export default function BulkDownloadButton({ data, title = "Download All" }) {
+export default function BulkDownloadButton({ data, title = "Download All", loading }) {
     const [downloadData, setDownloadData] = useState([])
     const notify = () => toast.success('Copied to clipboard!');
 
@@ -118,17 +118,12 @@ export default function BulkDownloadButton({ data, title = "Download All" }) {
 
     return (
         <div className="">
-            {/* {videoFile.length > 0 && (
-                <div className='rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
-                    <LuDownload style={{ display: 'inline' }} /> <span className='font-mono font-medium'>Download</span>
-                </div>
-            )} */}
             <Menu as="div" className="relative inline-block">
                 {({ open }) => (
                     <div>
                         <div>
                             <Menu.Button className="text-color-primary text-color-primary-hover border border-color-primary inline-flex w-full justify-center rounded-md bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
-                                {title}
+                                {loading ? 'loading..' : title}
                                 {open ? <FaChevronUp className="ml-1 h-5 w-5" aria-hidden="true" />
                                     : <FaChevronDown className="ml-1 h-5 w-5" aria-hidden="true" />
                                 }
@@ -143,7 +138,7 @@ export default function BulkDownloadButton({ data, title = "Download All" }) {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="absolute left-0 mt-2 w-80 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
+                            <Menu.Items className="absolute left-0 mt-2 w-72 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
                                 <div className="px-1 py-1 ">
                                     {downloadData?.map((type, index) => {
                                         return (
@@ -160,7 +155,7 @@ export default function BulkDownloadButton({ data, title = "Download All" }) {
                                                                 <LuDownload className='mr-2' style={{ display: 'inline' }} />
                                                                 {type?.title} <span className='font-light text-xs'>({type?.file_count} files)</span>
                                                             </div>
-                                                            <div className='font-mono font-medium'>{type?.filesize}</div>
+                                                            <div className='font-mono font-medium text-xs'>{type?.filesize}</div>
                                                         </button>
                                                     )}
                                                 </Menu.Item>

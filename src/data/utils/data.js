@@ -294,10 +294,12 @@ export const sortFilterOptions = [
 export const episodeSortOptions = [
     {
         title: 'Newest First',
+        shortTitle: 'Newest',
         value: 'new'
     },
     {
         title: 'Oldest First',
+        shortTitle: 'Oldest',
         value: 'old'
     }
 ]

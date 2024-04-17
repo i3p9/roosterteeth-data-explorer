@@ -137,18 +137,18 @@ function SeasonPage() {
                     (
                         <div className='flex flex-start'>
                             <div className='m-2'>
+                                <BulkDownloadButton data={seasonData} />
+                            </div>
+                            <div className='m-2'>
                                 <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
                             </div>
-                            <PrimaryButton
+                            {/* <PrimaryButton
                                 title={'copy all archive links for downloading'}
                                 shortTitle={'archive links'}
                                 onClickFunc={copyAllLinks}
                                 successToastMessage={'Copied to clipboard!'}
                                 startIcon={<FaRegCopy />}
-                            />
-                            <div className='m-2'>
-                                <BulkDownloadButton data={seasonData} />
-                            </div>
+                            /> */}
 
                             <DownloadHelpPopUp />
                         </div>

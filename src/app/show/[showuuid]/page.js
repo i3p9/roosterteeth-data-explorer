@@ -11,10 +11,7 @@ import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryBu
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
 import axios from 'axios';
 
-
 const baseUrl = config.url.BASE_URL;
-
-
 
 function ShowPage() {
     const params = useParams()
@@ -46,6 +43,8 @@ function ShowPage() {
                 setShowInfo(response)
             } catch (error) {
                 console.error('Error loading show info:', error);
+            } finally {
+                console.log('all done');
             }
         }
 
@@ -111,18 +110,17 @@ function ShowPage() {
                 previousLink={"/"}
             />
             {/* add a loading skeleton here */}
-            {/* and change this awful copy all links button */}
             <div className='p-1 md:p-2'>
                 {showData && <div className='flex'>
-                    <PrimaryButton
+                    <div className='m-2'>
+                        <BulkDownloadButton data={allEpisodes} title='Download Show' />
+                    </div>
+                    {/* <PrimaryButton
                         title='copy all rt links'
                         successToastMessage='Copied to clipboard!'
                         onClickFunc={copyAllRTSeasonLinks}
                         startIcon={<FaRegCopy />}
-                    />
-                    <div className='m-2'>
-                        <BulkDownloadButton data={allEpisodes} />
-                    </div>
+                    /> */}
                 </div>
                 }
                 <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
