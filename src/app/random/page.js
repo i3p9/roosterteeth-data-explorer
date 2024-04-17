@@ -27,7 +27,7 @@ const WheelSkeleton = () => {
 const SpinResult = (props) => {
     const { data, setOpenResultPopup, handleSpinClick, reloadWheel } = props
     const thumbnailUrl = `https://cdn.rtarchive.xyz/thumbs_medium/${data?.uuid}.jpg`
-    const watchUrl = `/watch/${data?.type === 'episode' ? `roosterteeth-${data?.id}` : `roosterteeth-${data?.id}-bonus`}?uuid=${data?.uuid}`
+    const watchUrl = `/watch/${data?.type === 'episode' ? `${data?.id}` : `${data?.id}-bonus`}`
 
     return (
         <>

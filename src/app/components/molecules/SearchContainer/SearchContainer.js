@@ -1,12 +1,37 @@
-import { channelsWithAllAsOption } from "@/data/utils/data";
 import { useState } from "react";
 import DotPulse from "../../atoms/DotPulse/DotPulse";
 import ChannelSelector from "../../atoms/ChannelSelector/ChannelSelector";
 
-const SearchContainer = ({ runSearch, loading }) => {
-    const [searchTerm, setSearchTerm] = useState('')
-    const [selectedChannel, setSelectedChannel] = useState(channelsWithAllAsOption[0])
+const SearchContainer = ({
+    runSearch,
+    loading,
+    runAutocomplete,
+    searchTerm,
+    setSearchTerm,
+    channelOptions,
+    selectedChannel,
+    setSelectedChannel
+}) => {
     const [limit, setLimit] = useState(10)
+    const [searchTimeout, setSearchTimeout] = useState(null);
+
+
+    // const handleDelayedSearch = () => {
+    //     clearTimeout(searchTimeout);
+
+    //     setSearchTimeout(setTimeout(() => {
+    //         if (searchTerm) {
+    //             router.push(`/search?q=${encodeURIComponent(searchTerm)}&filter=${encodeURIComponent(selectedChannel.slug)}`)
+    //             runAutocomplete(searchTerm, limit);
+    //         }
+    //     }, 2000));
+    // };
+
+    // useEffect(() => {
+    //     handleDelayedSearch();
+    //     //eslint-disable-next-line
+    // }, [searchTerm, selectedChannel, limit]);
+
 
     return (
         <form
@@ -18,7 +43,7 @@ const SearchContainer = ({ runSearch, loading }) => {
         >
             <div className="w-full">
                 <ChannelSelector
-                    channels={channelsWithAllAsOption}
+                    channels={channelOptions}
                     selected={selectedChannel}
                     setSelected={setSelectedChannel}
                     nolabel
@@ -36,6 +61,7 @@ const SearchContainer = ({ runSearch, loading }) => {
                         type="search"
                         id="search-bar"
                         key="search-bar"
+                        value={searchTerm}
                         onChange={(event) => setSearchTerm(event.target.value)}
                         className="block w-full p-4 ps-10 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500"
                         placeholder="Enter search term"

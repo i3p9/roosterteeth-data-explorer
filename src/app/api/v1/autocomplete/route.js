@@ -1,50 +1,32 @@
 import { NextResponse } from "next/server";
 
-function getSearchPipeline(query, channelKey, limit) {
+function getSearchPipeline(query, limit) {
     const pipeline = [
         {
             "$search": {
-                "index": "default",
-                "compound": {
-                    "must": [
-                        {
-                            "text": {
-                                "query": query,
-                                "path": "attributes.title"
-                            },
-                        }
-                    ]
+                "index": "title",
+                "autocomplete": {
+                    "query": query,
+                    "path": "attributes.title"
                 }
             }
         },
         {
             "$limit": parseInt(limit)
-        }
+        },
+        { "$project": { "_id": 0, "attributes.title": 1 } }
     ];
-    if (channelKey !== "all") {
-        // Add channel filter for non-"all" channelKey
-        pipeline[0]["$search"]["compound"]["filter"] = [
-            {
-                "text": {
-                    "query": channelKey,
-                    "path": "attributes.channel_slug"
-                }
-            }
-        ];
-    }
-
     return pipeline;
 }
 
 export async function GET(request, { params }) {
     const query = request.nextUrl.searchParams.get('q')
-    const channelKey = request.nextUrl.searchParams.get('channel_key')
     const limit = request.nextUrl.searchParams.get('limit')
 
     const apiKey = process.env.DB_API
     const mongoUrl = process.env.DB_HOST
 
-    if (!query || !channelKey || !limit) {
+    if (!query || !limit) {
         return new NextResponse(`bad request, params error`, { status: 400 })
     }
 
@@ -53,7 +35,7 @@ export async function GET(request, { params }) {
         dataSource: "metadata",
         database: "roosterteeth_site",
         collection: "episodes",
-        pipeline: getSearchPipeline(query, channelKey, limit)
+        pipeline: getSearchPipeline(query, limit)
     });
     try {
         const response = await fetch(`${mongoUrl}/action/aggregate`, {

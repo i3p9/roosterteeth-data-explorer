@@ -29,6 +29,33 @@ export function formatSecondToRunTime(seconds) {
     return result === '0s' ? 'N/A' : result.trim();
 }
 
+export function formatSecondsToDuration(seconds) {
+    if (seconds < 0) {
+        return "Invalid input";
+    }
+
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    let result = "";
+
+    if (hours < 0 || minutes < 0) {
+        result = `00:${remainingSeconds.toString().padStart(2, "0")}`;
+    }
+
+    if (hours < 0 || minutes > 0) {
+        result = `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`
+    }
+
+    if (hours > 0) {
+        result = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`
+    }
+
+    return result.trim();
+}
+
+
 
 export const sanitizeInput = (input) => {
     var pattern = /[^a-zA-Z0-9\s]/g;
@@ -84,6 +111,28 @@ export const getArchivedLinksByShowId = async (showId) => {
         return []
     }
 }
+
+export const getAllEpisodesByShowId = async (showId) => {
+    try {
+        const response = await fetch(`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`)
+        const showData = await response.json();
+        const allSeasons = showData.data.map((season) => season.uuid);
+        let allEpisodes = [];
+        for (const seasonId of allSeasons) {
+            const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
+            const episodeData = await seasonResponse.json()
+            const seasonEpisodeData = episodeData.data.map((episode) => {
+                return episode
+            })
+            allEpisodes = allEpisodes.concat(seasonEpisodeData)
+        }
+        return allEpisodes
+    } catch (error) {
+        console.error('Error loading show data:', error);
+        return []
+    }
+}
+
 
 
 export const getArchivedLinksBySeasonId = async (showId, seasonId) => {
@@ -145,8 +194,10 @@ export const bytesToReadableSize = (sizeInByte) => {
         return (bytes / 1024).toFixed(2) + "KB";
     } else if (bytes < 1024 * 1024 * 1024) {
         return (bytes / (1024 * 1024)).toFixed(2) + "MB";
-    } else {
+    } else if (bytes < 1024 * 1024 * 1024 * 1024) {
         return (bytes / (1024 * 1024 * 1024)).toFixed(2) + "GB";
+    } else {
+        return (bytes / (1024 * 1024 * 1024 * 1024)).toFixed(2) + "TB";
     }
 }
 
@@ -155,21 +206,40 @@ export function percentage(partialValue, totalValue) {
 }
 
 
-export const getArchivedPercentageBySeasonId = async (showId, seasonId) => {
-    console.log('in pct util');
+export const getArchivedPercentageAndDataBySeasonId = async (showId, seasonId) => {
     try {
-        let archivedCount = 0
+        let archivedCount = 0;
+        let allEpisodesBySeason = [];
+        let totalSizeInByte = 0;
         const seasonResponse = await fetch(`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`)
         const episodeData = await seasonResponse.json()
-        const seasonEpisodeData = episodeData.data.map((episode) => {
+        episodeData.data.forEach(episode => {
+            allEpisodesBySeason.push(episode)
             if (episode?.archive) {
                 archivedCount++
+                for (const file of episode.archive.files) {
+                    totalSizeInByte = totalSizeInByte + Number(file.filesize)
+                }
             }
         })
         const percentageResult = percentage(archivedCount, episodeData.data.length)
-        return percentageResult
+        return { percentageResult, allEpisodesBySeason, totalSizeInByte };
     } catch (error) {
         console.error('Error loading season data:', error);
         return 0
     }
 }
+
+
+export const extractEpisodeInfoFromIAItemName = (str) => {
+    const regex = /^(?:roosterteeth-)?(\d+)(-bonus)?$/; // Updated regex pattern with optional "roosterteeth-" prefix
+    const match = str.match(regex); // Match the string against the regex pattern
+
+    if (match) {
+        const numericValue = parseInt(match[1]); // Extract numeric value from the first capturing group
+        const hasBonus = match[2] !== undefined; // Check if "-bonus" exists and set hasBonus accordingly
+        return { numericValue, hasBonus };
+    } else {
+        return { numericValue: null, hasBonus: false }; // Return default values if no match is found
+    }
+};

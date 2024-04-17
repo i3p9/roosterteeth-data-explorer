@@ -12,11 +12,21 @@
   .text-color-faded {
     @apply text-zinc-500 dark:text-zinc-500;
   }
-  .text-color-reversed {
+  .text-color-reverse {
     @apply text-zinc-50 dark:text-zinc-900;
   }
+  .text-color-primary-hover {
+    @apply hover:text-zinc-50 hover:dark:text-zinc-900 hover:bg-zinc-800 hover:dark:bg-zinc-200;
+  }
+  .text-color-secondary-hover {
+    @apply hover:text-zinc-50 hover:bg-zinc-800 hover:dark:text-zinc-900 hover:dark:bg-zinc-200;
+  }
+
   .bg-color-primary {
     @apply bg-zinc-200 dark:bg-zinc-800;
+  }
+  .bg-color-secondary {
+    @apply bg-zinc-300 dark:bg-zinc-700;
   }
   .bg-color-reverse {
     @apply bg-zinc-800 dark:bg-zinc-200;
@@ -24,11 +34,14 @@
   .bg-color-hover {
     @apply hover:bg-zinc-200 dark:hover:bg-zinc-800;
   }
+  .bg-color-hover-2 {
+    @apply bg-zinc-400 dark:bg-zinc-200;
+  }
   .border-color-primary {
     @apply border-zinc-900 dark:border-zinc-100;
   }
   .border-color-secondary {
-    @apply border-zinc-400 dark:border-zinc-300;
+    @apply border-zinc-300 dark:border-zinc-600;
   }
   .skeleton-color-primary {
     @apply bg-gray-200 rounded-full dark:bg-gray-700;
@@ -40,10 +53,29 @@
     @apply focus:ring-0 focus:ring-offset-0;
   }
   .button-primary {
-    @apply text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-100;
+    @apply rounded-md text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800 border-2 border-zinc-900 dark:border-zinc-100;
   }
   .button-secondary {
     @apply text-zinc-50 dark:text-zinc-900 bg-zinc-900 dark:bg-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 border-2 border-zinc-900 dark:border-zinc-100;
+  }
+
+  .button-styled {
+    @apply rounded-md text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800;
+  }
+}
+
+@layer utilities {
+  .stretch-75 {
+    font-stretch: 75%;
+  }
+  .stretch-90 {
+    font-stretch: 90%;
+  }
+  .stretch-110 {
+    font-stretch: 110%;
+  }
+  .stretch-125 {
+    font-stretch: 125%;
   }
 }
 

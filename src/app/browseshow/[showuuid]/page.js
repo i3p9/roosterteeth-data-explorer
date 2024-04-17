@@ -5,8 +5,12 @@ import { useEffect, useState } from "react"
 import { config } from '@/app/Constants'
 import NavBar from "@/app/components/molecules/NavBar/NavBar"
 import { getShowInfo, makeTitle } from "@/data/utils/utils"
-import SeasonContainer from "@/app/components/molecules/SeasonContainer/page"
+import SeasonContainer from "@/app/components/molecules/SeasonContainer/SeasonContainer"
 import { motion } from "framer-motion"
+import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector"
+import SortSelector from "@/app/components/atoms/SortSelector/SortSelector"
+import { episodeSortOptions } from "@/data/utils/data"
+import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton"
 
 const baseUrl = config.url.BASE_URL;
 
@@ -16,9 +20,13 @@ const BrowseShows = () => {
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
-    const notify = () => toast.success('Copied to clipboard!');
+    const [seasonData, setSeasonData] = useState()
 
-    const [selectedSeason, setSelectedSeason] = useState(null)
+
+    const [selectedSeason, setSelectedSeason] = useState({})
+    const [selectedSortOption, setSelectedSortOption] = useState(episodeSortOptions[0])
+
+
 
     useEffect(() => {
         const fetchSeasonData = async () => {
@@ -28,10 +36,10 @@ const BrowseShows = () => {
                 const data = await response.json();
                 const reversedData = [...data.data].reverse()
                 setShowData({ ...data, data: reversedData });
-                setSelectedSeason(data.data[0].uuid)
+                setSelectedSeason(data.data[0])
                 setLoading(false);
             } catch (error) {
-                console.error('Error loading transcript data:', error);
+                console.error('Error loading season data:', error);
             }
         };
 
@@ -50,7 +58,6 @@ const BrowseShows = () => {
         }
     }, [showUuid])
 
-
     useEffect(() => {
         setShowUuid(params.showuuid)
         //eslint-disable-next-line
@@ -62,28 +69,25 @@ const BrowseShows = () => {
         <>
             <NavBar
                 previousLink={`/browse`}
-                title={`Browsing: ${showData && makeTitle(showData?.data[0].attributes.show_slug)}`} />
-            <div className="m-2">
-                <ul className="flex flex-wrap text-sm font-medium text-center text-color-primary border-2 border-color-primary mb-2">
-                    {showData?.data?.map((season, index) => {
-                        return (
-                            <>
-                                <li className="" key={index}>
-                                    <a
-                                        onClick={() => setSelectedSeason(season?.uuid)}
-                                        href={`#${season?.uuid}`}
-                                        className={`${selectedSeason === season?.uuid ? 'text-zinc-50 bg-zinc-800 dark:text-zinc-700 dark:bg-zinc-200' : ''} inline-block p-4 hover:text-zinc-50 hover:bg-zinc-800 dark:hover:bg-zinc-50 dark:hover:text-zinc-800 border-x`}
-                                    >
-                                        {season.attributes.number === 99 ? 'Bonus' : season.attributes.number}
-                                    </a>
-                                </li>
-                            </>
-                        )
-                    })}
-                </ul>
-                <motion.div>
-                    <SeasonContainer seasonUuid={selectedSeason} showUuid={showUuid} />
-                </motion.div>
+                title={`${showData && makeTitle(showData?.data[0].attributes.show_slug)}`} />
+            <div className="p-1 md:p-2">
+                <div className="m-3">
+                    {showData && selectedSeason && (
+                        <div className="flex gap-2">
+                            <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
+                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            < BulkDownloadButton data={seasonData} loading={loading} />
+                        </div>
+                    )}
+                </div>
+
+                <div>
+                    <motion.div
+                        transition={{ duration: 0.5, type: 'spring', stiffness: 100, delay: 0.5 }}
+                    >
+                        <SeasonContainer seasonData={seasonData} setSeasonData={setSeasonData} seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
+                    </motion.div>
+                </div>
             </div>
         </>
     )

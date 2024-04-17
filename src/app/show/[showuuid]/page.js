@@ -3,10 +3,13 @@ import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
-import { copyToClipboard, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getArchivedPercentageBySeasonId, getShowInfo } from '@/data/utils/utils'
+import { copyToClipboard, getAllEpisodesByShowId, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getArchivedPercentageBySeasonId, getShowInfo } from '@/data/utils/utils'
 import { FaRegCopy } from "react-icons/fa6";
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
+import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
+import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
+import axios from 'axios';
 
 
 const baseUrl = config.url.BASE_URL;
@@ -21,6 +24,7 @@ function ShowPage() {
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
     const [archivedLinks, setArchivedLinks] = useState([])
+    const [allEpisodes, setAllEpisodes] = useState([])
     const notify = () => toast.success('Copied to clipboard!');
 
     useEffect(() => {
@@ -32,7 +36,7 @@ function ShowPage() {
                 setShowData(data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error loading transcript data:', error);
+                console.error('Error loading season data:', error);
             }
         };
 
@@ -45,12 +49,25 @@ function ShowPage() {
             }
         }
 
+        const getAllEpisodesByShow = async () => {
+            try {
+                // const allEpisodeData = await getAllEpisodesByShowId(showUuid)
+                const response = await axios.get('/api/v1/episodes', { params: { show_id: showUuid, request_origin: 'show' } })
+                if (response) {
+                    setAllEpisodes(response.data.documents)
+                }
+            } catch (error) {
+                console.error('Error loading all episodes data', error);
+            }
+        }
+
+
         if (showUuid) {
             fetchSeasonData();
             fetchShowInfo();
+            getAllEpisodesByShow();
         }
     }, [showUuid])
-
 
     useEffect(() => {
         setShowUuid(params.showuuid)
@@ -81,54 +98,34 @@ function ShowPage() {
         )
     }
 
-    const copyAllArchivedListPerShow = async () => {
-        const archivedSeasonLinks = await getArchivedLinksByShowId(showUuid)
-        const textToCopy = archivedSeasonLinks.join('\n')
-        setClipBoard({
-            value: textToCopy,
-            copied: true,
-        }
-        )
-    }
-
-    const getArchivedPctPerSeason = async (seasonId) => {
-        const result = getArchivedPercentageBySeasonId(showUuid, seasonId)
-        return result
-    }
-
-
     useEffect(() => {
         if (clipBoard.copied) {
             copyToClipboard(clipBoard.value)
-            notify()
         }
     }, [clipBoard])
 
     return (
         <>
             <NavBar
-                title={showInfo ? `${showInfo[0]?.attributes?.title} ~ All Seasons` : 'Show Title Loading...'}
+                title={showInfo ? `${showInfo[0]?.attributes?.title}` : 'Show Title Loading...'}
                 previousLink={"/"}
             />
             {/* add a loading skeleton here */}
             {/* and change this awful copy all links button */}
-            <div className='p-2'>
-                {showData && <p>
-                    <button className='italic button-primary p-1 mb-5' onClick={() => {
-                        copyAllRTSeasonLinks()
-                        notify()
-                    }}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all rt links
-                    </button>
-                    <button className='italic button-primary p-1 mb-5 ml-1' onClick={() => {
-                        copyAllArchivedListPerShow()
-                    }}>
-                        <FaRegCopy style={{ display: "inline" }} /> copy all archived links
-                    </button>
-
-                </p>
+            <div className='p-1 md:p-2'>
+                {showData && <div className='flex'>
+                    <PrimaryButton
+                        title='copy all rt links'
+                        successToastMessage='Copied to clipboard!'
+                        onClickFunc={copyAllRTSeasonLinks}
+                        startIcon={<FaRegCopy />}
+                    />
+                    <div className='m-2'>
+                        <BulkDownloadButton data={allEpisodes} />
+                    </div>
+                </div>
                 }
-                <div className='grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
+                <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
                     {showData?.data?.map((season, index) => {
                         return (
                             <div key={index}>

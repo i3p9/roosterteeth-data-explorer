@@ -1,0 +1,62 @@
+import { NextResponse } from "next/server";
+export async function GET(request, { params }) {
+    const uuid = request.nextUrl.searchParams.get('uuid')
+    const slug = request.nextUrl.searchParams.get('slug')
+
+
+    const apiKey = process.env.DB_API
+    const mongoUrl = process.env.DB_HOST
+
+    if (!uuid && !id && !slug) {
+        return NextResponse.json({ error: 'must send only one param: uuid/slug' }, { status: 400 })
+    }
+
+    let filter;
+    if (uuid) {
+        console.log('got UUID');
+        filter = { "attributes.season_id": uuid }
+    } else if (slug) {
+        console.log('got Slug');
+        filter = { "attributes.season_slug": slug }
+    } else {
+        return NextResponse.json({ error: 'something wrong with params' }, { status: 400 })
+    }
+
+    console.log('final filter: ', filter);
+
+    const raw = JSON.stringify({
+        dataSource: "metadata",
+        database: "roosterteeth_site",
+        collection: "episodes",
+        filter: filter,
+        sort: { "attributes.original_air_date": -1 }
+    });
+    try {
+        const response = await fetch(`${mongoUrl}/action/find`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Access-Control-Request-Headers": "*",
+                "api-key": apiKey
+            },
+            body: raw,
+            redirect: "follow"
+        });
+
+        if (!response.ok) {
+            throw new Error(`API call failed: ${await response.text()}`);
+        }
+
+        const episodeData = await response.json();
+        // https://stackoverflow.com/a/76877821
+        if (episodeData.documents) {
+            return NextResponse.json(episodeData, { status: 200 })
+        } else {
+            return new Response(error, { status: 500 })
+        }
+    } catch (error) {
+        console.error(error);
+        return new Response(error, { status: 500 })
+    }
+}

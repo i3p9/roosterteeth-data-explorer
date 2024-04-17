@@ -44,7 +44,8 @@ export async function GET(request, { params }) {
         dataSource: "metadata",
         database: "roosterteeth_site",
         collection: "episodes",
-        filter
+        filter,
+        sort: { "attributes.public_golive_at": 1 }
     });
 
     try {
