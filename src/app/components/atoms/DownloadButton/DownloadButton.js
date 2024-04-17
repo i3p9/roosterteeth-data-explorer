@@ -41,25 +41,27 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                         <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none z-50">
                             <div className="px-1 py-1 ">
                                 {downloadData?.files.map((file, index) => {
-                                    return (
-                                        <div key={index}>
-                                            <Menu.Item>
-                                                {({ active }) => (
-                                                    <button
-                                                        onClick={() => download(file.name)}
-                                                        className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
-                                                            } group flex w-full justify-between rounded-md px-1 py-1 text-sm`}
-                                                    >
-                                                        <div className=''>
-                                                            <LuDownload className='mr-2' style={{ display: 'inline' }} />
-                                                            {extDescribed(file.file_ext)}
-                                                        </div>
-                                                        <div className='text-xs font-mono font-medium'>{bytesToReadableSize(file.filesize)}</div>
-                                                    </button>
-                                                )}
-                                            </Menu.Item>
-                                        </div>
-                                    )
+                                    if (!file.file_ext.includes('part-')) {
+                                        return (
+                                            <div key={index}>
+                                                <Menu.Item>
+                                                    {({ active }) => (
+                                                        <button
+                                                            onClick={() => download(file.name)}
+                                                            className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
+                                                                } group flex w-full justify-between rounded-md px-1 py-1 text-sm`}
+                                                        >
+                                                            <div className=''>
+                                                                <LuDownload className='mr-2' style={{ display: 'inline' }} />
+                                                                {extDescribed(file.file_ext)}
+                                                            </div>
+                                                            <div className='text-xs font-mono font-medium'>{bytesToReadableSize(file.filesize)}</div>
+                                                        </button>
+                                                    )}
+                                                </Menu.Item>
+                                            </div>
+                                        )
+                                    }
                                 })}
                             </div>
                         </Menu.Items>
@@ -101,25 +103,27 @@ export default function DownloadButton({ downloadData, minimal = false }) {
                             <Menu.Items className="absolute right-0 mt-2 w-96 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none">
                                 <div className="px-1 py-1 ">
                                     {downloadData?.files.map((file, index) => {
-                                        return (
-                                            <div key={index}>
-                                                <Menu.Item>
-                                                    {({ active }) => (
-                                                        <button
-                                                            onClick={() => download(file.name)}
-                                                            className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
-                                                                } group flex w-full justify-between rounded-md px-2 py-2 text-sm`}
-                                                        >
-                                                            <div className=''>
-                                                                <LuDownload className='mr-2' style={{ display: 'inline' }} />
-                                                                Download {extDescribed(file.file_ext)}
-                                                            </div>
-                                                            <div className='font-mono font-medium'>{bytesToReadableSize(file.filesize)}</div>
-                                                        </button>
-                                                    )}
-                                                </Menu.Item>
-                                            </div>
-                                        )
+                                        if (!file.file_ext.includes('part-')) {
+                                            return (
+                                                <div key={index}>
+                                                    <Menu.Item>
+                                                        {({ active }) => (
+                                                            <button
+                                                                onClick={() => download(file.name)}
+                                                                className={`${active ? 'bg-color-reverse text-color-reverse' : 'text-color-primary'
+                                                                    } group flex w-full justify-between rounded-md px-2 py-2 text-sm`}
+                                                            >
+                                                                <div className=''>
+                                                                    <LuDownload className='mr-2' style={{ display: 'inline' }} />
+                                                                    Download {extDescribed(file.file_ext)}
+                                                                </div>
+                                                                <div className='font-mono font-medium'>{bytesToReadableSize(file.filesize)}</div>
+                                                            </button>
+                                                        )}
+                                                    </Menu.Item>
+                                                </div>
+                                            )
+                                        }
                                     })}
                                 </div>
                             </Menu.Items>
