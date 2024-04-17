@@ -68,10 +68,10 @@ const SeasonContainer = (props) => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
                     {selectedSortOption.value === 'new'
-                        ? seasonData?.toReversed().map((episode, index) => (
+                        ? seasonData?.map((episode, index) => (
                             <SeasonEpisodeContainer key={episode.id} episode={episode} />
                         ))
-                        : seasonData?.map((episode, index) => (
+                        : seasonData?.toReversed().map((episode, index) => (
                             <SeasonEpisodeContainer key={episode.id} episode={episode} />
                         ))
                     }
