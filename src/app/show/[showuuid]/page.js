@@ -25,6 +25,7 @@ const BrowseShows = () => {
 
     const [selectedSeason, setSelectedSeason] = useState({})
     const [selectedSortOption, setSelectedSortOption] = useState(episodeSortOptions[0])
+    const [searchTerm, setSearchTerm] = useState('')
 
 
 
@@ -73,10 +74,23 @@ const BrowseShows = () => {
             <div className="p-1 md:p-2">
                 <div className="m-3">
                     {showData && selectedSeason && (
-                        <div className="flex gap-2">
-                            <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
-                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
-                            < BulkDownloadButton data={seasonData} loading={loading} />
+                        <div className="flex flex-col-reverse md:flex-row gap-2">
+                            <div className="flex gap-2 h-10">
+                                <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
+                                <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            </div>
+                            <div className="w-full flex gap-2 justify-between">
+                                < BulkDownloadButton data={seasonData} loading={loading} />
+                                <input
+                                    type="search"
+                                    id="search-bar"
+                                    key="search-bar"
+                                    onChange={(event) => setSearchTerm(event.target.value)}
+                                    className="block rounded w-full md:w-64 lg:w-96 p-2 text-md leading-4 text-color-primary border border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500"
+                                    placeholder="Search..."
+                                >
+                                </input>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -87,7 +101,7 @@ const BrowseShows = () => {
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 100 }} // Add a slight delay for a smoother effect
                     >
-                        <SeasonContainer seasonData={seasonData} setSeasonData={setSeasonData} seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
+                        <SeasonContainer seasonData={seasonData} setSeasonData={setSeasonData} seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} searchTerm={searchTerm} />
                     </motion.div>
                 </div>
             </div>

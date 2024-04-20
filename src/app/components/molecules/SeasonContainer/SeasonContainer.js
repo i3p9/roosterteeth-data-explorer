@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
 import axios from "axios";
 import SeasonEpisodeSkeleton from "../../atoms/Skeleton/SeasonEpisodeSkeleton/SeasonEpisodeSkeleton";
+import Fuse from "fuse.js";
 
 const SkeletonLoader = () => {
     return (
@@ -19,7 +20,7 @@ const SkeletonLoader = () => {
 
 
 const SeasonContainer = (props) => {
-    const { seasonUuid, showUuid, selectedSortOption, seasonData, setSeasonData } = props
+    const { seasonUuid, showUuid, selectedSortOption, seasonData, setSeasonData, searchTerm } = props
     // const [seasonData, setSeasonData] = useState()
     const [seasonLoading, setSeasonLoading] = useState(false)
     const [seasonNetworkError, setSeasonNetworkError] = useState(false)
@@ -32,6 +33,7 @@ const SeasonContainer = (props) => {
                 const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid, show_id: showUuid, request_origin: 'season' } })
                 if (response) {
                     setSeasonData(response.data.documents)
+                    setAllFilteredData(response.data.documents)
                 }
             } catch (error) {
                 console.error(error);
@@ -48,6 +50,30 @@ const SeasonContainer = (props) => {
         }
         //eslint-disable-next-line
     }, [seasonUuid])
+
+    const [allFilteredData, setAllFilteredData] = useState([])
+
+    useEffect(() => {
+        if (seasonData) {
+            let filteredData = [...seasonData];
+            if (searchTerm) {
+                const fuse = new Fuse(filteredData, {
+                    keys: ['attributes.title'],
+                    includeScore: true,
+                    threshold: 0.4,
+                });
+                const result = fuse.search(searchTerm.toLowerCase());
+                filteredData = result.map((item) => item.item);
+                setAllFilteredData(filteredData)
+            } else {
+                setAllFilteredData(seasonData)
+            }
+        }
+
+    }, [searchTerm])
+
+    console.log('filtered: ', allFilteredData);
+
 
     if (seasonLoading) {
         return (
@@ -68,10 +94,10 @@ const SeasonContainer = (props) => {
             <div className="container mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8">
                     {selectedSortOption.value === 'new'
-                        ? seasonData?.map((episode, index) => (
+                        ? allFilteredData?.map((episode, index) => (
                             <SeasonEpisodeContainer key={episode.id} episode={episode} />
                         ))
-                        : seasonData?.toReversed().map((episode, index) => (
+                        : allFilteredData?.toReversed().map((episode, index) => (
                             <SeasonEpisodeContainer key={episode.id} episode={episode} />
                         ))
                     }

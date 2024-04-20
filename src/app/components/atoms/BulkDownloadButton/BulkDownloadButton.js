@@ -5,7 +5,7 @@ import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
 import toast, { Toaster } from 'react-hot-toast';
 
-export default function BulkDownloadButton({ data, title = "Download All", loading }) {
+export default function BulkDownloadButton({ data, title = "Download", loading }) {
     const [downloadData, setDownloadData] = useState([])
     const notify = () => toast.success('Copied to clipboard!');
 
