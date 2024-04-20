@@ -54,7 +54,7 @@ const FilteredShowListBulk = ({ showListData }) => {
                         <div key={index}>
                             <li key={index} style={{ listStyleType: 'disc' }} className='text-color-primary font-medium p-0.5'>
                                 <Link
-                                    href={`/show/${show?.uuid}`}
+                                    href={`/download/${show?.uuid}`}
                                     className='hover:underline decoration-1 underline-offset-1'
                                 >
                                     {show?.attributes?.title}

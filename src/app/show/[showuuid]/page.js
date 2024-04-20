@@ -1,24 +1,32 @@
 "use client"
-import { useParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import React from "react"
+import { useParams } from "next/navigation"
+import { useEffect, useState } from "react"
 import { config } from '@/app/Constants'
-import { copyToClipboard, getArchivedLinksBySeasonId, getShowInfo } from '@/data/utils/utils'
-import NavBar from '@/app/components/molecules/NavBar/NavBar'
-import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
-import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
-import axios from 'axios';
-import { motion } from 'framer-motion'
+import NavBar from "@/app/components/molecules/NavBar/NavBar"
+import { getShowInfo, makeTitle } from "@/data/utils/utils"
+import SeasonContainer from "@/app/components/molecules/SeasonContainer/SeasonContainer"
+import { motion } from "framer-motion"
+import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector"
+import SortSelector from "@/app/components/atoms/SortSelector/SortSelector"
+import { episodeSortOptions } from "@/data/utils/data"
+import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton"
 
 const baseUrl = config.url.BASE_URL;
 
-function ShowPage() {
+const BrowseShows = () => {
     const params = useParams()
-
     const [showUuid, setShowUuid] = useState('')
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
-    const [allEpisodes, setAllEpisodes] = useState([])
+    const [seasonData, setSeasonData] = useState()
+
+
+    const [selectedSeason, setSelectedSeason] = useState({})
+    const [selectedSortOption, setSelectedSortOption] = useState(episodeSortOptions[0])
+
+
 
     useEffect(() => {
         const fetchSeasonData = async () => {
@@ -26,7 +34,9 @@ function ShowPage() {
                 setLoading(true);
                 const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons_data_${showUuid}.json`);
                 const data = await response.json();
-                setShowData(data);
+                const reversedData = [...data.data].reverse()
+                setShowData({ ...data, data: reversedData });
+                setSelectedSeason(data.data[0])
                 setLoading(false);
             } catch (error) {
                 console.error('Error loading season data:', error);
@@ -39,28 +49,12 @@ function ShowPage() {
                 setShowInfo(response)
             } catch (error) {
                 console.error('Error loading show info:', error);
-            } finally {
-                console.log('all done');
             }
         }
-
-        const getAllEpisodesByShow = async () => {
-            try {
-                // const allEpisodeData = await getAllEpisodesByShowId(showUuid)
-                const response = await axios.get('/api/v1/episodes', { params: { show_id: showUuid, request_origin: 'show' } })
-                if (response) {
-                    setAllEpisodes(response.data.documents)
-                }
-            } catch (error) {
-                console.error('Error loading all episodes data', error);
-            }
-        }
-
 
         if (showUuid) {
             fetchSeasonData();
             fetchShowInfo();
-            getAllEpisodesByShow();
         }
     }, [showUuid])
 
@@ -69,73 +63,37 @@ function ShowPage() {
         //eslint-disable-next-line
     }, [])
 
-    const copyAllRTSeasonLinks = () => {
-        let links = []
-        showData?.data.map((season) => {
-            links.push(`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`)
-        })
-        const textToCopy = links.join('\n')
-        copyToClipboard(textToCopy)
-    }
-
-    const [clipBoard, setClipBoard] = useState({
-        value: '',
-        copied: false,
-    })
-
-    const copyAllArchivedListPerSeason = async (seasonId) => {
-        const archivedSeasonLinks = await getArchivedLinksBySeasonId(showUuid, seasonId)
-        const textToCopy = archivedSeasonLinks.join('\n')
-        setClipBoard({
-            value: textToCopy,
-            copied: true,
-        }
-        )
-    }
-
-    useEffect(() => {
-        if (clipBoard.copied) {
-            copyToClipboard(clipBoard.value)
-        }
-    }, [clipBoard])
+    // console.log('show datatata: ', showData);
 
     return (
         <>
             <NavBar
-                title={showInfo ? `${showInfo[0]?.attributes?.title}` : 'Show Title Loading...'}
-                previousLink={"/"}
-            />
-            {/* add a loading skeleton here */}
-            <div className='p-1 md:p-2'>
-                {showData && <div className='flex'>
-                    <div className='m-2'>
-                        <BulkDownloadButton data={allEpisodes} title='Download Show' />
-                    </div>
+                previousLink={`/`}
+                title={`${showData && makeTitle(showData?.data[0].attributes.show_slug)}`} />
+            <div className="p-1 md:p-2">
+                <div className="m-3">
+                    {showData && selectedSeason && (
+                        <div className="flex gap-2">
+                            <SeasonSelector data={showData.data} selected={selectedSeason} setSelected={setSelectedSeason} />
+                            <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
+                            < BulkDownloadButton data={seasonData} loading={loading} />
+                        </div>
+                    )}
                 </div>
-                }
-                <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
-                    {showData?.data?.map((season, index) => {
-                        return (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
-                            >
 
-                                <BrowseSeasonContainer
-                                    season={season}
-                                    showUuid={showUuid}
-                                    copyAllArchivedListPerSeason={copyAllArchivedListPerSeason}
-                                />
-                            </motion.div>
-                        )
-                    })}
+                <div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 100 }} // Add a slight delay for a smoother effect
+                    >
+                        <SeasonContainer seasonData={seasonData} setSeasonData={setSeasonData} seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
+                    </motion.div>
                 </div>
             </div>
-            <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {showData?.data.length}</div>
         </>
     )
 }
 
-export default ShowPage
+
+export default BrowseShows

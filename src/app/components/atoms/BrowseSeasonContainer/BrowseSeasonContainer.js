@@ -32,7 +32,7 @@ const BrowseSeasonContainer = (props) => {
             <li className='text-color-primary'>
                 <div className='bg-color-primary p-2 rounded flex flex-col items-start mb-4'>
                     <div className='w-full flex justify-between'>
-                        <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
+                        <Link href={`/download/${showUuid}/season/${season?.uuid}`}>
                             <span className='font-bold text-xl text-color-primary hover:underline decoration-1 underline-offset-4'>Season: {season?.attributes.number} - {season?.attributes?.title}<span className='text-sm font-normal italic text-red-300'></span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_feature ? '[Bonus Content]' : ''}</span>
                             </span>
                         </Link>

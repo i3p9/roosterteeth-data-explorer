@@ -2,16 +2,9 @@
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import toast, { Toaster } from 'react-hot-toast';
-import { config } from '@/app/Constants';
-import { copyToClipboard } from '@/data/utils/utils';
-import { FaRegCopy } from "react-icons/fa6";
 import 'reactjs-popup/dist/index.css';
 import NavBar from '@/app/components/molecules/NavBar/NavBar';
-import Link from 'next/link';
-import { GoLinkExternal } from "react-icons/go";
 import DownloadHelpPopUp from '@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp';
-import { ArchivedBadge, BonusContentBadge, FirstBadge } from '@/app/components/atoms/Badges/Badges';
-import DownloadButton from '@/app/components/atoms/DownloadButton/DownloadButton';
 import axios from 'axios';
 import DataEpisodeContainer from '@/app/components/atoms/DataEpisodeContainer/DataEpisodeContainer';
 import DataEpisodeContainerSkeleton from '@/app/components/atoms/DataEpisodeContainer/DataEpisodeContainerSkeleton';
@@ -19,11 +12,8 @@ import DisplayTitleMessage from '@/app/components/atoms/DisplayTitleMessage/Disp
 import { ButtonSkeleton } from '@/app/components/atoms/Skeleton/ButtonSkeleton/ButtonSkeleton';
 import SortSelector from '@/app/components/atoms/SortSelector/SortSelector';
 import { episodeSortOptions } from '@/data/utils/data';
-import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
 import { AnimatePresence, motion } from 'framer-motion';
-
-const baseUrl = config.url.BASE_URL;
 
 
 function SeasonPage() {
@@ -107,8 +97,8 @@ function SeasonPage() {
     }, [seasonUuid])
 
     useEffect(() => {
-        setSeasonUuid(params.seasonuuid)
-        setShowUuid(params.showuuid)
+        setSeasonUuid(params.season_id)
+        setShowUuid(params.show_slug)
         //eslint-disable-next-line
     }, [])
 
@@ -133,7 +123,7 @@ function SeasonPage() {
         <>
             <NavBar
                 title={pageTitle}
-                previousLink={`/show/${showUuid}`}
+                previousLink={`/download/${showUuid}`}
             />
 
             <div className='p-1 md:p-2'>
