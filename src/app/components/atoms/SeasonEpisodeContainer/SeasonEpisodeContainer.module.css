@@ -1,0 +1,8 @@
+.loading img {
+  opacity: 0; /* Initially hide the image */
+}
+
+.loaded img {
+  opacity: 1; /* Fade in the image once loaded */
+  transition: opacity 0.5s ease; /* Smooth transition */
+}

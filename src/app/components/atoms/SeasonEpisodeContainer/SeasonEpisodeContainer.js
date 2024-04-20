@@ -1,13 +1,20 @@
 'use client'
-import React from "react"
-import { makeTitle, formatSecondToRunTime, formatSecondsToDuration } from "@/data/utils/utils"
+import React, { useState } from "react"
+import { makeTitle, formatSecondsToDuration } from "@/data/utils/utils"
 import Link from "next/link"
 import { IoIosCloudDone } from "react-icons/io";
-
+import styles from './SeasonEpisodeContainer.module.css'
 
 const SeasonEpisodeContainer = (props) => {
     const { episode } = props
     const episodeId = episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`;
+    const [imageLoaded, setImageLoaded] = useState(false);
+
+    const handleImageLoad = () => {
+        setImageLoaded(true);
+    };
+
+
 
     return (
         <>
@@ -17,13 +24,14 @@ const SeasonEpisodeContainer = (props) => {
                         pathname: `/watch/${episodeId}`,
                     }}
                 >
-                    <div className="flex flex-col">
-                        <div className="relative aspect-video overflow-hidden rounded-lg object-cover-w-full mb-1">
+                    <div className={`flex flex-col ${imageLoaded ? styles.loaded : styles.loading}`}>
+                        <div className={`relative aspect-video overflow-hidden rounded-lg object-cover-w-full mb-1`}>
                             <img
                                 alt="thumbnail"
                                 className="aspect-video overflow-hidden rounded-lg object-cover-w-full"
                                 src={`https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`}
                                 width={400}
+                                onLoad={handleImageLoad}
                             />
                             <div className="absolute bottom-1 left-1 bg-zinc-900/80 text-white px-2 py-1 rounded-lg text-xs">
                                 {formatSecondsToDuration(episode?.attributes?.length)}

@@ -192,7 +192,7 @@ const SearchBarNew = ({
                     <div className="relative rounded-md rounded-l-none rounded-r-none border-2 border-x-0 border-color-primary">
                         <input
                             type="text"
-                            className="h-8 p-2 pl-2 bg-color-primary focus:outline-none"
+                            className="w-40 md:w-96 h-8 p-2 pl-2 bg-color-primary focus:outline-none"
                             placeholder="search..."
                             value={searchTerm}
                             onChange={(event) => setSearchTerm(event.target.value)}

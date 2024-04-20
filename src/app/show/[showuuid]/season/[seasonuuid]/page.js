@@ -21,6 +21,7 @@ import SortSelector from '@/app/components/atoms/SortSelector/SortSelector';
 import { episodeSortOptions } from '@/data/utils/data';
 import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const baseUrl = config.url.BASE_URL;
 
@@ -111,17 +112,20 @@ function SeasonPage() {
         //eslint-disable-next-line
     }, [])
 
-    const copyAllLinks = () => {
-        let links = []
-        seasonData?.map((episode) => {
-            // links.push(`https://archive.org/details/${episode?.type === 'episode' ? `roosterteeth-${episode?.id}` : `roosterteeth-${episode?.id}-bonus`}`)
-            if (episode?.archive) {
-                links.push(`https://archive.org/details/${episode?.archive.id}`)
+    const [sortedSeasonData, setSortedSeasonData] = useState([]);
+
+    useEffect(() => {
+        const sortSeasonData = () => {
+            if (selectedSortOption.value === 'new') {
+                setSortedSeasonData([...seasonData]);
+            } else {
+                setSortedSeasonData([...seasonData].reverse());
             }
-        })
-        const textToCopy = links.join('\n')
-        copyToClipboard(textToCopy)
-    }
+        };
+        if (seasonData) {
+            sortSeasonData();
+        }
+    }, [selectedSortOption, seasonData]);
 
     const pageTitle = `${showInfo ? showInfo[0]?.attributes?.title : 'Show Title Loading...'}: Season ${seasonData ? seasonData[0]?.attributes?.season_number : 'N/A'}`
 
@@ -142,14 +146,6 @@ function SeasonPage() {
                             <div className='m-2'>
                                 <SortSelector data={episodeSortOptions} selected={selectedSortOption} setSelected={setSelectedSortOption} />
                             </div>
-                            {/* <PrimaryButton
-                                title={'copy all archive links for downloading'}
-                                shortTitle={'archive links'}
-                                onClickFunc={copyAllLinks}
-                                successToastMessage={'Copied to clipboard!'}
-                                startIcon={<FaRegCopy />}
-                            /> */}
-
                             <DownloadHelpPopUp />
                         </div>
                     ) : <ButtonSkeleton width={'72'} />
@@ -157,7 +153,47 @@ function SeasonPage() {
 
                 {seasonNetworkError && <DisplayTitleMessage message={'Something went wrong, please try again later.'} />}
 
-                <DataEpisodeContainer seasonData={seasonData} loading={seasonLoading} />
+                <AnimatePresence>
+                    {!seasonLoading ? (
+                        selectedSortOption.value === 'new' ? (
+                            sortedSeasonData?.map((episode, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.05 * index }}
+                                >
+                                    <DataEpisodeContainer episode={episode} />
+                                </motion.div>
+                            ))
+                        ) : (
+                            sortedSeasonData?.reverse().map((episode, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.5, delay: 0.05 * index }}
+                                >
+                                    <DataEpisodeContainer episode={episode} />
+                                </motion.div>
+                            ))
+                        )
+                    ) : (
+                        [...Array(20)].map((_, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5, delay: 0.05 * index }}
+                            >
+                                <DataEpisodeContainerSkeleton />
+                            </motion.div>
+                        ))
+                    )}
+                </AnimatePresence>
 
                 <Toaster />
                 <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {seasonData?.length}</div>

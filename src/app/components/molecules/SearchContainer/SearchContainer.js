@@ -1,6 +1,7 @@
 import { useState } from "react";
 import DotPulse from "../../atoms/DotPulse/DotPulse";
 import ChannelSelector from "../../atoms/ChannelSelector/ChannelSelector";
+import { motion } from "framer-motion";
 
 const SearchContainer = ({
     runSearch,

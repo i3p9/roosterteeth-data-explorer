@@ -26,21 +26,21 @@ export const ArchivedPercentageBadge = ({ percentage }) => {
     } else {
         style = 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300'
     }
-    return <div className={`${style} w-auto stretch-90 text-sm md:text-medium font-medium px-4 py-1 rounded`}>
+    return <div className={`${style} w-auto stretch-90 text-xs md:text-medium font-medium px-1 md:px-4 py-1 rounded`}>
         <span className="hidden md:block">{percentage.toFixed(2)}% Archived</span>
         <span className="block md:hidden"><PiArchiveTrayBold style={{ display: 'inline' }} /> {percentage.toFixed()}%</span>
     </div>
 }
 
 export const NumberOfEpisodesBadge = ({ numberOfEpisode }) => {
-    return <span className="stretch-90 bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-300 text-sm md:text-medium font-medium px-4 py-1 rounded">{numberOfEpisode} Episodes</span>
+    return <span className="stretch-90 bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-300 text-xs md:text-medium font-medium px-1 md:px-4 py-1 rounded">{numberOfEpisode} Episodes</span>
 }
 
 export const TotalSizeBadge = ({ size }) => {
-    return <span className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 text-sm font-mono md:text-medium font-medium px-4 py-1 rounded">{size}</span>
+    return <span className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 text-xs font-mono md:text-medium font-medium px-1 md:px-4 py-1 rounded">{size}</span>
 }
 
 
 export const FirstBadgeBig = () => {
-    return <span className="stretch-90 bg-red-100 text-red-800 text-sm md:text-medium font-medium px-4 py-1 rounded dark:bg-red-900 dark:text-red-300">First</span>
+    return <span className="stretch-90 bg-red-100 text-red-800 text-xs md:text-medium font-medium px-1 md:px-4 py-1 rounded dark:bg-red-900 dark:text-red-300">First</span>
 }

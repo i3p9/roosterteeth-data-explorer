@@ -11,6 +11,7 @@ import { sanitizeInput } from "@/data/utils/utils";
 import { channelsWithAllAsOption } from "@/data/utils/data";
 import { useRouter } from "next/navigation";
 import SearchBarNew from "../components/molecules/SearchBarNew/SearchBarNew";
+import { motion } from "framer-motion";
 
 const BASE_API_URL = config.url.API_URL
 
@@ -119,28 +120,26 @@ const SearchPage = () => {
                 previousLink={"/"}
                 renderAdditionalMenu
             />
-            {/* <SearchContainer
-                runSearch={runSearch}
-                loading={loading}
-                runAutocomplete={runAutocomplete}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                channelOptions={channelsWithAllAsOption}
-                selectedChannel={selectedChannel}
-                setSelectedChannel={setSelectedChannel}
-            /> */}
-            <SearchBarNew
-                runSearch={runSearch}
-                loading={loading}
-                runAutocomplete={runAutocomplete}
-                searchTerm={searchTerm}
-                setSearchTerm={setSearchTerm}
-                channelOptions={channelsWithAllAsOption}
-                selectedChannel={selectedChannel}
-                setSelectedChannel={setSelectedChannel}
-                autoCompleteData={autoCompleteData}
-                setAutoCompleteData={setAutoCompleteData}
-            />
+            <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+
+                <SearchBarNew
+                    runSearch={runSearch}
+                    loading={loading}
+                    runAutocomplete={runAutocomplete}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    channelOptions={channelsWithAllAsOption}
+                    selectedChannel={selectedChannel}
+                    setSelectedChannel={setSelectedChannel}
+                    autoCompleteData={autoCompleteData}
+                    setAutoCompleteData={setAutoCompleteData}
+                />
+            </motion.div>
+
 
             {/* TODO: fix mobile layout of skeleton and episode container */}
             <SearchResultContainer data={searchResult} loading={loading} />

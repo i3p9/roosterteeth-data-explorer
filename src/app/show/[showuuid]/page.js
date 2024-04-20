@@ -1,15 +1,13 @@
 "use client"
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import toast, { Toaster } from 'react-hot-toast';
 import { config } from '@/app/Constants'
-import { copyToClipboard, getAllEpisodesByShowId, getArchivedLinksBySeasonId, getArchivedLinksByShowId, getArchivedPercentageBySeasonId, getShowInfo } from '@/data/utils/utils'
-import { FaRegCopy } from "react-icons/fa6";
+import { copyToClipboard, getArchivedLinksBySeasonId, getShowInfo } from '@/data/utils/utils'
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
-import PrimaryButton from '@/app/components/atoms/Button/PrimaryButton/PrimaryButton';
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
 import axios from 'axios';
+import { motion } from 'framer-motion'
 
 const baseUrl = config.url.BASE_URL;
 
@@ -20,9 +18,7 @@ function ShowPage() {
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
     const [showInfo, setShowInfo] = useState()
-    const [archivedLinks, setArchivedLinks] = useState([])
     const [allEpisodes, setAllEpisodes] = useState([])
-    const notify = () => toast.success('Copied to clipboard!');
 
     useEffect(() => {
         const fetchSeasonData = async () => {
@@ -115,29 +111,28 @@ function ShowPage() {
                     <div className='m-2'>
                         <BulkDownloadButton data={allEpisodes} title='Download Show' />
                     </div>
-                    {/* <PrimaryButton
-                        title='copy all rt links'
-                        successToastMessage='Copied to clipboard!'
-                        onClickFunc={copyAllRTSeasonLinks}
-                        startIcon={<FaRegCopy />}
-                    /> */}
                 </div>
                 }
                 <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
                     {showData?.data?.map((season, index) => {
                         return (
-                            <div key={index}>
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+
                                 <BrowseSeasonContainer
                                     season={season}
                                     showUuid={showUuid}
                                     copyAllArchivedListPerSeason={copyAllArchivedListPerSeason}
                                 />
-                            </div>
+                            </motion.div>
                         )
                     })}
                 </div>
             </div>
-            <Toaster />
             <div className='italic text-sm pt-8 text-color-faded'>total items in this page: {showData?.data.length}</div>
         </>
     )

@@ -33,7 +33,7 @@ const BrowseSeasonContainer = (props) => {
                 <div className='bg-color-primary p-2 rounded flex flex-col items-start mb-4'>
                     <div className='w-full flex justify-between'>
                         <Link href={`/show/${showUuid}/season/${season?.uuid}`}>
-                            <span className='font-bold text-xl text-color-primary'>Season: {season?.attributes.number} - {season?.attributes?.title}<span className='text-sm font-normal italic text-red-300'></span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_feature ? '[Bonus Content]' : ''}</span>
+                            <span className='font-bold text-xl text-color-primary hover:underline decoration-1 underline-offset-4'>Season: {season?.attributes.number} - {season?.attributes?.title}<span className='text-sm font-normal italic text-red-300'></span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_feature ? '[Bonus Content]' : ''}</span>
                             </span>
                         </Link>
                         <a target='_blank' href={`https://roosterteeth.com/series/${season?.attributes.show_slug}?season=${season?.attributes.number}`} >

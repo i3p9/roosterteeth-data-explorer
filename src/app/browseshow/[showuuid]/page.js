@@ -83,7 +83,9 @@ const BrowseShows = () => {
 
                 <div>
                     <motion.div
-                        transition={{ duration: 0.5, type: 'spring', stiffness: 100, delay: 0.5 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 100 }} // Add a slight delay for a smoother effect
                     >
                         <SeasonContainer seasonData={seasonData} setSeasonData={setSeasonData} seasonUuid={selectedSeason.uuid} showUuid={showUuid} selectedSortOption={selectedSortOption} />
                     </motion.div>
