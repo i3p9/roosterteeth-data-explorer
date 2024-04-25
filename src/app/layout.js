@@ -6,8 +6,8 @@ import { mona } from "./fonts";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Rooster Teeth Data Explorer",
-  description: "rooster teeth stuff",
+  title: "Rooster Teeth Archive",
+  description: "Archive / Download Funhaus / Rooster Teeth content",
 };
 
 export default function RootLayout({ children }) {
