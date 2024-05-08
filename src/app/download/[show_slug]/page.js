@@ -2,12 +2,14 @@
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { config } from '@/app/Constants'
-import { copyToClipboard, getArchivedLinksBySeasonId, getShowInfo } from '@/data/utils/utils'
+import { bytesToReadableSize, copyToClipboard, getArchivedLinksBySeasonId, getShowInfo, getTotalShowFileSizeByEpisodes } from '@/data/utils/utils'
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
 import axios from 'axios';
 import { motion } from 'framer-motion'
+import DownloadHelp from '@/app/components/molecules/DownloadHelp/DownloadHelp'
+import { NumberOfEpisodesBadgeBig, TotalSizeBadge, TotalSizeBadgeBig } from '@/app/components/atoms/Badges/Badges'
 
 const baseUrl = config.url.BASE_URL;
 
@@ -69,6 +71,17 @@ function ShowPage() {
         //eslint-disable-next-line
     }, [])
 
+    const [totalShowSize, setTotalShowSize] = useState(0)
+    const [totalArchived, setTotalArchived] = useState(0)
+    useEffect(() => {
+        if (allEpisodes) {
+            const result = getTotalShowFileSizeByEpisodes(allEpisodes)
+            console.log('result: ', result);
+            setTotalShowSize(result.totalSizeInByte)
+            setTotalArchived(result.archivedCount)
+        }
+    }, [allEpisodes])
+
     const copyAllRTSeasonLinks = () => {
         let links = []
         showData?.data.map((season) => {
@@ -108,11 +121,14 @@ function ShowPage() {
             {/* add a loading skeleton here */}
             <div className='p-1 md:p-2'>
                 {showData && <div className='flex'>
-                    <div className='m-2'>
+                    <div className='m-2 flex gap-2'>
                         <BulkDownloadButton data={allEpisodes} title='Download Show' />
+                        <TotalSizeBadgeBig size={bytesToReadableSize(totalShowSize)} />
+                        <NumberOfEpisodesBadgeBig numberOfEpisode={totalArchived} />
                     </div>
                 </div>
                 }
+                <DownloadHelp />
                 <div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
                     {showData?.data?.map((season, index) => {
                         return (
@@ -122,7 +138,6 @@ function ShowPage() {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                             >
-
                                 <BrowseSeasonContainer
                                     season={season}
                                     showUuid={showUuid}

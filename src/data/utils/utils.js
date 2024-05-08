@@ -230,6 +230,24 @@ export const getArchivedPercentageAndDataBySeasonId = async (showId, seasonId) =
     }
 }
 
+export const getTotalShowFileSizeByEpisodes = (episodes) => {
+    let archivedCount = 0;
+    let allEpisodesBySeason = [];
+    let totalSizeInByte = 0;
+    episodes.forEach(episode => {
+        // allEpisodesBySeason.push(episode)
+        if (episode?.archive) {
+            archivedCount++
+            for (const file of episode.archive.files) {
+                totalSizeInByte = totalSizeInByte + Number(file.filesize)
+            }
+        }
+    })
+    const percentageResult = percentage(archivedCount, episodes.length)
+    return { percentageResult, totalSizeInByte, archivedCount };
+
+}
+
 
 export const extractEpisodeInfoFromIAItemName = (str) => {
     const regex = /^(?:roosterteeth-)?(\d+)(-bonus)?$/; // Updated regex pattern with optional "roosterteeth-" prefix
