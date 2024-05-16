@@ -64,7 +64,7 @@ const WatchEpisodePage = () => {
 
     return (
         <>
-            <NavBar previousLink={`/browseshow/${episode?.attributes.show_id}`}
+            <NavBar previousLink={`/show/${episode?.attributes.show_id}`}
                 title={'Archive Player'}
             />
             <div className="flex gap-2">
