@@ -92,7 +92,7 @@ const WatchEpisodePage = () => {
                             <div className="p-2 flex justify-between flex-col lg:flex-row gap-4">
                                 <div className="flex flex-col">
                                     <h1 className="font-bold text-xl text-color-primary">{episode?.attributes.title}</h1>
-                                    <Link href={`/browseshow/${episode?.attributes.show_id}`}>
+                                    <Link href={`/show/${episode?.attributes.show_id}`}>
                                         <p className="font-medium text-md text-color-secondary">{episode?.attributes.show_title} {episode?.attributes.season_number && <span>• S{episode?.attributes.season_number} - E{episode?.attributes.number}</span>}</p>
                                     </Link>
                                 </div>
