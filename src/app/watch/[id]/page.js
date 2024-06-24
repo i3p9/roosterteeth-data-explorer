@@ -71,13 +71,13 @@ const WatchEpisodePage = () => {
                 <div className="md:w-8/12">
                     {!iframeLoaded && (
                         <div className="aspect-video mt-2">
-                            <p className="w-full h-full bg-gray-200 rounded-sm dark:bg-gray-700 w-full mt-2"></p>
+                            <p className="w-full h-full bg-gray-200 rounded-lg dark:bg-gray-700 w-full mt-2"></p>
                         </div>
                     )}
                     <div className="">
                         <div className={`aspect-video mt-2 ${!iframeLoaded ? 'hidden' : ''}`}>
                             <iframe
-                                className={`w-full h-full rounded`}
+                                className={`w-full h-full rounded-lg`}
                                 src={`https://archive.org/embed/roosterteeth-${nowPlayingEpisodeId}`}
                                 webkitallowfullscreen="true"
                                 mozallowfullscreen="true"
