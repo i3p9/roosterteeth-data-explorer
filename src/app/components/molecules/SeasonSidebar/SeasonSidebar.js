@@ -1,12 +1,8 @@
 import React from "react"
-import { usePathname } from 'next/navigation'
 
-const SeasonSideBar = ({ nextEpisodes, nowPlayingEpisodeId, setNowPlayingEpisodeId }) => {
-    const pathname = usePathname()
-
-    function updatePath(episodeId) {
-
-        const newPath = `/watch/${episodeId}`
+const SeasonSideBar = ({ nextEpisodes, nowPlayingEpisodeSlug, setNowPlayingEpisodeSlug }) => {
+    function updatePath(episodeSlug) {
+        const newPath = `/watch/${episodeSlug}`
         window.history.replaceState(null, '', newPath)
     }
 
@@ -16,19 +12,18 @@ const SeasonSideBar = ({ nextEpisodes, nowPlayingEpisodeId, setNowPlayingEpisode
                 <h2 className="text-xl font-semibold my-2">From this season:</h2>
                 <div className="flex flex-col overflow-y-auto">
                     {nextEpisodes?.map((episode, index) => {
-                        console.log(episode);
                         return (
                             <React.Fragment key={index}>
                                 <button
                                     onClick={() => {
-                                        updatePath(episode?.id)
-                                        setNowPlayingEpisodeId(episode?.id)
+                                        updatePath(episode?.attributes.slug)
+                                        setNowPlayingEpisodeSlug(episode?.attributes.slug)
                                     }}>
                                     <div
-                                        className={`p-1 flex gap-2 ${episode?.id.toString() === nowPlayingEpisodeId.toString() ? 'bg-color-primary rounded font-bold' : 'bg-color-hover rounded-lg'}`} key={index}
+                                        className={`p-1 flex gap-2 ${episode?.attributes.slug.toString() === nowPlayingEpisodeSlug.toString() ? 'bg-color-primary rounded font-bold' : 'bg-color-hover rounded-lg'}`} key={index}
                                         ref={(ref) => {
                                             // Check if the episode is selected
-                                            if (episode?.id.toString() === nowPlayingEpisodeId.toString()) {
+                                            if (episode?.id.toString() === nowPlayingEpisodeSlug.toString()) {
                                                 // Scroll the selected episode into view
                                                 ref && ref.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                             }

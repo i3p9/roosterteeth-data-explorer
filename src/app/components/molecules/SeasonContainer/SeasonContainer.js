@@ -72,7 +72,7 @@ const SeasonContainer = (props) => {
         //eslint-disable-next-line
     }, [searchTerm])
 
-    console.log('filtered: ', allFilteredData);
+    // console.log('filtered: ', allFilteredData);
 
 
     if (seasonLoading) {

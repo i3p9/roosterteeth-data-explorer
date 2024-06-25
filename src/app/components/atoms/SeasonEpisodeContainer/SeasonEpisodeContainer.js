@@ -7,7 +7,10 @@ import styles from './SeasonEpisodeContainer.module.css'
 
 const SeasonEpisodeContainer = (props) => {
     const { episode } = props
-    const episodeId = episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`;
+    console.log(episode);
+    // const episodeId = episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`;
+    const episodeId = `${episode?.attributes.slug}`;
+
     const [imageLoaded, setImageLoaded] = useState(false);
 
     const handleImageLoad = () => {

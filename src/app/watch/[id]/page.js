@@ -11,8 +11,8 @@ import SeasonSideBar from "@/app/components/molecules/SeasonSidebar/SeasonSideba
 
 const WatchEpisodePage = () => {
     const params = useParams()
-    const episodeId = params.id
-    const [nowPlayingEpisodeId, setNowPlayingEpisodeId] = useState(episodeId)
+    const episodeSlug = params.id
+    const [nowPlayingEpisodeSlug, setNowPlayingEpisodeSlug] = useState(episodeSlug)
     const [iframeLoaded, setIframeLoaded] = useState(false)
     const [episode, setEpisode] = useState()
     const [nextEpisodes, setNextEpisodes] = useState()
@@ -24,7 +24,7 @@ const WatchEpisodePage = () => {
 
     const getEpisodeData = async () => {
         try {
-            const response = await axios.get(`/api/v1/episode`, { params: { "id": nowPlayingEpisodeId } });
+            const response = await axios.get(`/api/v1/episode`, { params: { "slug": nowPlayingEpisodeSlug } });
             if (response.data.documents) {
                 setEpisode(response.data.documents[0])
                 setDownloadData(response.data.documents[0].archive)
@@ -49,9 +49,9 @@ const WatchEpisodePage = () => {
     useEffect(() => {
         console.log("Effect triggered");
         getEpisodeData()
-        getNextEpisodesData()
+        // getNextEpisodesData()
         //eslint-disable-next-line
-    }, [nowPlayingEpisodeId])
+    }, [nowPlayingEpisodeSlug])
 
     useEffect(() => {
         if (episode) {
@@ -78,7 +78,7 @@ const WatchEpisodePage = () => {
                         <div className={`aspect-video mt-2 ${!iframeLoaded ? 'hidden' : ''}`}>
                             <iframe
                                 className={`w-full h-full rounded-lg`}
-                                src={`https://archive.org/embed/roosterteeth-${nowPlayingEpisodeId}`}
+                                src={`https://archive.org/embed/roosterteeth-${episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`}`}
                                 webkitallowfullscreen="true"
                                 mozallowfullscreen="true"
                                 allowFullScreen
@@ -123,8 +123,8 @@ const WatchEpisodePage = () => {
                 </div>
                 <SeasonSideBar
                     nextEpisodes={nextEpisodes}
-                    nowPlayingEpisodeId={nowPlayingEpisodeId}
-                    setNowPlayingEpisodeId={setNowPlayingEpisodeId}
+                    nowPlayingEpisodeSlug={nowPlayingEpisodeSlug}
+                    setNowPlayingEpisodeSlug={setNowPlayingEpisodeSlug}
                 />
             </div >
         </>
