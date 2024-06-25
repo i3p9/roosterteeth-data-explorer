@@ -30,7 +30,7 @@ const SeasonContainer = (props) => {
         const fetchSeasonDataNext = async () => {
             try {
                 setSeasonLoading(true)
-                const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid, show_id: showUuid, request_origin: 'season' } })
+                const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid } })
                 if (response) {
                     setSeasonData(response.data.documents)
                     setAllFilteredData(response.data.documents)

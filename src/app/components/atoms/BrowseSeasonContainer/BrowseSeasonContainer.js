@@ -11,7 +11,7 @@ import BulkDownloadButton from '../BulkDownloadButton/BulkDownloadButton';
 
 const BrowseSeasonContainer = (props) => {
     const notify = () => toast.success('Copied to clipboard!');
-    const { season, showUuid, copyAllArchivedListPerSeason } = props
+    const { season, showUuid, showSlug, copyAllArchivedListPerSeason } = props
     const [archivedPercentage, setArchivePercentage] = useState(0)
     const [allEpisodes, setAllEpisodes] = useState([])
     const [totalSizeInByte, setTotalSizeInByte] = useState(0)
@@ -26,13 +26,15 @@ const BrowseSeasonContainer = (props) => {
         getPct(showUuid, season?.uuid)
     }, [season, showUuid])
 
+    console.log('seasoninfo :', season);
+
 
     return (
         <>
             <li className='text-color-primary'>
                 <div className='bg-color-primary p-2 rounded flex flex-col items-start mb-4'>
                     <div className='w-full flex justify-between'>
-                        <Link href={`/download/${showUuid}/season/${season?.uuid}`}>
+                        <Link href={`/download/${showSlug}/season/${season?.attributes.slug}`}>
                             <span className='font-bold text-xl text-color-primary hover:underline decoration-1 underline-offset-4'>Season: {season?.attributes.number} - {season?.attributes?.title}<span className='text-sm font-normal italic text-red-300'></span> <span className='text-sm font-normal italic text-purple-300'>{season?.attributes?.has_bonus_feature ? '[Bonus Content]' : ''}</span>
                             </span>
                         </Link>

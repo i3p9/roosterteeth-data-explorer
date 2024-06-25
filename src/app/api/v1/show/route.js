@@ -1,16 +1,36 @@
 import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
-    const uuid = params.uuid;
+
+    const show_id = request.nextUrl.searchParams.get('show_id')
+    const show_slug = request.nextUrl.searchParams.get('show_slug')
+
     const apiKey = process.env.DB_API
     const mongoUrl = process.env.DB_HOST
+
+    const providedParams = [show_id, show_slug].filter(Boolean)
+
+    if (providedParams.length === 0) {
+        return new NextResponse(`Bad request: Must provide one of season_id, show_id, season_slug, or show_slug`, { status: 400 })
+    }
+
+    if (providedParams.length > 1) {
+        return new NextResponse(`Bad request: Only one of season_id, show_id, season_slug, or show_slug should be provided`, { status: 400 })
+    }
+
+    let filter = {}
+
+    if (show_id) {
+        filter["uuid"] = show_id
+    } else if (show_slug) {
+        filter["attributes.slug"] = show_slug
+    }
+
 
     const raw = JSON.stringify({
         dataSource: "metadata",
         database: "roosterteeth_site",
         collection: "shows",
-        filter: {
-            "uuid": uuid
-        }
+        filter
     });
     try {
         const response = await fetch(`${mongoUrl}/action/find`, {

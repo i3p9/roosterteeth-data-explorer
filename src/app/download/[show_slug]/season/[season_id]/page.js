@@ -19,8 +19,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 function SeasonPage() {
     const params = useParams()
 
-    const [seasonUuid, setSeasonUuid] = useState('')
-    const [showUuid, setShowUuid] = useState('')
+    const [seasonSlug, setSeasonSlug] = useState('')
+    const [showSlug, setShowSlug] = useState('')
     const [seasonData, setSeasonData] = useState()
     const [showInfo, setShowInfo] = useState('')
     const [seasonLoading, setSeasonLoading] = useState(false)
@@ -37,7 +37,7 @@ function SeasonPage() {
         //local json method
         // const fetchSeasonData = async () => {
         //     try {
-        //         const response = await fetch(`${baseUrl}/shows/${showUuid}/seasons/${seasonUuid}.json`);
+        //         const response = await fetch(`${baseUrl}/shows/${showSlug}/seasons/${seasonSlug}.json`);
         //         const data = await response.json();
         //         setSeasonData(data);
         //     } catch (error) {
@@ -48,7 +48,7 @@ function SeasonPage() {
         const fetchSeasonDataNext = async () => {
             try {
                 setSeasonLoading(true)
-                const response = await axios.get('/api/v1/episodes', { params: { season_id: seasonUuid, show_id: showUuid, request_origin: 'season' } })
+                const response = await axios.get('/api/v1/episodes', { params: { season_slug: seasonSlug } })
                 if (response) {
                     setSeasonData(response.data.documents)
                 }
@@ -64,7 +64,7 @@ function SeasonPage() {
         //local json method
         // const fetchShowInfo = async () => {
         //     try {
-        //         const response = await getShowInfo(showUuid)
+        //         const response = await getShowInfo(showSlug)
         //         setShowInfo(response)
         //     } catch (error) {
         //         console.error('Error loading show data:', error);
@@ -74,7 +74,7 @@ function SeasonPage() {
         const fetchShowInfoNext = async () => {
             try {
                 setShowInfoLoading(true)
-                const response = await axios.get(`/api/v1/show/${showUuid}`)
+                const response = await axios.get(`/api/v1/show/`, { params: { show_slug: showSlug } })
                 if (response) {
                     setShowInfo(response.data.documents)
                 }
@@ -89,16 +89,16 @@ function SeasonPage() {
         }
 
 
-        if (showUuid) {
+        if (showSlug) {
             fetchSeasonDataNext();
             fetchShowInfoNext();
         }
         //eslint-disable-next-line
-    }, [seasonUuid])
+    }, [seasonSlug])
 
     useEffect(() => {
-        setSeasonUuid(params.season_id)
-        setShowUuid(params.show_slug)
+        setSeasonSlug(params.season_id)
+        setShowSlug(params.show_slug)
         //eslint-disable-next-line
     }, [])
 
@@ -123,7 +123,7 @@ function SeasonPage() {
         <>
             <NavBar
                 title={pageTitle}
-                previousLink={`/download/${showUuid}`}
+                previousLink={`/download/${showSlug}`}
             />
 
             <div className='p-1 md:p-2'>

@@ -2,7 +2,7 @@
 import { useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { config } from '@/app/Constants'
-import { bytesToReadableSize, copyToClipboard, getArchivedLinksBySeasonId, getShowInfo, getTotalShowFileSizeByEpisodes } from '@/data/utils/utils'
+import { bytesToReadableSize, copyToClipboard, getArchivedLinksBySeasonId, getShowIdFromSlug, getShowInfo, getTotalShowFileSizeByEpisodes, makeTitle } from '@/data/utils/utils'
 import NavBar from '@/app/components/molecules/NavBar/NavBar'
 import BrowseSeasonContainer from '@/app/components/atoms/BrowseSeasonContainer/BrowseSeasonContainer';
 import BulkDownloadButton from '@/app/components/atoms/BulkDownloadButton/BulkDownloadButton';
@@ -16,6 +16,7 @@ const baseUrl = config.url.BASE_URL;
 function ShowPage() {
     const params = useParams()
 
+    const [showSlug, setShowSlug] = useState('')
     const [showUuid, setShowUuid] = useState('')
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
@@ -35,21 +36,21 @@ function ShowPage() {
             }
         };
 
-        const fetchShowInfo = async () => {
-            try {
-                const response = await getShowInfo(showUuid)
-                setShowInfo(response)
-            } catch (error) {
-                console.error('Error loading show info:', error);
-            } finally {
-                console.log('all done');
-            }
-        }
+        // const fetchShowInfo = async () => {
+        //     try {
+        //         const response = await getShowInfo(showUuid)
+        //         setShowInfo(response)
+        //     } catch (error) {
+        //         console.error('Error loading show info:', error);
+        //     } finally {
+        //         console.log('all done');
+        //     }
+        // }
 
         const getAllEpisodesByShow = async () => {
             try {
                 // const allEpisodeData = await getAllEpisodesByShowId(showUuid)
-                const response = await axios.get('/api/v1/episodes', { params: { show_id: showUuid, request_origin: 'show' } })
+                const response = await axios.get('/api/v1/episodes', { params: { show_id: showUuid } })
                 if (response) {
                     setAllEpisodes(response.data.documents)
                 }
@@ -61,13 +62,30 @@ function ShowPage() {
 
         if (showUuid) {
             fetchSeasonData();
-            fetchShowInfo();
+            // fetchShowInfo();
             getAllEpisodesByShow();
         }
     }, [showUuid])
 
     useEffect(() => {
-        setShowUuid(params.show_slug)
+        const fetchShowIdAndInfo = async () => {
+            try {
+                // const { showInfoResponse, showIdResponse } = await getShowIdFromSlug(showSlug)
+                // setShowInfo(showInfoResponse)
+                const showIdResponse = await getShowIdFromSlug(showSlug)
+                setShowUuid(showIdResponse)
+            } catch (error) {
+                console.error('Error loading show info and id', error);
+            }
+        }
+        if (showSlug) {
+            fetchShowIdAndInfo();
+        }
+
+    }, [showSlug])
+
+    useEffect(() => {
+        setShowSlug(params.show_slug)
         //eslint-disable-next-line
     }, [])
 
@@ -115,7 +133,7 @@ function ShowPage() {
     return (
         <>
             <NavBar
-                title={showInfo ? `${showInfo[0]?.attributes?.title}` : 'Show Title Loading...'}
+                title={`${showData && makeTitle(showData?.data[0].attributes.show_slug)}`}
                 previousLink={"/download"}
             />
             {/* add a loading skeleton here */}
@@ -141,7 +159,7 @@ function ShowPage() {
                                 <BrowseSeasonContainer
                                     season={season}
                                     showUuid={showUuid}
-                                    showSlug={showUuid}
+                                    showSlug={showSlug}
                                     copyAllArchivedListPerSeason={copyAllArchivedListPerSeason}
                                 />
                             </motion.div>

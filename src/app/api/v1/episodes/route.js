@@ -5,7 +5,8 @@ export async function GET(request, { params }) {
 
     const season_id = request.nextUrl.searchParams.get('season_id')
     const show_id = request.nextUrl.searchParams.get('show_id')
-    const request_origin = request.nextUrl.searchParams.get('request_origin')
+    const season_slug = request.nextUrl.searchParams.get('season_slug') //new
+    const show_slug = request.nextUrl.searchParams.get('show_slug') //new
 
     //pagination
     // const limit = request.nextUrl.searchParams.get('limit')
@@ -21,24 +22,29 @@ export async function GET(request, { params }) {
     //     limit: limit,
     //     skip: offset
     // }
-    let filter;
-    if (!request_origin) {
-        return new NextResponse(`bad request, must include request_origin: season/show`, { status: 400 })
-    } else if (request_origin === 'season' && season_id.includes('bonus') && show_id) {
-        //request: episodes of a season, bonus season only
-        console.log('//request: episodes of a season, bonus season only');
-        filter = { "attributes.show_id": show_id, "type": 'bonus_feature' }
-    } else if (request_origin === 'season' && !season_id.includes('bonus')) {
-        //request: episodes of a season, regular season
-        console.log('//request: episodes of a season, regular season');
-        filter = { "attributes.season_id": season_id }
-    } else if (request_origin === 'show' && show_id) {
-        //request: episodes of a total show
-        console.log('//request: episodes of a total show');
-        filter = { "attributes.show_id": show_id }
-    } else {
-        return new NextResponse(`bad request, wrong params`, { status: 400 })
+
+    const providedParams = [season_id, show_id, season_slug, show_slug].filter(Boolean)
+
+    if (providedParams.length === 0) {
+        return new NextResponse(`Bad request: Must provide one of season_id, show_id, season_slug, or show_slug`, { status: 400 })
     }
+
+    if (providedParams.length > 1) {
+        return new NextResponse(`Bad request: Only one of season_id, show_id, season_slug, or show_slug should be provided`, { status: 400 })
+    }
+
+    let filter = {}
+
+    if (season_id) {
+        filter["attributes.season_id"] = season_id
+    } else if (show_id) {
+        filter["attributes.show_id"] = show_id
+    } else if (season_slug) {
+        filter["attributes.season_slug"] = season_slug
+    } else if (show_slug) {
+        filter["attributes.show_slug"] = show_slug
+    }
+
 
     const raw = JSON.stringify({
         dataSource: "metadata",
