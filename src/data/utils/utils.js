@@ -5,6 +5,19 @@ export const getShowInfo = async (uuid) => {
     return result
 }
 
+export const getShowIdAndInfoFromSlug = async (slug) => {
+    const result = masterList.data.filter((show) => show.attributes.slug === slug)
+    const showId = result[0].uuid
+    return { result, showId }
+}
+
+export const getShowIdFromSlug = async (slug) => {
+    const result = masterList.data.filter((show) => show.attributes.slug === slug)
+    const showId = result[0].uuid
+    return showId
+}
+
+
 export function formatSecondToRunTime(seconds) {
     if (seconds < 0) {
         return "Invalid input";

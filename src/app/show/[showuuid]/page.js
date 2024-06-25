@@ -4,7 +4,7 @@ import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { config } from '@/app/Constants'
 import NavBar from "@/app/components/molecules/NavBar/NavBar"
-import { getShowInfo, makeTitle } from "@/data/utils/utils"
+import { getShowIdFromSlug, makeTitle } from "@/data/utils/utils"
 import SeasonContainer from "@/app/components/molecules/SeasonContainer/SeasonContainer"
 import { motion } from "framer-motion"
 import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector"
@@ -16,10 +16,11 @@ const baseUrl = config.url.BASE_URL;
 
 const BrowseShows = () => {
     const params = useParams()
+    const [showSlug, setShowSlug] = useState('')
     const [showUuid, setShowUuid] = useState('')
     const [showData, setShowData] = useState()
     const [loading, setLoading] = useState(false)
-    const [showInfo, setShowInfo] = useState()
+    // const [showInfo, setShowInfo] = useState()
     const [seasonData, setSeasonData] = useState()
 
 
@@ -43,24 +44,30 @@ const BrowseShows = () => {
                 console.error('Error loading season data:', error);
             }
         };
-
-        const fetchShowInfo = async () => {
-            try {
-                const response = await getShowInfo(showUuid)
-                setShowInfo(response)
-            } catch (error) {
-                console.error('Error loading show info:', error);
-            }
-        }
-
         if (showUuid) {
             fetchSeasonData();
-            fetchShowInfo();
+            // fetchShowInfo();
         }
     }, [showUuid])
 
     useEffect(() => {
-        setShowUuid(params.showuuid)
+        const fetchShowIdAndInfo = async () => {
+            try {
+                // const { showInfoResponse, showIdResponse } = await getShowIdFromSlug(showSlug)
+                // setShowInfo(showInfoResponse)
+                const showIdResponse = await getShowIdFromSlug(showSlug)
+                setShowUuid(showIdResponse)
+            } catch (error) {
+                console.error('Error loading show info and id', error);
+            }
+        }
+        if (showSlug) {
+            fetchShowIdAndInfo();
+        }
+    }, [showSlug])
+
+    useEffect(() => {
+        setShowSlug(params.showuuid)
         //eslint-disable-next-line
     }, [])
 

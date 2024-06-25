@@ -218,7 +218,7 @@ const BrowseAllShows = () => {
                   alt=""
                 />
 
-                <Link href={`/show/${item?.uuid}`}>
+                <Link href={`/show/${item?.attributes.slug}`}>
                   <div
                     className="absolute bottom-1 left-1 rounded-lg text-xs">
                     {item?.attributes.is_sponsors_only ? <FirstBadgeOnPoster /> : ''}

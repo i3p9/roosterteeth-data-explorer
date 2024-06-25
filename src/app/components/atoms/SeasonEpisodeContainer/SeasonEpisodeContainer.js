@@ -7,7 +7,6 @@ import styles from './SeasonEpisodeContainer.module.css'
 
 const SeasonEpisodeContainer = (props) => {
     const { episode } = props
-    console.log(episode);
     // const episodeId = episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`;
     const episodeId = `${episode?.attributes.slug}`;
 
