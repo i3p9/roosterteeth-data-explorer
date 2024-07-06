@@ -58,8 +58,8 @@ const BrowseShows = () => {
 				previousLink={`/`}
 				title={`${showSlug && makeTitle(showSlug)}`}
 			/>
-			<div className='p-1 md:p-2'>
-				<div className='m-3'>
+			<div className=''>
+				<div className='my-4'>
 					{showData && selectedSeason && (
 						<div className='flex flex-col-reverse md:flex-row gap-2'>
 							<div className='flex gap-2 h-10'>
@@ -86,7 +86,7 @@ const BrowseShows = () => {
 									onChange={(event) =>
 										setSearchTerm(event.target.value)
 									}
-									className='block rounded w-full md:w-64 lg:w-96 p-2 text-md leading-4 text-color-primary border border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
+									className='block rounded-md w-full md:w-64 lg:w-96 p-2 text-md leading-4 text-color-primary border border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
 									placeholder='Search...'
 								></input>
 							</div>
