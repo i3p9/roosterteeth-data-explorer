@@ -80,6 +80,8 @@ const RandomPage = () => {
 	const [selectedChannel, setSelectedChannel] = useState(channels[0]);
 	const [openResultPopup, setOpenResultPopup] = useState(false);
 
+	document.title = "Random // rt-archive";
+
 	const getRandomEpisodeData = async () => {
 		setLoading(true);
 		// const result = await axios.get('/api/random', { params: { channel_id: selectedChannel.uuid } })
@@ -128,7 +130,7 @@ const RandomPage = () => {
 	return (
 		<>
 			<NavBar
-				title={'Radnom wheel of "fortune"'}
+				title={"Radnom wheel of videos"}
 				renderAdditionalMenu
 				previousLink={"/"}
 			/>
