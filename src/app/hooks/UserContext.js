@@ -14,11 +14,16 @@ export const UserContextProvider = ({ children }) => {
 
 	const fetchCurrentUser = async () => {
 		// First, check localStorage
-		const storedUser = localStorage.getItem("currentUser");
 		if (storedUser) {
-			const userData = JSON.parse(storedUser);
-			setCurrentUser(userData);
-			return;
+			try {
+				const userData = JSON.parse(storedUser);
+				if (userData && userData.user !== null) {
+					setCurrentUser(userData);
+					return;
+				}
+			} catch (error) {
+				console.error("Error parsing stored user data:", error);
+			}
 		}
 
 		// If not in localStorage, fetch from Supabase
