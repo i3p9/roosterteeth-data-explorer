@@ -95,6 +95,7 @@ function ShowPage() {
 		};
 		if (showSlug) {
 			fetchShowIdAndInfo();
+			document.title = `${makeTitle(showSlug)} // rt-archvie`;
 		}
 	}, [showSlug]);
 

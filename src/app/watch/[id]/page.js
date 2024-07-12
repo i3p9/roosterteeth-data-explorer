@@ -70,6 +70,7 @@ const WatchEpisodePage = () => {
 		if (episode) {
 			getNextEpisodesData();
 			getCurrentSessionInfo();
+			document.title = `${episode?.attributes.title} / rt-archive`;
 		}
 		//eslint-disable-next-line
 	}, [episode]);
