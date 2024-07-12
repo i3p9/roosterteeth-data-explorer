@@ -20,7 +20,7 @@ export async function middleware(req) {
 		data: { session },
 	} = await supabase.auth.getSession();
 
-	console.log("session: ", session ? session : "na");
+	// console.log("session: ", session ? session : "na");
 
 	// if (!session) {
 	// 	// If no session, redirect to login

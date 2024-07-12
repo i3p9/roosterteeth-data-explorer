@@ -180,7 +180,7 @@ export const getArchivedLinksBySeasonId = async (
 			}
 		});
 		allEpisodeLinks = allEpisodeLinks.concat(seasonEpisodeData);
-		console.log("by season id: ", allEpisodeLinks);
+		// console.log("by season id: ", allEpisodeLinks);
 		return allEpisodeLinks;
 	} catch (error) {
 		console.error("Error loading season data:", error);

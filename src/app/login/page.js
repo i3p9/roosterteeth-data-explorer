@@ -28,7 +28,7 @@ const LoginPage = () => {
 				});
 
 			if (dataUser) {
-				console.log("response: ", dataUser);
+				// console.log("response: ", dataUser);
 				setSuccess(true);
 				setLoading(false);
 			}

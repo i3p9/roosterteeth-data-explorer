@@ -105,7 +105,7 @@ const WatchEpisodePage = () => {
 	}, [userData]);
 
 	const handleLikeButton = async () => {
-		console.log("Liked Video! ");
+		// console.log("Liked Video! ");
 
 		const { data, error } = await mySupabaseClient
 			.from("liked_videos")
@@ -163,9 +163,9 @@ const WatchEpisodePage = () => {
 		}
 	};
 
-	console.log("userData: ", userData);
-	console.log("is logged in: ", loggedIn);
-	console.log("is this video liked: ", isLiked);
+	// console.log("userData: ", userData);
+	// console.log("is logged in: ", loggedIn);
+	// console.log("is this video liked: ", isLiked);
 
 	return (
 		<>
