@@ -14,6 +14,7 @@ export const UserContextProvider = ({ children }) => {
 
 	const fetchCurrentUser = async () => {
 		// First, check localStorage
+		const storedUser = localStorage.getItem("currentUser");
 		if (storedUser) {
 			try {
 				const userData = JSON.parse(storedUser);
