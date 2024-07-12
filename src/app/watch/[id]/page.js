@@ -14,6 +14,7 @@ import axios from "axios";
 import SeasonSideBar from "@/app/components/molecules/SeasonSidebar/SeasonSidebar";
 import LikedButton from "@/app/components/molecules/LikedButton/LikedButton";
 import { mySupabaseClient } from "@/app/lib/supabase";
+import "./watch.css";
 
 const WatchEpisodePage = () => {
 	const params = useParams();
@@ -175,8 +176,13 @@ const WatchEpisodePage = () => {
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
 					{!iframeLoaded && (
-						<div className='aspect-video mt-2'>
-							<p className='w-full h-full bg-gray-200 rounded-lg dark:bg-gray-700 w-full mt-2'></p>
+						<div className='aspect-video mt-2 card-wrapper'>
+							<div>
+								<p className='card-content flex items-center justify-center'>
+									Loading video, it takes a while because archive.org
+									is slow at times.
+								</p>
+							</div>
 						</div>
 					)}
 					<div className=''>
