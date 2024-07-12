@@ -23,7 +23,7 @@ const LoginPage = () => {
 					email: userData?.email,
 					options: {
 						shouldCreateUser: true,
-						emailRedirectTo: "https://rtarchive.xyz/account",
+						emailRedirectTo: "https://rtarchive.xyz",
 					},
 				});
 
