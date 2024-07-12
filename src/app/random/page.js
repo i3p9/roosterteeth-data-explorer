@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "../components/molecules/NavBar/NavBar";
-// import { Wheel } from "react-custom-roulette"
 import { getRandomEpisodes } from "@/data/utils/api";
 import { channels } from "@/data/utils/data";
 import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector";
@@ -80,8 +79,6 @@ const RandomPage = () => {
 	const [selectedChannel, setSelectedChannel] = useState(channels[0]);
 	const [openResultPopup, setOpenResultPopup] = useState(false);
 
-	document.title = "Random // rt-archive";
-
 	const getRandomEpisodeData = async () => {
 		setLoading(true);
 		// const result = await axios.get('/api/random', { params: { channel_id: selectedChannel.uuid } })
@@ -111,6 +108,7 @@ const RandomPage = () => {
 			setWheelData(data);
 			setLoading(false);
 		}
+		document.title = "Random // rt-archive";
 	}, [episodes]);
 
 	const handleSpinClick = () => {
