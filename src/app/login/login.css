@@ -1,0 +1,25 @@
+.dot-shadow {
+	position: relative;
+}
+
+.dot-shadow::after {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	height: calc(100% + 5px);
+	width: calc(100% + 5px);
+	background-repeat: repeat;
+	z-index: -1;
+	opacity: 0.6;
+	background-image: url("https://cdn.rtarchive.xyz/assets/dotted.svg");
+	pointer-events: none;
+	clip-path: polygon(
+		calc(100% - 5px) 0%,
+		100% 0%,
+		100% 100%,
+		0% 100%,
+		0% calc(100% - 5px),
+		calc(100% - 5px) calc(100% - 5px)
+	);
+}

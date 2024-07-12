@@ -109,7 +109,7 @@ function ShowPage() {
 	useEffect(() => {
 		if (allEpisodes) {
 			const result = getTotalShowFileSizeByEpisodes(allEpisodes);
-			console.log("result: ", result);
+			// console.log("result: ", result);
 			setTotalShowSize(result.totalSizeInByte);
 			setTotalArchived(result.archivedCount);
 		}
