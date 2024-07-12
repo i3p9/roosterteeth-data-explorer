@@ -44,6 +44,7 @@ const BrowseShows = () => {
 		};
 		if (showSlug) {
 			fetchSeasonData();
+			document.title = `${makeTitle(showSlug)} // rt-archvie`;
 		}
 	}, [showSlug]);
 

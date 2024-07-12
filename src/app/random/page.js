@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "../components/molecules/NavBar/NavBar";
-// import { Wheel } from "react-custom-roulette"
 import { getRandomEpisodes } from "@/data/utils/api";
 import { channels } from "@/data/utils/data";
 import ChannelSelector from "../components/atoms/ChannelSelector/ChannelSelector";
@@ -109,6 +108,7 @@ const RandomPage = () => {
 			setWheelData(data);
 			setLoading(false);
 		}
+		document.title = "Random // rt-archive";
 	}, [episodes]);
 
 	const handleSpinClick = () => {
@@ -128,7 +128,7 @@ const RandomPage = () => {
 	return (
 		<>
 			<NavBar
-				title={'Radnom wheel of "fortune"'}
+				title={"Radnom wheel of videos"}
 				renderAdditionalMenu
 				previousLink={"/"}
 			/>
