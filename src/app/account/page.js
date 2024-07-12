@@ -68,12 +68,16 @@ const MyAccount = () => {
 	const router = useRouter();
 
 	const handleLogout = async () => {
-		const { error } = await mySupabaseClient.auth.signOut();
-		if (error) {
-			console.error("Error logging out:", error.message);
-		} else {
+		try {
+			const { error } = await mySupabaseClient.auth.signOut();
+			if (error) {
+				throw error;
+			}
+			localStorage.removeItem("currentUser");
 			router.refresh();
 			router.push("/");
+		} catch (error) {
+			console.error("Error logging out:", error.message);
 		}
 	};
 
