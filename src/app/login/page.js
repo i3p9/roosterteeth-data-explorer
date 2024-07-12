@@ -31,6 +31,7 @@ const LoginPage = () => {
 				// console.log("response: ", dataUser);
 				setSuccess(true);
 				setLoading(false);
+				await mySupabaseClient.auth.getSession();
 			}
 			if (error) {
 				console.log("Error from notcatch apiii: ", error);
