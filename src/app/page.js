@@ -14,6 +14,7 @@ import Fuse from "fuse.js";
 import { FirstBadgeOnPoster } from "./components/atoms/Badges/Badges";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
+import { mySupabaseClient } from "./lib/supabase";
 
 const ShowGridSkeleton = () => {
 	return (
