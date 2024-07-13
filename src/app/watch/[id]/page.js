@@ -24,6 +24,7 @@ const WatchEpisodePage = () => {
 		useState(episodeSlug);
 	const [iframeLoaded, setIframeLoaded] = useState(false);
 	const [isUnavailable, setIsUnavailable] = useState(false);
+	const [wasArchived, setWasArchived] = useState(true);
 	const [episode, setEpisode] = useState();
 	const [nextEpisodes, setNextEpisodes] = useState();
 	const [downloadData, setDownloadData] = useState({});
@@ -78,11 +79,14 @@ const WatchEpisodePage = () => {
 				setIsUnavailable(true);
 				setIframeLoaded(true);
 			}
+			if (!episode?.archive) {
+				setWasArchived(false);
+				setIsUnavailable(true);
+				setIframeLoaded(true);
+			}
 		}
 		//eslint-disable-next-line
 	}, [episode]);
-
-	// console.log("is episode darked?::", isUnavailable);
 
 	const navbarTitle = episode
 		? `${episode?.attributes.title}`
@@ -147,7 +151,7 @@ const WatchEpisodePage = () => {
 
 	const isThisVideoLiked = async () => {
 		if (userData?.user?.id && episode?.uuid) {
-			console.log("checking with video: ", episode?.attributes?.slug);
+			// console.log("checking with video: ", episode?.attributes?.slug);
 			const { data, error } = await mySupabaseClient
 				.from("liked_videos")
 				.select("*")
@@ -186,7 +190,10 @@ const WatchEpisodePage = () => {
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
 					{isUnavailable && (
-						<UnavailableEpisode info={episode?.archive} />
+						<UnavailableEpisode
+							info={episode?.archive}
+							archived={wasArchived}
+						/>
 					)}
 					{!iframeLoaded && (
 						<div className='aspect-video mt-2 card-wrapper'>

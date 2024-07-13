@@ -3,16 +3,18 @@ import { RiExternalLinkLine } from "react-icons/ri";
 import { LuVideoOff } from "react-icons/lu";
 import { cleanUrl } from "@/data/utils/utils";
 
-const UnavailableEpisode = ({ info }) => {
+const UnavailableEpisode = ({ info, archived }) => {
 	return (
 		<div className='aspect-video mt-2 rounded-2xl bg-gradient-to-b from-rose-100 to-rose-200 text-lg'>
 			<div className='flex-make-center flex-col h-full w-full'>
 				<div>
 					<LuVideoOff size={50} />
 					<p className='font-bold text-2xl stretch-110'>
-						Episode Unavailable
+						Episode {archived ? "Removed" : "Unavailable"}
 					</p>
-					<p className='text-color-secondary'>{info?.reason}</p>
+					<p className='text-color-secondary'>
+						{archived ? info?.reason : "It was never archived"}
+					</p>
 					{info?.alt_links && (
 						<div className='flex flex-col mt-2'>
 							<p className='text-color-secondary text-sm'>
@@ -41,6 +43,7 @@ const UnavailableEpisode = ({ info }) => {
 
 UnavailableEpisode.propTypes = {
 	info: PropTypes.object,
+	archived: PropTypes.bool,
 };
 
 export default UnavailableEpisode;
