@@ -15,6 +15,7 @@ import SeasonSideBar from "@/app/components/molecules/SeasonSidebar/SeasonSideba
 import LikedButton from "@/app/components/molecules/LikedButton/LikedButton";
 import { mySupabaseClient } from "@/app/lib/supabase";
 import "./watch.css";
+import UnavailableEpisode from "@/app/components/molecules/UnavailableEpisode/UnavailableEpisode";
 
 const WatchEpisodePage = () => {
 	const params = useParams();
@@ -22,6 +23,7 @@ const WatchEpisodePage = () => {
 	const [nowPlayingEpisodeSlug, setNowPlayingEpisodeSlug] =
 		useState(episodeSlug);
 	const [iframeLoaded, setIframeLoaded] = useState(false);
+	const [isUnavailable, setIsUnavailable] = useState(false);
 	const [episode, setEpisode] = useState();
 	const [nextEpisodes, setNextEpisodes] = useState();
 	const [downloadData, setDownloadData] = useState({});
@@ -61,7 +63,7 @@ const WatchEpisodePage = () => {
 	};
 
 	useEffect(() => {
-		console.log("Effect triggered");
+		// console.log("Effect triggered");
 		getEpisodeData();
 		// getNextEpisodesData()
 		//eslint-disable-next-line
@@ -72,9 +74,15 @@ const WatchEpisodePage = () => {
 			getNextEpisodesData();
 			getCurrentSessionInfo();
 			document.title = `${episode?.attributes.title} / rt-archive`;
+			if (episode?.archive?.status === "dark") {
+				setIsUnavailable(true);
+				setIframeLoaded(true);
+			}
 		}
 		//eslint-disable-next-line
 	}, [episode]);
+
+	// console.log("is episode darked?::", isUnavailable);
 
 	const navbarTitle = episode
 		? `${episode?.attributes.title}`
@@ -86,7 +94,7 @@ const WatchEpisodePage = () => {
 			const { data, error } = await mySupabaseClient.auth.getUser();
 			if (data && data.user) {
 				localStorage.setItem("currentUser", JSON.stringify(data));
-				console.log("user data: ", data);
+				// console.log("user data: ", data);
 				setUserData(data);
 				setLoggedIn(true);
 			} else {
@@ -167,6 +175,8 @@ const WatchEpisodePage = () => {
 	// console.log("is logged in: ", loggedIn);
 	// console.log("is this video liked: ", isLiked);
 
+	// console.log("episode data::", episode);
+
 	return (
 		<>
 			<NavBar
@@ -175,6 +185,9 @@ const WatchEpisodePage = () => {
 			/>
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
+					{isUnavailable && (
+						<UnavailableEpisode info={episode?.archive} />
+					)}
 					{!iframeLoaded && (
 						<div className='aspect-video mt-2 card-wrapper'>
 							<div>
@@ -188,7 +201,7 @@ const WatchEpisodePage = () => {
 					<div className=''>
 						<div
 							className={`aspect-video mt-2 ${
-								!iframeLoaded ? "hidden" : ""
+								!iframeLoaded || isUnavailable ? "hidden" : ""
 							}`}
 						>
 							<iframe
@@ -245,7 +258,10 @@ const WatchEpisodePage = () => {
 												isLiked={isLiked}
 											/>
 										)}
-										<DownloadButton downloadData={downloadData} />
+										<DownloadButton
+											downloadData={downloadData}
+											disabled={isUnavailable}
+										/>
 									</div>
 								)}
 							</div>
