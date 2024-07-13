@@ -18,8 +18,13 @@ import BulkDownloadButton from "../BulkDownloadButton/BulkDownloadButton";
 
 const BrowseSeasonContainer = (props) => {
 	const notify = () => toast.success("Copied to clipboard!");
-	const { season, showUuid, showSlug, copyAllArchivedListPerSeason } =
-		props;
+	const {
+		season,
+		showUuid,
+		showSlug,
+		copyAllArchivedListPerSeason,
+		disabled,
+	} = props;
 	const [archivedPercentage, setArchivePercentage] = useState(0);
 	const [allEpisodes, setAllEpisodes] = useState([]);
 	const [totalSizeInByte, setTotalSizeInByte] = useState(0);
@@ -68,6 +73,7 @@ const BrowseSeasonContainer = (props) => {
 					<div className='my-2 flex gap-2'>
 						<ArchivedPercentageBadge
 							percentage={archivedPercentage}
+							unavailable={disabled}
 						/>
 						<NumberOfEpisodesBadge
 							numberOfEpisode={season?.attributes?.episode_count}
@@ -83,6 +89,7 @@ const BrowseSeasonContainer = (props) => {
 						<BulkDownloadButton
 							data={allEpisodes}
 							title={"Download Season"}
+							disabled={disabled}
 						/>
 					</div>
 				</div>

@@ -11,7 +11,7 @@ import DataEpisodeContainerSkeleton from "@/app/components/atoms/DataEpisodeCont
 import DisplayTitleMessage from "@/app/components/atoms/DisplayTitleMessage/DisplayTitleMessage";
 import { ButtonSkeleton } from "@/app/components/atoms/Skeleton/ButtonSkeleton/ButtonSkeleton";
 import SortSelector from "@/app/components/atoms/SortSelector/SortSelector";
-import { episodeSortOptions } from "@/data/utils/data";
+import { darkShows, episodeSortOptions } from "@/data/utils/data";
 import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton";
 import { AnimatePresence, motion } from "framer-motion";
 import { makeTitle } from "@/data/utils/utils";
@@ -31,6 +31,7 @@ function SeasonPage() {
 	const [selectedSortOption, setSelectedSortOption] = useState(
 		episodeSortOptions[0]
 	);
+	const [isUnavailable, setIsUnavailable] = useState(false);
 
 	const notify = () => toast.success("Copied to clipboard!");
 
@@ -54,6 +55,16 @@ function SeasonPage() {
 				});
 				if (response) {
 					setSeasonData(response.data.documents);
+					if (response.data.documents.length > 0) {
+						console.log("has more than 0 episodes");
+						const firstDocument = response.data.documents[0];
+						if (
+							firstDocument.archive &&
+							firstDocument.archive.status === "dark"
+						) {
+							setIsUnavailable(true);
+						}
+					}
 				}
 			} catch (error) {
 				console.error(error);
@@ -124,6 +135,7 @@ function SeasonPage() {
 		}
 	}, [selectedSortOption, seasonData]);
 
+	//TODO: remove showInfo api call, replace it with makeTitle showslug
 	const pageTitle = `${
 		showInfo
 			? showInfo[0]?.attributes?.title
@@ -143,7 +155,10 @@ function SeasonPage() {
 				{seasonData ? (
 					<div className='flex flex-start'>
 						<div className='m-2'>
-							<BulkDownloadButton data={seasonData} />
+							<BulkDownloadButton
+								data={seasonData}
+								disabled={isUnavailable}
+							/>
 						</div>
 						<div className='m-2'>
 							<SortSelector

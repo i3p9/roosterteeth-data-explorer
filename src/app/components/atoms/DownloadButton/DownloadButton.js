@@ -28,7 +28,7 @@ export default function DownloadButton({
 	}
 	if (minimal) {
 		return (
-			<div className=' w-auto'>
+			<div className={`w-auto ${disabled && "make-disable"}`}>
 				<Menu as='div' className='relative inline-block'>
 					<div>
 						<Menu.Button className='inline-flex w-full justify-center rounded-md text-color-primary px-1 py-1 text-xs font-medium hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
