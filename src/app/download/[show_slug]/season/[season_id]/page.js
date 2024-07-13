@@ -22,12 +22,8 @@ function SeasonPage() {
 	const [seasonSlug, setSeasonSlug] = useState("");
 	const [showSlug, setShowSlug] = useState("");
 	const [seasonData, setSeasonData] = useState();
-	const [showInfo, setShowInfo] = useState("");
 	const [seasonLoading, setSeasonLoading] = useState(false);
 	const [seasonNetworkError, setSeasonNetworkError] = useState(false);
-	const [showInfoLoading, setShowInfoLoading] = useState(false);
-	const [showInfoNetworkError, setShowInfoNetworkError] =
-		useState(false);
 	const [selectedSortOption, setSelectedSortOption] = useState(
 		episodeSortOptions[0]
 	);
@@ -75,38 +71,8 @@ function SeasonPage() {
 				setSeasonLoading(false);
 			}
 		};
-		//local json method
-		// const fetchShowInfo = async () => {
-		//     try {
-		//         const response = await getShowInfo(showSlug)
-		//         setShowInfo(response)
-		//     } catch (error) {
-		//         console.error('Error loading show data:', error);
-		//     }
-		// }
-
-		const fetchShowInfoNext = async () => {
-			try {
-				setShowInfoLoading(true);
-				const response = await axios.get(`/api/v1/show/`, {
-					params: { show_slug: showSlug },
-				});
-				if (response) {
-					setShowInfo(response.data.documents);
-				}
-			} catch (error) {
-				console.error(error);
-				setShowInfoLoading(false);
-				setShowInfoLoading(true);
-			} finally {
-				setShowInfoNetworkError(false);
-				setShowInfoLoading(false);
-			}
-		};
-
 		if (showSlug) {
 			fetchSeasonDataNext();
-			fetchShowInfoNext();
 		}
 		//eslint-disable-next-line
 	}, [seasonSlug]);
@@ -135,12 +101,7 @@ function SeasonPage() {
 		}
 	}, [selectedSortOption, seasonData]);
 
-	//TODO: remove showInfo api call, replace it with makeTitle showslug
-	const pageTitle = `${
-		showInfo
-			? showInfo[0]?.attributes?.title
-			: "Show Title Loading..."
-	}: Season ${
+	const pageTitle = `${makeTitle(showSlug)}: Season ${
 		seasonData ? seasonData[0]?.attributes?.season_number : "N/A"
 	}`;
 
