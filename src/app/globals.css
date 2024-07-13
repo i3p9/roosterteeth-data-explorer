@@ -70,6 +70,10 @@
 	.flex-make-center {
 		@apply flex items-center justify-center;
 	}
+
+	.make-disable {
+		@apply opacity-40 pointer-events-none select-none;
+	}
 }
 
 @layer utilities {

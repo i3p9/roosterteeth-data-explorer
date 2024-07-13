@@ -11,7 +11,7 @@ import DataEpisodeContainerSkeleton from "@/app/components/atoms/DataEpisodeCont
 import DisplayTitleMessage from "@/app/components/atoms/DisplayTitleMessage/DisplayTitleMessage";
 import { ButtonSkeleton } from "@/app/components/atoms/Skeleton/ButtonSkeleton/ButtonSkeleton";
 import SortSelector from "@/app/components/atoms/SortSelector/SortSelector";
-import { episodeSortOptions } from "@/data/utils/data";
+import { darkShows, episodeSortOptions } from "@/data/utils/data";
 import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton";
 import { AnimatePresence, motion } from "framer-motion";
 import { makeTitle } from "@/data/utils/utils";
@@ -22,15 +22,12 @@ function SeasonPage() {
 	const [seasonSlug, setSeasonSlug] = useState("");
 	const [showSlug, setShowSlug] = useState("");
 	const [seasonData, setSeasonData] = useState();
-	const [showInfo, setShowInfo] = useState("");
 	const [seasonLoading, setSeasonLoading] = useState(false);
 	const [seasonNetworkError, setSeasonNetworkError] = useState(false);
-	const [showInfoLoading, setShowInfoLoading] = useState(false);
-	const [showInfoNetworkError, setShowInfoNetworkError] =
-		useState(false);
 	const [selectedSortOption, setSelectedSortOption] = useState(
 		episodeSortOptions[0]
 	);
+	const [isUnavailable, setIsUnavailable] = useState(false);
 
 	const notify = () => toast.success("Copied to clipboard!");
 
@@ -54,6 +51,16 @@ function SeasonPage() {
 				});
 				if (response) {
 					setSeasonData(response.data.documents);
+					if (response.data.documents.length > 0) {
+						console.log("has more than 0 episodes");
+						const firstDocument = response.data.documents[0];
+						if (
+							firstDocument.archive &&
+							firstDocument.archive.status === "dark"
+						) {
+							setIsUnavailable(true);
+						}
+					}
 				}
 			} catch (error) {
 				console.error(error);
@@ -64,38 +71,8 @@ function SeasonPage() {
 				setSeasonLoading(false);
 			}
 		};
-		//local json method
-		// const fetchShowInfo = async () => {
-		//     try {
-		//         const response = await getShowInfo(showSlug)
-		//         setShowInfo(response)
-		//     } catch (error) {
-		//         console.error('Error loading show data:', error);
-		//     }
-		// }
-
-		const fetchShowInfoNext = async () => {
-			try {
-				setShowInfoLoading(true);
-				const response = await axios.get(`/api/v1/show/`, {
-					params: { show_slug: showSlug },
-				});
-				if (response) {
-					setShowInfo(response.data.documents);
-				}
-			} catch (error) {
-				console.error(error);
-				setShowInfoLoading(false);
-				setShowInfoLoading(true);
-			} finally {
-				setShowInfoNetworkError(false);
-				setShowInfoLoading(false);
-			}
-		};
-
 		if (showSlug) {
 			fetchSeasonDataNext();
-			fetchShowInfoNext();
 		}
 		//eslint-disable-next-line
 	}, [seasonSlug]);
@@ -124,11 +101,7 @@ function SeasonPage() {
 		}
 	}, [selectedSortOption, seasonData]);
 
-	const pageTitle = `${
-		showInfo
-			? showInfo[0]?.attributes?.title
-			: "Show Title Loading..."
-	}: Season ${
+	const pageTitle = `${makeTitle(showSlug)}: Season ${
 		seasonData ? seasonData[0]?.attributes?.season_number : "N/A"
 	}`;
 
@@ -143,7 +116,10 @@ function SeasonPage() {
 				{seasonData ? (
 					<div className='flex flex-start'>
 						<div className='m-2'>
-							<BulkDownloadButton data={seasonData} />
+							<BulkDownloadButton
+								data={seasonData}
+								disabled={isUnavailable}
+							/>
 						</div>
 						<div className='m-2'>
 							<SortSelector

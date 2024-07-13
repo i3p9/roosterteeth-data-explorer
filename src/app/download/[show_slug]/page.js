@@ -22,6 +22,8 @@ import {
 	TotalSizeBadge,
 	TotalSizeBadgeBig,
 } from "@/app/components/atoms/Badges/Badges";
+import { darkShows } from "@/data/utils/data";
+import UnavailableHelp from "@/app/components/molecules/UnavailableHelp/UnavailableHelp";
 
 const baseUrl = config.url.BASE_URL;
 
@@ -34,6 +36,7 @@ function ShowPage() {
 	const [loading, setLoading] = useState(false);
 	const [showInfo, setShowInfo] = useState();
 	const [allEpisodes, setAllEpisodes] = useState([]);
+	const [isUnavailable, setIsUnavailable] = useState(false);
 
 	useEffect(() => {
 		const fetchSeasonData = async () => {
@@ -79,6 +82,9 @@ function ShowPage() {
 			fetchSeasonData();
 			// fetchShowInfo();
 			getAllEpisodesByShow();
+			if (darkShows.includes(showUuid)) {
+				setIsUnavailable(true);
+			}
 		}
 	}, [showUuid]);
 
@@ -149,6 +155,8 @@ function ShowPage() {
 		}
 	}, [clipBoard]);
 
+	console.log("is unavailable?:: ", isUnavailable);
+
 	return (
 		<>
 			<NavBar
@@ -163,6 +171,7 @@ function ShowPage() {
 							<BulkDownloadButton
 								data={allEpisodes}
 								title='Download Show'
+								disabled={isUnavailable}
 							/>
 							<TotalSizeBadgeBig
 								size={bytesToReadableSize(totalShowSize)}
@@ -174,6 +183,7 @@ function ShowPage() {
 					</div>
 				)}
 				<DownloadHelp />
+				{isUnavailable && <UnavailableHelp />}
 				<div className='p-2 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-6'>
 					{showData?.data?.map((season, index) => {
 						return (
@@ -190,6 +200,7 @@ function ShowPage() {
 									copyAllArchivedListPerSeason={
 										copyAllArchivedListPerSeason
 									}
+									disabled={isUnavailable}
 								/>
 							</motion.div>
 						);

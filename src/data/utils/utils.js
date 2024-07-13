@@ -306,7 +306,6 @@ export const getUserFromLocalStorage = () => {
 		const storedUser = localStorage.getItem("currentUser");
 		if (storedUser) {
 			const userData = JSON.parse(storedUser);
-
 			if (userData && userData.user && userData.user.aud) {
 				return userData;
 			}
@@ -317,4 +316,12 @@ export const getUserFromLocalStorage = () => {
 		console.error("Error retrieving user from localStorage:", error);
 		return false;
 	}
+};
+
+export const cleanUrl = (url) => {
+	// Remove (http, https)
+	let cleanedUrl = url.replace(/(^\w+:|^)\/\//, "");
+	// Remove 'www.'
+	cleanedUrl = cleanedUrl.replace(/^www\./, "");
+	return cleanedUrl;
 };
