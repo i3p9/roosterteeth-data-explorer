@@ -6,6 +6,7 @@ import NavBar from "../components/molecules/NavBar/NavBar";
 import Spinner from "../components/atoms/Spinner/Spinner";
 import { IoCheckmark } from "react-icons/io5";
 import "./login.css";
+import EmailShortcut from "../components/atoms/EmailShortcut/EmailShortcut";
 
 const LoginPage = () => {
 	const [userData, setUserData] = useState({
@@ -98,6 +99,7 @@ const LoginPage = () => {
 								Send Login Link {loading && <Spinner size={4} />}
 							</button>
 						)}
+						{success && <EmailShortcut email={userData?.email} />}
 					</div>
 				</form>
 			</div>
