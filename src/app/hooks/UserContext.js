@@ -30,7 +30,7 @@ export const UserContextProvider = ({ children }) => {
 		// If not in localStorage, fetch from Supabase
 		const { data, error } = await mySupabaseClient.auth.getUser();
 		if (data) {
-			console.log("user data: ", data);
+			// console.log("user data: ", data);
 			setCurrentUser(data);
 			// Save to localStorage
 			localStorage.setItem("currentUser", JSON.stringify(data));
