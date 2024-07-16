@@ -7,11 +7,15 @@ import {
 	firstOrNoOptions,
 	sortFilterOptions,
 } from "@/data/utils/data";
+import Link from "next/link";
+import InfiniteScroll from "react-infinite-scroll-component";
 import ChannelSelector from "./components/atoms/ChannelSelector/ChannelSelector";
 import Fuse from "fuse.js";
+import { FirstBadgeOnPoster } from "./components/atoms/Badges/Badges";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
-import { useRouter, useSearchParams } from "next/navigation";
+import { mySupabaseClient } from "./lib/supabase";
+
 const ShowGridSkeleton = () => {
 	return (
 		<>
@@ -51,91 +55,111 @@ const ShowGridSkeleton = () => {
 };
 
 const BrowseAllShows = () => {
-	const router = useRouter();
-	const searchParams = useSearchParams();
-
 	const masterShowData = masterList.data;
 	const [masterDataFiltered, setMasterDataFiltered] = useState();
 	const [allShows, setAllShows] = useState(masterShowData);
 	const [exclusiveFilterValue, setExclusiveFilterValue] = useState(
-		firstOrNoOptions.find(
-			(option) => option.value === searchParams.get("exclusive")
-		) || firstOrNoOptions[0]
+		firstOrNoOptions[0]
 	);
 	const [channelFilterValue, setChannelFilterValue] = useState(
-		channelsWithAllAsOption.find(
-			(option) => option.uuid === searchParams.get("channel")
-		) || channelsWithAllAsOption[0]
+		channelsWithAllAsOption[0]
 	);
 	const [sortFilterValue, setSortFilterValue] = useState(
-		sortFilterOptions.find(
-			(option) => option.id === searchParams.get("sort")
-		) || sortFilterOptions[0]
+		sortFilterOptions[0]
 	);
-	const [searchTerm, setSearchTerm] = useState(
-		searchParams.get("search") || ""
-	);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [hasMore, setHasMore] = useState(true);
 
-	const updateFilters = (newFilters) => {
-		console.log("updating filters");
-		const updatedSearchParams = new URLSearchParams(
-			searchParams.toString()
-		);
-		Object.entries(newFilters).forEach(([key, value]) => {
-			if (value) {
-				updatedSearchParams.set(key, value);
-			} else {
-				updatedSearchParams.delete(key);
-			}
-		});
-		router.push(`?${updatedSearchParams.toString()}`);
-	};
-
-	const handleExclusiveFilterChange = (value) => {
-		setExclusiveFilterValue(value);
-		updateFilters({ exclusive: value.value });
-	};
-
-	const handleChannelFilterChange = (value) => {
-		setChannelFilterValue(value);
-		updateFilters({ channel: value.uuid });
-	};
-
-	const handleSortFilterChange = (value) => {
-		setSortFilterValue(value);
-		updateFilters({ sort: value.id });
-	};
-
-	const handleSearchChange = (value) => {
-		setSearchTerm(value);
-		updateFilters({ search: value });
-	};
+	const [allShowData, setAllShowData] = useState(masterList);
 
 	useEffect(() => {
-		const exclusive = searchParams.get("exclusive");
-		const channel = searchParams.get("channel");
-		const sort = searchParams.get("sort");
-		const search = searchParams.get("search");
+		let filteredData = [...masterList.data];
 
-		if (exclusive)
-			setExclusiveFilterValue(
-				firstOrNoOptions.find(
-					(option) => option.value === exclusive
-				) || firstOrNoOptions[0]
+		if (sortFilterValue.id === "last_updated") {
+			setAllShowData(masterList);
+		} else {
+			const sortedData = [...masterList.data].sort((a, b) =>
+				a.attributes.title.localeCompare(b.attributes.title)
 			);
-		if (channel)
-			setChannelFilterValue(
-				channelsWithAllAsOption.find(
-					(option) => option.uuid === channel
-				) || channelsWithAllAsOption[0]
+			filteredData = sortedData;
+		}
+
+		if (exclusiveFilterValue.value === "show_first") {
+			filteredData = filteredData.filter(
+				(show) => show.attributes?.is_sponsors_only === true
 			);
-		if (sort)
-			setSortFilterValue(
-				sortFilterOptions.find((option) => option.id === sort) ||
-					sortFilterOptions[0]
+		}
+
+		if (channelFilterValue.uuid !== "all") {
+			filteredData = filteredData.filter(
+				(show) =>
+					show.attributes?.channel_id === channelFilterValue.uuid
 			);
-		if (search) setSearchTerm(search);
-	}, [searchParams]);
+		}
+
+		if (searchTerm) {
+			const fuse = new Fuse(filteredData, {
+				keys: ["attributes.title"],
+				includeScore: true,
+				threshold: 0.4,
+			});
+
+			const result = fuse.search(searchTerm.toLowerCase());
+			filteredData = result.map((item) => item.item);
+		}
+
+		setAllShowData({ ...masterList, data: filteredData });
+	}, [
+		sortFilterValue,
+		exclusiveFilterValue,
+		channelFilterValue,
+		searchTerm,
+	]);
+
+	// const filterShows = () => {
+	//     let filteredShow = [...masterShowData];
+
+	//     if (exclusiveFilterValue.value === 'show_first') {
+	//         filteredShow = filteredShow.filter((show) => show.attributes.is_sponsors_only === true);
+	//     }
+
+	//     if (channelFilterValue.uuid !== 'all') {
+	//         filteredShow = filteredShow.filter((show) => show.attributes.channel_id === channelFilterValue.uuid);
+	//     }
+
+	//     if (sortFilterValue.id !== 'last_updated') {
+	//         filteredShow.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
+	//     }
+
+	//     setMasterDataFiltered(filteredShow);
+	//     return filteredShow;
+	// };
+
+	//TODO: implement infinite scroll later
+	// useEffect(() => {
+	//     const filteredList = filterShows(masterShowData);
+	//     setAllShows(filteredList.slice(0, 20));
+	//     setHasMore(filteredList.length < masterDataFiltered.length);
+	//     //eslint-disable-next-line
+	// }, [exclusiveFilterValue, channelFilterValue, sortFilterValue]);
+
+	// useEffect(() => {
+	//     // Filter the master list based on initial filters
+	//     const filteredList = filterShows();
+	//     setAllShows(filteredList.slice(0, 20));
+	//     // Check if there are more items to load initially
+	//     setHasMore(filteredList.length < masterDataFiltered.length);
+	// }, []);
+
+	// const fetchMoreData = () => {
+	//     console.log('fetch more data');
+	//     const additionalData = masterDataFiltered.slice(allShows.length, allShows.length + 20);
+	//     setAllShows(prevShows => [...prevShows, ...additionalData]);
+	//     if (allShows.length + 20 >= masterDataFiltered.length) {
+	//         console.log('setting hasMore to false');
+	//         setHasMore(false);
+	//     }
+	// };
 
 	return (
 		<>
@@ -145,7 +169,7 @@ const BrowseAllShows = () => {
 					<ChannelSelector
 						channels={channelsWithAllAsOption}
 						selected={channelFilterValue}
-						setSelected={handleChannelFilterChange}
+						setSelected={setChannelFilterValue}
 						nolabel
 					/>
 				</div>
@@ -153,7 +177,7 @@ const BrowseAllShows = () => {
 					<ChannelSelector
 						channels={firstOrNoOptions}
 						selected={exclusiveFilterValue}
-						setSelected={handleExclusiveFilterChange}
+						setSelected={setExclusiveFilterValue}
 						noimage
 						nolabel
 					/>
@@ -162,7 +186,7 @@ const BrowseAllShows = () => {
 					<ChannelSelector
 						channels={sortFilterOptions}
 						selected={sortFilterValue}
-						setSelected={handleSortFilterChange}
+						setSelected={setSortFilterValue}
 						noimage
 						nolabel
 					/>
@@ -173,9 +197,7 @@ const BrowseAllShows = () => {
 						type='search'
 						id='search-bar'
 						key='search-bar'
-						onChange={(event) =>
-							handleSearchChange(event.target.value)
-						}
+						onChange={(event) => setSearchTerm(event.target.value)}
 						className='block w-full rounded-md p-2 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
 						placeholder='Search...'
 					></input>

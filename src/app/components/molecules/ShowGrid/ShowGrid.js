@@ -31,7 +31,7 @@ const ShowGrid = ({
 		if (channelFilterValue.uuid !== "all") {
 			filteredData = filteredData.filter(
 				(show) =>
-					show.attributes?.channel_slug === channelFilterValue.uuid
+					show.attributes?.channel_id === channelFilterValue.uuid
 			);
 		}
 
