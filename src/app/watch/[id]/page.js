@@ -27,6 +27,8 @@ const WatchEpisodePage = () => {
 	const [wasArchived, setWasArchived] = useState(true);
 	const [episode, setEpisode] = useState();
 	const [nextEpisodes, setNextEpisodes] = useState();
+	const [nextEpisodesLoading, setNextEpisodesLoading] =
+		useState(false);
 	const [downloadData, setDownloadData] = useState({});
 	const [userData, setUserData] = useState();
 	const [isLiked, setIsLiked] = useState(false);
@@ -51,6 +53,7 @@ const WatchEpisodePage = () => {
 	};
 
 	const getNextEpisodesData = async () => {
+		setNextEpisodesLoading(true);
 		try {
 			const response = await axios.get(`/api/v1/season`, {
 				params: { uuid: episode?.attributes.season_id },
@@ -60,6 +63,8 @@ const WatchEpisodePage = () => {
 			}
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setNextEpisodesLoading(false);
 		}
 	};
 
@@ -185,7 +190,8 @@ const WatchEpisodePage = () => {
 		<>
 			<NavBar
 				previousLink={`/show/${episode?.attributes.show_slug}`}
-				title={"Archive Player"}
+				title={"rt-archive"}
+				renderAdditionalMenu
 			/>
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
@@ -233,7 +239,9 @@ const WatchEpisodePage = () => {
 									<h1 className='font-bold text-xl text-color-primary'>
 										{episode?.attributes.title}
 									</h1>
-									<Link href={`/show/${episode?.attributes.show_id}`}>
+									<Link
+										href={`/show/${episode?.attributes.show_slug}`}
+									>
 										<p className='font-medium text-md text-color-secondary'>
 											{episode?.attributes.show_title}{" "}
 											{episode?.attributes.season_number && (
@@ -247,7 +255,10 @@ const WatchEpisodePage = () => {
 								</div>
 							</div>
 							<div className='w-100 flex flex-col lg:flex-row gap-2 lg:justify-between rounded-lg p-2 bg-color-faded'>
-								<div className='flex items-center'>
+								<Link
+									className='flex items-center p-1 bg-color-hover hover:rounded-lg transition-all duration-400'
+									href={`/show/${episode?.attributes.show_slug}`}
+								>
 									<img
 										alt={`logo of channel ${episode?.attributes.channel_slug}`}
 										className='w-10 h-10 rounded-full'
@@ -256,7 +267,7 @@ const WatchEpisodePage = () => {
 									<span className='ml-2 text-color-primary'>
 										{makeTitle(episode?.attributes?.channel_slug)}
 									</span>
-								</div>
+								</Link>
 								{downloadData && (
 									<div className='flex gap-2'>
 										{loggedIn && (
@@ -273,7 +284,7 @@ const WatchEpisodePage = () => {
 								)}
 							</div>
 
-							<div className='flex flex-col rounded-lg p-2 bg-color-primary text-sm'>
+							<div className='flex flex-col rounded-lg p-2 bg-color-primary text-md hover:shadow-lg'>
 								<p className='font-medium text-color-primary'>
 									Published:{" "}
 									{
@@ -295,6 +306,7 @@ const WatchEpisodePage = () => {
 					nextEpisodes={nextEpisodes}
 					nowPlayingEpisodeSlug={nowPlayingEpisodeSlug}
 					setNowPlayingEpisodeSlug={setNowPlayingEpisodeSlug}
+					loading={nextEpisodesLoading}
 				/>
 			</div>
 		</>
