@@ -1,10 +1,10 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo } from "react";
 import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FirstBadgeOnPoster } from "../../atoms/Badges/Badges";
-import useIntersectionObserver from "@/app/hooks/useIntersectionObserver";
-import LazyImage from "../../atoms/LazyImage/LazyImage";
+import Image from "next/image";
+import { blurHashToDataURL } from "@/data/utils/blurhash";
 
 const ShowGrid = ({
 	masterList,
@@ -73,12 +73,36 @@ const ShowGrid = ({
 							transition={{ duration: 0.3, delay: 0.1 }}
 							className='relative'
 						>
-							<LazyImage
+							{/* <LazyImage
 								mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster.jpg`}
 								desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card.jpg`}
 								alt={item.attributes.title}
 								className='w-full h-auto rounded-lg'
 								pos={index}
+							/> */}
+							<Image
+								src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster.jpg`}
+								alt={item.attributes.title}
+								className='w-full h-auto rounded-lg block md:hidden'
+								width={900}
+								height={1380}
+								placeholder='blur'
+								blurDataURL={blurHashToDataURL(
+									item.attributes.blurhash_poster
+								)}
+								loading='lazy'
+							/>
+							<Image
+								src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card.jpg`}
+								alt={item.attributes.title}
+								className='w-full h-auto rounded-lg hidden md:block'
+								width={1600}
+								height={900}
+								placeholder='blur'
+								blurDataURL={blurHashToDataURL(
+									item.attributes.blurhash_title_card
+								)}
+								loading='lazy'
 							/>
 
 							<Link href={`/show/${item?.attributes.slug}`}>
