@@ -86,9 +86,13 @@ const ShowGrid = ({
 								className='w-full h-auto rounded-lg block md:hidden'
 								width={900}
 								height={1380}
-								placeholder='blur'
+								placeholder={
+									blurHashToDataURL(item?.attributes?.blurhash_poster)
+										? "blur"
+										: "empty"
+								}
 								blurDataURL={blurHashToDataURL(
-									item.attributes.blurhash_poster
+									item?.attributes?.blurhash_poster
 								)}
 								loading='lazy'
 							/>
@@ -98,9 +102,15 @@ const ShowGrid = ({
 								className='w-full h-auto rounded-lg hidden md:block'
 								width={1600}
 								height={900}
-								placeholder='blur'
+								placeholder={
+									blurHashToDataURL(
+										item?.attributes?.blurhash_title_card
+									)
+										? "blur"
+										: "empty"
+								}
 								blurDataURL={blurHashToDataURL(
-									item.attributes.blurhash_title_card
+									item?.attributes?.blurhash_title_card
 								)}
 								loading='lazy'
 							/>
