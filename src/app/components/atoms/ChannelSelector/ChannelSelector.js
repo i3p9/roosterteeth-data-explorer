@@ -76,7 +76,7 @@ export default function ChannelSelector(props) {
 							leaveFrom='transform opacity-100 scale-100'
 							leaveTo='transform opacity-0 scale-95'
 						>
-							<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border-x-2 border-b-2 border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+							<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border-2 border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
 								{channels.map((channel) => (
 									<Listbox.Option
 										key={channel.id}
