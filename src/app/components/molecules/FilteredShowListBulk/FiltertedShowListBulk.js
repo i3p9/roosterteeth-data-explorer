@@ -19,6 +19,7 @@ const FilteredShowListBulk = ({ showListData }) => {
 	});
 
 	const copyAllArchivedListPerShow = async (showUuid) => {
+		const loadingToast = toast.loading("Fetching links...");
 		const archivedSeasonLinks = await getArchivedLinksByShowId(
 			showUuid
 		);
@@ -27,6 +28,7 @@ const FilteredShowListBulk = ({ showListData }) => {
 			value: textToCopy,
 			copied: true,
 		});
+		toast.dismiss(loadingToast);
 	};
 	useEffect(() => {
 		if (clipBoard.copied) {

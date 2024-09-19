@@ -155,7 +155,7 @@ function ShowPage() {
 		}
 	}, [clipBoard]);
 
-	console.log("is unavailable?:: ", isUnavailable);
+	// console.log("is unavailable?:: ", isUnavailable);
 
 	return (
 		<>

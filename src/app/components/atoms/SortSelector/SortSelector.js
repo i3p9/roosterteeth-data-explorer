@@ -13,9 +13,9 @@ export default function SortSelector(props) {
 		<Listbox value={selected} onChange={setSelected}>
 			{({ open }) => (
 				<>
-					<div className='relative border font-semibold rounded-md border-color-primary w-42'>
+					<div className='w-42'>
 						<Listbox.Button
-							className={`relative w-full rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary text-color-primary-hover shadow-sm focus:outline-none sm:leading-6 leading-6'}`}
+							className={`relative w-full border font-semibold border-color-primary rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary text-color-primary-hover shadow-sm focus:outline-none sm:leading-6 leading-6'}`}
 						>
 							{selected && (
 								<span className='block truncate'>
