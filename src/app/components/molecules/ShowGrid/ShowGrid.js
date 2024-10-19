@@ -74,8 +74,8 @@ const ShowGrid = ({
 							className='relative'
 						>
 							<LazyImage
-								mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster.jpg`}
-								desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card.jpg`}
+								mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster_300.webp`}
+								desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card_400.webp`}
 								alt={item.attributes.title}
 								className='w-full h-auto rounded-lg'
 								pos={index}
