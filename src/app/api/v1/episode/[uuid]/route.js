@@ -34,7 +34,14 @@ export async function GET(request, { params }) {
 		const episodeData = await response.json();
 
 		if (episodeData.documents) {
-			return NextResponse.json(episodeData, { status: 200 });
+			return NextResponse.json(episodeData, {
+				status: 200,
+				headers: {
+					"Cache-Control": "public, s-maxage=31536000",
+					"CDN-Cache-Control": "public, s-maxage=31536000",
+					"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
+				},
+			});
 		} else {
 			return new Response("No documents found", { status: 404 });
 		}
