@@ -1,9 +1,9 @@
-import AboutPopUpContainer from "../../atoms/AboutPopUpContainer/AboutPopUpContainer";
+"use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 const additionalMenu = [
 	{
@@ -36,22 +36,26 @@ const AdditionalMenuComponent = ({ pathname }) => {
 					return null;
 				}
 				return (
-					<motion.div whileHover={{ scale: 1.1 }} key={index}>
+					<div
+						// whileHover={{ scale: 1.1 }}
+						className='transition ease-in-out duration-150 hover:scale-110'
+						key={index}
+					>
 						<Link href={menu.path}>
 							<button className='text-base font-light border-b border-color-primary ml-4 sm:hidden'>
 								{menu.short}
 							</button>
 						</Link>
 						{pathname === menu.path && (
-							<motion.div
-								initial={{ scaleX: 0 }}
-								animate={{ scaleX: 1 }}
-								exit={{ scaleX: 0 }}
-								transition={{ duration: 0.2 }}
-								className='absolute w-full bg-zinc-950 h-0.5 transform -translate-y-1/2'
+							<div
+								// initial={{ scaleX: 0 }}
+								// animate={{ scaleX: 1 }}
+								// exit={{ scaleX: 0 }}
+								// transition={{ duration: 0.2 }}
+								className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2'
 							/>
 						)}
-					</motion.div>
+					</div>
 				);
 			})}
 			{additionalMenu.map((menu, index) => {
@@ -59,9 +63,9 @@ const AdditionalMenuComponent = ({ pathname }) => {
 				//     return null;
 				// }
 				return (
-					<motion.div
-						className='relative'
-						whileHover={{ scale: 1.1 }}
+					<div
+						className='relative transition ease-in-out duration-150 hover:scale-110'
+						// whileHover={{ scale: 1.1 }}
 						key={index}
 					>
 						<Link key={index} href={menu.path}>
@@ -76,15 +80,15 @@ const AdditionalMenuComponent = ({ pathname }) => {
 							</button>
 						</Link>
 						{pathname === menu.path && (
-							<motion.div
-								initial={{ scaleX: 0 }}
-								animate={{ scaleX: 1 }}
-								exit={{ scaleX: 0 }}
-								transition={{ duration: 0.2 }}
-								className='absolute w-full bg-zinc-950 h-0.5 transform -translate-y-1/2'
+							<div
+								// initial={{ scaleX: 0 }}
+								// animate={{ scaleX: 1 }}
+								// exit={{ scaleX: 0 }}
+								// transition={{ duration: 0.2 }}
+								className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2'
 							/>
 						)}
-					</motion.div>
+					</div>
 				);
 			})}
 		</div>
@@ -101,9 +105,9 @@ const NavBar = ({
 		<div className='w-full'>
 			<h1 className='flex font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary'>
 				{previousLink && (
-					<motion.div
-						className='relative'
-						whileHover={{ scale: 1.1 }}
+					<div
+						className='relative transition ease-in-out duration-150 hover:scale-110'
+						// whileHover={{ scale: 1.1 }}
 					>
 						<Link
 							href={previousLink}
@@ -114,7 +118,7 @@ const NavBar = ({
 								style={{ display: "inline" }}
 							/>
 						</Link>
-					</motion.div>
+					</div>
 				)}
 				{title}
 				{renderAdditionalMenu && (

@@ -5,12 +5,11 @@ export const getShowInfo = async (uuid) => {
 	return result;
 };
 
-export const getShowIdAndInfoFromSlug = async (slug) => {
-	const result = masterList.data.filter(
+export const getShowInfoFromSlug = async (slug) => {
+	const result = masterList.data.find(
 		(show) => show.attributes.slug === slug
 	);
-	const showId = result[0].uuid;
-	return { result, showId };
+	return result;
 };
 
 export const getShowIdFromSlug = async (slug) => {

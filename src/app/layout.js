@@ -7,8 +7,18 @@ import { UserContextProvider } from "./hooks/UserContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
+	metadataBase: new URL("https://rtarchive.xyz"),
 	title: "Rooster Teeth Archive",
 	description: "Archive / Download Funhaus / Rooster Teeth content",
+	alternates: {
+		canonical: "/",
+		languages: {
+			"en-US": "/en-US",
+		},
+	},
+	openGraph: {
+		images: "/opengraph-image.png",
+	},
 };
 
 export default function RootLayout({ children }) {

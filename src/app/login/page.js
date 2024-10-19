@@ -35,13 +35,13 @@ const LoginPage = () => {
 				await mySupabaseClient.auth.getSession();
 			}
 			if (error) {
-				console.log("Error from notcatch apiii: ", error);
-				console.log("msg: ", error.message);
+				// console.log("Error from notcatch apiii: ", error);
+				// console.log("msg: ", error.message);
 				setLoading(false);
 				setIsError(true);
 			}
 		} catch (error) {
-			console.log("Error from apiii: ", error);
+			// console.log("Error from apiii: ", error);
 			setLoading(false);
 			setIsError(true);
 		}
