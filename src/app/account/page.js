@@ -44,7 +44,7 @@ const MyAccount = () => {
 			.select("*")
 			.eq("user_id", currentUser?.user?.id);
 		if (data) {
-			console.log(data);
+			// console.log(data);
 			const likedIds = data.map((episode) => episode.video_id);
 			setLikedVideosId(likedIds);
 		} else {
@@ -56,7 +56,7 @@ const MyAccount = () => {
 		const response = await axios.get(
 			`/api/v1/episode/${likedVideosId.join(",")}`
 		);
-		console.log(response);
+		// console.log(response);
 		if (response.data.documents) {
 			setLikedVideoDetails(response.data.documents);
 			setLikedLoading(false);

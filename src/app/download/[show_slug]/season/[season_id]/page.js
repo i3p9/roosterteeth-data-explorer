@@ -52,7 +52,7 @@ function SeasonPage() {
 				if (response) {
 					setSeasonData(response.data.documents);
 					if (response.data.documents.length > 0) {
-						console.log("has more than 0 episodes");
+						// console.log("has more than 0 episodes");
 						const firstDocument = response.data.documents[0];
 						if (
 							firstDocument.archive &&
