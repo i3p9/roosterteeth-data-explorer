@@ -27,9 +27,11 @@ const ShowInfo = ({ show }) => {
 						<p className='text-lg font-semibold'>
 							{year} | {season} | {makeTitle(category)}
 						</p>
-						<p className='hidden md:block line-clamp-3 text-zinc-100 pt-3'>
-							{show?.attributes.summary}
-						</p>
+						<div className='hidden md:block'>
+							<p className='line-clamp-3 text-zinc-100 pt-3'>
+								{show?.attributes.summary}
+							</p>
+						</div>
 					</div>
 				</div>
 
