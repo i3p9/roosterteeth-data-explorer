@@ -3,7 +3,7 @@ import { makeTitle } from "@/data/utils/utils";
 import styles from "./ShowInfo.module.css";
 
 const ShowInfo = ({ show }) => {
-	const bgUrl = `https://cdn.rtarchive.xyz/shows/${show?.uuid}/poster.jpg`;
+	const bgUrl = `https://cdn.rtarchive.xyz/shows/${show?.uuid}/cover.jpg`;
 	const year = show?.attributes?.published_at.slice(0, 4);
 	const season =
 		show?.attributes?.season_count > 1
@@ -19,7 +19,7 @@ const ShowInfo = ({ show }) => {
 						<img
 							className='w-28 md:w-52'
 							src={`https://cdn.rtarchive.xyz/shows/${show?.uuid}/logo.png`}
-							alt={"show poster"}
+							alt={`logo of show ${show?.attributes?.title}`}
 						/>
 					</div>
 
