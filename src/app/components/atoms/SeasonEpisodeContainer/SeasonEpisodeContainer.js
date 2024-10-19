@@ -46,7 +46,7 @@ const SeasonEpisodeContainer = (props) => {
 							<img
 								alt='thumbnail'
 								className='aspect-video overflow-hidden rounded-lg object-cover-w-full'
-								src={`https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`}
+								src={`https://cdn.rtarchive.xyz/thumbs_small_webp/${episode?.uuid}.webp`}
 								width={400}
 								onLoad={handleImageLoad}
 							/>
