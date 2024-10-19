@@ -71,17 +71,17 @@ const ShowGrid = ({
 						<motion.div
 							whileHover={{ duration: 0.2, scale: 1.05 }}
 							transition={{ duration: 0.3, delay: 0.1 }}
-							className='relative'
+							className='relative shadow-lg dark:shadow-none'
 						>
-							<LazyImage
-								mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster_300.webp`}
-								desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card_400.webp`}
-								alt={item.attributes.title}
-								className='w-full h-auto rounded-lg'
-								pos={index}
-							/>
-
 							<Link href={`/show/${item?.attributes.slug}`}>
+								<LazyImage
+									mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster_300.webp`}
+									desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card_400.webp`}
+									alt={item.attributes.title}
+									className='w-full h-auto rounded-lg'
+									pos={index}
+								/>
+
 								<div className='absolute bottom-1 left-1 rounded-lg text-xs'>
 									{item?.attributes.is_sponsors_only ? (
 										<FirstBadgeOnPoster />
