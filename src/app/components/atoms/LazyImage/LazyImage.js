@@ -28,7 +28,7 @@ function LazyImage({ mobileSrc, desktopSrc, alt, className, pos }) {
 				ref={ref}
 				className={`${className} relative aspect-[3/4] md:aspect-video bg-gray-400 overflow-hidden shadow-xl`}
 			>
-				{/* Text overlay that's visible only when image hasn't loaded */}
+				{/* fallback show name in text */}
 				<div className='absolute inset-0 flex items-center justify-center z-10'>
 					<span className='text-gray-300 text-center font-bold px-4 py-2'>
 						{alt}

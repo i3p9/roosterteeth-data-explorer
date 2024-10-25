@@ -78,7 +78,7 @@ const ShowGrid = ({
 									mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster_300.webp`}
 									desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card_400.webp`}
 									alt={item.attributes.title}
-									className='w-full h-auto rounded-lg'
+									className='w-full h-auto rounded-lg -z-10'
 									pos={index}
 								/>
 
