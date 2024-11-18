@@ -38,6 +38,7 @@ export const UnavailableBadge = () => {
 	);
 };
 
+import { bytesToReadableSize } from "@/data/utils/utils";
 import { PiArchiveTrayBold } from "react-icons/pi";
 
 export const ArchivedPercentageBadge = ({
@@ -89,11 +90,13 @@ export const NumberOfEpisodesBadge = ({ numberOfEpisode }) => {
 };
 
 export const NumberOfEpisodesBadgeBig = ({ numberOfEpisode }) => {
-	return (
-		<span className='stretch-90 bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-300 text-base md:text-medium font-medium px-1 md:px-4 py-1.5 rounded border border-fuchsia-800 dark:border-fuchsia-300'>
-			{numberOfEpisode} Episodes
-		</span>
-	);
+	if (numberOfEpisode) {
+		return (
+			<span className='transition-all ease-in-out duration-300 stretch-90 bg-fuchsia-100 text-fuchsia-800 dark:bg-fuchsia-900 dark:text-fuchsia-300 text-base md:text-medium font-medium px-1 md:px-4 py-1.5 rounded border border-fuchsia-800 dark:border-fuchsia-300'>
+				{numberOfEpisode} Episodes
+			</span>
+		);
+	}
 };
 
 export const TotalSizeBadge = ({ size }) => {
@@ -105,11 +108,15 @@ export const TotalSizeBadge = ({ size }) => {
 };
 
 export const TotalSizeBadgeBig = ({ size }) => {
-	return (
-		<span className='bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 text-base font-mono md:text-medium font-medium px-1 md:px-4 py-1.5 rounded border border-yellow-800 dark:border-yellow-300'>
-			{size}
-		</span>
-	);
+	if (size) {
+		const toRender = bytesToReadableSize(size);
+
+		return (
+			<span className='transition-all ease-in-out duration-300 bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300 text-base font-mono md:text-medium font-medium px-1 md:px-4 py-1.5 rounded border border-yellow-800 dark:border-yellow-300'>
+				{toRender}
+			</span>
+		);
+	}
 };
 
 export const FirstBadgeBig = () => {
