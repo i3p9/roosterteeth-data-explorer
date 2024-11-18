@@ -3,7 +3,7 @@ import "./globals.css";
 import Theme from "./theme-toggle";
 import { mona } from "./fonts";
 import { UserContextProvider } from "./hooks/UserContext";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
 					</div>
 				</Theme>
 			</body>
+			<GoogleAnalytics gaId='G-RBMWJ5WGSM' />
 		</html>
 	);
 }
