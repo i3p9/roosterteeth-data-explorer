@@ -1,5 +1,6 @@
 import { formatSecondsToDuration } from "@/data/utils/utils";
 import React from "react";
+import { IoIosPlay } from "react-icons/io";
 
 const SeasonSideBar = ({
 	nextEpisodes,
@@ -11,20 +12,46 @@ const SeasonSideBar = ({
 		const newPath = `/watch/${episodeSlug}`;
 		window.history.replaceState(null, "", newPath);
 	}
+	const nowPlayingIndex = nextEpisodes?.map((episode, index) => {
+		if (
+			episode?.attributes.slug.toString() ===
+			nowPlayingEpisodeSlug.toString()
+		) {
+			return index + 1;
+		}
+	});
 
 	return (
 		<>
-			<div className='hidden md:block w-5/12 md:w-4/12 rounded-lg border text-color-primary border-color-secondary pl-2 m-1 mt-2 h-[57vh] overflow-y-auto'>
-				<h2 className='text-xl font-semibold my-2'>
-					From this season:
-				</h2>
+			<div className='hidden md:block w-5/12 md:w-4/12 mt-2 m-1 rounded-lg border text-color-primary border-color-secondary h-[57vh] overflow-y-auto'>
+				<div className='bg-color-secondary p-4'>
+					{nextEpisodes?.length > 0 ? (
+						<h2 className='text-base font-semibold'>
+							{nextEpisodes[0]?.attributes.show_title} -{" "}
+							{nowPlayingIndex}/{nextEpisodes?.length}
+						</h2>
+					) : (
+						<h2>Loading more info</h2>
+					)}
+					<p className='text-sm text-color-secondary'>
+						{" "}
+						From this season
+					</p>
+				</div>
 				{loading && (
 					<div className='flex-make-center overflow-y-auto'>
 						Loading next episodes...
 					</div>
 				)}
-				<div className='flex flex-col overflow-y-auto'>
+				<div className='flex flex-col pl-2 overflow-y-auto'>
 					{nextEpisodes?.map((episode, index) => {
+						const nowPlaying =
+							episode?.attributes.slug.toString() ===
+							nowPlayingEpisodeSlug.toString();
+						console.log(
+							`${episode?.attributes.slug.toString()}|nowplaying: ${nowPlaying}`
+						);
+
 						return (
 							<React.Fragment key={index}>
 								<button
@@ -37,18 +64,14 @@ const SeasonSideBar = ({
 								>
 									<div
 										className={`p-1 flex gap-2 ${
-											episode?.attributes.slug.toString() ===
-											nowPlayingEpisodeSlug.toString()
+											nowPlaying
 												? "bg-color-primary shadow-md rounded font-bold"
 												: "bg-color-hover hover:shadow-lg rounded-lg"
 										}`}
 										key={index}
 										ref={(ref) => {
 											// Check if the episode is selected
-											if (
-												episode?.id.toString() ===
-												nowPlayingEpisodeSlug.toString()
-											) {
+											if (nowPlaying) {
 												// Scroll the selected episode into view
 												ref &&
 													ref.scrollIntoView({
@@ -59,7 +82,7 @@ const SeasonSideBar = ({
 										}}
 									>
 										<p className='w-0.5/12 flex pl-1 text-color-faded items-center justify-center'>
-											{index + 1}
+											{nowPlaying ? <IoIosPlay /> : index + 1}
 										</p>
 										<div className='relative w-24 h-[54px] flex-shrink-0 overflow-hidden rounded-lg border bg-zinc-900'>
 											<img
@@ -73,14 +96,14 @@ const SeasonSideBar = ({
 												)}
 											</div>
 										</div>
-										<div className='flex flex-col flex-grow w-8.5/12 text-md text-left'>
+										<div className='flex flex-col flex-grow w-8.5/12 text-left'>
 											<p
-												className='line-clamp-1'
+												className='line-clamp-1 text-sm'
 												title={episode.attributes.title}
 											>
 												{episode.attributes.title}
 											</p>
-											<p className='pt-1 text-color-secondary text-sm'>
+											<p className='pt-1 text-color-secondary text-xs'>
 												{episode.attributes.show_title}
 											</p>
 										</div>

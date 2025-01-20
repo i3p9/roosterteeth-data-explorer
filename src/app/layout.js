@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
 				className={`${mona.className} bg-stone-100 dark:bg-neutral-900`}
 			>
 				<Theme>
-					<div className='container mx-auto px-2 md:px-4 py-2'>
+					<div className='container mx-auto px-2 md:px-3 py-2 mb-32'>
 						<UserContextProvider>{children}</UserContextProvider>
 					</div>
 				</Theme>

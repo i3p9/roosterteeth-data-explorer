@@ -213,7 +213,7 @@ const WatchEpisodePage = () => {
 					)}
 					<div className=''>
 						<div
-							className={`aspect-video mt-2 ${
+							className={`aspect-video shadow-xl mt-2 ${
 								!iframeLoaded || isUnavailable ? "hidden" : ""
 							}`}
 						>
