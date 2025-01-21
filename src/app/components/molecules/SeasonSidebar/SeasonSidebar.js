@@ -48,10 +48,6 @@ const SeasonSideBar = ({
 						const nowPlaying =
 							episode?.attributes.slug.toString() ===
 							nowPlayingEpisodeSlug.toString();
-						console.log(
-							`${episode?.attributes.slug.toString()}|nowplaying: ${nowPlaying}`
-						);
-
 						return (
 							<React.Fragment key={index}>
 								<button
