@@ -16,6 +16,7 @@ import LikedButton from "@/app/components/molecules/LikedButton/LikedButton";
 import { mySupabaseClient } from "@/app/lib/supabase";
 import "./watch.css";
 import UnavailableEpisode from "@/app/components/molecules/UnavailableEpisode/UnavailableEpisode";
+import CommentSection from "../components/CommentSection";
 
 const WatchEpisodePage = () => {
 	const params = useParams();
@@ -300,6 +301,12 @@ const WatchEpisodePage = () => {
 								</p>
 							</div>
 						</>
+					)}
+					{episode && (
+						<CommentSection
+							videoId={episode?.uuid}
+							commentsCount={episode?.attributes.comments}
+						/>
 					)}
 				</div>
 				<SeasonSideBar
