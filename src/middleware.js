@@ -5,7 +5,7 @@ const publicRoutes = ["/login", "/signup", "/forgot-password"];
 const protectedRoutes = ["/account"];
 
 export async function middleware(req) {
-	const allowedHosts = ["localhost", "rtarchive.xyz"];
+	const allowedHosts = ["localhost", "rtarchive.xyz", "www.rtarchive.xyz"];
     const origin = req.headers.get("origin") || req.headers.get("referer");
 
     if (origin) {
