@@ -7,18 +7,16 @@ import { useState } from "react";
 import { Comment } from "./Comment";
 
 const CommentSection = ({ videoId, commentsCount }) => {
-	console.log("commentsCount: ", commentsCount);
 	const [comments, setComments] = useState([]);
 	const [commentsLoading, setCommentsLoading] = useState(true);
 	const [commentMeta, setCommentMeta] = useState({
 		page: 1,
 		total_pages: 0,
 	});
+	const [prevVideoId, setPrevVideoId] = useState(null);
 
 	const fetchComments = useCallback(
 		async (pageCount = 1) => {
-			console.log("fetching comments----");
-
 			try {
 				setCommentsLoading(true);
 				const response = await axios.get(`/api/v1/comments`, {
@@ -29,19 +27,27 @@ const CommentSection = ({ videoId, commentsCount }) => {
 					},
 				});
 				if (response.data.comments) {
-					setComments((prevComments) => {
-						const existingCommentIds = new Set(
-							prevComments.map((c) => c.comment_id)
-						);
-						const newComments = response.data.comments.filter(
-							(comment) => !existingCommentIds.has(comment.comment_id)
-						);
-						return [...prevComments, ...newComments];
-					});
+					if (pageCount === 1) {
+						// reset comments when it's the first page via either new video or refresh
+						setComments(response.data.comments);
+					} else {
+						//keep adding to comment array if we keep loading new comments adn stuff
+						setComments((prevComments) => {
+							const existingCommentIds = new Set(
+								prevComments.map((c) => c.comment_id)
+							);
+							const newComments = response.data.comments.filter(
+								(comment) =>
+									!existingCommentIds.has(comment.comment_id)
+							);
+							return [...prevComments, ...newComments];
+						});
+					}
 					setCommentMeta({
 						page: response.data.metadata.page,
 						total_pages: response.data.metadata.total_pages,
 					});
+					setPrevVideoId(videoId);
 				}
 			} catch (error) {
 				console.error(error);
@@ -58,8 +64,6 @@ const CommentSection = ({ videoId, commentsCount }) => {
 		}
 	}, [videoId, commentsCount, fetchComments]);
 
-	console.log("comments: ", comments);
-
 	const handleLoadMore = () => {
 		if (!commentsLoading) {
 			fetchComments(commentMeta.page + 1);
@@ -75,6 +79,8 @@ const CommentSection = ({ videoId, commentsCount }) => {
 			</div>
 		);
 	}
+
+	console.log(`videoId: ${videoId} || prev: ${prevVideoId}`);
 
 	return (
 		<div className='p-2 mt-4'>

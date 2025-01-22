@@ -91,26 +91,25 @@ export default function DownloadButton({
 	return (
 		<div className={`w-auto flex ${disabled && "make-disable"}`}>
 			{videoFile.length > 0 && (
-				<div className='rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 flex-make-center'>
-					<button onClick={() => download(videoFile[0].name)}>
+				<button
+					onClick={() => download(videoFile[0].name)}
+					className='rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 flex-make-center'
+				>
+					<div className='flex items-center'>
 						<LuDownload style={{ display: "inline" }} />{" "}
 						{extDescribed(videoFile[0].file_ext)} -{" "}
 						{videoFile[0].file_ext.toUpperCase()}{" "}
 						<span className='font-mono font-medium'>
-							({bytesToReadableSize(videoFile[0].filesize)}
+							({bytesToReadableSize(videoFile[0].filesize)})
 						</span>
-						)
-					</button>
-				</div>
+					</div>
+				</button>
 			)}
-			<Menu
-				as='div'
-				className='relative inline-block text-color-primary text-color-primary-hover px-4 py-2 rounded-r-md bg-color-primary'
-			>
+			<Menu as='div' className='relative inline-block'>
 				{({ open }) => (
 					<div>
 						<div>
-							<Menu.Button className=' inline-flex w-full mt-[6.5px] justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
+							<Menu.Button className='px-4 py-2 rounded-r-md text-color-primary text-color-primary-hover bg-color-primary  w-full h-12 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
 								{open ? (
 									<FaChevronUp
 										className='h-5 w-5'
