@@ -22,22 +22,23 @@ const SeasonSideBar = ({
 	});
 
 	return (
-		<>
-			<div className='hidden md:block w-5/12 md:w-4/12 mt-2 m-1 rounded-lg border text-color-primary border-color-secondary h-[57vh] overflow-y-auto'>
-				<div className='bg-color-secondary p-4'>
-					{nextEpisodes?.length > 0 ? (
-						<h2 className='text-base font-semibold'>
-							{nextEpisodes[0]?.attributes.show_title} -{" "}
-							{nowPlayingIndex}/{nextEpisodes?.length}
-						</h2>
-					) : (
-						<h2>Loading more info</h2>
-					)}
-					<p className='text-sm text-color-secondary'>
-						{" "}
-						From this season
-					</p>
-				</div>
+		<div className='hidden md:block h-[68vh] w-5/12 md:w-4/12 mt-2 m-1 rounded-lg border text-color-primary border-color-secondary'>
+			<div className='bg-color-secondary p-4'>
+				{nextEpisodes?.length > 0 ? (
+					<h2 className='text-base font-semibold'>
+						{nextEpisodes[0]?.attributes.show_title} -{" "}
+						{nowPlayingIndex}/{nextEpisodes?.length}
+					</h2>
+				) : (
+					<h2>Loading more info</h2>
+				)}
+				<p className='text-sm text-color-secondary'>
+					{" "}
+					From this season
+				</p>
+			</div>
+
+			<div className='h-[57vh] overflow-y-auto'>
 				{loading && (
 					<div className='flex-make-center overflow-y-auto'>
 						Loading next episodes...
@@ -110,7 +111,7 @@ const SeasonSideBar = ({
 					})}
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

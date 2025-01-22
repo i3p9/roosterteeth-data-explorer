@@ -1,0 +1,62 @@
+/* bottom control bar roudned + make it not transparent */
+.video-player .vjs-control-bar {
+	border-bottom-left-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+	background-color: #18181b !important;
+}
+
+/* big button stylkes */
+.video-js .vjs-big-play-button {
+	/* Base styles */
+	width: 80px;
+	height: 80px;
+	border: none;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(4px);
+	color: #ffffff;
+	transition: all 0.3s ease;
+
+	/* Center positioning */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -40px;
+	margin-top: -40px;
+	transform: none;
+}
+
+/* icon */
+.video-js .vjs-big-play-button .vjs-icon-placeholder:before {
+	content: "\f101";
+	font-size: 40px;
+	line-height: 80px;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+/* onhover */
+.video-js .vjs-big-play-button:hover {
+	background-color: rgba(255, 255, 255, 0.3);
+	transform: scale(1.1); /* Only scale transform on hover */
+	box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.video-js .vjs-big-play-button:hover .vjs-icon-placeholder:before {
+	transform: scale(1.1);
+}
+
+.video-js .vjs-big-play-button:focus {
+	outline: none;
+	box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+.video-js .vjs-big-play-button:active {
+	transform: scale(0.95);
+}
