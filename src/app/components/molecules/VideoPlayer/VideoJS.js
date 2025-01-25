@@ -9,6 +9,14 @@ export const VideoJS = (props) => {
 	const { options, onReady, showSpinner } = props;
 
 	useEffect(() => {
+		const link = document.createElement("link");
+		link.rel = "stylesheet";
+		link.href = "./VideoJS.css"; // Ensure this path is correct
+		document.head.appendChild(link);
+	}, [options]);
+
+
+	useEffect(() => {
 		if (!playerRef.current) {
 			const videoElement = document.createElement("video-js");
 			videoElement.classList.add(

@@ -6,6 +6,16 @@ export const FirstBadge = () => {
 	);
 };
 
+export const FirstBadgeUnStyled = ({ styles }) => {
+	return (
+		<span
+			className={`${styles} bg-red-100 text-red-800 text-xs font-medium dark:bg-red-900 dark:text-red-300`}
+		>
+			First
+		</span>
+	);
+};
+
 export const FirstBadgeOnPoster = () => {
 	return (
 		<span className='p-2 bg-red-500 text-zinc-100 text-xs font-medium me-2 px-2.5 py-0.5 rounded'>
