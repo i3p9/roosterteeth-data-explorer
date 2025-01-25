@@ -129,7 +129,7 @@ const WatchEpisodePage = () => {
 							</div>
 						</div>
 					)}
-					{downloadData?.id && (
+					{downloadData?.id && !isUnavailable && (
 						<VjsPlayer
 							downloadData={downloadData}
 							onVideoEnd={handleVideoEnd}
