@@ -45,6 +45,9 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 				{loading && (
 					<p className='text-sm'>Loading related videos...</p>
 				)}
+				{!loading && relatedVideos.length === 0 && (
+					<p className='text-sm'>No related videos found...</p>
+				)}
 			</div>
 			<div className='flex gap-2 flex-col'>
 				{relatedVideos.length > 0 &&
