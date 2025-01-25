@@ -14,6 +14,7 @@ import UnavailableEpisode from "@/app/components/molecules/UnavailableEpisode/Un
 import VjsPlayer from "../components/VjsPlayer";
 import VideoInfo from "../components/VideoInfo";
 import PlayerSkeleton from "@/app/components/atoms/Skeleton/PlayerSkeleton/PlayerSkeleton";
+import RelatedVideos from "../components/RelatedVideos";
 
 const WatchEpisodePage = () => {
 	const params = useParams();
@@ -144,12 +145,20 @@ const WatchEpisodePage = () => {
 						<PlayerSkeleton />
 					)}
 				</div>
-				<SeasonSideBar
-					nextEpisodes={nextEpisodes}
-					nowPlayingEpisodeSlug={nowPlayingEpisodeSlug}
-					setNowPlayingEpisodeSlug={setNowPlayingEpisodeSlug}
-					loading={nextEpisodesLoading}
-				/>
+				<div className='hidden md:block w-5/12 md:w-4/12'>
+					<SeasonSideBar
+						nextEpisodes={nextEpisodes}
+						nowPlayingEpisodeSlug={nowPlayingEpisodeSlug}
+						setNowPlayingEpisodeSlug={setNowPlayingEpisodeSlug}
+						loading={nextEpisodesLoading}
+					/>
+					{episode && (
+						<RelatedVideos
+							uuid={episode?.uuid}
+							setNowPlayingEpisodeSlug={setNowPlayingEpisodeSlug}
+						/>
+					)}
+				</div>
 			</div>
 		</>
 	);
