@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from "prop-types";
+import { AiOutlineMail } from "react-icons/ai";
 // import { motion } from "framer-motion";
 
 const additionalMenu = [
@@ -37,7 +38,6 @@ const AdditionalMenuComponent = ({ pathname }) => {
 				}
 				return (
 					<div
-						// whileHover={{ scale: 1.1 }}
 						className='transition ease-in-out duration-150 hover:scale-110'
 						key={index}
 					>
@@ -47,25 +47,15 @@ const AdditionalMenuComponent = ({ pathname }) => {
 							</button>
 						</Link>
 						{pathname === menu.path && (
-							<div
-								// initial={{ scaleX: 0 }}
-								// animate={{ scaleX: 1 }}
-								// exit={{ scaleX: 0 }}
-								// transition={{ duration: 0.2 }}
-								className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2'
-							/>
+							<div className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2' />
 						)}
 					</div>
 				);
 			})}
 			{additionalMenu.map((menu, index) => {
-				// if (menu.path === pathname) {
-				//     return null;
-				// }
 				return (
 					<div
 						className='relative transition ease-in-out duration-150 hover:scale-110'
-						// whileHover={{ scale: 1.1 }}
 						key={index}
 					>
 						<Link key={index} href={menu.path}>
@@ -80,13 +70,7 @@ const AdditionalMenuComponent = ({ pathname }) => {
 							</button>
 						</Link>
 						{pathname === menu.path && (
-							<div
-								// initial={{ scaleX: 0 }}
-								// animate={{ scaleX: 1 }}
-								// exit={{ scaleX: 0 }}
-								// transition={{ duration: 0.2 }}
-								className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2'
-							/>
+							<div className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2' />
 						)}
 					</div>
 				);
@@ -103,12 +87,9 @@ const NavBar = ({
 	const pathname = usePathname();
 	return (
 		<div className='w-full'>
-			<h1 className='flex font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary'>
+			<h1 className='flex justify-between font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary'>
 				{previousLink && (
-					<div
-						className='relative transition ease-in-out duration-150 hover:scale-110'
-						// whileHover={{ scale: 1.1 }}
-					>
+					<div className='relative transition ease-in-out duration-150 hover:scale-110'>
 						<Link
 							href={previousLink}
 							className='font-black text-color-primary text-xl p2'
@@ -124,7 +105,16 @@ const NavBar = ({
 				{renderAdditionalMenu && (
 					<AdditionalMenuComponent pathname={pathname} />
 				)}
-				{/* <AboutPopUpContainer /> */}
+				<div className='ml-auto flex gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
+					<AiOutlineMail />{" "}
+					<a
+						href='mailto:info@rtarchive.xyz'
+						className='text-sm font-medium'
+						target='_blank'
+					>
+						info@rtarchive.xyz
+					</a>
+				</div>
 			</h1>
 		</div>
 	);
