@@ -76,11 +76,13 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 											episode?.attributes?.length
 										)}
 									</div>
-									<div className='absolute top-[-4px] right-[0px]'>
-										<FirstBadgeUnStyled
-											styles={"px-2 py-0.5 rounded-bl"}
-										/>
-									</div>
+									{episode?.attributes?.is_sponsors_only && (
+										<div className='absolute top-[-4px] right-[0px]'>
+											<FirstBadgeUnStyled
+												styles={"px-2 py-0.5 rounded-bl"}
+											/>
+										</div>
+									)}
 								</button>
 
 								<button
