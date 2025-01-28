@@ -41,9 +41,13 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 	return (
 		<div className='m-1'>
 			<div className='mt-4 mb-2'>
-				<h2 className='font-medium'>Related Videos</h2>
+				<h2 className='font-medium text-color-primary'>
+					Related Videos
+				</h2>
 				{loading && (
-					<p className='text-sm'>Loading related videos...</p>
+					<p className='text-sm text-color-secondary'>
+						Loading related videos...
+					</p>
 				)}
 				{!loading && relatedVideos.length === 0 && (
 					<p className='text-sm'>No related videos found...</p>
@@ -95,15 +99,15 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 									}}
 								>
 									<p
-										className='text-sm font-semibold line-clamp-2'
+										className='text-sm font-semibold line-clamp-2 text-color-primary'
 										title={episode.attributes.title}
 									>
 										{episode.attributes.title}
 									</p>
-									<p className='text-sm'>
+									<p className='text-sm text-color-secondary'>
 										{episode.attributes.channel_title}
 									</p>
-									<p className='text-xs'>
+									<p className='text-xs text-color-secondary'>
 										{dateTimeToRelative(
 											episode.attributes.original_air_date
 										)}
