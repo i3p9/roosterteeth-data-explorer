@@ -49,6 +49,30 @@ export const UserContextProvider = ({ children }) => {
 		}
 	};
 
+	const forceFetchCurrentUser = async () => {
+		const { data, error } = await mySupabaseClient.auth.getUser();
+
+		if (error) {
+			console.error("Error fetching user data:", error);
+		}
+
+		if (data) {
+			setCurrentUser(data);
+			// Update localStorage with fresh data
+			localStorage.setItem("currentUser", JSON.stringify(data));
+			return data;
+		} else {
+			const anonymousUser = {
+				user: {
+					aud: "anonymous",
+					is_anonymous: true,
+				},
+			};
+			setCurrentUser(anonymousUser);
+			return anonymousUser;
+		}
+	};
+
 	// Clear user data from localStorage on logout
 	const logout = async () => {
 		await mySupabaseClient.auth.signOut();
@@ -63,7 +87,12 @@ export const UserContextProvider = ({ children }) => {
 
 	return (
 		<UserContext.Provider
-			value={{ currentUser, fetchCurrentUser, logout }}
+			value={{
+				currentUser,
+				fetchCurrentUser,
+				logout,
+				forceFetchCurrentUser,
+			}}
 		>
 			{children}
 		</UserContext.Provider>

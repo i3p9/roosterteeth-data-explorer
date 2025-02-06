@@ -3,6 +3,8 @@ import Link from "next/link";
 import DownloadButton from "@/app/components/atoms/DownloadButton/DownloadButton";
 import CommentSection from "../components/CommentSection";
 import { formatSecondToRunTime, makeTitle } from "@/data/utils/utils";
+import UserCommentSection from "./UserCommentSection";
+import LikeButton from "./LikeButton";
 
 const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 	if (!episode) return null;
@@ -46,6 +48,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 							downloadData={episode?.archive}
 							disabled={isUnavailable}
 						/>
+						<LikeButton videoId={episode?.uuid} />
 					</div>
 				)}
 			</div>
@@ -61,6 +64,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 					Description: {episode?.attributes?.description}
 				</p>
 			</div>
+			<UserCommentSection videoId={episode?.uuid} />
 			<CommentSection
 				videoId={episode?.uuid}
 				commentsCount={episode?.attributes.comments}

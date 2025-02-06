@@ -142,7 +142,7 @@ const SearchPage = () => {
 	return (
 		<>
 			<NavBar
-				title={"Search Episodes"}
+				title={"rt-archive"}
 				previousLink={"/"}
 				renderAdditionalMenu
 			/>

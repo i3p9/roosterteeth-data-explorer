@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Comment } from "./Comment";
+import { useCurrentUser } from "@/app/hooks/UserContext";
 
 const CommentSection = ({ videoId, commentsCount }) => {
 	const [comments, setComments] = useState([]);
@@ -70,6 +71,18 @@ const CommentSection = ({ videoId, commentsCount }) => {
 		}
 	};
 
+	// user comments
+	const { currentUser, fetchCurrentUser } = useCurrentUser();
+
+	useEffect(() => {
+		if (!currentUser) {
+			fetchCurrentUser();
+		}
+		//eslint-disable-next-line
+	}, []);
+
+	console.log("current user: ", currentUser);
+
 	if (!commentsCount) {
 		return (
 			<div className='p-2 mt-4 flex items-center justify-center'>
@@ -84,7 +97,7 @@ const CommentSection = ({ videoId, commentsCount }) => {
 	return (
 		<div className='p-2 mt-4'>
 			<h2 className='text-2xl font-bold text-color-primary'>
-				{commentsCount} Comments
+				{commentsCount} Comments on roosterteeth.com
 			</h2>
 			{commentsCount > 100 && (
 				<p className='text-xs text-color-faded'>

@@ -7,6 +7,7 @@ import Spinner from "../components/atoms/Spinner/Spinner";
 import { IoCheckmark } from "react-icons/io5";
 import "./login.css";
 import EmailShortcut from "../components/atoms/EmailShortcut/EmailShortcut";
+import { generateUsername } from "../utils/generateUsername";
 
 const LoginPage = () => {
 	const [userData, setUserData] = useState({
@@ -25,6 +26,9 @@ const LoginPage = () => {
 					options: {
 						shouldCreateUser: true,
 						emailRedirectTo: "https://rtarchive.xyz",
+						data: {
+							display_name: generateUsername(),
+						},
 					},
 				});
 
