@@ -98,7 +98,7 @@ const UserCommentSection = ({ videoId }) => {
 	// 	);
 	// }
 
-	console.log(currentUser);
+	// console.log(currentUser);
 
 	return (
 		<div className='p-2 mt-4'>

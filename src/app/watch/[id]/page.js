@@ -97,7 +97,7 @@ const WatchEpisodePage = () => {
 	const handleVideoEnd = useCallback(() => {
 		const nextSlug = autoPlayNextSlugRef.current;
 		if (nextSlug) {
-			console.log("setting new Slug: ", nextSlug);
+			// console.log("setting new Slug: ", nextSlug);
 			setNowPlayingEpisodeSlug(nextSlug);
 		} else {
 			console.warn("autoPlayNextSlug is undefined");

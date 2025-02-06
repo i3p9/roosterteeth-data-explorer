@@ -45,7 +45,7 @@ const MyAccount = () => {
 		}
 	}, [likedVideosId]);
 
-	console.log("currentUser: ", currentUser?.user);
+	// console.log("currentUser: ", currentUser?.user);
 
 	useEffect(() => {
 		if (currentUser?.user?.user_metadata?.display_name) {
