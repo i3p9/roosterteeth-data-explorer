@@ -36,7 +36,7 @@ const SeasonSideBar = ({
 						isEpisodeListOpen ? (
 							<h2 className='text-base font-semibold'>
 								{nextEpisodes[0]?.attributes.show_title} -{" "}
-								{nowPlayingIndex}/{nextEpisodes?.length}
+								{nowPlayingIndex + 1}/{nextEpisodes?.length}
 							</h2>
 						) : (
 							<h2 className='text-base flex gap-1 items-center'>
@@ -58,7 +58,7 @@ const SeasonSideBar = ({
 						) : (
 							<span className='text-sm font-semibold'>
 								{nextEpisodes[0]?.attributes.show_title} -{" "}
-								{nowPlayingIndex}/{nextEpisodes?.length}
+								{nowPlayingIndex + 1}/{nextEpisodes?.length}
 							</span>
 						)}
 					</p>
