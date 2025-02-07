@@ -10,10 +10,15 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 	const [relatedVideos, setRelatedVideos] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	function updatePath(episodeSlug) {
-		const newPath = `/watch/${episodeSlug}`;
+	const updatePath = (episodeSlug, episode) => {
+		let newPath = `/watch/${episodeSlug}`;
+		if (episode) {
+			newPath += `?data=${encodeURIComponent(
+				JSON.stringify(episode)
+			)}`;
+		}
 		window.history.replaceState(null, "", newPath);
-	}
+	};
 
 	const geRelatedViedeosByUuid = useCallback(async () => {
 		setRelatedVideos([]);
@@ -64,7 +69,7 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 								<button
 									className='relative w-40 h-24 flex-shrink-0'
 									onClick={() => {
-										updatePath(episode?.attributes.slug);
+										updatePath(episode?.attributes.slug, episode);
 										setNowPlayingEpisodeSlug(
 											episode?.attributes.slug
 										);
@@ -92,7 +97,7 @@ const RelatedVideos = ({ uuid, setNowPlayingEpisodeSlug }) => {
 								<button
 									className='flex flex-col gap-1 text-left'
 									onClick={() => {
-										updatePath(episode?.attributes.slug);
+										updatePath(episode?.attributes.slug, episode);
 										setNowPlayingEpisodeSlug(
 											episode?.attributes.slug
 										);

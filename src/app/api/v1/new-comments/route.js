@@ -1,4 +1,5 @@
 import { Pool } from "pg";
+import { verifyJWT } from "@/lib/auth";
 
 const pool = new Pool({
 	user: process.env.PG_DB_USER,
@@ -10,6 +11,18 @@ const pool = new Pool({
 
 export async function POST(req) {
 	try {
+		// Verify JWT token
+		const authResult = await verifyJWT(req);
+		if (!authResult.success) {
+			return new Response(
+				JSON.stringify({ message: authResult.message }),
+				{
+					status: authResult.status,
+					headers: { "Content-Type": "application/json" },
+				}
+			);
+		}
+
 		const body = await req.json();
 		const { comment, video_id, user_id, user_name } = body;
 

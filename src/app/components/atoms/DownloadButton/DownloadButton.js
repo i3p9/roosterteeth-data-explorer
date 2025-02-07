@@ -31,7 +31,7 @@ export default function DownloadButton({
 			<div className={`w-auto ${disabled && "make-disable"}`}>
 				<Menu as='div' className='relative inline-block'>
 					<div>
-						<Menu.Button className='inline-flex w-full justify-center rounded-md text-color-primary px-1 py-1 text-xs font-medium hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
+						<Menu.Button className='inline-flex  w-full justify-center rounded-md text-color-primary px-1 py-1 text-xs font-medium hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
 							<LuDownload
 								className='mx-1 h-4 w-4'
 								aria-hidden='true'
@@ -93,7 +93,7 @@ export default function DownloadButton({
 			{videoFile.length > 0 && (
 				<button
 					onClick={() => download(videoFile[0].name)}
-					className='rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 flex-make-center'
+					className='transition-all duration-300 rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 flex-make-center'
 				>
 					<div className='flex items-center'>
 						<LuDownload style={{ display: "inline" }} />{" "}
@@ -109,7 +109,7 @@ export default function DownloadButton({
 				{({ open }) => (
 					<div>
 						<div>
-							<Menu.Button className='px-4 py-2 rounded-r-md text-color-primary text-color-primary-hover bg-color-primary  w-full h-12 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
+							<Menu.Button className='px-4 py-2 rounded-r-md text-color-primary text-color-primary-hover transition-all duration-300 bg-color-primary  w-full h-12 flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
 								{open ? (
 									<FaChevronUp
 										className='h-5 w-5'

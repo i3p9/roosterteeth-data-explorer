@@ -22,11 +22,11 @@ const additionalMenu = [
 		path: "/download",
 		short: "/d",
 	},
-	{
-		title: "me",
-		path: "/account",
-		short: "/a",
-	},
+	// {
+	// 	title: "me",
+	// 	path: "/account",
+	// 	short: "/a",
+	// },
 ];
 
 const AdditionalMenuComponent = ({ pathname }) => {

@@ -74,7 +74,7 @@
 	}
 
 	.button-styled {
-		@apply rounded-md text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800;
+		@apply rounded-md text-zinc-900 dark:text-zinc-100 hover:text-zinc-200 hover:bg-zinc-800 dark:hover:text-zinc-700 dark:hover:bg-zinc-200 bg-zinc-200 dark:bg-zinc-800 transition-all duration-300;
 	}
 
 	.flex-make-center {

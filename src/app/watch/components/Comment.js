@@ -42,12 +42,12 @@ export function Comment({ comment, onLoadReplies, depth = 0 }) {
 
 	return (
 		<div className={`flex space-x-3 mb-4 ${depth > 0 ? "mt-2" : ""}`}>
-			<div className='w-8 h-8 rounded-full bg-color-secondary flex items-center justify-center text-color-primary font-semibold text-sm'>
+			<div className='relative w-8 h-8 rounded-full bg-color-secondary flex items-center justify-center text-color-primary font-semibold text-sm'>
 				{comment.user_name[0].toUpperCase()}
 			</div>
 			<div className='flex-1'>
 				<div className='flex items-center space-x-1'>
-					<span className='font-semibold text-color-primary'>
+					<span className='font-medium text-color-primary'>
 						{comment.user_name}
 					</span>
 					{comment.created_by_staff && (

@@ -7,6 +7,7 @@ import { useState } from "react";
 const LikeButton = ({ videoId }) => {
 	const [isLiked, setIsLiked] = useState(false);
 	const { currentUser, fetchCurrentUser } = useCurrentUser();
+	const [isLikedLoading, setIsLikedLoading] = useState(false);
 	useEffect(() => {
 		if (!currentUser) {
 			fetchCurrentUser();
@@ -14,7 +15,7 @@ const LikeButton = ({ videoId }) => {
 		//eslint-disable-next-line
 	}, []);
 
-	const checkIfLiked = async () => {
+	const checkIfLiked = useCallback(async () => {
 		try {
 			const userId = currentUser?.user.id;
 			const response = await fetch(
@@ -30,16 +31,17 @@ const LikeButton = ({ videoId }) => {
 		} catch (error) {
 			console.error("Error checking like status:", error);
 		}
-	};
+	}, [currentUser, videoId]);
 
 	useEffect(() => {
 		if (currentUser?.user?.id) {
 			checkIfLiked();
 		}
-	}, [currentUser]);
+	}, [currentUser, checkIfLiked]);
 
 	const handleLike = async () => {
 		try {
+			setIsLikedLoading(true);
 			const userId = currentUser?.user.id;
 			const response = await fetch(
 				`/api/v1/like?user_id=${userId}&video_id=${videoId}&action=liked`,
@@ -52,13 +54,16 @@ const LikeButton = ({ videoId }) => {
 			}
 		} catch (error) {
 			console.error("Error liking video:", error);
+		} finally {
+			setIsLikedLoading(false);
 		}
 	};
 	return (
 		<LikedButton
 			onClickAction={handleLike}
 			isLiked={isLiked}
-			isLoggedIn={currentUser?.user?.id}
+			isLoggedIn={currentUser?.user?.id ? true : false}
+			isLikedLoading={isLikedLoading}
 		/>
 	);
 };

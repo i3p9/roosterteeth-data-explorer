@@ -81,8 +81,6 @@ const CommentSection = ({ videoId, commentsCount }) => {
 		//eslint-disable-next-line
 	}, []);
 
-	console.log("current user: ", currentUser);
-
 	if (!commentsCount) {
 		return (
 			<div className='p-2 mt-4 flex items-center justify-center'>
@@ -96,8 +94,8 @@ const CommentSection = ({ videoId, commentsCount }) => {
 
 	return (
 		<div className='p-2 mt-4'>
-			<h2 className='text-2xl font-bold text-color-primary'>
-				{commentsCount} Comments on roosterteeth.com
+			<h2 className='text-xl font-medium text-color-primary'>
+				{commentsCount} comments on roosterteeth.com
 			</h2>
 			{commentsCount > 100 && (
 				<p className='text-xs text-color-faded'>

@@ -154,7 +154,7 @@ export default function BulkDownloadButton({
 				{({ open }) => (
 					<div>
 						<div>
-							<Menu.Button className='text-color-primary text-color-primary-hover border border-color-primary inline-flex w-full justify-center rounded-md bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
+							<Menu.Button className='text-color-primary text-color-primary-hover transition-all duration-300 border border-color-primary inline-flex w-full justify-center rounded-md bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75'>
 								{loading ? "loading.." : title}
 								{open ? (
 									<FaChevronUp

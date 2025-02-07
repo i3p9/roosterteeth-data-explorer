@@ -5,13 +5,11 @@ import {
 	formatSecondsToDuration,
 } from "@/data/utils/utils";
 import Link from "next/link";
-import { IoIosCloudDone } from "react-icons/io";
 import styles from "./SeasonEpisodeContainer.module.css";
 import { CloudAvailable, CloudUnavailable } from "../../svgs/Cloud";
 
 const SeasonEpisodeContainer = (props) => {
 	const { episode } = props;
-	// const episodeId = episode?.type === 'episode' ? `${episode?.id}` : `${episode?.id}-bonus`;
 	const episodeId = `${episode?.attributes.slug}`;
 
 	const [imageLoaded, setImageLoaded] = useState(false);
@@ -25,14 +23,13 @@ const SeasonEpisodeContainer = (props) => {
 		isUnavailable = true;
 	}
 
-	// console.log("not available? ", isUnavailable);
-
 	return (
 		<>
 			<div>
 				<Link
 					href={{
 						pathname: `/watch/${episodeId}`,
+						query: { data: JSON.stringify(episode) },
 					}}
 				>
 					<div

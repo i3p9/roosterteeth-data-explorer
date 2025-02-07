@@ -6,15 +6,7 @@ import "./VideoJS.css";
 export const VideoJS = (props) => {
 	const videoRef = useRef(null);
 	const playerRef = useRef(null);
-	const { options, onReady, showSpinner } = props;
-
-	useEffect(() => {
-		const link = document.createElement("link");
-		link.rel = "stylesheet";
-		link.href = "./VideoJS.css"; // Ensure this path is correct
-		document.head.appendChild(link);
-	}, [options]);
-
+	const { options, onReady } = props;
 
 	useEffect(() => {
 		if (!playerRef.current) {

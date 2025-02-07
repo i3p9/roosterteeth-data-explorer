@@ -15,7 +15,7 @@ export default function SortSelector(props) {
 				<>
 					<div className='w-42'>
 						<Listbox.Button
-							className={`relative w-full border font-semibold border-color-primary rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary text-color-primary-hover shadow-sm focus:outline-none sm:leading-6 leading-6'}`}
+							className={`relative w-full border font-semibold border-color-primary rounded-md bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary text-color-primary-hover shadow-sm focus:outline-none sm:leading-6 leading-6 transition-all duration-300`}
 						>
 							{selected && (
 								<span className='block truncate'>
@@ -54,7 +54,7 @@ export default function SortSelector(props) {
 										className={({ active }) =>
 											classNames(
 												active
-													? "bg-color-hover-2 text-color-reverse"
+													? "bg-color-hover-2 text-color-reverse transition-all duration-300"
 													: "text-color-primary",
 												"relative cursor-pointer select-none p-2"
 											)

@@ -23,7 +23,7 @@ const ShowInfo = ({ show }) => {
 		img.onerror = () => setImageLoaded(true);
 	}, [logoUrl]);
 
-	console.log("imageloaded: ", imageLoaded);
+	// console.log("imageloaded: ", imageLoaded);
 
 	return (
 		<div className='relative left-[50%] right-[50%] ml-[-50vw] mr-[-50vw] w-screen bg-neutral-900 h-64 md:h-96 -top-1 shadow-xl'>

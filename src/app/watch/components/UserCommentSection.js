@@ -6,9 +6,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Comment } from "./Comment";
 import { useCurrentUser } from "@/app/hooks/UserContext";
+import toast, { Toaster } from "react-hot-toast";
+import { AiFillHourglass, AiOutlineSend } from "react-icons/ai";
 
 const UserCommentSection = ({ videoId }) => {
-	const { currentUser, fetchCurrentUser } = useCurrentUser();
+	const { currentUser, fetchCurrentUser, userToken } =
+		useCurrentUser();
 	const [comments, setComments] = useState([]);
 	const [commentMeta, setCommentMeta] = useState({
 		total_comments: 0,
@@ -57,14 +60,22 @@ const UserCommentSection = ({ videoId }) => {
 
 		setIsSubmitting(true);
 		try {
-			const response = await axios.post("/api/v1/new-comments", {
-				video_id: videoId,
-				user_id: currentUser?.user?.id,
-				comment: newComment.trim(),
-				user_name:
-					currentUser?.user?.user_metadata?.display_name ||
-					"John Doe",
-			});
+			const response = await axios.post(
+				"/api/v1/new-comments",
+				{
+					video_id: videoId,
+					user_id: currentUser?.user?.id,
+					comment: newComment.trim(),
+					user_name:
+						currentUser?.user?.user_metadata?.display_name ||
+						"John Doe",
+				},
+				{
+					headers: {
+						Authorization: `Bearer ${userToken}`,
+					},
+				}
+			);
 
 			// Add the new comment to the existing comments
 			setComments((prevComments) => [
@@ -76,9 +87,9 @@ const UserCommentSection = ({ videoId }) => {
 				total_comments: prev.total_comments + 1,
 			}));
 			setNewComment(""); // Clear the input
+			toast.success("Comment posted successfully!");
 		} catch (error) {
-			console.error("Error posting comment:", error);
-			alert("Failed to post comment. Please try again.");
+			toast.error("Failed to post comment. Please try again.");
 		} finally {
 			setIsSubmitting(false);
 		}
@@ -108,21 +119,33 @@ const UserCommentSection = ({ videoId }) => {
 
 			{currentUser?.user && (
 				<form onSubmit={handleSubmitComment} className='mb-6'>
-					<div className='flex flex-col gap-2'>
+					<div className='flex flex-col gap-2 bg-color-secondary p-4 rounded-xl border-2 border-color-tertiary focus-within:border-color-primary transition-all duration-300'>
 						<textarea
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
 							placeholder='Add a comment...'
-							className='w-full p-2 rounded-lg bg-color-secondary text-color-primary border-2 border-color-tertiary resize-none min-h-[100px]'
+							className='w-full p-2 rounded-xl bg-transparent text-color-primary resize-none min-h-[50px] focus:outline-none'
 							disabled={isSubmitting}
 						/>
-						<button
-							type='submit'
-							disabled={isSubmitting || !newComment.trim()}
-							className='self-end px-4 py-2 border-2 border-color-primary text-color-primary bg-color-secondary bg-color-hover rounded-lg disabled:opacity-50'
-						>
-							{isSubmitting ? "Posting..." : "Post Comment"}
-						</button>
+						<div className='flex justify-end gap-2'>
+							<button
+								type='submit'
+								disabled={isSubmitting || !newComment.trim()}
+								className='px-4 py-2 shadow-lg hover:scale-[0.98] transition-all duration-300 text-color-primary bg-color-primary border-2 border-transparent hover:border-color-primary hover:cursor-pointer rounded-xl disabled:opacity-50 flex items-center justify-center'
+							>
+								{isSubmitting ? (
+									<span className='flex items-center gap-2'>
+										Posting{" "}
+										<AiFillHourglass className='ml-2 inline-block animate-spin' />
+									</span>
+								) : (
+									<span className='flex items-center gap-2'>
+										Post Comment{" "}
+										<AiOutlineSend className='ml-2 inline-block' />
+									</span>
+								)}
+							</button>
+						</div>
 					</div>
 				</form>
 			)}
@@ -144,6 +167,7 @@ const UserCommentSection = ({ videoId }) => {
 					{commentsLoading ? "Loading..." : "Load more comments"}
 				</button>
 			)}
+			<Toaster />
 		</div>
 	);
 };

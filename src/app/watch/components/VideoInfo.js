@@ -12,11 +12,20 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 		<>
 			<div className='p-2 flex justify-between flex-col lg:flex-row gap-4'>
 				<div className='flex flex-col'>
-					<h1 className='font-bold text-xl text-color-primary'>
+					<h1
+						key={episode?.attributes.title}
+						className='font-bold text-xl text-color-primary animate-fade-in'
+					>
 						{episode?.attributes.title}
 					</h1>
-					<Link href={`/show/${episode?.attributes.show_slug}`}>
-						<p className='font-medium text-md text-color-secondary'>
+					<p
+						key={
+							episode?.attributes.show_title +
+							episode?.attributes.season_number
+						}
+						className='font-medium text-md text-color-secondary hover:underline animate-fade-in'
+					>
+						<Link href={`/show/${episode?.attributes.show_slug}`}>
 							{episode?.attributes.show_title}{" "}
 							{episode?.attributes.season_number && (
 								<span>
@@ -24,14 +33,14 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 									{episode?.attributes.number}
 								</span>
 							)}
-						</p>
-					</Link>
+						</Link>
+					</p>
 				</div>
 			</div>
 			<div className='w-100 flex flex-col lg:flex-row gap-2 lg:justify-between rounded-lg p-2 bg-color-faded'>
 				<Link
 					className='flex items-center p-1 bg-color-hover hover:rounded-lg transition-all duration-400'
-					href={`/show/${episode?.attributes.show_slug}`}
+					href={`/?channel=${episode?.attributes.channel_slug}`}
 				>
 					<img
 						alt={`logo of channel ${episode?.attributes.channel_slug}`}
@@ -53,7 +62,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 				)}
 			</div>
 
-			<div className='flex flex-col rounded-lg p-2 bg-color-primary text-md hover:shadow-lg'>
+			<div className='flex flex-col rounded-lg p-2 bg-color-primary text-md hover:shadow-sm'>
 				<p className='font-medium text-color-primary'>
 					Published:{" "}
 					{episode?.attributes.original_air_date.split("T")[0]} •

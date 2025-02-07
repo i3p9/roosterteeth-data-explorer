@@ -19,9 +19,14 @@ module.exports = {
 						transform: "rotate(-360deg)",
 					},
 				},
+				"fade-in": {
+					"0%": { opacity: "0" },
+					"100%": { opacity: "1" },
+				},
 			},
 			animation: {
 				"border-spin": "border-spin 7s linear infinite",
+				"fade-in": "fade-in 1s ease-in-out",
 			},
 		},
 	},

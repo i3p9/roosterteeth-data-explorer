@@ -4,7 +4,12 @@ import { HeartFill, HeartOutline } from "../../svgs/Heart";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const LikedButton = ({ onClickAction, isLiked, isLoggedIn }) => {
+const LikedButton = ({
+	onClickAction,
+	isLiked,
+	isLoggedIn,
+	isLikedLoading,
+}) => {
 	const [showDialog, setShowDialog] = useState(false);
 	const router = useRouter();
 
@@ -18,24 +23,24 @@ const LikedButton = ({ onClickAction, isLiked, isLoggedIn }) => {
 
 	return (
 		<>
-			{isLiked ? (
-				<p
-					className='button-styled flex-make-center px-4 gap-2 hover:cursor-pointer'
-					onClick={handleClick}
+			<p
+				className='button-styled flex-make-center px-4 gap-2 hover:cursor-pointer'
+				onClick={handleClick}
+			>
+				<span
+					className={`flex items-center gap-2 ${
+						isLikedLoading
+							? "animate-pulse scale-110 transition-all duration-1000 ease-in-out"
+							: ""
+					}`}
 				>
-					<HeartFill className='transition-transform duration-300 ease-in-out transform hover:scale-110' />
-					Liked{" "}
-				</p>
-			) : (
-				<button
-					className='button-styled flex-make-center px-4 gap-2'
-					onClick={handleClick}
-				>
-					<HeartOutline className='transition-transform duration-300 ease-in-out transform hover:scale-110' />
-					Like{" "}
-				</button>
-			)}
-
+					{isLiked ? (
+						<HeartFill className='w-6 h-6' />
+					) : (
+						<HeartOutline className='w-6 h-6' />
+					)}
+				</span>
+			</p>
 			{showDialog && (
 				<div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'>
 					<div className='bg-color-primary p-6 rounded-lg shadow-lg popup-content'>
@@ -70,6 +75,7 @@ LikedButton.propTypes = {
 	onClickAction: PropTypes.any,
 	isLiked: PropTypes.bool,
 	isLoggedIn: PropTypes.bool,
+	isLikedLoading: PropTypes.bool,
 };
 
 export default LikedButton;

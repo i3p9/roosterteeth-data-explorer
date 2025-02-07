@@ -11,10 +11,16 @@ const SeasonSideBar = ({
 	loading,
 }) => {
 	const [isEpisodeListOpen, setIsEpisodeListOpen] = useState(true);
-	function updatePath(episodeSlug) {
-		const newPath = `/watch/${episodeSlug}`;
+	const updatePath = (episodeSlug, episode) => {
+		let newPath = `/watch/${episodeSlug}`;
+		if (episode) {
+			newPath += `?data=${encodeURIComponent(
+				JSON.stringify(episode)
+			)}`;
+		}
 		window.history.replaceState(null, "", newPath);
-	}
+	};
+
 	const nowPlayingIndex = nextEpisodes?.findIndex(
 		(episode) =>
 			episode?.attributes.slug.toString() ===
@@ -72,7 +78,10 @@ const SeasonSideBar = ({
 				</div>
 			</button>
 			{isEpisodeListOpen && (
-				<div className='h-[57vh] overflow-y-auto'>
+				<div
+					className='h-[57vh] overflow-y-auto'
+					id='episode-container'
+				>
 					{loading && (
 						<div className='flex-make-center overflow-y-auto'>
 							Loading next episodes...
@@ -87,7 +96,7 @@ const SeasonSideBar = ({
 								<React.Fragment key={index}>
 									<button
 										onClick={() => {
-											updatePath(episode?.attributes.slug);
+											updatePath(episode?.attributes.slug, episode);
 											setNowPlayingEpisodeSlug(
 												episode?.attributes.slug
 											);
@@ -101,14 +110,19 @@ const SeasonSideBar = ({
 											}`}
 											key={index}
 											ref={(ref) => {
-												// Check if the episode is selected
-												if (nowPlaying) {
-													// Scroll the selected episode into view
-													ref &&
-														ref.scrollIntoView({
+												if (nowPlaying && ref) {
+													const container = document.getElementById(
+														"episode-container"
+													);
+													if (container) {
+														container.scrollTo({
+															top:
+																ref.offsetTop -
+																container.offsetTop -
+																container.clientHeight / 2,
 															behavior: "smooth",
-															block: "center",
 														});
+													}
 												}
 											}}
 										>

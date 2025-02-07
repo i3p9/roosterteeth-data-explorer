@@ -11,6 +11,7 @@ export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
 	const [currentUser, setCurrentUser] = useState();
+	const [userToken, setUserToken] = useState();
 
 	const fetchCurrentUser = async () => {
 		// First, check localStorage
@@ -83,7 +84,16 @@ export const UserContextProvider = ({ children }) => {
 	// Fetch user data on initial load
 	useEffect(() => {
 		fetchCurrentUser();
+		fetchUserToken();
 	}, []);
+
+	//fetch user token from  session
+	const fetchUserToken = async () => {
+		const { data, error } = await mySupabaseClient.auth.getSession();
+		if (data) {
+			setUserToken(data?.session?.access_token);
+		}
+	};
 
 	return (
 		<UserContext.Provider
@@ -92,6 +102,7 @@ export const UserContextProvider = ({ children }) => {
 				fetchCurrentUser,
 				logout,
 				forceFetchCurrentUser,
+				userToken,
 			}}
 		>
 			{children}

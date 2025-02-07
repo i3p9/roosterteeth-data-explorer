@@ -69,7 +69,7 @@ const LoginPage = () => {
 				>
 					<div className='flex flex-col items-center'>
 						<p className='font-black text-2xl stretch-125 mb-2'>
-							Login to continue
+							Login to continue [BETA; DO NOT USE]
 						</p>
 						<p className=' text-md stretch-110 mb-2 line-clamp-4'>
 							By loggin in, you can like videos, create playlists
