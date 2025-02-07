@@ -65,6 +65,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 				</p>
 			</div>
 			<UserCommentSection videoId={episode?.uuid} />
+			<div className='border border-b border-color-secondary rounded-xl mx-20'></div>
 			<CommentSection
 				videoId={episode?.uuid}
 				commentsCount={episode?.attributes.comments}

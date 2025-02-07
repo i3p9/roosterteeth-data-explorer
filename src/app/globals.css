@@ -31,6 +31,9 @@
 	.bg-color-secondary {
 		@apply bg-zinc-300 dark:bg-zinc-700;
 	}
+	.bg-color-tertiary {
+		@apply bg-zinc-400 dark:bg-zinc-600;
+	}
 	.bg-color-reverse {
 		@apply bg-zinc-800 dark:bg-zinc-200;
 	}
@@ -46,6 +49,10 @@
 	.border-color-secondary {
 		@apply border-zinc-300 dark:border-zinc-600;
 	}
+	.border-color-tertiary {
+		@apply border-zinc-500 dark:border-zinc-500;
+	}
+
 	.skeleton-color-primary {
 		@apply bg-gray-200 rounded-full dark:bg-gray-700;
 	}

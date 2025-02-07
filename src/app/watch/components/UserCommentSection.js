@@ -102,8 +102,8 @@ const UserCommentSection = ({ videoId }) => {
 
 	return (
 		<div className='p-2 mt-4'>
-			<h2 className='text-md font-bold text-color-primary pb-2'>
-				{commentMeta.total_comments} Comments on rtarchive
+			<h2 className='text-md font-md text-color-primary pb-2'>
+				{commentMeta.total_comments} comments on rt-archive
 			</h2>
 
 			{currentUser?.user && (
@@ -113,7 +113,7 @@ const UserCommentSection = ({ videoId }) => {
 							value={newComment}
 							onChange={(e) => setNewComment(e.target.value)}
 							placeholder='Add a comment...'
-							className='w-full p-2 rounded-lg bg-color-secondary text-color-primary border-2 border-color-primary resize-none min-h-[100px]'
+							className='w-full p-2 rounded-lg bg-color-secondary text-color-primary border-2 border-color-tertiary resize-none min-h-[100px]'
 							disabled={isSubmitting}
 						/>
 						<button

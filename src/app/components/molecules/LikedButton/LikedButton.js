@@ -20,7 +20,7 @@ const LikedButton = ({ onClickAction, isLiked, isLoggedIn }) => {
 		<>
 			{isLiked ? (
 				<p
-					className='button-styled flex-make-center px-4 gap-2'
+					className='button-styled flex-make-center px-4 gap-2 hover:cursor-pointer'
 					onClick={handleClick}
 				>
 					<HeartFill className='transition-transform duration-300 ease-in-out transform hover:scale-110' />
