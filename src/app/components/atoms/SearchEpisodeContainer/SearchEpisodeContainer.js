@@ -60,6 +60,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
 					<Link
 						href={{
 							pathname: `/watch/${episodeSlug}`,
+							query: { data: JSON.stringify(episode) },
 						}}
 					>
 						<div className='flex flex-col'>
@@ -106,6 +107,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
 					<Link
 						href={{
 							pathname: `/watch/${episodeSlug}`,
+							query: { data: JSON.stringify(episode) },
 						}}
 					>
 						<div className='flex items-start gap-4 col-span-1'>
@@ -130,7 +132,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
 						<Link
 							href={{
 								pathname: `/watch/${episodeSlug}`,
-								query: { uuid: episode?.uuid },
+								query: { data: JSON.stringify(episode) },
 							}}
 						>
 							<h3
@@ -183,7 +185,7 @@ const SearchEpisodeContainer = ({ episode, toaster }) => {
 											toaster();
 											close();
 										}}
-										className='w-full p-1 mt-2 border border-2 border-color-primary hover:bg-color-primary'
+										className='w-full p-1 mt-2 border-2 border-color-primary hover:bg-color-primary'
 									>
 										Copy to clipboard
 									</button>

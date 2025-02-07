@@ -12,18 +12,18 @@ const additionalMenu = [
 		path: "/search",
 		short: "/s",
 	},
-	{
-		title: "random",
-		path: "/random",
-		short: "/r",
-	},
+	// {
+	// 	title: "random",
+	// 	path: "/random",
+	// 	short: "/r",
+	// },
 	{
 		title: "download",
 		path: "/download",
 		short: "/d",
 	},
 	// {
-	// 	title: "account",
+	// 	title: "me",
 	// 	path: "/account",
 	// 	short: "/a",
 	// },
@@ -105,7 +105,7 @@ const NavBar = ({
 				{renderAdditionalMenu && (
 					<AdditionalMenuComponent pathname={pathname} />
 				)}
-				<div className='ml-auto flex gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
+				<div className='hidden sm:flex ml-auto gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
 					<AiOutlineMail />{" "}
 					<a
 						href='mailto:info@rtarchive.xyz'

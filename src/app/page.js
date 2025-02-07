@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import NavBar from "./components/molecules/NavBar/NavBar";
 import masterList from "../data/master.json";
 import {
@@ -7,14 +7,11 @@ import {
 	firstOrNoOptions,
 	sortFilterOptions,
 } from "@/data/utils/data";
-import Link from "next/link";
-import InfiniteScroll from "react-infinite-scroll-component";
 import ChannelSelector from "./components/atoms/ChannelSelector/ChannelSelector";
 import Fuse from "fuse.js";
-import { FirstBadgeOnPoster } from "./components/atoms/Badges/Badges";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
-import { mySupabaseClient } from "./lib/supabase";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const ShowGridSkeleton = () => {
 	return (
@@ -55,111 +52,85 @@ const ShowGridSkeleton = () => {
 };
 
 const BrowseAllShows = () => {
+	return (
+		<Suspense fallback={<ShowGridSkeleton />}>
+			<BrowseAllShowsContent />
+		</Suspense>
+	);
+};
+
+const BrowseAllShowsContent = () => {
 	const masterShowData = masterList.data;
-	const [masterDataFiltered, setMasterDataFiltered] = useState();
-	const [allShows, setAllShows] = useState(masterShowData);
+	const router = useRouter();
+	const searchParams = useSearchParams();
+
 	const [exclusiveFilterValue, setExclusiveFilterValue] = useState(
-		firstOrNoOptions[0]
+		() => {
+			const param = searchParams.get("exclusive");
+			return (
+				firstOrNoOptions.find((opt) => opt.value === param) ||
+				firstOrNoOptions[0]
+			);
+		}
 	);
-	const [channelFilterValue, setChannelFilterValue] = useState(
-		channelsWithAllAsOption[0]
-	);
-	const [sortFilterValue, setSortFilterValue] = useState(
-		sortFilterOptions[0]
-	);
-	const [searchTerm, setSearchTerm] = useState("");
-	const [hasMore, setHasMore] = useState(true);
 
-	const [allShowData, setAllShowData] = useState(masterList);
+	const [channelFilterValue, setChannelFilterValue] = useState(() => {
+		const param = searchParams.get("channel");
+		return (
+			channelsWithAllAsOption.find((ch) => ch.slug === param) ||
+			channelsWithAllAsOption[0]
+		);
+	});
 
+	const [sortFilterValue, setSortFilterValue] = useState(() => {
+		const param = searchParams.get("sort");
+		return (
+			sortFilterOptions.find((opt) => opt.id === param) ||
+			sortFilterOptions[0]
+		);
+	});
+
+	const [searchTerm, setSearchTerm] = useState(
+		searchParams.get("search") || ""
+	);
+
+	// Update URL when filters change
 	useEffect(() => {
-		let filteredData = [...masterList.data];
+		const params = new URLSearchParams(searchParams.toString());
 
-		if (sortFilterValue.id === "last_updated") {
-			setAllShowData(masterList);
+		if (exclusiveFilterValue.value !== firstOrNoOptions[0].value) {
+			params.set("exclusive", exclusiveFilterValue.value);
 		} else {
-			const sortedData = [...masterList.data].sort((a, b) =>
-				a.attributes.title.localeCompare(b.attributes.title)
-			);
-			filteredData = sortedData;
+			params.delete("exclusive");
 		}
 
-		if (exclusiveFilterValue.value === "show_first") {
-			filteredData = filteredData.filter(
-				(show) => show.attributes?.is_sponsors_only === true
-			);
+		if (channelFilterValue.slug !== channelsWithAllAsOption[0].slug) {
+			params.set("channel", channelFilterValue.slug);
+		} else {
+			params.delete("channel");
 		}
 
-		if (channelFilterValue.uuid !== "all") {
-			filteredData = filteredData.filter(
-				(show) =>
-					show.attributes?.channel_id === channelFilterValue.uuid
-			);
+		if (sortFilterValue.id !== sortFilterOptions[0].id) {
+			params.set("sort", sortFilterValue.id);
+		} else {
+			params.delete("sort");
 		}
 
 		if (searchTerm) {
-			const fuse = new Fuse(filteredData, {
-				keys: ["attributes.title"],
-				includeScore: true,
-				threshold: 0.4,
-			});
-
-			const result = fuse.search(searchTerm.toLowerCase());
-			filteredData = result.map((item) => item.item);
+			params.set("search", searchTerm);
+		} else {
+			params.delete("search");
 		}
 
-		setAllShowData({ ...masterList, data: filteredData });
+		const newUrl = params.toString() ? `?${params.toString()}` : "/";
+		router.push(newUrl, { scroll: false });
 	}, [
-		sortFilterValue,
 		exclusiveFilterValue,
 		channelFilterValue,
+		sortFilterValue,
 		searchTerm,
+		searchParams,
 	]);
-
-	// const filterShows = () => {
-	//     let filteredShow = [...masterShowData];
-
-	//     if (exclusiveFilterValue.value === 'show_first') {
-	//         filteredShow = filteredShow.filter((show) => show.attributes.is_sponsors_only === true);
-	//     }
-
-	//     if (channelFilterValue.uuid !== 'all') {
-	//         filteredShow = filteredShow.filter((show) => show.attributes.channel_id === channelFilterValue.uuid);
-	//     }
-
-	//     if (sortFilterValue.id !== 'last_updated') {
-	//         filteredShow.sort((a, b) => a.attributes.title.localeCompare(b.attributes.title));
-	//     }
-
-	//     setMasterDataFiltered(filteredShow);
-	//     return filteredShow;
-	// };
-
-	//TODO: implement infinite scroll later
-	// useEffect(() => {
-	//     const filteredList = filterShows(masterShowData);
-	//     setAllShows(filteredList.slice(0, 20));
-	//     setHasMore(filteredList.length < masterDataFiltered.length);
-	//     //eslint-disable-next-line
-	// }, [exclusiveFilterValue, channelFilterValue, sortFilterValue]);
-
-	// useEffect(() => {
-	//     // Filter the master list based on initial filters
-	//     const filteredList = filterShows();
-	//     setAllShows(filteredList.slice(0, 20));
-	//     // Check if there are more items to load initially
-	//     setHasMore(filteredList.length < masterDataFiltered.length);
-	// }, []);
-
-	// const fetchMoreData = () => {
-	//     console.log('fetch more data');
-	//     const additionalData = masterDataFiltered.slice(allShows.length, allShows.length + 20);
-	//     setAllShows(prevShows => [...prevShows, ...additionalData]);
-	//     if (allShows.length + 20 >= masterDataFiltered.length) {
-	//         console.log('setting hasMore to false');
-	//         setHasMore(false);
-	//     }
-	// };
 
 	return (
 		<>
@@ -203,13 +174,6 @@ const BrowseAllShows = () => {
 					></input>
 				</div>
 			</div>
-			{/* <InfiniteScroll
-                dataLength={allShows.length}
-                next={fetchMoreData}
-                hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
-                endMessage={<p>No more shows to load</p>}
-            > */}
 			<div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
 				<ShowGrid
 					masterList={masterList}
@@ -218,56 +182,7 @@ const BrowseAllShows = () => {
 					channelFilterValue={channelFilterValue}
 					searchTerm={searchTerm}
 				/>
-				{/* {allShowData?.data.map((item, index) => (
-          <motion.div
-            key={index}
-            // whileHover={{ duration: 0.2, scale: 1.05 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2, delay: index * 0.07 }} // Staggered animation
-            className="relative"
-          >
-            <div key={index} className="relative">
-              <motion.div
-                whileHover={{ duration: 0.2, scale: 1.05 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="relative">
-                <img
-                  className="hidden md:block h-auto max-w-full rounded-lg"
-                  src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card.jpg`}
-                  alt=""
-                />
-                <img
-                  className="block md:hidden h-auto max-w-full rounded-lg"
-                  src={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster.jpg`}
-                  alt=""
-                />
-
-                <Link href={`/show/${item?.attributes.slug}`}>
-                  <div
-                    className="absolute bottom-1 left-1 rounded-lg text-xs">
-                    {item?.attributes.is_sponsors_only ? <FirstBadgeOnPoster /> : ''}
-                  </div>
-
-                  <div
-                    className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsl(0,0%,98.4%,0.2)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
-                    <div >
-                      <span className="bg-zinc-900 text-sm stretch-90 text-zinc-50 rounded-br-lg px-2 py-1">
-                        {item?.attributes.title}
-                      </span>
-                    </div>
-                    <span className="bg-zinc-900 text-xs pt-2 stretch-90 text-zinc-300 rounded-br-lg px-2 py-1">
-                      <span>{item?.attributes.season_count} Seasons</span>
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
-
-        ))} */}
 			</div>
-			{/* </InfiniteScroll > */}
 		</>
 	);
 };

@@ -39,7 +39,12 @@ const DataEpisodeContainer = ({ episode }) => {
 				<div className=' p-2 bg-color-primary rounded flex items-start'>
 					<div className='self-center relative mr-2 2-4/12 md:w-2/12'>
 						{episode.archive ? (
-							<Link href={`/watch/${episode.id}`}>
+							<Link
+								href={{
+									pathname: `/watch/${episode?.attributes.slug}`,
+									query: { data: JSON.stringify(episode) },
+								}}
+							>
 								<img
 									src={thumbnailUrl}
 									alt={`Episode Thumbnail for ${episode?.attributes.title}`}

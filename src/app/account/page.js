@@ -10,12 +10,15 @@ import Spinner from "../components/atoms/Spinner/Spinner";
 import { useRouter } from "next/navigation";
 
 const MyAccount = () => {
-	const [likedVideosId, setLikedVideosId] = useState([]);
+	const [likedVideosId, setLikedVideosId] = useState(null);
 	const [likedVideoDetails, setLikedVideoDetails] = useState([]);
-
 	const [likedLoading, setLikedLoading] = useState(false);
+	const [isEditingName, setIsEditingName] = useState(false);
+	const [displayName, setDisplayName] = useState("");
+	const [updateLoading, setUpdateLoading] = useState(false);
 
-	const { currentUser, fetchCurrentUser } = useCurrentUser();
+	const { currentUser, fetchCurrentUser, forceFetchCurrentUser } =
+		useCurrentUser();
 
 	useEffect(() => {
 		if (!currentUser) {
@@ -33,22 +36,35 @@ const MyAccount = () => {
 	}, [currentUser]);
 
 	useEffect(() => {
-		if (likedVideosId.length > 0) {
-			getlikedVideoDetails();
+		if (likedVideosId) {
+			if (likedVideosId.length > 0) {
+				getlikedVideoDetails();
+			} else {
+				setLikedLoading(false);
+			}
 		}
 	}, [likedVideosId]);
 
+	// console.log("currentUser: ", currentUser?.user);
+
+	useEffect(() => {
+		if (currentUser?.user?.user_metadata?.display_name) {
+			setDisplayName(currentUser.user.user_metadata.display_name);
+		}
+	}, [currentUser]);
+
 	const getLikedVideosId = async () => {
-		const { data, error } = await mySupabaseClient
-			.from("liked_videos")
-			.select("*")
-			.eq("user_id", currentUser?.user?.id);
-		if (data) {
-			// console.log(data);
-			const likedIds = data.map((episode) => episode.video_id);
-			setLikedVideosId(likedIds);
-		} else {
-			setLikedLoading(false);
+		try {
+			const response = await axios.get(
+				`/api/v1/liked-videos?userId=${currentUser.user.id}`
+			);
+			if (response.data.likedIds) {
+				setLikedVideosId(response.data.likedIds);
+			}
+		} catch (error) {
+			console.error("Error fetching liked videos:", error);
+		} finally {
+			// setLikedLoading(false);
 		}
 	};
 
@@ -56,7 +72,6 @@ const MyAccount = () => {
 		const response = await axios.get(
 			`/api/v1/episode/${likedVideosId.join(",")}`
 		);
-		// console.log(response);
 		if (response.data.documents) {
 			setLikedVideoDetails(response.data.documents);
 			setLikedLoading(false);
@@ -81,6 +96,24 @@ const MyAccount = () => {
 		}
 	};
 
+	const handleUpdateDisplayName = async () => {
+		try {
+			setUpdateLoading(true);
+			const { data, error } = await mySupabaseClient.auth.updateUser({
+				data: { display_name: displayName },
+			});
+
+			if (error) throw error;
+
+			await forceFetchCurrentUser();
+			setIsEditingName(false);
+		} catch (error) {
+			console.error("Error updating display name:", error.message);
+		} finally {
+			setUpdateLoading(false);
+		}
+	};
+
 	return (
 		<>
 			<NavBar title='Me' previousLink={"/"} />
@@ -91,6 +124,45 @@ const MyAccount = () => {
 					</h1>
 					{currentUser && (
 						<>
+							<div className='mb-4'>
+								{isEditingName ? (
+									<div className='flex flex-col gap-2'>
+										<input
+											type='text'
+											value={displayName}
+											onChange={(e) => setDisplayName(e.target.value)}
+											className='p-2 rounded bg-color-secondary text-color-primary'
+											placeholder='Enter display name'
+										/>
+										<div className='flex gap-2'>
+											<button
+												className='button-primary rounded p-1'
+												onClick={handleUpdateDisplayName}
+												disabled={updateLoading}
+											>
+												{updateLoading ? "Saving..." : "Save"}
+											</button>
+											<button
+												className='button-secondary rounded p-1'
+												onClick={() => setIsEditingName(false)}
+												disabled={updateLoading}
+											>
+												Cancel
+											</button>
+										</div>
+									</div>
+								) : (
+									<div className='flex items-center gap-2'>
+										<p>Display Name: {displayName || "Not set"}</p>
+										<button
+											className='button-secondary rounded p-1 text-sm'
+											onClick={() => setIsEditingName(true)}
+										>
+											Edit
+										</button>
+									</div>
+								)}
+							</div>
 							<UserInformationCard
 								email={currentUser?.user?.email}
 								createdAt={currentUser?.user?.created_at}

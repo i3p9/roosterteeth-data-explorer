@@ -7,6 +7,7 @@ import Spinner from "../components/atoms/Spinner/Spinner";
 import { IoCheckmark } from "react-icons/io5";
 import "./login.css";
 import EmailShortcut from "../components/atoms/EmailShortcut/EmailShortcut";
+import { generateUsername } from "../utils/generateUsername";
 
 const LoginPage = () => {
 	const [userData, setUserData] = useState({
@@ -25,6 +26,9 @@ const LoginPage = () => {
 					options: {
 						shouldCreateUser: true,
 						emailRedirectTo: "https://rtarchive.xyz",
+						data: {
+							display_name: generateUsername(),
+						},
 					},
 				});
 
@@ -65,7 +69,7 @@ const LoginPage = () => {
 				>
 					<div className='flex flex-col items-center'>
 						<p className='font-black text-2xl stretch-125 mb-2'>
-							Login to continue
+							Login to continue [BETA; DO NOT USE]
 						</p>
 						<p className=' text-md stretch-110 mb-2 line-clamp-4'>
 							By loggin in, you can like videos, create playlists

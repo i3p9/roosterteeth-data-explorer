@@ -1,41 +1,70 @@
-import { mySupabaseClient } from "@/app/lib/supabase";
 import { NextResponse } from "next/server";
+import { Pool } from "pg";
+
+const pool = new Pool({
+	user: process.env.PG_DB_USER,
+	host: process.env.PG_DB_HOST,
+	database: process.env.PG_DB_NAME,
+	password: process.env.PG_DB_PASSWORD,
+	port: process.env.PG_DB_PORT,
+});
+
 export async function GET(request, { params }) {
 	const user_id = request.nextUrl.searchParams.get("user_id");
 	const video_id = request.nextUrl.searchParams.get("video_id");
 	const action = request.nextUrl.searchParams.get("action");
 
-	const providedParams = [user_id, video_id, action].filter(Boolean);
+	// If action is not provided, treat this as a check for like status
+	if (!action && user_id && video_id) {
+		try {
+			const query = `
+				SELECT action_liked
+				FROM liked_videos
+				WHERE user_id = $1 AND video_id = $2
+				LIMIT 1
+			`;
+			const values = [user_id, video_id];
+			const result = await pool.query(query, values);
 
-	// if (providedParams.length > 1) {
-	//     return new NextResponse(`Bad request: Only one of season_id, show_id, season_slug, or show_slug should be provided`, { status: 400 })
-	// }
-
-	const {
-		data: { session },
-	} = await mySupabaseClient.auth.getSession();
-	console.log("Current session:", session);
-
-	if (session) {
-		const { data, error } = await mySupabaseClient
-			.from("liked_videos")
-			.insert({
-				video_id: video_id,
-				user_id: session.user.id, // Use the session user ID
-				action_liked: action === "liked" ? true : false,
-			});
-		if (error) {
-			// throw new Error(`API call failed: ${await response.text()}`);
+			return NextResponse.json(
+				{
+					isLiked:
+						result.rows.length > 0
+							? result.rows[0].action_liked
+							: false,
+				},
+				{ status: 200 }
+			);
+		} catch (error) {
 			console.log("error: ", error);
-			return new Response(error, { status: 500 });
+			return new Response(error.message, { status: 500 });
 		}
-
-		if (data) {
-			console.log("inserted successfully");
-			console.log(data);
-			return NextResponse.json(episodeData, { status: 200 });
-		}
-	} else {
-		console.log("No active session");
 	}
+
+	// when action is provided, it means liking or unliking a video
+	if (action && user_id && video_id) {
+		try {
+			const query = `
+				INSERT INTO liked_videos (video_id, user_id, action_liked)
+				VALUES ($1, $2, $3)
+				ON CONFLICT (video_id, user_id)
+				DO UPDATE SET action_liked = $3
+				RETURNING *
+			`;
+			const values = [video_id, user_id, action === "liked"];
+			const result = await pool.query(query, values);
+
+			if (result.rows.length > 0) {
+				console.log("inserted/updated successfully");
+				return NextResponse.json(result.rows[0], { status: 200 });
+			}
+		} catch (error) {
+			console.log("error: ", error);
+			return new Response(error.message, { status: 500 });
+		}
+	}
+
+	return new Response("Bad Request: Missing required parameters", {
+		status: 400,
+	});
 }
