@@ -16,6 +16,10 @@ const WatchEpisodePage = () => {
 	const searchParams = useSearchParams();
 	const episodeSlug = params.id;
 
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
 	const initialEpisodeData = (() => {
 		try {
 			const data = searchParams.get("data");
