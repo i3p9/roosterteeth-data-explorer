@@ -5,22 +5,22 @@ const publicRoutes = ["/login", "/signup", "/forgot-password"];
 const protectedRoutes = ["/account"];
 
 export async function middleware(req) {
-	const allowedHosts = [
-		"localhost",
-		"rtarchive.xyz",
-		"www.rtarchive.xyz",
-		"dev.rtarchive.xyz",
-		"www.dev.rtarchive.xyz",
-	];
-	const origin =
-		req.headers.get("origin") || req.headers.get("referer");
+	// const allowedHosts = [
+	// 	"localhost",
+	// 	"rtarchive.xyz",
+	// 	"www.rtarchive.xyz",
+	// 	"dev.rtarchive.xyz",
+	// 	"www.dev.rtarchive.xyz",
+	// ];
+	// const origin =
+	// 	req.headers.get("origin") || req.headers.get("referer");
 
-	if (origin) {
-		const url = new URL(origin);
-		if (!allowedHosts.includes(url.hostname)) {
-			return new NextResponse("Forbidden", { status: 403 });
-		}
-	}
+	// if (origin) {
+	// 	const url = new URL(origin);
+	// 	if (!allowedHosts.includes(url.hostname)) {
+	// 		return new NextResponse("Forbidden", { status: 403 });
+	// 	}
+	// }
 
 	if (publicRoutes.includes(req.nextUrl.pathname)) {
 		return NextResponse.next();
