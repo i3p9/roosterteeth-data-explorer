@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /login
+Disallow: /account
+
+# Host
+Host: https://rtarchive.xyz
+
+# Sitemaps
+Sitemap: https://rtarchive.xyz/sitemap.xml
