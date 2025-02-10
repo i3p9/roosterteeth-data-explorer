@@ -78,6 +78,7 @@ const WatchEpisodePage = () => {
 						<VjsPlayer
 							downloadData={downloadData}
 							onVideoEnd={handleVideoEnd}
+							uuid={episode?.uuid}
 						/>
 					)}
 					{episode ? (
