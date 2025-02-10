@@ -115,7 +115,7 @@ const NavBar = ({
 	const pathname = usePathname();
 	return (
 		<div className='w-full'>
-			<h1 className='flex items-center font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary min-h-[70px] md:min-h-[50px] relative'>
+			<nav className='flex items-center font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary min-h-[70px] md:min-h-[50px] relative'>
 				{previousLink && (
 					<div className='relative transition ease-in-out duration-150 hover:scale-110'>
 						<Link
@@ -129,7 +129,7 @@ const NavBar = ({
 						</Link>
 					</div>
 				)}
-				<h2 className='text-color-primary'>{title}</h2>
+				<span className='text-color-primary'>{title || ""}</span>
 				{renderAdditionalMenu && (
 					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
 						<AdditionalMenuComponent pathname={pathname} />
@@ -150,7 +150,7 @@ const NavBar = ({
 						info@rtarchive.xyz
 					</a>
 				</div>
-			</h1>
+			</nav>
 		</div>
 	);
 };
