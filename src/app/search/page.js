@@ -1,10 +1,8 @@
 "use client";
-import SearchContainer from "../components/molecules/SearchContainer/SearchContainer";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { config } from "../Constants";
 import SearchResultContainer from "../components/molecules/SearchResultContainer/SearchResultContainer";
-import SearchResultSkeleton from "../components/atoms/Skeleton/SearchResultSkeleton/SearchResultSkeleton";
 import DisplayTitleMessage from "../components/atoms/DisplayTitleMessage/DisplayTitleMessage";
 import NavBar from "../components/molecules/NavBar/NavBar";
 import { sanitizeInput } from "@/data/utils/utils";
@@ -57,6 +55,8 @@ const SearchPage = () => {
 	};
 
 	const runAutocomplete = (searchTerm, limit) => {
+		if (!searchTerm.trim()) return;
+
 		let config = {
 			method: "GET",
 			url: `/api/v1/autocomplete?q=${sanitizeInput(
@@ -67,36 +67,13 @@ const SearchPage = () => {
 		axios
 			.request(config)
 			.then((response) => {
-				// setLoading(false)
-				// setNetworkError(false)
 				setAutoCompleteData(response.data.documents);
 			})
 			.catch((error) => {
 				console.log(error);
-				// setNetworkError(true)
-				// setLoading(false)
+				setAutoCompleteData([]);
 			});
 	};
-
-	// useEffect(() => {
-	//     const searchQ = params.get('q');
-	//     const slugFilter = params.get('filter');
-
-	//     if (searchQ && slugFilter) {
-	//         console.log('has search+filter query: ', searchQ, slugFilter);
-	//         setSearchTerm(decodeURIComponent(searchQ));
-	//         setSelectedChannel(channelsWithAllAsOption.find(channel => channel.slug === decodeURIComponent(slugFilter)));
-	//         runSearch(slugFilter, searchQ, 10);
-	//     } else if (searchQ) {
-	//         console.log('has only search query: ', searchQ);
-	//         setSearchTerm(decodeURIComponent(searchQ));
-	//         runSearch(selectedChannel.slug, decodeURIComponent(searchQ), 10);
-	//     } else if (slugFilter) {
-	//         console.log('has only channel filter in url: ', slugFilter);
-	//         setSelectedChannel(channelsWithAllAsOption.find(channel => channel.slug === decodeURIComponent(slugFilter)));
-	//         // runSearch(slugFilter, '', 10);
-	//     }
-	// }, [params]);
 
 	useEffect(() => {
 		const paramsNew = new Proxy(
@@ -142,9 +119,10 @@ const SearchPage = () => {
 	return (
 		<>
 			<NavBar
-				title={"rt-archive"}
+				title={"rt-archive / search"}
 				previousLink={"/"}
 				renderAdditionalMenu
+				isLoading={loading}
 			/>
 			<motion.div
 				initial={{ opacity: 0, y: -20 }}

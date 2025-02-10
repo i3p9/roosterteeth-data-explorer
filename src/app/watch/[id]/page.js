@@ -53,8 +53,8 @@ const WatchEpisodePage = () => {
 		<>
 			<NavBar
 				previousLink={`/show/${episode?.attributes.show_slug}`}
-				title={"rt-archive"}
-				renderAdditionalMenu
+				title={"rt-archive / watch"}
+				renderHome
 			/>
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>

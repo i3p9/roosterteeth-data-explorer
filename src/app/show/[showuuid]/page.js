@@ -27,7 +27,7 @@ export default async function ShowPage({ params }) {
 
 	return (
 		<>
-			<NavBar previousLink='/' title='rt-archive' />
+			<NavBar previousLink='/' title='rt-archive / show' />
 			<ShowInfo show={showInfo} />
 			<Suspense fallback={<div>Loading...</div>}>
 				<AnimatedContainer>

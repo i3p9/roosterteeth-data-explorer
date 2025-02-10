@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
-import { Combobox, Listbox, Transition } from "@headlessui/react";
+import { Listbox, Transition } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp, FaSearch } from "react-icons/fa";
-import { channelsWithAllAsOption } from "@/data/utils/data";
 import { IoSearch } from "react-icons/io5";
-import { CgSearch } from "react-icons/cg";
-import { MdOutlineYoutubeSearchedFor } from "react-icons/md";
 import { useRef } from "react";
+import styles from "../NavBar/NavBar.module.css";
 
 function classNames(...classes) {
 	return classes.filter(Boolean).join(" ");
@@ -38,39 +36,6 @@ const Spinner = () => {
 	);
 };
 
-const SearchButton = ({ loading }) => {
-	return (
-		<Transition
-			show={!loading}
-			enter='transition-opacity duration-200'
-			enterFrom='opacity-0'
-			enterTo='opacity-100'
-			leave='transition-opacity duration-200'
-			leaveFrom='opacity-100'
-			leaveTo='opacity-0'
-		>
-			<IoSearch style={{ display: "inline" }} />
-		</Transition>
-	);
-};
-
-const SpinnerButton = ({ loading }) => {
-	return (
-		<Transition
-			show={loading}
-			enter='transition-opacity duration-200'
-			enterFrom='opacity-0'
-			enterTo='opacity-100'
-			leave='transition-opacity duration-200'
-			leaveFrom='opacity-100'
-			leaveTo='opacity-0'
-		>
-			{/* <Spinner /> */}
-			<MdOutlineYoutubeSearchedFor style={{ display: "inline" }} />
-		</Transition>
-	);
-};
-
 const SearchBarNew = ({
 	runSearch,
 	loading,
@@ -83,43 +48,41 @@ const SearchBarNew = ({
 	autoCompleteData,
 	setAutoCompleteData,
 }) => {
-	// const [searchTimeout, setSearchTimeout] = useState(null);
-	// const [autoCompleteSearchQuery, setAutoCompleteSearchQuery] = useState('')
-	// const [query, setQuery] = useState('')
-
-	// const handleDelayedSearch = () => {
-	//     clearTimeout(searchTimeout);
-
-	//     setSearchTimeout(setTimeout(() => {
-	//         if (query) {
-	//             console.log('running autocomp with q: ', query);
-	//             // router.push(`/search?q=${encodeURIComponent(searchTerm)}&filter=${encodeURIComponent('all-channels')}`)
-	//             runAutocomplete(query, 20);
-	//         }
-	//     }, 1000));
-	// };
-
-	// useEffect(() => {
-	//     handleDelayedSearch();
-	//     //eslint-disable-next-line
-	// }, [query]);
-
-	// useEffect(() => {
-	//     if (autoCompleteSearchQuery) {
-	//         runSearch(selectedChannel.slug, autoCompleteSearchQuery, 10)
-	//         setSearchTerm(autoCompleteSearchQuery)
-	//     }
-
-	// }, [autoCompleteSearchQuery])
-
-	// console.log('query: ', query);
-	// console.log('autoCompleteSearchQuery: ', autoCompleteSearchQuery);
-
+	const [searchTimeout, setSearchTimeout] = useState(null);
+	const [isInputFocused, setIsInputFocused] = useState(false);
 	const searchInputRef = useRef();
 
 	useEffect(() => {
 		searchInputRef.current.focus();
 	}, []);
+
+	// Add debounced autocomplete
+	useEffect(() => {
+		clearTimeout(searchTimeout);
+		setSearchTimeout(
+			setTimeout(() => {
+				if (searchTerm.trim()) {
+					runAutocomplete(searchTerm, 5);
+				} else {
+					setAutoCompleteData([]);
+				}
+			}, 300)
+		);
+		return () => clearTimeout(searchTimeout);
+	}, [searchTerm]);
+
+	// Add helper function to highlight matching text
+	const highlightMatch = (text, query) => {
+		if (!query) return text;
+		const parts = text.split(new RegExp(`(${query})`, "gi"));
+		return parts.map((part, index) =>
+			part.toLowerCase() === query.toLowerCase() ? (
+				<strong key={index}>{part}</strong>
+			) : (
+				<span key={index}>{part}</span>
+			)
+		);
+	};
 
 	const noimage = false;
 	return (
@@ -128,19 +91,21 @@ const SearchBarNew = ({
 			onSubmit={(event) => {
 				event.preventDefault();
 				runSearch(selectedChannel.slug, searchTerm, 10);
+				setAutoCompleteData([]);
+				searchInputRef.current.blur();
 			}}
 		>
-			<div className='mt-2 px-2 flex '>
-				<div>
+			<div className='mt-2 px-2 flex flex-col'>
+				<div className='flex relative'>
 					<Listbox
 						value={selectedChannel}
 						onChange={setSelectedChannel}
 					>
 						{({ open }) => (
 							<div>
-								<div className='relative rounded-md rounded-r-none border-2 border-color-primary'>
+								<div className='relative rounded-md rounded-r-none border border-color-primary'>
 									<Listbox.Button
-										className={`relative w-full rounded-md rounded-r-none bg-color-primary py-[0.35rem] pl-3 pr-8 text-left text-color-primary shadow-sm focus:outline-none`}
+										className={`relative w-full h-10 rounded-md rounded-r-none bg-color-primary pl-3 pr-8 text-left text-color-primary shadow-sm focus:outline-none`}
 									>
 										<span className='flex items-center'>
 											{!noimage && (
@@ -183,7 +148,7 @@ const SearchBarNew = ({
 										leaveFrom='transform opacity-100 scale-100'
 										leaveTo='transform opacity-0 scale-95'
 									>
-										<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border-x-2 border-b-2 border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+										<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border-x border-b border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
 											{channelOptions.map((channel) => (
 												<Listbox.Option
 													key={channel.id}
@@ -240,43 +205,68 @@ const SearchBarNew = ({
 							</div>
 						)}
 					</Listbox>
-				</div>
-				<div>
-					<div className='relative rounded-md rounded-l-none rounded-r-none border-2 border-x-0 border-color-primary'>
-						<input
-							type='text'
-							ref={searchInputRef}
-							className='w-40 md:w-96 h-8 p-2 pl-2 bg-color-primary focus:outline-none'
-							placeholder='start typing...'
-							value={searchTerm}
-							onChange={(event) => setSearchTerm(event.target.value)}
-						/>
-					</div>
-				</div>
-				<div>
-					<button type='submit'>
-						<div className='flex items-center h-9 p-3 bg-color-primary border-2 border-l-0 border-color-primary rounded-md rounded-l-none focus:bg-color-secondary focus:outline-none'>
-							{loading ? (
-								<Spinner />
-							) : (
-								<IoSearch style={{ display: "inline" }} />
-							)}
+					<div className='relative'>
+						<div className='relative rounded-md rounded-l-none rounded-r-none border border-x-0 border-color-primary'>
+							<input
+								type='text'
+								ref={searchInputRef}
+								className='w-40 md:w-[40rem] h-10 p-2 pl-2 bg-color-primary focus:outline-none'
+								placeholder='start typing...'
+								value={searchTerm}
+								onChange={(event) =>
+									setSearchTerm(event.target.value)
+								}
+								onFocus={() => setIsInputFocused(true)}
+								onBlur={() => {
+									setTimeout(() => setIsInputFocused(false), 200);
+								}}
+							/>
 						</div>
-					</button>
+						{autoCompleteData.length > 0 &&
+							searchTerm &&
+							!loading &&
+							isInputFocused && (
+								<div className='absolute w-full z-20 mt-1 bg-color-primary border border-color-primary rounded-md shadow-lg'>
+									{autoCompleteData.map((item) => (
+										<div
+											key={item.id}
+											className='p-2 hover:bg-color-reverse text-xs hover:text-color-reverse cursor-pointer'
+											onClick={() => {
+												setSearchTerm(item.attributes.title);
+												setAutoCompleteData([]);
+												runSearch(
+													selectedChannel.slug,
+													item.attributes.title,
+													10
+												);
+											}}
+										>
+											{highlightMatch(
+												item.attributes.title,
+												searchTerm
+											)}
+										</div>
+									))}
+								</div>
+							)}
+					</div>
+					<div>
+						<button type='submit'>
+							<div className='flex items-center h-[42px] p-3 bg-color-primary border border-l-0 border-color-primary rounded-md rounded-l-none focus:bg-color-secondary focus:outline-none'>
+								{loading ? (
+									<Spinner />
+								) : (
+									<IoSearch style={{ display: "inline" }} />
+								)}
+							</div>
+						</button>
+					</div>
+					{loading && (
+						<div className={styles["loading-wave-container"]}>
+							<div className={styles["loading-wave"]} />
+						</div>
+					)}
 				</div>
-				{/* AutoCompletetest */}
-				{/* <div className="ml-10">
-                <Combobox value={autoCompleteSearchQuery} onChange={setAutoCompleteSearchQuery}>
-                    <Combobox.Input onChange={(event) => setQuery(event.target.value)} />
-                    <Combobox.Options>
-                        {autoCompleteData.map((episode) => (
-                            <Combobox.Option key={episode.id} value={episode.attributes.title}>
-                                {episode.attributes.title}
-                            </Combobox.Option>
-                        ))}
-                    </Combobox.Options>
-                </Combobox>
-            </div> */}
 			</div>
 		</form>
 	);

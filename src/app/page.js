@@ -170,7 +170,7 @@ const BrowseAllShowsContent = () => {
 						key='search-bar'
 						onChange={(event) => setSearchTerm(event.target.value)}
 						className='block w-full rounded-md p-2 text-md leading-4 text-color-primary border-2 border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
-						placeholder='Search...'
+						placeholder='Filter...'
 					></input>
 				</div>
 			</div>

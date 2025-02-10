@@ -72,7 +72,7 @@ export default function ShowPageClientSide({ showSlug }) {
 									setSearchTerm(event.target.value)
 								}
 								className='block rounded-md w-full md:w-64 lg:w-96 p-2 text-md leading-4 text-color-primary border border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
-								placeholder='Search...'
+								placeholder='Filter...'
 							/>
 						</div>
 					</div>
