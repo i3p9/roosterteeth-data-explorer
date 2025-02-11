@@ -16,7 +16,11 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 
 	const getEpisodeData = async () => {
 		if (initialEpisodeData && nowPlayingEpisodeSlug === episodeSlug) {
-			setDownloadData(initialEpisodeData.archive);
+			setDownloadData({
+				...(initialEpisodeData.archive || {}),
+				uuid: initialEpisodeData.uuid,
+				slug: initialEpisodeData.attributes.slug,
+			});
 			return;
 		}
 
@@ -26,7 +30,11 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 			});
 			if (response.data.documents) {
 				setEpisode(response.data.documents[0]);
-				setDownloadData(response.data.documents[0].archive);
+				setDownloadData({
+					...(response.data.documents[0].archive || {}),
+					uuid: response.data.documents[0].uuid,
+					slug: response.data.documents[0].attributes.slug,
+				});
 			}
 		} catch (error) {
 			console.error(error);

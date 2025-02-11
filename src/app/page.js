@@ -12,6 +12,7 @@ import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
 import { useRouter, useSearchParams } from "next/navigation";
+import ContinueWatchingHome from "./components/molecules/ContinueWatchingHome/ContinueWatchingHome";
 
 const ShowGridSkeleton = () => {
 	return (
@@ -131,10 +132,10 @@ const BrowseAllShowsContent = () => {
 		searchTerm,
 		searchParams,
 	]);
-
 	return (
 		<>
 			<NavBar title={"rt-archive"} renderAdditionalMenu />
+			<ContinueWatchingHome />
 			<div className='my-4 flex flex-col md:flex-row gap-2 md:gap-4'>
 				<div className='basis-1/5'>
 					<ChannelSelector

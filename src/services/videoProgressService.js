@@ -33,6 +33,7 @@ class VideoProgressService {
 				currentTime,
 				duration,
 				lastUpdated: Date.now(),
+				watchedPercentage: (currentTime / duration) * 100,
 			};
 
 			const request = store.put(progress);
@@ -42,6 +43,8 @@ class VideoProgressService {
 	}
 
 	async getProgress(uuid) {
+		console.log("getting Progress for uuid: ", uuid);
+
 		const db = await this.initDB();
 		return new Promise((resolve, reject) => {
 			const transaction = db.transaction([STORE_NAME], "readonly");
@@ -49,6 +52,32 @@ class VideoProgressService {
 			const request = store.get(uuid);
 
 			request.onsuccess = () => resolve(request.result);
+			request.onerror = () => reject(request.error);
+		});
+	}
+
+	async getData(limit = 10) {
+		console.log("getData function");
+
+		const db = await this.initDB();
+		return new Promise((resolve, reject) => {
+			const transaction = db.transaction([STORE_NAME], "readonly");
+			const store = transaction.objectStore(STORE_NAME);
+			const index = store.index("lastUpdated");
+
+			// Use openCursor to get sorted results
+			const request = index.openCursor(null, "prev");
+			const results = [];
+
+			request.onsuccess = (event) => {
+				const cursor = event.target.result;
+				if (cursor && results.length < limit) {
+					results.push(cursor.value);
+					cursor.continue();
+				} else {
+					resolve(results);
+				}
+			};
 			request.onerror = () => reject(request.error);
 		});
 	}
