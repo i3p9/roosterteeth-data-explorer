@@ -13,7 +13,7 @@ const ShowGrid = ({
 	searchTerm,
 }) => {
 	const allShowData = useMemo(() => {
-		let filteredData = [...masterList];
+		let filteredData = [...masterList.data];
 
 		if (sortFilterValue.id !== "last_updated") {
 			filteredData = filteredData.sort((a, b) =>
