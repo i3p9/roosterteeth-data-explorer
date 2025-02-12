@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect, useState, Suspense } from "react";
 import NavBar from "./components/molecules/NavBar/NavBar";
+import masterList from "../data/master.json";
 import {
 	channelsWithAllAsOption,
 	firstOrNoOptions,
 	sortFilterOptions,
 } from "@/data/utils/data";
 import ChannelSelector from "./components/atoms/ChannelSelector/ChannelSelector";
+import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -58,17 +60,11 @@ const BrowseAllShows = () => {
 	);
 };
 
-const CACHE_VERSION = "1.0";
-const CACHE_KEY = "rtArchive_masterData";
-const VERSION_KEY = "rtArchive_masterData_version";
-
 const BrowseAllShowsContent = () => {
-	const [masterShowData, setMasterShowData] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const masterShowData = masterList.data;
 	const router = useRouter();
 	const searchParams = useSearchParams();
 
-	// Initialize filter states
 	const [exclusiveFilterValue, setExclusiveFilterValue] = useState(
 		() => {
 			const param = searchParams.get("exclusive");
@@ -99,42 +95,7 @@ const BrowseAllShowsContent = () => {
 		searchParams.get("search") || ""
 	);
 
-	useEffect(() => {
-		const loadData = async () => {
-			try {
-				const cachedVersion = localStorage.getItem(VERSION_KEY);
-				const cachedData = localStorage.getItem(CACHE_KEY);
-
-				if (cachedVersion === CACHE_VERSION && cachedData) {
-					console.log("Using cached data");
-					setMasterShowData(JSON.parse(cachedData));
-				} else {
-					console.log("Fetching fresh data");
-					const response = await fetch("/data/master.json");
-					const data = await response.json();
-
-					setMasterShowData(data.data);
-					localStorage.setItem(VERSION_KEY, CACHE_VERSION);
-					localStorage.setItem(CACHE_KEY, JSON.stringify(data.data));
-				}
-			} catch (error) {
-				console.warn("Data loading failed:", error);
-				try {
-					const response = await fetch("/data/master.json");
-					const data = await response.json();
-					setMasterShowData(data.data);
-				} catch (fetchError) {
-					console.error("Failed to load data:", fetchError);
-				}
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		loadData();
-	}, []);
-
-	// URL update effect
+	// Update URL when filters change
 	useEffect(() => {
 		const params = new URLSearchParams(searchParams.toString());
 
@@ -171,11 +132,6 @@ const BrowseAllShowsContent = () => {
 		searchTerm,
 		searchParams,
 	]);
-
-	if (isLoading) {
-		return <ShowGridSkeleton />;
-	}
-
 	return (
 		<>
 			<NavBar title={"rt-archive"} renderAdditionalMenu />
@@ -221,7 +177,7 @@ const BrowseAllShowsContent = () => {
 			</div>
 			<div className='grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
 				<ShowGrid
-					masterList={masterShowData}
+					masterList={masterList}
 					sortFilterValue={sortFilterValue}
 					exclusiveFilterValue={exclusiveFilterValue}
 					channelFilterValue={channelFilterValue}
