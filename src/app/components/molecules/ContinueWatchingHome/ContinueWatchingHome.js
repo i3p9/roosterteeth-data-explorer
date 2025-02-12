@@ -17,10 +17,10 @@ const ContinueWatchingHome = () => {
 	if (episdoes.length > 0) {
 		return (
 			<>
-				<div className='mt-2 text-lg font-semibold'>
+				<div className='mt-2 text-lg font-semibold text-color-primary'>
 					Continue Watching
 				</div>
-				<div className='p-4 grid grid-cols-5 gap-4'>
+				<div className='p-4 grid grid-cols-3 md:grid-cols-5 gap-4'>
 					{episdoes.length > 0 &&
 						episdoes.map((episode) => (
 							<SeasonEpisodeContainer
@@ -30,7 +30,7 @@ const ContinueWatchingHome = () => {
 							/>
 						))}
 				</div>
-				<div className='mt-2 text-lg font-semibold'>
+				<div className='mt-2 text-lg font-semibold text-color-primary'>
 					Browse All Shows
 				</div>
 			</>

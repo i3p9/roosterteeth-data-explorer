@@ -73,7 +73,9 @@ const SeasonEpisodeContainer = (props) => {
 						</div>
 						<h1
 							className={`${
-								minimal ? "font-semibold text-sm" : "font-bold"
+								minimal
+									? "font-semibold text-xs md:text-sm"
+									: "font-bold"
 							} pb-0.5 text-color-primary line-clamp-2`}
 							title={episode?.attributes.title}
 						>
@@ -81,7 +83,7 @@ const SeasonEpisodeContainer = (props) => {
 						</h1>
 						<h2
 							className={`${
-								minimal ? "text-sm" : "text-sm"
+								minimal ? "text-xs md:text-sm" : "text-sm"
 							} text-color-secondary line-clamp-1`}
 						>
 							{makeTitle(episode?.attributes.channel_slug)} •{" "}

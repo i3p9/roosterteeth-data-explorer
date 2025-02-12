@@ -3,7 +3,6 @@ import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FirstBadgeOnPoster } from "../../atoms/Badges/Badges";
-import useIntersectionObserver from "@/app/hooks/useIntersectionObserver";
 import LazyImage from "../../atoms/LazyImage/LazyImage";
 
 const ShowGrid = ({
@@ -14,7 +13,7 @@ const ShowGrid = ({
 	searchTerm,
 }) => {
 	const allShowData = useMemo(() => {
-		let filteredData = [...masterList.data];
+		let filteredData = [...masterList];
 
 		if (sortFilterValue.id !== "last_updated") {
 			filteredData = filteredData.sort((a, b) =>

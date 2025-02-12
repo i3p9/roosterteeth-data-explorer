@@ -210,7 +210,7 @@ const SearchBarNew = ({
 							<input
 								type='text'
 								ref={searchInputRef}
-								className='w-40 md:w-[40rem] h-10 p-2 pl-2 bg-color-primary focus:outline-none'
+								className='w-40 md:w-[40rem] h-10 p-2 pl-2 text-color-primary bg-color-primary focus:outline-none'
 								placeholder='start typing...'
 								value={searchTerm}
 								onChange={(event) =>
@@ -226,7 +226,7 @@ const SearchBarNew = ({
 							searchTerm &&
 							!loading &&
 							isInputFocused && (
-								<div className='absolute w-full z-20 mt-1 bg-color-primary border border-color-primary rounded-md shadow-lg'>
+								<div className='absolute w-full z-20 mt-1 text-color-secondary bg-color-primary border border-color-primary rounded-md shadow-lg'>
 									{autoCompleteData.map((item) => (
 										<div
 											key={item.id}
