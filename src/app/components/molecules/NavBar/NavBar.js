@@ -129,7 +129,9 @@ const NavBar = ({
 						</Link>
 					</div>
 				)}
-				<span className='text-color-primary'>{title || ""}</span>
+				<span className='text-color-primary select-none'>
+					{title || ""}
+				</span>
 				{renderAdditionalMenu && (
 					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
 						<AdditionalMenuComponent pathname={pathname} />
