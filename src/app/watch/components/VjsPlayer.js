@@ -1,6 +1,8 @@
 import VideoJS from "@/app/components/molecules/VideoPlayer/VideoJS";
 import React, { useRef, memo, useEffect } from "react";
 import { videoProgressService } from "@/services/videoProgressService";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 	const playerRef = useRef(null);
@@ -23,8 +25,21 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 				const savedProgress = await videoProgressService.getProgress(
 					downloadData?.uuid
 				);
-				if (savedProgress?.currentTime) {
+				if (
+					savedProgress?.currentTime &&
+					(savedProgress?.watchedPercentage === undefined ||
+						savedProgress?.watchedPercentage <= 85)
+				) {
 					player.currentTime(savedProgress.currentTime);
+				}
+
+				if (
+					savedProgress?.watchedPercentage &&
+					savedProgress?.watchedPercentage > 85
+				) {
+					toast("Continue watching time reset", {
+						icon: "🔄",
+					});
 				}
 			} catch (error) {
 				console.error("Failed to load video progress:", error);
@@ -145,6 +160,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 	return (
 		<div className='video-wrapper mt-2 rounded-lg'>
 			<VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+			<Toaster position='bottom-right' />
 		</div>
 	);
 };
