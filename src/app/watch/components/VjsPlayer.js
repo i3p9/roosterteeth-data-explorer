@@ -1,7 +1,6 @@
 import VideoJS from "@/app/components/molecules/VideoPlayer/VideoJS";
 import React, { useRef, memo, useEffect } from "react";
 import { videoProgressService } from "@/services/videoProgressService";
-import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
 
 const VjsPlayer = ({ downloadData, onVideoEnd }) => {
@@ -39,6 +38,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 				) {
 					toast("Continue watching time reset", {
 						icon: "🔄",
+						position: "bottom-right",
 					});
 				}
 			} catch (error) {
@@ -160,7 +160,6 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 	return (
 		<div className='video-wrapper mt-2 rounded-lg'>
 			<VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-			<Toaster position='bottom-right' />
 		</div>
 	);
 };

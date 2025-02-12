@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Comment } from "./Comment";
 import { useCurrentUser } from "@/app/hooks/UserContext";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { AiFillHourglass, AiOutlineSend } from "react-icons/ai";
 import { IoChevronDown, IoChevronUp } from "react-icons/io5";
 
@@ -80,7 +80,6 @@ const CommentSectionContent = ({
 				{commentsLoading ? "Loading..." : "Load more comments"}
 			</button>
 		)}
-		<Toaster />
 	</div>
 );
 
