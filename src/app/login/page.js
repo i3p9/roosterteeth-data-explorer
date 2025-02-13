@@ -2,22 +2,12 @@
 
 import { useState } from "react";
 import NavBar from "../components/molecules/NavBar/NavBar";
-import Spinner from "../components/atoms/Spinner/Spinner";
-import { IoCheckmark } from "react-icons/io5";
 import "./login.css";
-import { IoLogIn } from "react-icons/io5";
-import EmailShortcut from "../components/atoms/EmailShortcut/EmailShortcut";
-import { generateUsername } from "../utils/generateUsername";
 import { loginWithEmail, loginWithGoogle } from "./actions";
-import { createClient } from "../utils/supabase/client";
 import SignInWithGoogle from "../components/buttons/SignInWithGoogle/SignInWithGoogle";
-import { IoIosLogIn } from "react-icons/io";
-import { VscError } from "react-icons/vsc";
 import { MdDone } from "react-icons/md";
 import { TbCircleDashed } from "react-icons/tb";
-import { PiArrowCircleRightFill } from "react-icons/pi";
 import { FaArrowRight } from "react-icons/fa6";
-import { ImCross } from "react-icons/im";
 import { BiErrorCircle } from "react-icons/bi";
 import toast from "react-hot-toast";
 
