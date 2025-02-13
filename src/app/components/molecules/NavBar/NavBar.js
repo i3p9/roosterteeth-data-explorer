@@ -26,12 +26,12 @@ const additionalMenu = [
 		short: "/d",
 		icon: <IoDownloadOutline />,
 	},
-	// {
-	// 	title: "me",
-	// 	path: "/account",
-	// 	short: "/a",
-	// 	icon: <MdOutlineAccountCircle />,
-	// },
+	{
+		title: "Account",
+		path: "/account",
+		short: "/a",
+		icon: <MdOutlineAccountCircle />,
+	},
 ];
 
 const homeMenu = [

@@ -1,13 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
-import { mySupabaseClient } from "../lib/supabase";
 import NavBar from "../components/molecules/NavBar/NavBar";
-import axios from "axios";
+import { IoLogOutOutline } from "react-icons/io5";
 import SeasonEpisodeContainer from "../components/atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
 import UserInformationCard from "../components/atoms/UserInformationCard/UserInformationCard";
 import { useCurrentUser } from "../hooks/UserContext";
 import Spinner from "../components/atoms/Spinner/Spinner";
 import { useRouter } from "next/navigation";
+import {
+	getLikedVideosId,
+	getLikedVideoDetails,
+	updateUserDisplayName,
+} from "./actions";
+import { AiFillHourglass } from "react-icons/ai";
 
 const MyAccount = () => {
 	const [likedVideosId, setLikedVideosId] = useState(null);
@@ -17,8 +22,13 @@ const MyAccount = () => {
 	const [displayName, setDisplayName] = useState("");
 	const [updateLoading, setUpdateLoading] = useState(false);
 
-	const { currentUser, fetchCurrentUser, forceFetchCurrentUser } =
-		useCurrentUser();
+	const {
+		currentUser,
+		fetchCurrentUser,
+		forceFetchCurrentUser,
+		logout,
+		supabase,
+	} = useCurrentUser();
 
 	useEffect(() => {
 		if (!currentUser) {
@@ -30,22 +40,10 @@ const MyAccount = () => {
 	useEffect(() => {
 		if (currentUser?.user?.id) {
 			setLikedLoading(true);
-			getLikedVideosId();
+			fetchLikedVideos();
 		}
 		//eslint-disable-next-line
 	}, [currentUser]);
-
-	useEffect(() => {
-		if (likedVideosId) {
-			if (likedVideosId.length > 0) {
-				getlikedVideoDetails();
-			} else {
-				setLikedLoading(false);
-			}
-		}
-	}, [likedVideosId]);
-
-	// console.log("currentUser: ", currentUser?.user);
 
 	useEffect(() => {
 		if (currentUser?.user?.user_metadata?.display_name) {
@@ -53,58 +51,36 @@ const MyAccount = () => {
 		}
 	}, [currentUser]);
 
-	const getLikedVideosId = async () => {
-		try {
-			const response = await axios.get(
-				`/api/v1/liked-videos?userId=${currentUser.user.id}`
-			);
-			if (response.data.likedIds) {
-				setLikedVideosId(response.data.likedIds);
-			}
-		} catch (error) {
-			console.error("Error fetching liked videos:", error);
-		} finally {
-			// setLikedLoading(false);
+	const fetchLikedVideos = async () => {
+		const ids = await getLikedVideosId(currentUser.user.id);
+		setLikedVideosId(ids);
+		if (ids.length > 0) {
+			const details = await getLikedVideoDetails(ids);
+			setLikedVideoDetails(details);
 		}
-	};
-
-	const getlikedVideoDetails = async () => {
-		const response = await axios.get(
-			`/api/v1/episode/${likedVideosId.join(",")}`
-		);
-		if (response.data.documents) {
-			setLikedVideoDetails(response.data.documents);
-			setLikedLoading(false);
-		} else {
-			setLikedLoading(false);
-		}
+		setLikedLoading(false);
 	};
 
 	const router = useRouter();
 
+	const [isLoggingOut, setIsLoggingOut] = useState(false);
 	const handleLogout = async () => {
+		setIsLoggingOut(true);
 		try {
-			const { error } = await mySupabaseClient.auth.signOut();
-			if (error) {
-				throw error;
-			}
-			localStorage.removeItem("currentUser");
+			await logout();
 			router.refresh();
 			router.push("/");
 		} catch (error) {
 			console.error("Error logging out:", error.message);
+		} finally {
+			setIsLoggingOut(false);
 		}
 	};
 
 	const handleUpdateDisplayName = async () => {
 		try {
 			setUpdateLoading(true);
-			const { data, error } = await mySupabaseClient.auth.updateUser({
-				data: { display_name: displayName },
-			});
-
-			if (error) throw error;
-
+			await updateUserDisplayName(supabase, displayName);
 			await forceFetchCurrentUser();
 			setIsEditingName(false);
 		} catch (error) {
@@ -167,14 +143,26 @@ const MyAccount = () => {
 								email={currentUser?.user?.email}
 								createdAt={currentUser?.user?.created_at}
 								emailVerified={
-									currentUser?.user?.email_confirmed_at.length > 0
+									currentUser?.user?.email_confirmed_at?.length > 0
 								}
 							/>
 							<button
 								className='button-primary rounded p-1 mt-2'
 								onClick={() => handleLogout()}
+								disabled={isLoggingOut}
 							>
-								Log Out
+								{isLoggingOut ? (
+									<span className='flex items-center gap-2'>
+										Logging Out{" "}
+										<AiFillHourglass className='inline-block animate-spin' />
+									</span>
+								) : (
+									<span className='flex items-center gap-2'>
+										Log Out{" "}
+										<IoLogOutOutline className='h-5 w-5 inline' />{" "}
+									</span>
+								)}
+								{/* Log Out <IoLogOutOutline className='h-5 w-5 inline' /> */}
 							</button>
 						</>
 					)}

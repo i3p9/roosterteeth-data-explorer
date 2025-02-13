@@ -1,53 +1,94 @@
 "use client";
 
 import { useState } from "react";
-import { mySupabaseClient } from "../lib/supabase";
 import NavBar from "../components/molecules/NavBar/NavBar";
 import Spinner from "../components/atoms/Spinner/Spinner";
 import { IoCheckmark } from "react-icons/io5";
 import "./login.css";
+import { IoLogIn } from "react-icons/io5";
 import EmailShortcut from "../components/atoms/EmailShortcut/EmailShortcut";
 import { generateUsername } from "../utils/generateUsername";
+import { loginWithEmail, loginWithGoogle } from "./actions";
+import { createClient } from "../utils/supabase/client";
+import SignInWithGoogle from "../components/buttons/SignInWithGoogle/SignInWithGoogle";
+import { IoIosLogIn } from "react-icons/io";
+import { VscError } from "react-icons/vsc";
+import { MdDone } from "react-icons/md";
+import { TbCircleDashed } from "react-icons/tb";
+import { PiArrowCircleRightFill } from "react-icons/pi";
+import { FaArrowRight } from "react-icons/fa6";
+import { ImCross } from "react-icons/im";
+import { BiErrorCircle } from "react-icons/bi";
+import toast from "react-hot-toast";
+
+const LoginButton = ({ formStatus, disabled }) => {
+	return (
+		<button
+			disabled={disabled}
+			className={`px-3 py-[12px] rounded-lg transition-all duration-300 w-full ${
+				formStatus.state === "error"
+					? "bg-red-500 text-white"
+					: formStatus.state === "success"
+					? "bg-green-600 text-white"
+					: "bg-color-reverse text-color-reverse"
+			} ${disabled ? "opacity-50" : "hover:opacity-90"}`}
+		>
+			<div className='flex items-center justify-center gap-2'>
+				{formStatus.state === "loading" && (
+					<>
+						<TbCircleDashed className='w-5 h-5 animate-spin' />
+						<span>Sending...</span>
+					</>
+				)}
+				{formStatus.state === "error" && (
+					<>
+						<BiErrorCircle className='w-5 h-5' />
+						<span>Try Again</span>
+					</>
+				)}
+				{formStatus.state === "success" && (
+					<>
+						<MdDone className='w-5 h-5' />
+						<span>Check Email</span>
+					</>
+				)}
+				{formStatus.state === "default" && (
+					<>
+						<FaArrowRight className='w-5 h-5' />
+						<span>Continue</span>
+					</>
+				)}
+			</div>
+		</button>
+	);
+};
 
 const LoginPage = () => {
 	const [userData, setUserData] = useState({
 		email: "",
 	});
-	const [success, setSuccess] = useState(false);
-	const [loading, setLoading] = useState(false);
-	const [isError, setIsError] = useState(false);
+	const [formStatus, setFormStatus] = useState({
+		state: "default", // possible values: 'default', 'loading', 'error', 'success'
+	});
+
 	const login = async (e) => {
-		setLoading(true);
+		setFormStatus({ state: "loading" });
 		e.preventDefault();
 		try {
-			let { data: dataUser, error } =
-				await mySupabaseClient.auth.signInWithOtp({
-					email: userData?.email,
-					options: {
-						shouldCreateUser: true,
-						emailRedirectTo: "https://rtarchive.xyz",
-						data: {
-							display_name: generateUsername(),
-						},
-					},
-				});
+			const result = await loginWithEmail(userData?.email);
 
-			if (dataUser) {
-				// console.log("response: ", dataUser);
-				setSuccess(true);
-				setLoading(false);
-				await mySupabaseClient.auth.getSession();
-			}
-			if (error) {
-				// console.log("Error from notcatch apiii: ", error);
-				// console.log("msg: ", error.message);
-				setLoading(false);
-				setIsError(true);
+			console.log("result: ", result);
+
+			if (result.success) {
+				setFormStatus({ state: "success" });
+				toast.success("Magic Link to sent to email!");
+				// await clinet.auth.getSession();
+			} else {
+				setFormStatus({ state: "error" });
+				toast.error("Something went wrong!");
 			}
 		} catch (error) {
-			// console.log("Error from apiii: ", error);
-			setLoading(false);
-			setIsError(true);
+			setFormStatus({ state: "error" });
 		}
 	};
 
@@ -59,53 +100,68 @@ const LoginPage = () => {
 		}));
 	};
 
+	const googleLogin = async (e) => {
+		e.preventDefault();
+		await loginWithGoogle();
+	};
+
 	return (
 		<>
-			<NavBar title='Login' previousLink={"/"} />
-			<div className='container mx-auto p-10 flex items-center justify-center text-color-primary'>
-				<form
-					onSubmit={login}
-					className='flex flex-col p-8 border-2 border-color-primary relative dot-shadow'
-				>
-					<div className='flex flex-col items-center'>
-						<p className='font-black text-2xl stretch-125 mb-2'>
-							Login to continue [BETA; DO NOT USE]
-						</p>
-						<p className=' text-md stretch-110 mb-2 line-clamp-4'>
-							By loggin in, you can like videos, create playlists
-							(coming soon) and hoesntly, not much more.
-						</p>
+			<NavBar title='Login' previousLink={"/"} renderAdditionalMenu />
+			<div className='container mx-auto px-4 py-8 flex flex-col items-center justify-center min-h-[calc(100vh-64px)]'>
+				<div className='w-full max-w-md p-6 border-2 border-color-primary relative'>
+					<h1 className='font-black text-color-primary text-2xl mb-4'>
+						Login
+					</h1>
 
-						<label htmlFor='email'>Enter email </label>
-						<input
-							type='email'
-							name='email'
-							value={userData?.email}
-							onChange={handleChange}
-							className='border-2 border-color-primary p-1 m-2 rounded-lg w-80'
-						/>
-						{success ? (
-							<button
-								disabled
-								className='p-1 m-2 button-disabled rounded-lg w-80 flex items-center justify-center gap-2'
+					<p className='text-sm mb-6 text-color-secondary'>
+						Login to post comments, like videos, and create playlists
+						(coming soon).
+					</p>
+
+					<form onSubmit={login} className='space-y-4'>
+						<div className='flex flex-col'>
+							<label
+								className='text-sm mb-2 text-color-secondary'
+								htmlFor='email'
 							>
-								{isError ? (
-									<span>Something went wrong!</span>
-								) : (
-									<span>
-										Sent! Check your email.{" "}
-										<IoCheckmark style={{ display: "inline" }} />
-									</span>
-								)}
-							</button>
-						) : (
-							<button className='p-1 m-2 button-primary rounded-lg w-80 flex items-center justify-center gap-2'>
-								Send Login Link {loading && <Spinner size={4} />}
-							</button>
-						)}
-						{success && <EmailShortcut email={userData?.email} />}
+								Email address
+							</label>
+							<input
+								type='email'
+								name='email'
+								value={userData?.email}
+								onChange={handleChange}
+								placeholder='name@domain.com'
+								className='border-2 border-color-primary text-color-primary bg-color-primary px-4 py-2 rounded-lg w-full hover:border-gray-400 focus:border-gray-600 transition-all duration-300'
+							/>
+						</div>
+
+						<LoginButton
+							formStatus={formStatus}
+							disabled={
+								!userData?.email || formStatus.state === "success"
+							}
+						/>
+					</form>
+
+					<div className='mt-6 text-center'>
+						<div className='relative'>
+							<div className='absolute inset-0 flex items-center'>
+								<div className='w-full border-t border-gray-300'></div>
+							</div>
+							<div className='relative flex justify-center text-sm'>
+								<span className='px-2 bg-color-primary text-color-secondary'>
+									Or, use a provider
+								</span>
+							</div>
+						</div>
+
+						<form onSubmit={googleLogin} className='mt-4'>
+							<SignInWithGoogle />
+						</form>
 					</div>
-				</form>
+				</div>
 			</div>
 		</>
 	);

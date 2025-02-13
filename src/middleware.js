@@ -1,10 +1,12 @@
-import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
+import { updateSession } from "./app/utils/supabase/middleware";
 
 const publicRoutes = ["/login", "/signup", "/forgot-password"];
 const protectedRoutes = ["/account"];
 
 export async function middleware(req) {
+	return await updateSession(req);
 	// const allowedHosts = [
 	// 	"localhost",
 	// 	"rtarchive.xyz",
@@ -26,32 +28,39 @@ export async function middleware(req) {
 		return NextResponse.next();
 	}
 
-	// Create a response object
-	const res = NextResponse.next();
+	// First get the base response from updateSession
+	let res = await updateSession(req);
 
-	// Create the Supabase client
-	const supabase = createMiddlewareClient({ req, res });
+	// If updateSession returned a redirect, respect it
+	if (res.status === 302) {
+		return res;
+	}
 
-	// Get the session
-	const {
-		data: { session },
-	} = await supabase.auth.getSession();
-
-	// console.log("session: ", session ? session : "na");
-
-	// if (!session) {
-	// 	// If no session, redirect to login
-	// 	const redirectUrl = req.nextUrl.clone();
-	// 	redirectUrl.pathname = "/login";
-	// 	redirectUrl.searchParams.set(
-	// 		"redirectedFrom",
-	// 		req.nextUrl.pathname
-	// 	);
-	// 	return NextResponse.redirect(redirectUrl);
-	// }
+	// Check if trying to access protected route
 	if (protectedRoutes.includes(req.nextUrl.pathname)) {
-		if (!session) {
-			// If no session and trying to access a protected route, redirect to login
+		const supabase = createServerClient(
+			process.env.NEXT_PUBLIC_SUPABASE_URL,
+			process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+			{
+				cookies: {
+					get(name) {
+						return req.cookies.get(name)?.value;
+					},
+					set(name, value, options) {
+						res.cookies.set(name, value, options);
+					},
+					remove(name, options) {
+						res.cookies.delete(name, options);
+					},
+				},
+			}
+		);
+
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+
+		if (!user) {
 			const redirectUrl = req.nextUrl.clone();
 			redirectUrl.pathname = "/login";
 			redirectUrl.searchParams.set(
@@ -60,21 +69,14 @@ export async function middleware(req) {
 			);
 			return NextResponse.redirect(redirectUrl);
 		}
+
+		// Set user email header if needed
+		res.headers.set("X-User-Email", user.email);
 	}
 
-	if (session) {
-		res.headers.set("X-User-Email", session.user.email);
-		// You might want to set other non-sensitive user info here
-	} else {
-		res.headers.set("X-User-Email", "");
-	}
-
-	// If there's a session, continue with the request
 	return res;
 }
 
 export const config = {
-	matcher: [
-		"/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-	],
+	matcher: "/account",
 };
