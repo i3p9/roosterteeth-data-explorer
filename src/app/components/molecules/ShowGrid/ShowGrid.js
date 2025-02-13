@@ -3,7 +3,6 @@ import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FirstBadgeOnPoster } from "../../atoms/Badges/Badges";
-import useIntersectionObserver from "@/app/hooks/useIntersectionObserver";
 import LazyImage from "../../atoms/LazyImage/LazyImage";
 
 const ShowGrid = ({

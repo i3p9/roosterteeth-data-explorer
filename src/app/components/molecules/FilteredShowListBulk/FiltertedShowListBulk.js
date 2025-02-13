@@ -7,7 +7,7 @@ import {
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { VscCloudDownload } from "react-icons/vsc";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 import { darkShows } from "@/data/utils/data";
 
@@ -96,7 +96,6 @@ const FilteredShowListBulk = ({ showListData }) => {
 					);
 				})}
 			</motion.ul>
-			<Toaster />
 		</>
 	);
 };

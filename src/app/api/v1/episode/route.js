@@ -17,8 +17,9 @@ export async function GET(request, { params }) {
 
 	let filter;
 	if (uuid) {
-		console.log("got UUID");
-		filter = { uuid: uuid };
+		console.log("got UUID(s)");
+		const uuidArray = uuid.split(",").map((u) => u.trim());
+		filter = { uuid: { $in: uuidArray } };
 	} else if (id) {
 		console.log("got ID");
 		const dbEpisodeInfo = extractEpisodeInfoFromIAItemName(id);

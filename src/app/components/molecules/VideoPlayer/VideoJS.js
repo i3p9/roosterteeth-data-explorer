@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import videojs from "video.js";
+// import "./VideoJS.css";
+//todo: fix the custom play button for loading on first load bug
 import "video.js/dist/video-js.css";
-import "./VideoJS.css";
 
 export const VideoJS = (props) => {
 	const videoRef = useRef(null);

@@ -6,7 +6,7 @@ import {
 } from "@/data/utils/utils";
 import { React, useEffect, useState } from "react";
 import { FaRegCopy, FaLink } from "react-icons/fa";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import {
 	ArchivedPercentageBadge,
@@ -94,7 +94,6 @@ const BrowseSeasonContainer = (props) => {
 					</div>
 				</div>
 			</li>
-			<Toaster />
 		</>
 	);
 };

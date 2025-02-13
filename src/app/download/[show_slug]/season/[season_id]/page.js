@@ -1,7 +1,7 @@
 "use client";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import "reactjs-popup/dist/index.css";
 import NavBar from "@/app/components/molecules/NavBar/NavBar";
 import DownloadHelpPopUp from "@/app/components/atoms/DownloadHelpPopUp/DownloadHelpPopUp";
@@ -183,8 +183,6 @@ function SeasonPage() {
 								</motion.div>
 						  ))}
 				</AnimatePresence>
-
-				<Toaster />
 				<div className='italic text-sm pt-8 text-color-faded'>
 					total items in this page: {seasonData?.length}
 				</div>

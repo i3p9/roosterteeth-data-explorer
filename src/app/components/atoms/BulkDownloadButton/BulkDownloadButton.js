@@ -7,7 +7,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { LuDownload } from "react-icons/lu";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function BulkDownloadButton({
 	data,
@@ -219,7 +219,6 @@ export default function BulkDownloadButton({
 					</div>
 				)}
 			</Menu>
-			<Toaster />
 		</div>
 	);
 }

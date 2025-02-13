@@ -4,13 +4,16 @@ import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from "prop-types";
 import { AiOutlineMail } from "react-icons/ai";
-// import { motion } from "framer-motion";
+import { IoHomeOutline, IoSearch } from "react-icons/io5";
+import { IoDownloadOutline } from "react-icons/io5";
+import { MdOutlineAccountCircle } from "react-icons/md";
 
 const additionalMenu = [
 	{
-		title: "search",
+		title: "Search",
 		path: "/search",
 		short: "/s",
+		icon: <IoSearch />,
 	},
 	// {
 	// 	title: "random",
@@ -18,32 +21,47 @@ const additionalMenu = [
 	// 	short: "/r",
 	// },
 	{
-		title: "download",
+		title: "Download",
 		path: "/download",
 		short: "/d",
+		icon: <IoDownloadOutline />,
 	},
 	// {
 	// 	title: "me",
 	// 	path: "/account",
 	// 	short: "/a",
+	// 	icon: <MdOutlineAccountCircle />,
 	// },
 ];
 
-const AdditionalMenuComponent = ({ pathname }) => {
+const homeMenu = [
+	{
+		title: "Home",
+		path: "/",
+		icon: <IoHomeOutline />,
+	},
+];
+
+const HomeMenuComponent = ({ pathname }) => {
 	return (
-		<div className='flex flex-row gap-3'>
-			{additionalMenu.map((menu, index) => {
+		<div className='flex flex-row gap-2 px-2'>
+			{homeMenu.map((menu, index) => {
 				if (menu.path === pathname) {
 					return null;
 				}
 				return (
 					<div
-						className='transition ease-in-out duration-150 hover:scale-110'
+						className='relative transition ease-in-out duration-150 hover:scale-110 ml-2'
 						key={index}
 					>
 						<Link href={menu.path}>
-							<button className='text-base font-light border-b border-color-primary ml-4 sm:hidden'>
-								{menu.short}
+							<button className='flex items-center gap-1 p-2 rounded-md'>
+								<span className='text-xl bg-color-reverse text-color-reverse md:hidden p-2 rounded-md'>
+									{menu.icon}
+								</span>
+								<span className='hidden md:inline text-base font-mono'>
+									{menu.title}
+								</span>
 							</button>
 						</Link>
 						{pathname === menu.path && (
@@ -52,21 +70,30 @@ const AdditionalMenuComponent = ({ pathname }) => {
 					</div>
 				);
 			})}
+		</div>
+	);
+};
+
+const AdditionalMenuComponent = ({ pathname }) => {
+	return (
+		<div className='flex flex-row gap-2 px-2'>
 			{additionalMenu.map((menu, index) => {
+				if (menu.path === pathname) {
+					return null;
+				}
 				return (
 					<div
-						className='relative transition ease-in-out duration-150 hover:scale-110'
+						className='relative transition ease-in-out duration-150 hover:scale-110 ml-2'
 						key={index}
 					>
-						<Link key={index} href={menu.path}>
-							<button
-								className={`text-base stretch-90 hidden sm:inline-block ${
-									pathname === menu.path
-										? "font-semibold"
-										: "font-light"
-								}`}
-							>
-								{menu.title}/
+						<Link href={menu.path}>
+							<button className='flex items-center gap-1 p-2 rounded-md'>
+								<span className='text-xl bg-color-reverse text-color-reverse md:hidden p-2 rounded-md'>
+									{menu.icon}
+								</span>
+								<span className='hidden md:inline text-base font-mono'>
+									{menu.title}
+								</span>
 							</button>
 						</Link>
 						{pathname === menu.path && (
@@ -83,11 +110,12 @@ const NavBar = ({
 	title,
 	previousLink,
 	renderAdditionalMenu = false,
+	renderHome = false,
 }) => {
 	const pathname = usePathname();
 	return (
 		<div className='w-full'>
-			<h1 className='flex justify-between font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary'>
+			<nav className='flex items-center font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary min-h-[70px] md:min-h-[50px] relative'>
 				{previousLink && (
 					<div className='relative transition ease-in-out duration-150 hover:scale-110'>
 						<Link
@@ -101,9 +129,18 @@ const NavBar = ({
 						</Link>
 					</div>
 				)}
-				{title}
+				<span className='text-color-primary select-none'>
+					{title || ""}
+				</span>
 				{renderAdditionalMenu && (
-					<AdditionalMenuComponent pathname={pathname} />
+					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
+						<AdditionalMenuComponent pathname={pathname} />
+					</div>
+				)}
+				{renderHome && (
+					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
+						<HomeMenuComponent pathname={pathname} />
+					</div>
 				)}
 				<div className='hidden sm:flex ml-auto gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
 					<AiOutlineMail />{" "}
@@ -115,7 +152,7 @@ const NavBar = ({
 						info@rtarchive.xyz
 					</a>
 				</div>
-			</h1>
+			</nav>
 		</div>
 	);
 };

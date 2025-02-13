@@ -2,7 +2,7 @@ import { formatSecondsToDuration } from "@/data/utils/utils";
 import React from "react";
 import { useState } from "react";
 import { IoIosPlay } from "react-icons/io";
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import { IoChevronDown } from "react-icons/io5";
 
 const SeasonSideBar = ({
 	nextEpisodes,
@@ -32,9 +32,11 @@ const SeasonSideBar = ({
 	};
 
 	return (
-		<div className='mt-2 m-1 rounded-lg border text-color-primary border-color-secondary'>
+		<div className='mt-2 m-1 text-color-primary border-color-secondary'>
 			<button
-				className='bg-color-secondary p-4 text-left w-full flex items-center'
+				className={`${
+					isEpisodeListOpen ? "rounded-t-lg" : "rounded-lg"
+				} bg-color-secondary p-4 text-left w-full flex items-center`}
 				onClick={toggleEpisodeList}
 			>
 				<div className='flex flex-col flex-grow'>
@@ -70,16 +72,23 @@ const SeasonSideBar = ({
 					</p>
 				</div>
 				<div className='w-1/12'>
-					{isEpisodeListOpen ? (
-						<IoChevronDown size={24} />
-					) : (
-						<IoChevronUp size={24} />
-					)}
+					<IoChevronDown
+						size={24}
+						className={`transition-transform duration-300 ${
+							isEpisodeListOpen ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</div>
 			</button>
-			{isEpisodeListOpen && (
+			<div
+				className={`transition-all duration-300 ease-in-out overflow-hidden ${
+					isEpisodeListOpen
+						? "max-h-[2000px] opacity-100"
+						: "max-h-0 opacity-0"
+				}`}
+			>
 				<div
-					className='h-[57vh] overflow-y-auto'
+					className='h-[57vh] overflow-y-auto border-x border-b border-color-secondary rounded-b-lg'
 					id='episode-container'
 				>
 					{loading && (
@@ -163,7 +172,7 @@ const SeasonSideBar = ({
 						})}
 					</div>
 				</div>
-			)}
+			</div>
 		</div>
 	);
 };
