@@ -223,7 +223,7 @@ const MyAccount = () => {
 				</div>
 			</div>
 
-			<div className='bg-color-primary rounded-xl p-6 m-2'>
+			<div className='bg-color-primary text-color-primary rounded-xl p-6 m-2'>
 				<h1 className='font-black text-2xl stretch-125 mb-2'>
 					Watch History
 				</h1>
