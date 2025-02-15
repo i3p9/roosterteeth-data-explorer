@@ -78,5 +78,5 @@ export async function middleware(req) {
 }
 
 export const config = {
-	matcher: "/account",
+	matcher: "/user/account",
 };
