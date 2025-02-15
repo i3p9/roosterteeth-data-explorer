@@ -22,7 +22,7 @@ export async function GET(request) {
 		}
 
 		const result = await pool.query(
-			"SELECT video_id FROM liked_videos WHERE user_id = $1",
+			"SELECT video_id FROM liked_videos WHERE user_id = $1 LIMIT 8",
 			[userId]
 		);
 

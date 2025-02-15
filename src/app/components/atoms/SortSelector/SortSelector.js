@@ -47,7 +47,7 @@ export default function SortSelector(props) {
 							leaveFrom='transform opacity-100 scale-100'
 							leaveTo='transform opacity-0 scale-95'
 						>
-							<Listbox.Options className='absolute z-10 mt-1 max-h-56 w-auto border-2 rounded border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+							<Listbox.Options className='absolute z-10 mt-1 max-h-56 w-auto border rounded border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
 								{data.map((option) => (
 									<Listbox.Option
 										key={option.value}

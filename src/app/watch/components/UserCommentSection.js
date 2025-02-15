@@ -7,8 +7,12 @@ import { useState } from "react";
 import { Comment } from "./Comment";
 import { useCurrentUser } from "@/app/hooks/UserContext";
 import toast from "react-hot-toast";
-import { AiFillHourglass, AiOutlineSend } from "react-icons/ai";
-import { IoChevronDown, IoChevronUp } from "react-icons/io5";
+import {
+	AiFillHourglass,
+	AiOutlineSend,
+	AiOutlineUser,
+} from "react-icons/ai";
+import { IoChevronDown } from "react-icons/io5";
 
 const CommentSectionContent = ({
 	comments,
@@ -20,14 +24,20 @@ const CommentSectionContent = ({
 	handleSubmitComment,
 	setNewComment,
 	handleLoadMore,
+	displayName,
 }) => (
 	<div className='p-2 mt-4'>
-		{/* <h2 className='text-md font-md text-color-primary pb-2'>
-			{commentMeta.total_comments} comments on rt-archive
-		</h2> */}
-
 		<form onSubmit={handleSubmitComment} className='mb-6'>
 			<div className='flex flex-col gap-2 bg-color-secondary p-4 rounded-xl border-2 border-color-tertiary focus-within:border-color-primary transition-all duration-300'>
+				{currentUser?.user && (
+					<div className='flex items-center gap-2 text-sm'>
+						<p>Commenting as:</p>
+						<p className='inline-flex items-center gap-1 bg-color-primary p-0.5 border rounded-lg select-none'>
+							<AiOutlineUser className='inline' />
+							{displayName}
+						</p>
+					</div>
+				)}
 				<textarea
 					value={newComment}
 					onChange={(e) => setNewComment(e.target.value)}
@@ -174,17 +184,9 @@ const UserCommentSection = ({ videoId }) => {
 		fetchComments(commentMeta.current_page + 1);
 	};
 
-	// if (commentMeta?.total_comments === 0) {
-	// 	return (
-	// 		<div className='p-2 mt-4 flex items-center justify-center'>
-	// 			<h2 className='text-md font-medium mb-4 text-color-primary'>
-	// 				No rtarchive comments available :(
-	// 			</h2>
-	// 		</div>
-	// 	);
-	// }
-
-	// console.log(currentUser);
+	const displayName = currentUser?.user?.user_metadata?.display_name
+		? currentUser?.user?.user_metadata?.display_name
+		: "No display name set";
 
 	return (
 		<div className='mt-4 text-color-primary'>
@@ -228,6 +230,7 @@ const UserCommentSection = ({ videoId }) => {
 					handleSubmitComment={handleSubmitComment}
 					setNewComment={setNewComment}
 					handleLoadMore={handleLoadMore}
+					displayName={displayName}
 				/>
 			</div>
 		</div>

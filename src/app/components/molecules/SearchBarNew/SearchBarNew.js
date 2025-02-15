@@ -252,7 +252,7 @@ const SearchBarNew = ({
 					</div>
 					<div>
 						<button type='submit'>
-							<div className='flex items-center h-[42px] p-3 bg-color-primary border border-l-0 border-color-primary rounded-md rounded-l-none focus:bg-color-secondary focus:outline-none'>
+							<div className='flex items-center h-[42px] p-3 bg-color-primary text-color-primary border border-l-0 border-color-primary rounded-md rounded-l-none focus:bg-color-secondary focus:outline-none'>
 								{loading ? (
 									<Spinner />
 								) : (

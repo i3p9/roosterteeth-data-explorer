@@ -17,9 +17,12 @@ export const getVideoProgress = async (episodes) => {
 	return progressMap;
 };
 
-export const getContinueWatchingData = async (limit = 10) => {
+export const getContinueWatchingData = async (
+	limit = 10,
+	offest = 0
+) => {
 	const start = performance.now();
-	const data = await videoProgressService.getData(limit);
+	const data = await videoProgressService.getData(limit, offest);
 	const episodeUuids = data.map((item) => item.uuid);
 	let finalData = [];
 	if (episodeUuids.length > 0) {
