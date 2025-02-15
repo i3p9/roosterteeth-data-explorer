@@ -170,7 +170,7 @@ const BrowseAllShowsContent = () => {
 						id='search-bar'
 						key='search-bar'
 						onChange={(event) => setSearchTerm(event.target.value)}
-						className='block w-full rounded-md p-2 text-md leading-4 text-color-primary border border-color-primary bg-color-primary without-ring focus:ring-zinc-500 focus:border-zinc-500 dark:placeholder-gray-400 dark:focus:ring-zinc-500 dark:focus:border-zinc-500'
+						className='block w-full rounded-md p-2 text-md leading-4 text-color-primary bg-color-primary ring-1 ring-inset ring-gray-300 hover:ring-slate-400 focus:ring-2 focus:outline-none focus:ring-slate-600 transition-colors duration-200'
 						placeholder='Filter...'
 					></input>
 				</div>

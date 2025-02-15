@@ -30,7 +30,7 @@ export default function ChannelSelector(props) {
 					<div className='relative rounded-md'>
 						<Listbox.Button
 							style={{ lineHeight: height }}
-							className={`relative w-full rounded-md cursor-pointer bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none ${
+							className={`relative w-full rounded-md cursor-pointer bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-500 transition-all duration-200 focus:outline-none ${
 								height ? "" : "sm:leading-6 leading-6"
 							}`}
 						>
