@@ -5,7 +5,7 @@ import { generateUsername } from "../utils/generateUsername";
 import { redirect } from "next/navigation";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const CALLBACK_URL = `${BASE_URL}/api/auth/callback`;
+const CALLBACK_URL = `${BASE_URL}/auth/callback`;
 
 export async function loginWithEmail(email) {
 	const supabase = await createClient();

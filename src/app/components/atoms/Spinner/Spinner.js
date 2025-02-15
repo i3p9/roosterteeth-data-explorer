@@ -1,6 +1,6 @@
 const Spinner = ({ size = 8 }) => {
 	return (
-		<div role='status' className='inline'>
+		<span role='status' className='inline'>
 			<svg
 				aria-hidden='true'
 				className={`w-${size} h-${size} text-zinc-400 animate-spin dark:text-zinc-500 fill-zinc-900`}
@@ -18,7 +18,7 @@ const Spinner = ({ size = 8 }) => {
 				/>
 			</svg>
 			<span className='sr-only'>Loading...</span>
-		</div>
+		</span>
 	);
 };
 

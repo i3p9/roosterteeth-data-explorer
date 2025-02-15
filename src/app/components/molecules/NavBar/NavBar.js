@@ -28,7 +28,7 @@ const additionalMenu = [
 	},
 	{
 		title: "Account",
-		path: "/account",
+		path: "/user/account",
 		short: "/a",
 		icon: <MdOutlineAccountCircle />,
 	},

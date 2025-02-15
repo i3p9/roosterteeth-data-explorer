@@ -99,57 +99,60 @@ const LoginPage = () => {
 		<>
 			<NavBar title='Login' previousLink={"/"} renderAdditionalMenu />
 			<div className='container mx-auto px-4 py-8 flex flex-col items-center justify-center min-h-[calc(100vh-64px)]'>
-				<div className='w-full max-w-md p-6 border-2 border-color-primary relative'>
-					<h1 className='font-black text-color-primary text-2xl mb-4'>
-						Login
-					</h1>
+				<div className='w-full max-w-md border-2 border-color-primary relative dot-shadow'>
+					<div className='bg-color-secondary text-color-primary'>
+						<h1 className='font-black text-color-primary text-2xl mb-4 p-6'>
+							Login
+						</h1>
+					</div>
+					<div className='px-6 pb-6'>
+						<p className='text-sm mb-6 text-color-secondary'>
+							Login to post comments, like videos, and create
+							playlists (coming soon), and not much more.
+						</p>
 
-					<p className='text-sm mb-6 text-color-secondary'>
-						Login to post comments, like videos, and create playlists
-						(coming soon).
-					</p>
+						<form onSubmit={login} className='space-y-4'>
+							<div className='flex flex-col'>
+								<label
+									className='text-sm mb-2 text-color-secondary'
+									htmlFor='email'
+								>
+									Email address:
+								</label>
+								<input
+									type='email'
+									name='email'
+									value={userData?.email}
+									onChange={handleChange}
+									placeholder='name@domain.com'
+									className='border-2 border-color-secondary text-color-primary bg-color-primary px-4 py-2 rounded-lg w-full hover:border-color-primary transition-all duration-300'
+								/>
+							</div>
 
-					<form onSubmit={login} className='space-y-4'>
-						<div className='flex flex-col'>
-							<label
-								className='text-sm mb-2 text-color-secondary'
-								htmlFor='email'
-							>
-								Email address
-							</label>
-							<input
-								type='email'
-								name='email'
-								value={userData?.email}
-								onChange={handleChange}
-								placeholder='name@domain.com'
-								className='border-2 border-color-primary text-color-primary bg-color-primary px-4 py-2 rounded-lg w-full hover:border-gray-400 focus:border-gray-600 transition-all duration-300'
+							<LoginButton
+								formStatus={formStatus}
+								disabled={
+									!userData?.email || formStatus.state === "success"
+								}
 							/>
-						</div>
-
-						<LoginButton
-							formStatus={formStatus}
-							disabled={
-								!userData?.email || formStatus.state === "success"
-							}
-						/>
-					</form>
-
-					<div className='mt-6 text-center'>
-						<div className='relative'>
-							<div className='absolute inset-0 flex items-center'>
-								<div className='w-full border-t border-gray-300'></div>
-							</div>
-							<div className='relative flex justify-center text-sm'>
-								<span className='px-2 bg-color-primary text-color-secondary'>
-									Or, use a provider
-								</span>
-							</div>
-						</div>
-
-						<form onSubmit={googleLogin} className='mt-4'>
-							<SignInWithGoogle />
 						</form>
+
+						<div className='mt-6 text-center'>
+							<div className='relative'>
+								<div className='absolute inset-0 flex items-center'>
+									<div className='w-full border-t border-gray-300'></div>
+								</div>
+								<div className='relative flex justify-center text-sm'>
+									<span className='px-2 bg-color-primary text-color-secondary'>
+										Or, use a provider
+									</span>
+								</div>
+							</div>
+
+							<form onSubmit={googleLogin} className='mt-4'>
+								<SignInWithGoogle />
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -6,7 +6,7 @@ import {
 	useEffect,
 } from "react";
 import { createClient } from "../utils/supabase/client";
-import { updateUserDisplayName } from "@/app/account/actions";
+import { updateUserDisplayName } from "@/app/user/account/actions";
 import { generateUsername } from "@/app/utils/generateUsername";
 
 const supabaseClient = createClient();

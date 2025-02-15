@@ -1,3 +1,4 @@
+import { getContinueWatchingData } from "@/app/utils/videoProgessUtils";
 import axios from "axios";
 
 export const getLikedVideosId = async (userId) => {
@@ -20,6 +21,16 @@ export const getLikedVideoDetails = async (likedVideosId) => {
 		return response.data.documents || [];
 	} catch (error) {
 		console.error("Error fetching video details:", error);
+		return [];
+	}
+};
+
+export const getWatchHistoryData = async (limit = 5, offset = 0) => {
+	try {
+		const response = await getContinueWatchingData(limit, offset);
+		return response || [];
+	} catch (error) {
+		console.error("Error fetching watch history details:", error);
 		return [];
 	}
 };

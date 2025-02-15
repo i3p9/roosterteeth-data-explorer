@@ -27,7 +27,7 @@ export default function ChannelSelector(props) {
 							Select a Channel
 						</Listbox.Label>
 					)}
-					<div className='relative border-2 border-color-primary rounded-md'>
+					<div className='relative rounded-md'>
 						<Listbox.Button
 							style={{ lineHeight: height }}
 							className={`relative w-full rounded-md cursor-pointer bg-color-primary py-1.5 pl-3 pr-10 text-left text-color-primary shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none ${
@@ -76,7 +76,7 @@ export default function ChannelSelector(props) {
 							leaveFrom='transform opacity-100 scale-100'
 							leaveTo='transform opacity-0 scale-95'
 						>
-							<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border-2 border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+							<Listbox.Options className='absolute rounded-md z-10 mt-1 max-h-56 w-full border border-color-primary overflow-auto bg-color-primary py-1 text-base ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
 								{channels.map((channel) => (
 									<Listbox.Option
 										key={channel.id}

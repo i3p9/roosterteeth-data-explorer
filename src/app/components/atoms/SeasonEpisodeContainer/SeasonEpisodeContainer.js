@@ -47,16 +47,23 @@ const SeasonEpisodeContainer = (props) => {
 								width={400}
 								onLoad={handleImageLoad}
 							/>
-							{episode.watchData?.watchedPercentage && (
-								<div className='absolute bottom-0 left-0 w-full h-1 bg-zinc-800'>
-									<div
-										className='h-full bg-red-600'
-										style={{
-											width: `${episode.watchData.watchedPercentage}%`,
-										}}
-									></div>
-								</div>
-							)}
+							{episode.watchData?.watchedPercentage &&
+								!isNaN(episode.watchData.watchedPercentage) && (
+									<div className='absolute bottom-0 left-0 w-full h-1 bg-zinc-800'>
+										<div
+											className='h-full bg-red-600'
+											style={{
+												width: `${Math.min(
+													Math.max(
+														0,
+														episode.watchData.watchedPercentage
+													),
+													100
+												)}%`,
+											}}
+										></div>
+									</div>
+								)}
 							<div className='absolute bottom-1 right-1 bg-zinc-900/90 text-white px-1 py-0.5 rounded-lg text-xs'>
 								{formatSecondsToDuration(episode?.attributes?.length)}
 							</div>
