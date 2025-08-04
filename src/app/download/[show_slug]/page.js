@@ -115,7 +115,6 @@ function ShowPage() {
 	useEffect(() => {
 		if (allEpisodes) {
 			const result = getTotalShowFileSizeByEpisodes(allEpisodes);
-			// console.log("result: ", result);
 			setTotalShowSize(result.totalSizeInByte);
 			setTotalArchived(result.archivedCount);
 		}
@@ -154,8 +153,6 @@ function ShowPage() {
 			copyToClipboard(clipBoard.value);
 		}
 	}, [clipBoard]);
-
-	// console.log("is unavailable?:: ", isUnavailable);
 
 	return (
 		<>

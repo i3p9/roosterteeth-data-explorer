@@ -1,12 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import NavBar from "../../../components/molecules/NavBar/NavBar";
-import { useParams } from "next/navigation";
 import VideoJS from "../../../components/molecules/VideoPlayer/VideoJS";
-import {
-	formatSecondsToDuration,
-	formatSecondToRunTime,
-} from "@/data/utils/utils";
+import { formatSecondToRunTime } from "@/data/utils/utils";
 import Link from "next/link";
 import SidebarEpisodeCard from "../../components/SidebarEpisodeCard";
 import MobileSidebar from "../../components/MobileSidebar";

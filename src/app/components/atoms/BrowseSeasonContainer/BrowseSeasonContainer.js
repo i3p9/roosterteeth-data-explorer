@@ -42,8 +42,6 @@ const BrowseSeasonContainer = (props) => {
 		getPct(showUuid, season?.uuid);
 	}, [season, showUuid]);
 
-	// console.log('seasoninfo :', season);
-
 	return (
 		<>
 			<li className='text-color-primary'>

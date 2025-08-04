@@ -66,7 +66,6 @@ const showData = [
 ];
 
 const getProperShowName = (showName) => {
-	console.log("showName to filder: ", showName);
 	const show = showData.find(
 		(show) => show.show_slug.toLowerCase() === showName.toLowerCase()
 	);

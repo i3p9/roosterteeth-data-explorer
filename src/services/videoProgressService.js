@@ -43,8 +43,6 @@ class VideoProgressService {
 	}
 
 	async getProgress(uuid) {
-		console.log("getting Progress for uuid: ", uuid);
-
 		const db = await this.initDB();
 		return new Promise((resolve, reject) => {
 			const transaction = db.transaction([STORE_NAME], "readonly");
