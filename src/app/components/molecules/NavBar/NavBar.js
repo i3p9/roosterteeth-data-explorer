@@ -7,6 +7,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { IoHomeOutline, IoSearch } from "react-icons/io5";
 import { IoDownloadOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
+import InsideGamingIcon from "../../icons/InsideGamingIcon";
 
 const additionalMenu = [
 	{
@@ -15,11 +16,6 @@ const additionalMenu = [
 		short: "/s",
 		icon: <IoSearch />,
 	},
-	// {
-	// 	title: "random",
-	// 	path: "/random",
-	// 	short: "/r",
-	// },
 	{
 		title: "Download",
 		path: "/download",
@@ -27,11 +23,17 @@ const additionalMenu = [
 		icon: <IoDownloadOutline />,
 	},
 	{
-		title: "Account",
-		path: "/user/account",
-		short: "/a",
-		icon: <MdOutlineAccountCircle />,
+		title: "Inside Gaming",
+		path: "/inside-gaming",
+		short: "/i",
+		icon: <InsideGamingIcon />,
 	},
+	// {
+	// 	title: "Account",
+	// 	path: "/user/account",
+	// 	short: "/a",
+	// 	icon: <MdOutlineAccountCircle />,
+	// },
 ];
 
 const homeMenu = [
