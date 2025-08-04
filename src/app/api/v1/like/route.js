@@ -36,7 +36,6 @@ export async function GET(request, { params }) {
 				{ status: 200 }
 			);
 		} catch (error) {
-			console.log("error: ", error);
 			return new Response(error.message, { status: 500 });
 		}
 	}
@@ -55,11 +54,9 @@ export async function GET(request, { params }) {
 			const result = await pool.query(query, values);
 
 			if (result.rows.length > 0) {
-				console.log("inserted/updated successfully");
 				return NextResponse.json(result.rows[0], { status: 200 });
 			}
 		} catch (error) {
-			console.log("error: ", error);
 			return new Response(error.message, { status: 500 });
 		}
 	}

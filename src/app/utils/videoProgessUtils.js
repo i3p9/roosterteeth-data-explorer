@@ -13,7 +13,6 @@ export const getVideoProgress = async (episodes) => {
 		progress: progress[index],
 	}));
 	const end = performance.now();
-	// console.log(`Execution time: ${end - start} milliseconds`);
 	return progressMap;
 };
 
@@ -47,7 +46,6 @@ export const getContinueWatchingData = async (
 	}
 
 	const end = performance.now();
-	// console.log(`Execution time: ${end - start} milliseconds`);
 
 	return finalData;
 };

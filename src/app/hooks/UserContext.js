@@ -111,10 +111,6 @@ export function UserContextProvider({ children }) {
 					try {
 						const randomUsername = generateUsername();
 						await updateUserDisplayName(supabase, randomUsername);
-						console.log(
-							"Auto-generated display name:",
-							randomUsername
-						);
 					} catch (error) {
 						console.error("Failed to set display name:", error);
 					}
