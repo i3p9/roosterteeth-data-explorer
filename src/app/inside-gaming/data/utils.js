@@ -63,6 +63,10 @@ const showData = [
 		show_slug: "gameplay_Ubersoldier",
 		show_name: "Ubersoldier",
 	},
+	{
+		show_slug: "ig_podcasts",
+		show_name: "Inside Gaming Podcast",
+	},
 ];
 
 const getProperShowName = (showName) => {
