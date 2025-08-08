@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import axios from "axios";
+import { firstSeriesInNewSite } from "@/data/utils/data";
 
 export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 	const [nowPlayingEpisodeSlug, setNowPlayingEpisodeSlug] =
 		useState(episodeSlug);
 	const [isUnavailable, setIsUnavailable] = useState(false);
+	const [isOnNewSite, setIsOnNewSite] = useState(false);
 	const [wasArchived, setWasArchived] = useState(true);
 	const [episode, setEpisode] = useState(initialEpisodeData);
 	const [nextEpisodes, setNextEpisodes] = useState();
@@ -72,6 +74,9 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 		if (episode) {
 			getNextEpisodesData();
 			document.title = `${episode?.attributes.title} / rt-archive`;
+			if (firstSeriesInNewSite.includes(episode?.attributes.show_slug)) {
+				setIsOnNewSite(true);
+			}
 			if (episode?.archive?.status === "dark") {
 				setIsUnavailable(true);
 			}
@@ -108,6 +113,7 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 		nowPlayingEpisodeSlug,
 		setNowPlayingEpisodeSlug,
 		isUnavailable,
+		isOnNewSite,
 		wasArchived,
 		episode,
 		nextEpisodes,
