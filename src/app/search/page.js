@@ -48,7 +48,7 @@ const SearchPage = () => {
 				setSearchResult(response.data.documents);
 			})
 			.catch((error) => {
-				console.log(error);
+				console.error(error);
 				setNetworkError(true);
 				setLoading(false);
 			});
@@ -70,7 +70,7 @@ const SearchPage = () => {
 				setAutoCompleteData(response.data.documents);
 			})
 			.catch((error) => {
-				console.log(error);
+				console.error(error);
 				setAutoCompleteData([]);
 			});
 	};
@@ -82,12 +82,10 @@ const SearchPage = () => {
 				get: (searchParams, prop) => searchParams.get(prop),
 			}
 		);
-		// console.log('new params: ', paramsNew);
 		const searchQ = paramsNew.q;
 		const slugFilter = paramsNew.filter;
 
 		if (searchQ && slugFilter) {
-			// console.log('has search+filter query: ', searchQ, slugFilter);
 			setSearchTerm(decodeURIComponent(searchQ));
 			setSelectedChannel(
 				channelsWithAllAsOption.find(
@@ -96,7 +94,6 @@ const SearchPage = () => {
 			);
 			runSearch(slugFilter, searchQ, 10);
 		} else if (searchQ) {
-			// console.log('has only search query: ', searchQ);
 			setSearchTerm(decodeURIComponent(searchQ));
 			runSearch(
 				selectedChannel.slug,
@@ -104,7 +101,6 @@ const SearchPage = () => {
 				10
 			);
 		} else if (slugFilter) {
-			// console.log('has only channel filter in url: ', slugFilter);
 			setSelectedChannel(
 				channelsWithAllAsOption.find(
 					(channel) => channel.slug === decodeURIComponent(slugFilter)

@@ -67,8 +67,6 @@ const LoginPage = () => {
 		try {
 			const result = await loginWithEmail(userData?.email);
 
-			console.log("result: ", result);
-
 			if (result.success) {
 				setFormStatus({ state: "success" });
 				toast.success("Magic Link to sent to email!");

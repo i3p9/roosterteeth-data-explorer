@@ -15,10 +15,8 @@ export async function GET(request, { params }) {
 
 	let filter;
 	if (uuid) {
-		console.log("got UUID");
 		filter = { "attributes.season_id": uuid };
 	} else if (slug) {
-		console.log("got Slug");
 		filter = { "attributes.season_slug": slug };
 	} else {
 		return NextResponse.json(
@@ -26,8 +24,6 @@ export async function GET(request, { params }) {
 			{ status: 400 }
 		);
 	}
-
-	console.log("final filter: ", filter);
 
 	const raw = JSON.stringify({
 		dataSource: "metadata",

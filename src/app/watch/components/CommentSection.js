@@ -90,7 +90,6 @@ const CommentSection = ({ videoId, commentsCount }) => {
 			</div>
 		);
 	}
-	// console.log(`videoId: ${videoId} || prev: ${prevVideoId}`);
 
 	return (
 		<div className='p-2 mt-4'>

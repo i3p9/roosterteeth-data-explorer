@@ -17,13 +17,10 @@ export async function GET(request, { params }) {
 
 	let filter;
 	if (uuid) {
-		console.log("got UUID(s)");
 		const uuidArray = uuid.split(",").map((u) => u.trim());
 		filter = { uuid: { $in: uuidArray } };
 	} else if (id) {
-		console.log("got ID");
 		const dbEpisodeInfo = extractEpisodeInfoFromIAItemName(id);
-		console.log("db episode info: ", dbEpisodeInfo);
 		if (dbEpisodeInfo.numericValue) {
 			filter = { id: dbEpisodeInfo.numericValue };
 		} else {
@@ -33,7 +30,6 @@ export async function GET(request, { params }) {
 			);
 		}
 	} else if (slug) {
-		console.log("got Slug");
 		filter = { "attributes.slug": slug };
 	} else {
 		return NextResponse.json(
@@ -41,8 +37,6 @@ export async function GET(request, { params }) {
 			{ status: 400 }
 		);
 	}
-
-	console.log("final filter: ", filter);
 
 	const raw = JSON.stringify({
 		dataSource: "metadata",
