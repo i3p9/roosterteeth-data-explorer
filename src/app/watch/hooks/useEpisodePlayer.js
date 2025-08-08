@@ -76,13 +76,20 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 			document.title = `${episode?.attributes.title} / rt-archive`;
 			if (firstSeriesInNewSite.includes(episode?.attributes.show_slug)) {
 				setIsOnNewSite(true);
+			} else {
+				setIsOnNewSite(false);
 			}
 			if (episode?.archive?.status === "dark") {
 				setIsUnavailable(true);
+			} else {
+				setIsUnavailable(false);
 			}
 			if (!episode?.archive) {
 				setWasArchived(false);
 				setIsUnavailable(true);
+			} else {
+				setWasArchived(true);
+				setIsUnavailable(false);
 			}
 		}
 	}, [episode]);
