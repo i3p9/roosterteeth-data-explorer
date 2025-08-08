@@ -59,7 +59,7 @@ const WatchEpisodePage = () => {
 			/>
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
-					{isUnavailable || isOnNewSite && (
+					{(isUnavailable || isOnNewSite) && (
 						<UnavailableEpisode
 							info={episode?.archive}
 							archived={wasArchived}
