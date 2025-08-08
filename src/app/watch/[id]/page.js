@@ -34,6 +34,7 @@ const WatchEpisodePage = () => {
 		nowPlayingEpisodeSlug,
 		setNowPlayingEpisodeSlug,
 		isUnavailable,
+		isOnNewSite,
 		wasArchived,
 		episode,
 		nextEpisodes,
@@ -58,10 +59,12 @@ const WatchEpisodePage = () => {
 			/>
 			<div className='flex gap-2'>
 				<div className='md:w-8/12'>
-					{isUnavailable && (
+					{isUnavailable || isOnNewSite && (
 						<UnavailableEpisode
 							info={episode?.archive}
 							archived={wasArchived}
+							isOnNewSite={isOnNewSite}
+							seriesSlug={episode?.attributes.show_slug}
 						/>
 					)}
 					{!episode && (
@@ -74,7 +77,7 @@ const WatchEpisodePage = () => {
 							</div>
 						</div>
 					)}
-					{downloadData?.id && !isUnavailable && (
+					{downloadData?.id && !isUnavailable && !isOnNewSite && (
 						<VjsPlayer
 							downloadData={downloadData}
 							onVideoEnd={handleVideoEnd}

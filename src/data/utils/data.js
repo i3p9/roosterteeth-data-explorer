@@ -351,3 +351,20 @@ export const darkShows = [
 	"cc6d7fff-b075-47f8-b0d6-957f8a0229d8",
 	"1286f921-ca73-4078-9c80-7a790e94b618",
 ];
+
+export const firstSeriesInNewSite = [
+	"murder-room-after-the-verdict",
+	"rooster-teeth-backstage",
+	"the-bungalow",
+	"barbara-vlogs",
+	"new-game",
+	"for-the-win",
+	"rt-docs",
+	"nomad-of-nowhere",
+	"rooster-teeth-podcast-post-show",
+	"the-shisno-trilogy"
+];
+//maybe soon, but now it has no content in the new site
+//retro-replay
+//supreme-surrender
+//the-know-it-all

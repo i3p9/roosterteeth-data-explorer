@@ -1,9 +1,34 @@
 import PropTypes from "prop-types";
 import { RiExternalLinkLine } from "react-icons/ri";
-import { LuVideoOff } from "react-icons/lu";
+import { LuVideoOff, LuExternalLink } from "react-icons/lu";
+import { MdOutlineCelebration } from "react-icons/md";
 import { cleanUrl } from "@/data/utils/utils";
+import FancyButton from "../FancyButton/FancyButton";
 
-const UnavailableEpisode = ({ info, archived }) => {
+const UnavailableEpisode = ({ info, archived, isOnNewSite, seriesSlug }) => {
+	if (isOnNewSite) {
+		return (
+			<div className='aspect-video mt-2 rounded-2xl bg-gradient-to-b from-emerald-200 to-emerald-300 text-lg'>
+			<div className='flex-make-center flex-col h-full w-full'>
+				<div>
+					<MdOutlineCelebration size={50} />
+					<p className='font-bold text-2xl stretch-110'>
+						Good news! This episode is on the new roosterteeth site
+					</p>
+					<p className='text-zinc-600 dark:text-zinc-600 '>
+						Since this episode is Sponsor only, it is not available to watch here.
+					</p>
+
+					<p className='text-zinc-600 dark:text-zinc-600'>
+						You can watch it on the brand new site <a href={`https://roosterteeth.com/series/${seriesSlug}`} target='_blank' className='text-color-faded-hover underline'>here.</a><LuExternalLink size={10} className='inline mb-3' />
+					</p>
+					</div>
+				</div>
+			</div>
+
+		)
+
+	}
 	return (
 		<div className='aspect-video mt-2 rounded-2xl bg-gradient-to-b from-rose-100 to-rose-200 text-lg'>
 			<div className='flex-make-center flex-col h-full w-full'>
