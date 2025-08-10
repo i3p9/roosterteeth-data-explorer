@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { VscCloudDownload } from "react-icons/vsc";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
-import { darkShows } from "@/data/utils/data";
+import { darkShows, firstSeriesInNewSite } from "@/data/utils/data";
 
 const FilteredShowListBulk = ({ showListData }) => {
 	const notify = () => toast.success("Copied to clipboard!");
@@ -46,6 +46,7 @@ const FilteredShowListBulk = ({ showListData }) => {
 			</>
 		);
 	}
+
 	return (
 		<>
 			<motion.ul
@@ -55,6 +56,8 @@ const FilteredShowListBulk = ({ showListData }) => {
 				transition={{ duration: 0.5 }}
 			>
 				{showListData?.data.map((show, index) => {
+					const hideDownload = darkShows.includes(show.uuid) || firstSeriesInNewSite.includes(show.attributes.slug);
+					
 					return (
 						<div key={index}>
 							<li
@@ -63,8 +66,9 @@ const FilteredShowListBulk = ({ showListData }) => {
 								className='text-color-primary font-medium p-0.5'
 							>
 								<Link
-									href={`/download/${show?.attributes.slug}`}
-									className='hover:underline decoration-1 underline-offset-1 mr-1'
+									href={hideDownload ? '' : `/download/${show?.attributes.slug}`}
+									className={`${!hideDownload ? 'hover:underline decoration-1 underline-offset-1' : 'cursor-not-allowed'} mr-1`}
+									
 								>
 									{show?.attributes?.title}
 								</Link>
@@ -73,7 +77,7 @@ const FilteredShowListBulk = ({ showListData }) => {
 										copyAllArchivedListPerShow(show?.uuid);
 									}}
 								>
-									{!darkShows.includes(show.uuid) && (
+									{(!hideDownload) && (
 										<VscCloudDownload style={{ display: "inline" }} />
 									)}
 								</button>

@@ -7,6 +7,7 @@ import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector
 import SortSelector from "@/app/components/atoms/SortSelector/SortSelector";
 import { episodeSortOptions } from "@/data/utils/data";
 import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton";
+import { firstSeriesInNewSite } from "@/data/utils/data";
 
 const baseUrl = config.url.BASE_URL;
 
@@ -19,6 +20,7 @@ export default function ShowPageClientSide({ showSlug }) {
 		episodeSortOptions[0]
 	);
 	const [searchTerm, setSearchTerm] = useState("");
+	const isOnNewSite = firstSeriesInNewSite.includes(showSlug);
 
 	useEffect(() => {
 		const fetchSeasonData = async () => {
@@ -63,6 +65,7 @@ export default function ShowPageClientSide({ showSlug }) {
 							<BulkDownloadButton
 								data={seasonData}
 								loading={loading}
+								disabled={isOnNewSite}
 							/>
 							<input
 								type='search'
