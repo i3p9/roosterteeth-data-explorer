@@ -6,7 +6,7 @@ import { formatSecondToRunTime, makeTitle } from "@/data/utils/utils";
 import UserCommentSection from "./UserCommentSection";
 import LikeButton from "./LikeButton";
 
-const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
+const VideoInfo = ({ episode, isUnavailable, wasArchived, isOnNewSite }) => {
 	if (!episode) return null;
 	return (
 		<>
@@ -55,7 +55,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived }) => {
 					<div className='flex gap-2'>
 						<DownloadButton
 							downloadData={episode?.archive}
-							disabled={isUnavailable}
+							disabled={isUnavailable || isOnNewSite}
 						/>
 						<LikeButton videoId={episode?.uuid} />
 					</div>

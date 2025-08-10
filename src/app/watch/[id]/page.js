@@ -88,6 +88,7 @@ const WatchEpisodePage = () => {
 							episode={episode}
 							isUnavailable={isUnavailable}
 							wasArchived={wasArchived}
+							isOnNewSite={isOnNewSite}
 						/>
 					) : (
 						<PlayerSkeleton />

@@ -100,7 +100,11 @@ export default function DownloadButton({
 						{extDescribed(videoFile[0].file_ext)} -{" "}
 						{videoFile[0].file_ext.toUpperCase()}{" "}
 						<span className='font-mono font-medium'>
-							({bytesToReadableSize(videoFile[0].filesize)})
+							(
+							{disabled
+								? "N/A"
+								: bytesToReadableSize(videoFile[0].filesize)}
+							)
 						</span>
 					</div>
 				</button>
