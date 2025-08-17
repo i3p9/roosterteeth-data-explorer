@@ -8,6 +8,7 @@ import { IoHomeOutline, IoSearch } from "react-icons/io5";
 import { IoDownloadOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import InsideGamingIcon from "../../icons/InsideGamingIcon";
+import ThemeToggle from "../../atoms/ThemeToggle/ThemeToggle";
 
 const additionalMenu = [
 	{
@@ -144,15 +145,18 @@ const NavBar = ({
 						<HomeMenuComponent pathname={pathname} />
 					</div>
 				)}
-				<div className='hidden sm:flex ml-auto gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
-					<AiOutlineMail />{" "}
-					<a
-						href='mailto:info@rtarchive.xyz'
-						className='text-sm font-medium'
-						target='_blank'
-					>
-						info@rtarchive.xyz
-					</a>
+				<div className='hidden sm:flex ml-auto gap-4 items-center'>
+					<ThemeToggle />
+					<div className='flex gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
+						<AiOutlineMail />{" "}
+						<a
+							href='mailto:info@rtarchive.xyz'
+							className='text-sm font-medium'
+							target='_blank'
+						>
+							info@rtarchive.xyz
+						</a>
+					</div>
 				</div>
 			</nav>
 		</div>
