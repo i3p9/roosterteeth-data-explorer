@@ -4,6 +4,7 @@ import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpi
 import axios from "axios";
 import SeasonEpisodeSkeleton from "../../atoms/Skeleton/SeasonEpisodeSkeleton/SeasonEpisodeSkeleton";
 import Fuse from "fuse.js";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 const SkeletonLoader = () => {
 	return (
@@ -79,15 +80,12 @@ const SeasonContainer = (props) => {
 
 	if (seasonLoading) {
 		return (
-			<>
-				<div className='container mx-auto'>
-					<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8'>
-						{[...Array(20)].map((_, index) => (
-							<SeasonEpisodeSkeleton key={index} />
-						))}
-					</div>
-				</div>
-			</>
+			<div className='container flex flex-col items-center justify-center mx-auto mt-10	'>
+				<AiOutlineLoading3Quarters
+					size={30}
+					className='animate-spin text-color-primary font-bold text-xl'
+				/>
+			</div>
 		);
 	}
 

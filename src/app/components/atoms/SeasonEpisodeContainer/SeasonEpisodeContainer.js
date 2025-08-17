@@ -82,8 +82,8 @@ const SeasonEpisodeContainer = (props) => {
 							className={`${
 								minimal
 									? "font-semibold text-xs md:text-sm"
-									: "font-bold"
-							} pb-0.5 text-color-primary line-clamp-2`}
+									: "font-semibold"
+							} pb-0.5 text-color-primary line-clamp-2 mt-1.5`}
 							title={episode?.attributes.title}
 						>
 							{episode?.attributes.title}

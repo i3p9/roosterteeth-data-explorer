@@ -6,7 +6,12 @@ import { formatSecondToRunTime, makeTitle } from "@/data/utils/utils";
 import UserCommentSection from "./UserCommentSection";
 import LikeButton from "./LikeButton";
 
-const VideoInfo = ({ episode, isUnavailable, wasArchived, isOnNewSite }) => {
+const VideoInfo = ({
+	episode,
+	isUnavailable,
+	wasArchived,
+	isOnNewSite,
+}) => {
 	if (!episode) return null;
 	return (
 		<>
@@ -14,7 +19,7 @@ const VideoInfo = ({ episode, isUnavailable, wasArchived, isOnNewSite }) => {
 				<div className='flex flex-col'>
 					<h1
 						key={episode?.attributes.title}
-						className='font-bold text-xl text-color-primary animate-fade-in'
+						className='font-semibold text-xl text-color-primary animate-fade-in'
 					>
 						{episode?.attributes.title}
 					</h1>

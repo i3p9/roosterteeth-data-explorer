@@ -56,7 +56,7 @@ const ShowInfo = ({ show }) => {
 					/>
 
 					<div className='text-zinc-400'>
-						<p className='text-lg font-semibold'>
+						<p className='text-lg font-medium'>
 							{year} | {seasonText} | {makeTitle(categoryText)}
 						</p>
 						<div className='hidden md:block'>
