@@ -1,6 +1,7 @@
 import { formatSecondsToDuration } from "@/data/utils/utils";
 import React from "react";
 import { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoIosPlay } from "react-icons/io";
 import { IoChevronDown } from "react-icons/io5";
 
@@ -92,8 +93,12 @@ const SeasonSideBar = ({
 					id='episode-container'
 				>
 					{loading && (
-						<div className='flex-make-center overflow-y-auto'>
-							Loading next episodes...
+						<div className='flex-make-center overflow-y-auto mt-1'>
+							Loading next episodes...{" "}
+							<AiOutlineLoading3Quarters
+								size={15}
+								className='animate-spin ml-2'
+							/>
 						</div>
 					)}
 					<div className='flex flex-col pl-2 overflow-y-auto'>
@@ -114,7 +119,7 @@ const SeasonSideBar = ({
 										<div
 											className={`p-1 flex gap-2 ${
 												nowPlaying
-													? "bg-color-primary shadow-md rounded font-bold"
+													? "bg-color-primary shadow-md rounded font-semibold"
 													: "bg-color-hover hover:shadow-lg rounded-lg"
 											}`}
 											key={index}

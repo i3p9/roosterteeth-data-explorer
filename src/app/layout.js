@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Theme from "./theme-toggle";
 import { mona } from "./fonts";
 import { UserContextProvider } from "./hooks/UserContext";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -28,11 +27,9 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${mona.className} bg-stone-100 dark:bg-neutral-900`}
 			>
-				<Theme>
-					<div className='container mx-auto px-2 md:px-3 py-2 mb-32'>
-						<UserContextProvider>{children}</UserContextProvider>
-					</div>
-				</Theme>
+				<div className='container mx-auto px-2 md:px-3 py-2 mb-32'>
+					<UserContextProvider>{children}</UserContextProvider>
+				</div>
 				<Toaster />
 			</body>
 			<GoogleAnalytics gaId='G-RBMWJ5WGSM' />
