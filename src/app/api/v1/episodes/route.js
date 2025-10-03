@@ -1,27 +1,10 @@
+import { getDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
-	const apiKey = process.env.DB_API;
-	const mongoUrl = process.env.DB_HOST;
-
 	const season_id = request.nextUrl.searchParams.get("season_id");
 	const show_id = request.nextUrl.searchParams.get("show_id");
 	const season_slug = request.nextUrl.searchParams.get("season_slug"); //new
 	const show_slug = request.nextUrl.searchParams.get("show_slug"); //new
-
-	//pagination
-	// const limit = request.nextUrl.searchParams.get('limit')
-	// const offset = request.nextUrl.searchParams.get('offset')
-
-	// const paginateFilter = {
-	//     filter: {
-	//         'attributes.season_id': '428cff89-1d4e-4c4a-9348-24db3a105988'
-	//     },
-	//     sort: {
-	//         'attributes.public_golive_at': 1
-	//     },
-	//     limit: limit,
-	//     skip: offset
-	// }
 
 	const providedParams = [
 		season_id,
@@ -56,47 +39,51 @@ export async function GET(request, { params }) {
 		filter["attributes.show_slug"] = show_slug;
 	}
 
-	const raw = JSON.stringify({
-		dataSource: "metadata",
-		database: "roosterteeth_site",
-		collection: "episodes",
-		filter,
-		sort: { "attributes.original_air_date": -1 },
-	});
-
 	try {
-		const response = await fetch(`${mongoUrl}/action/find`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-				"Access-Control-Request-Headers": "*",
-				"api-key": apiKey,
-			},
-			body: raw,
-			redirect: "follow",
-		});
+		const db = await getDatabase();
+		const result = await db
+			.collection("episodes")
+			.find(filter)
+			.sort({ "attributes.original_air_date": -1 })
+			.toArray();
 
-		if (!response.ok) {
-			throw new Error(`API call failed: ${await response.text()}`);
-		}
-
-		const episodeData = await response.json();
-		// https://stackoverflow.com/a/76877821
-		if (episodeData.documents) {
-			return NextResponse.json(episodeData, {
+		return NextResponse.json(
+			{ documents: result },
+			{
 				status: 200,
 				headers: {
 					"Cache-Control": "public, s-maxage=31536000",
 					"CDN-Cache-Control": "public, s-maxage=31536000",
 					"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
 				},
-			});
-		} else {
-			return new Response(error, { status: 500 });
-		}
+			}
+		);
 	} catch (error) {
-		console.error(error);
-		return new Response(error, { status: 500 });
+		console.error("Database error in /api/v1/episodes:", error);
+
+		if (error.name === "MongoServerError") {
+			return NextResponse.json(
+				{
+					error: "Database connection error",
+					details: error.message,
+				},
+				{ status: 503 }
+			);
+		}
+
+		if (error.name === "MongoNetworkError") {
+			return NextResponse.json(
+				{
+					error: "Network error connecting to database",
+					details: error.message,
+				},
+				{ status: 503 }
+			);
+		}
+
+		return NextResponse.json(
+			{ error: "Internal server error", details: error.message },
+			{ status: 500 }
+		);
 	}
 }

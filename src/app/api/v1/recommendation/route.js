@@ -1,3 +1,4 @@
+import { getDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import { Pinecone } from "@pinecone-database/pinecone";
 
@@ -8,11 +9,12 @@ export async function GET(request) {
 	const pineConeApiKey = process.env.PINECONE_API_KEY;
 	const pineConeApiurl = process.env.PINECONE_DB_URL;
 	const pineConeDbTable = process.env.PINECONE_DB_TABLE;
-	const mongoApiKey = process.env.DB_API;
-	const mongoUrl = process.env.DB_HOST;
 
 	if (typeof requestUuid !== "string" || requestUuid.trim() === "") {
-		return new NextResponse("Invalid UUID", { status: 400 });
+		return NextResponse.json(
+			{ error: "Bad request", details: "Invalid UUID" },
+			{ status: 400 }
+		);
 	}
 
 	let sanitizedLimit = 10;
@@ -21,7 +23,10 @@ export async function GET(request) {
 		if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= 20) {
 			sanitizedLimit = parsedLimit;
 		} else {
-			return new NextResponse("Invalid limit", { status: 400 });
+			return NextResponse.json(
+				{ error: "Bad request", details: "Invalid limit" },
+				{ status: 400 }
+			);
 		}
 	}
 
@@ -39,69 +44,71 @@ export async function GET(request) {
 			!queryResponse.matches ||
 			!Array.isArray(queryResponse.matches)
 		) {
-			return new NextResponse("Invalid Pinecone response", {
-				status: 500,
-			});
+			return NextResponse.json(
+				{ error: "External service error", details: "Invalid Pinecone response" },
+				{ status: 500 }
+			);
 		}
 
 		const similarIds = queryResponse.matches.map((item) => item.id);
 
 		if (similarIds.length === 0) {
-			return new NextResponse("No similar episodes found", {
-				status: 404,
-			});
+			return NextResponse.json(
+				{ error: "Not found", details: "No similar episodes found" },
+				{ status: 404 }
+			);
 		}
 
-		const mongoQueryGen = JSON.stringify({
-			dataSource: "metadata",
-			database: "roosterteeth_site",
-			collection: "episodes",
-			filter: {
-				uuid: { $in: similarIds },
-			},
-		});
+		const db = await getDatabase();
+		const result = await db
+			.collection("episodes")
+			.find({ uuid: { $in: similarIds } })
+			.toArray();
 
-		const response = await fetch(`${mongoUrl}/action/find`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json",
-				"Access-Control-Request-Headers": "*",
-				"api-key": mongoApiKey,
-			},
-			body: mongoQueryGen,
-			redirect: "follow",
-		});
-
-		if (!response.ok) {
-			const errorText = await response.text();
-			console.error("MongoDB API error:", errorText);
-			return new NextResponse("Something went wrong", {
-				status: 500,
-			});
+		if (!result || result.length === 0) {
+			return NextResponse.json(
+				{ error: "Not found", details: "No matching episodes found" },
+				{ status: 404 }
+			);
 		}
 
-		const episodeData = await response.json();
-
-		if (
-			!episodeData.documents ||
-			episodeData.documents.length === 0
-		) {
-			return new NextResponse("No matching episodes found", {
-				status: 404,
-			});
-		}
-
-		return NextResponse.json(episodeData, {
-			status: 200,
-			headers: {
-				"Cache-Control": "public, s-maxage=31536000",
-				"CDN-Cache-Control": "public, s-maxage=31536000",
-				"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
-			},
-		});
+		return NextResponse.json(
+			{ documents: result },
+			{
+				status: 200,
+				headers: {
+					"Cache-Control": "public, s-maxage=31536000",
+					"CDN-Cache-Control": "public, s-maxage=31536000",
+					"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
+				},
+			}
+		);
 	} catch (error) {
-		console.error("API error:", error);
-		return new NextResponse("Internal Server Error", { status: 500 });
+		console.error("Database error in /api/v1/recommendation:", error);
+
+		if (error.name === "MongoServerError") {
+			return NextResponse.json(
+				{
+					error: "Database connection error",
+					details: error.message,
+				},
+				{ status: 503 }
+			);
+		}
+
+		if (error.name === "MongoNetworkError") {
+			return NextResponse.json(
+				{
+					error: "Network error connecting to database",
+					details: error.message,
+				},
+				{ status: 503 }
+			);
+		}
+
+		return NextResponse.json(
+			{ error: "Internal server error", details: error.message },
+			{ status: 500 }
+		);
 	}
 }
