@@ -1,11 +1,14 @@
+import { getDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+
 export async function GET(request, { params }) {
     const channel_id = request.nextUrl.searchParams.get('channel_id')
-    const apiKey = process.env.DB_API
-    const mongoUrl = process.env.DB_HOST
 
     if (!channel_id) {
-        return new NextResponse(`bad request, params not found: channel_id`, { status: 400 })
+        return NextResponse.json(
+            { error: "Bad request", details: "Missing required parameter: channel_id" },
+            { status: 400 }
+        )
     }
 
     const RandomEpisodepipeline = [
@@ -21,39 +24,40 @@ export async function GET(request, { params }) {
         }
     ];
 
-
-    const raw = JSON.stringify({
-        dataSource: "metadata",
-        database: "roosterteeth_site",
-        collection: "episodes",
-        pipeline: RandomEpisodepipeline
-    });
     try {
-        const response = await fetch(`${mongoUrl}/action/aggregate`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                "Access-Control-Request-Headers": "*",
-                "api-key": apiKey
-            },
-            body: raw,
-            redirect: "follow"
-        });
+        const db = await getDatabase();
+        const result = await db
+            .collection("episodes")
+            .aggregate(RandomEpisodepipeline)
+            .toArray();
 
-        if (!response.ok) {
-            throw new Error(`API call failed: ${await response.text()}`);
-        }
-
-        const episodeData = await response.json();
-        // https://stackoverflow.com/a/76877821
-        if (episodeData.documents) {
-            return NextResponse.json(episodeData, { status: 200 })
-        } else {
-            return new Response(error, { status: 500 })
-        }
+        return NextResponse.json({ documents: result }, { status: 200 })
     } catch (error) {
-        console.error(error);
-        return new Response(error, { status: 500 })
+        console.error("Database error in /api/v1/random:", error);
+
+        if (error.name === "MongoServerError") {
+            return NextResponse.json(
+                {
+                    error: "Database connection error",
+                    details: error.message,
+                },
+                { status: 503 }
+            );
+        }
+
+        if (error.name === "MongoNetworkError") {
+            return NextResponse.json(
+                {
+                    error: "Network error connecting to database",
+                    details: error.message,
+                },
+                { status: 503 }
+            );
+        }
+
+        return NextResponse.json(
+            { error: "Internal server error", details: error.message },
+            { status: 500 }
+        );
     }
 }
