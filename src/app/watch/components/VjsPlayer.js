@@ -140,7 +140,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 		};
 	}, [downloadData?.uuid, onVideoEnd]);
 
-	const videoFile = downloadData?.files.find(
+	const videoFile = downloadData?.files?.find(
 		(file) => file.file_ext === "mp4" || file.file_ext === "mkv"
 	);
 

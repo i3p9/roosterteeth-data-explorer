@@ -68,7 +68,7 @@ const SeasonEpisodeContainer = (props) => {
 								{formatSecondsToDuration(episode?.attributes?.length)}
 							</div>
 							<div className='absolute top-1 left-1 pl-1 text-lg'>
-								{episode?.archive &&
+								{episode?.archive?.id &&
 									!minimal &&
 									(isUnavailable ? (
 										<CloudUnavailable />

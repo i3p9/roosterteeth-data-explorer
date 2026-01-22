@@ -12,7 +12,7 @@ export default function DownloadButton({
 	minimal = false,
 	disabled = false,
 }) {
-	const videoFile = downloadData?.files.filter(
+	const videoFile = downloadData?.files?.filter(
 		(file) => file.file_ext === "mp4" || file.file_ext === "mkv"
 	);
 	function download(name) {
@@ -49,7 +49,7 @@ export default function DownloadButton({
 					>
 						<Menu.Items className='absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none z-50'>
 							<div className='px-1 py-1 '>
-								{downloadData?.files.map((file, index) => {
+								{downloadData?.files?.map((file, index) => {
 									if (!file.file_ext.includes("part-")) {
 										return (
 											<div key={index}>
@@ -90,7 +90,7 @@ export default function DownloadButton({
 
 	return (
 		<div className={`w-auto flex ${disabled && "make-disable"}`}>
-			{videoFile.length > 0 && (
+			{videoFile?.length > 0 && (
 				<button
 					onClick={() => download(videoFile[0].name)}
 					className='transition-all duration-300 rounded-l-md border-r-2 text-color-primary text-color-primary-hover border-color-secondary bg-color-primary px-4 py-2 text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 flex-make-center'
@@ -138,7 +138,7 @@ export default function DownloadButton({
 						>
 							<Menu.Items className='absolute right-0 mt-2 w-72 origin-top-right divide-y divide-gray-100 rounded-md bg-color-primary shadow-lg ring-1 ring-black/5 focus:outline-none'>
 								<div className='px-1 py-1 '>
-									{downloadData?.files.map((file, index) => {
+									{downloadData?.files?.map((file, index) => {
 										if (!file.file_ext.includes("part-")) {
 											return (
 												<div key={index}>

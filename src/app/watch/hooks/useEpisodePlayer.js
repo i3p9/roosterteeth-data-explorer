@@ -74,7 +74,9 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 		if (episode) {
 			getNextEpisodesData();
 			document.title = `${episode?.attributes.title} / rt-archive`;
-			if (firstSeriesInNewSite.includes(episode?.attributes.show_slug)) {
+			if (
+				firstSeriesInNewSite.includes(episode?.attributes.show_slug)
+			) {
 				setIsOnNewSite(true);
 			} else {
 				setIsOnNewSite(false);
@@ -84,7 +86,7 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 			} else {
 				setIsUnavailable(false);
 			}
-			if (!episode?.archive) {
+			if (!episode?.archive?.id) {
 				setWasArchived(false);
 				setIsUnavailable(true);
 			} else {
