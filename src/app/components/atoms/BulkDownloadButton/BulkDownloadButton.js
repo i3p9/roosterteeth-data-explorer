@@ -32,7 +32,7 @@ export default function BulkDownloadButton({
 		let allFilesArray = [];
 
 		data.forEach((episode) => {
-			if (episode.archive) {
+			if (episode.archive.files && episode.archive.id) {
 				allFilesArray.push(
 					`https://archive.org/details/${episode.archive.id}`
 				);

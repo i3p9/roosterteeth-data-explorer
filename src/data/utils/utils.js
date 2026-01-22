@@ -252,7 +252,7 @@ export const getArchivedPercentageAndDataBySeasonId = async (
 		const episodeData = await seasonResponse.json();
 		episodeData.data.forEach((episode) => {
 			allEpisodesBySeason.push(episode);
-			if (episode?.archive) {
+			if (episode?.archive?.files && episode?.archive?.id) {
 				archivedCount++;
 				for (const file of episode.archive.files) {
 					totalSizeInByte = totalSizeInByte + Number(file.filesize);
