@@ -72,7 +72,7 @@ const BrowseAllShowsContent = () => {
 				firstOrNoOptions.find((opt) => opt.value === param) ||
 				firstOrNoOptions[0]
 			);
-		}
+		},
 	);
 
 	const [channelFilterValue, setChannelFilterValue] = useState(() => {
@@ -92,7 +92,7 @@ const BrowseAllShowsContent = () => {
 	});
 
 	const [searchTerm, setSearchTerm] = useState(
-		searchParams.get("search") || ""
+		searchParams.get("search") || "",
 	);
 
 	// Update URL when filters change
@@ -125,6 +125,7 @@ const BrowseAllShowsContent = () => {
 
 		const newUrl = params.toString() ? `?${params.toString()}` : "/";
 		router.push(newUrl, { scroll: false });
+		//eslint-disable-next-line
 	}, [
 		exclusiveFilterValue,
 		channelFilterValue,

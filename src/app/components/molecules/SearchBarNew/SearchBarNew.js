@@ -66,9 +66,10 @@ const SearchBarNew = ({
 				} else {
 					setAutoCompleteData([]);
 				}
-			}, 300)
+			}, 300),
 		);
 		return () => clearTimeout(searchTimeout);
+		//eslint-disable-next-line
 	}, [searchTerm]);
 
 	// Add helper function to highlight matching text
@@ -80,7 +81,7 @@ const SearchBarNew = ({
 				<strong key={index}>{part}</strong>
 			) : (
 				<span key={index}>{part}</span>
-			)
+			),
 		);
 	};
 
@@ -118,7 +119,7 @@ const SearchBarNew = ({
 											<span
 												className={classNames(
 													noimage ? "" : "ml-2",
-													"block truncate text-sm"
+													"block truncate text-sm",
 												)}
 											>
 												{selectedChannel.name}
@@ -157,7 +158,7 @@ const SearchBarNew = ({
 															active
 																? "bg-color-reverse text-color-reverse"
 																: "text-color-primary",
-															"relative cursor-default select-none py-2 pl-2 pr-1 text-sm"
+															"relative cursor-default select-none py-2 pl-2 pr-1 text-sm",
 														)
 													}
 													value={channel}
@@ -178,7 +179,7 @@ const SearchBarNew = ({
 																			? "font-semibold"
 																			: "font-normal",
 																		noimage ? "" : "ml-3",
-																		"block truncate"
+																		"block truncate",
 																	)}
 																>
 																	{channel.name}
@@ -191,7 +192,7 @@ const SearchBarNew = ({
 																		active
 																			? "text-color-primary"
 																			: "text-color-reverse",
-																		"absolute inset-y-0 right-0 flex items-center pr-4"
+																		"absolute inset-y-0 right-0 flex items-center pr-4",
 																	)}
 																></span>
 															) : null}
@@ -237,13 +238,13 @@ const SearchBarNew = ({
 												runSearch(
 													selectedChannel.slug,
 													item.attributes.title,
-													10
+													10,
 												);
 											}}
 										>
 											{highlightMatch(
 												item.attributes.title,
-												searchTerm
+												searchTerm,
 											)}
 										</div>
 									))}

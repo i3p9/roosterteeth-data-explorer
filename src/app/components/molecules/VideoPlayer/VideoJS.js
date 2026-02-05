@@ -15,7 +15,7 @@ export const VideoJS = (props) => {
 			videoElement.classList.add(
 				"vjs-big-play-centered",
 				"shadow-xl",
-				"rounded-lg"
+				"rounded-lg",
 			);
 			videoElement.style.borderRadius = "0.5rem"; //rounded-lg
 			videoElement.style.boxShadow =
@@ -31,14 +31,14 @@ export const VideoJS = (props) => {
 					if (onReady) {
 						onReady(player);
 					}
-				}
+				},
 			));
 		} else {
 			const player = playerRef.current;
 			player.autoplay(options.autoplay);
 			player.src(options.sources);
 		}
-	}, [options]);
+	}, [options, onReady]);
 
 	useEffect(() => {
 		const player = playerRef.current;

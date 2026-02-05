@@ -7,14 +7,14 @@ export const getShowInfo = async (uuid) => {
 
 export const getShowInfoFromSlug = async (slug) => {
 	const result = masterList.data.find(
-		(show) => show.attributes.slug === slug
+		(show) => show.attributes.slug === slug,
 	);
 	return result;
 };
 
 export const getShowIdFromSlug = async (slug) => {
 	const result = masterList.data.filter(
-		(show) => show.attributes.slug === slug
+		(show) => show.attributes.slug === slug,
 	);
 	const showId = result[0].uuid;
 	return showId;
@@ -112,14 +112,14 @@ const baseUrl = config.url.BASE_URL;
 export const getArchivedLinksByShowId = async (showId) => {
 	try {
 		const response = await fetch(
-			`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`
+			`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`,
 		);
 		const showData = await response.json();
 		const allSeasons = showData.data.map((season) => season.uuid);
 		let allEpisodeLinks = [];
 		for (const seasonId of allSeasons) {
 			const seasonResponse = await fetch(
-				`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`
+				`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`,
 			);
 			const episodeData = await seasonResponse.json();
 			const seasonEpisodeData = episodeData.data.map((episode) => {
@@ -139,14 +139,14 @@ export const getArchivedLinksByShowId = async (showId) => {
 export const getAllEpisodesByShowId = async (showId) => {
 	try {
 		const response = await fetch(
-			`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`
+			`${baseUrl}/shows/${showId}/seasons_data_${showId}.json`,
 		);
 		const showData = await response.json();
 		const allSeasons = showData.data.map((season) => season.uuid);
 		let allEpisodes = [];
 		for (const seasonId of allSeasons) {
 			const seasonResponse = await fetch(
-				`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`
+				`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`,
 			);
 			const episodeData = await seasonResponse.json();
 			const seasonEpisodeData = episodeData.data.map((episode) => {
@@ -163,12 +163,12 @@ export const getAllEpisodesByShowId = async (showId) => {
 
 export const getArchivedLinksBySeasonId = async (
 	showId,
-	seasonId
+	seasonId,
 ) => {
 	try {
 		let allEpisodeLinks = [];
 		const seasonResponse = await fetch(
-			`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`
+			`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`,
 		);
 		const episodeData = await seasonResponse.json();
 		const seasonEpisodeData = episodeData.data.map((episode) => {
@@ -240,28 +240,28 @@ export function percentage(partialValue, totalValue) {
 
 export const getArchivedPercentageAndDataBySeasonId = async (
 	showId,
-	seasonId
+	seasonId,
 ) => {
 	try {
 		let archivedCount = 0;
 		let allEpisodesBySeason = [];
 		let totalSizeInByte = 0;
 		const seasonResponse = await fetch(
-			`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`
+			`${baseUrl}/shows/${showId}/seasons/${seasonId}.json`,
 		);
 		const episodeData = await seasonResponse.json();
 		episodeData.data.forEach((episode) => {
 			allEpisodesBySeason.push(episode);
 			if (episode?.archive?.files && episode?.archive?.id) {
 				archivedCount++;
-				for (const file of episode.archive.files) {
+				for (const file of episode?.archive?.files) {
 					totalSizeInByte = totalSizeInByte + Number(file.filesize);
 				}
 			}
 		});
 		const percentageResult = percentage(
 			archivedCount,
-			episodeData.data.length
+			episodeData.data.length,
 		);
 		return { percentageResult, allEpisodesBySeason, totalSizeInByte };
 	} catch (error) {
@@ -276,9 +276,9 @@ export const getTotalShowFileSizeByEpisodes = (episodes) => {
 	let totalSizeInByte = 0;
 	episodes.forEach((episode) => {
 		// allEpisodesBySeason.push(episode)
-		if (episode?.archive) {
+		if (episode?.archive?.files && episode?.archive?.id) {
 			archivedCount++;
-			for (const file of episode.archive.files) {
+			for (const file of episode?.archive?.files) {
 				totalSizeInByte = totalSizeInByte + Number(file.filesize);
 			}
 		}
@@ -355,7 +355,7 @@ export const dateTimeToRelative = (date) => {
 
 	// Find the appropriate unit based on the seconds difference
 	const unitIndex = unitsInSec.findIndex(
-		(cutoff) => cutoff > Math.abs(secondsDiff)
+		(cutoff) => cutoff > Math.abs(secondsDiff),
 	);
 
 	// Get the divisor to convert seconds to the appropriate unit
@@ -367,7 +367,7 @@ export const dateTimeToRelative = (date) => {
 	// Format the relative time based on the calculated unit
 	const relativeTime = rtf.format(
 		Math.floor(secondsDiff / divisor),
-		unitStrings[unitIndex]
+		unitStrings[unitIndex],
 	);
 
 	return relativeTime;

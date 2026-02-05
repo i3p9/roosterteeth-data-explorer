@@ -89,6 +89,7 @@ export function UserContextProvider({ children }) {
 	useEffect(() => {
 		fetchCurrentUser();
 		fetchUserToken();
+		//eslint-disable-next-line
 	}, []);
 
 	//fetch user token from  session
@@ -122,6 +123,7 @@ export function UserContextProvider({ children }) {
 		return () => {
 			subscription.unsubscribe();
 		};
+		//eslint-disable-next-line
 	}, []);
 
 	return (
