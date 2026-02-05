@@ -4,6 +4,7 @@ import { mona } from "./fonts";
 import { UserContextProvider } from "./hooks/UserContext";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
 					<UserContextProvider>{children}</UserContextProvider>
 				</div>
 				<Toaster />
+				<Analytics />
 			</body>
 			<GoogleAnalytics gaId='G-RBMWJ5WGSM' />
 		</html>
