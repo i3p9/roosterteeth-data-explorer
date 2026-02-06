@@ -4,6 +4,8 @@ import { getContinueWatchingData } from "@/app/utils/videoProgessUtils";
 import NavBar from "@/app/components/molecules/NavBar/NavBar";
 import { useState, useEffect } from "react";
 import ContWatchingEpisodeContainer from "./components/ContWatchingEpisodeContainer";
+import { get } from "lodash";
+import { useCallback } from "react";
 
 const WatchHistory = () => {
 	const [contWatchingData, setContWatchingData] = useState([]);
@@ -12,33 +14,36 @@ const WatchHistory = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const LIMIT = 5;
 
-	const getSomeData = async (currentOffset) => {
-		try {
-			if (isLoading || !hasMore) return;
+	const getSomeData = useCallback(
+		async (currentOffset) => {
+			try {
+				if (isLoading || !hasMore) return;
 
-			setIsLoading(true);
-			const response = await getContinueWatchingData(
-				LIMIT,
-				currentOffset
-			);
+				setIsLoading(true);
+				const response = await getContinueWatchingData(
+					LIMIT,
+					currentOffset,
+				);
 
-			// Check if we got fewer items than requested
-			if (response.length < LIMIT) {
+				// Check if we got fewer items than requested
+				if (response.length < LIMIT) {
+					setHasMore(false);
+				}
+
+				setContWatchingData((prev) => [...prev, ...response]);
+			} catch (error) {
+				console.error("Error fetching data:", error);
 				setHasMore(false);
+			} finally {
+				setIsLoading(false);
 			}
-
-			setContWatchingData((prev) => [...prev, ...response]);
-		} catch (error) {
-			console.error("Error fetching data:", error);
-			setHasMore(false);
-		} finally {
-			setIsLoading(false);
-		}
-	};
+		},
+		[isLoading, hasMore],
+	);
 
 	useEffect(() => {
 		getSomeData(offset);
-	}, [offset]);
+	}, [offset, getSomeData]);
 
 	const handleLoadMore = () => {
 		setOffset((prev) => prev + LIMIT);

@@ -25,7 +25,7 @@ function SeasonPage() {
 	const [seasonLoading, setSeasonLoading] = useState(false);
 	const [seasonNetworkError, setSeasonNetworkError] = useState(false);
 	const [selectedSortOption, setSelectedSortOption] = useState(
-		episodeSortOptions[0]
+		episodeSortOptions[0],
 	);
 	const [isUnavailable, setIsUnavailable] = useState(false);
 
@@ -98,7 +98,7 @@ function SeasonPage() {
 				seasonData[0]?.attributes?.season_number
 			} // rt-archvie`;
 		}
-	}, [selectedSortOption, seasonData]);
+	}, [selectedSortOption, seasonData, showSlug]);
 
 	const pageTitle = `${makeTitle(showSlug)}: Season ${
 		seasonData ? seasonData[0]?.attributes?.season_number : "N/A"
@@ -155,7 +155,7 @@ function SeasonPage() {
 									>
 										<DataEpisodeContainer episode={episode} />
 									</motion.div>
-							  ))
+								))
 							: sortedSeasonData?.reverse().map((episode, index) => (
 									<motion.div
 										key={index}
@@ -169,7 +169,7 @@ function SeasonPage() {
 									>
 										<DataEpisodeContainer episode={episode} />
 									</motion.div>
-							  ))
+								))
 						: [...Array(20)].map((_, index) => (
 								<motion.div
 									key={index}
@@ -180,7 +180,7 @@ function SeasonPage() {
 								>
 									<DataEpisodeContainerSkeleton />
 								</motion.div>
-						  ))}
+							))}
 				</AnimatePresence>
 				<div className='italic text-sm pt-8 text-color-faded'>
 					total items in this page: {seasonData?.length}

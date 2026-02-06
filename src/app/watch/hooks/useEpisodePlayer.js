@@ -68,6 +68,7 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 
 	useEffect(() => {
 		getEpisodeData();
+		//eslint-disable-next-line
 	}, [nowPlayingEpisodeSlug]);
 
 	useEffect(() => {
@@ -94,12 +95,13 @@ export const useEpisodePlayer = (episodeSlug, initialEpisodeData) => {
 				setIsUnavailable(false);
 			}
 		}
+		//eslint-disable-next-line
 	}, [episode]);
 
 	useEffect(() => {
 		if (nextEpisodes) {
 			const currentIndex = nextEpisodes.findIndex(
-				(ep) => ep.attributes.slug === nowPlayingEpisodeSlug
+				(ep) => ep.attributes.slug === nowPlayingEpisodeSlug,
 			);
 
 			const nextEpisode = nextEpisodes[currentIndex + 1];

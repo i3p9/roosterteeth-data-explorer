@@ -32,18 +32,18 @@ export default function BulkDownloadButton({
 		let allFilesArray = [];
 
 		data.forEach((episode) => {
-			if (episode.archive.files && episode.archive.id) {
+			if (episode?.archive?.files && episode?.archive?.id) {
 				allFilesArray.push(
-					`https://archive.org/details/${episode.archive.id}`
+					`https://archive.org/details/${episode?.archive?.id}`,
 				);
-				for (const file of episode.archive.files) {
+				for (const file of episode?.archive?.files) {
 					if (
 						file.file_ext.toLowerCase() === "mp4" ||
 						file.file_ext.toLowerCase() === "webm"
 					) {
 						videoSizeTotal = videoSizeTotal + Number(file.filesize);
 						videoFilesArray.push(
-							`https://archive.org/download/${episode.archive.id}/${file.name}`
+							`https://archive.org/download/${episode?.archive?.id}/${file.name}`,
 						);
 					}
 					if (
@@ -54,28 +54,28 @@ export default function BulkDownloadButton({
 					) {
 						thumbSizeTotal = thumbSizeTotal + Number(file.filesize);
 						thumbFilesArray.push(
-							`https://archive.org/download/${episode.archive.id}/${file.name}`
+							`https://archive.org/download/${episode?.archive?.id}/${file.name}`,
 						);
 					}
 
 					if (file.file_ext.toLowerCase() === "json") {
 						infoSizeTotal = infoSizeTotal + Number(file.filesize);
 						infoFilesArray.push(
-							`https://archive.org/download/${episode.archive.id}/${file.name}`
+							`https://archive.org/download/${episode?.archive?.id}/${file.name}`,
 						);
 					}
 					if (file.file_ext.toLowerCase() === "description") {
 						descriptionSizeTotal =
 							descriptionSizeTotal + Number(file.filesize);
 						descriptionFilesArray.push(
-							`https://archive.org/download/${episode.archive.id}/${file.name}`
+							`https://archive.org/download/${episode?.archive?.id}/${file.name}`,
 						);
 					}
 					if (file.file_ext.toLowerCase() === "vtt") {
 						subTitleSizeTotal =
 							subTitleSizeTotal + Number(file.filesize);
 						subTitleFilesArray.push(
-							`https://archive.org/download/${episode.archive.id}/download/${file.name}`
+							`https://archive.org/download/${episode?.archive?.id}/${file.name}`,
 						);
 					}
 				}

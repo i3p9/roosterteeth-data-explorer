@@ -22,7 +22,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 		player.on("loadedmetadata", async function () {
 			try {
 				const savedProgress = await videoProgressService.getProgress(
-					downloadData?.uuid
+					downloadData?.uuid,
 				);
 				if (
 					savedProgress?.currentTime &&
@@ -96,7 +96,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 					await videoProgressService.saveProgress(
 						downloadData?.uuid,
 						player.currentTime(),
-						player.duration()
+						player.duration(),
 					);
 					await videoProgressService.cleanupOldEntries();
 				} catch (error) {
@@ -138,10 +138,11 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 				player.off("ended");
 			}
 		};
+		//eslint-disable-next-line
 	}, [downloadData?.uuid, onVideoEnd]);
 
 	const videoFile = downloadData?.files?.find(
-		(file) => file.file_ext === "mp4" || file.file_ext === "mkv"
+		(file) => file.file_ext === "mp4" || file.file_ext === "mkv",
 	);
 
 	const videoJsOptions = {
