@@ -20,7 +20,7 @@ const VjsPlayer = ({ downloadData, onVideoEnd }) => {
 					file.file_ext === "vtt" || file.file_ext === "srt",
 			)
 			.map((file) => ({
-				src: `https://archive.org/download/${downloadData.id}/${file.name}`,
+				src: `/api/v1/subtitle?url=${encodeURIComponent(`https://archive.org/download/${downloadData.id}/${file.name}`)}`,
 				label: file.name.replace(/\.(vtt|srt)$/i, "").replace(/_/g, " "),
 				lang: "en",
 			}));
