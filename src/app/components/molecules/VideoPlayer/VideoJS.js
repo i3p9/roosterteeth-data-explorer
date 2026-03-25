@@ -31,6 +31,7 @@ export const VideoPlayer = ({
 						/>
 					))}
 				</Video>
+				<ClickToPlay />
 			</VideoSkin>
 			<PlayerEventBridge
 				onTimeUpdate={onTimeUpdate}
@@ -38,6 +39,41 @@ export const VideoPlayer = ({
 				onLoadedMetadata={onLoadedMetadata}
 			/>
 		</Player.Provider>
+	);
+};
+
+const ClickToPlay = () => {
+	const media = Player.useMedia();
+	const store = Player.usePlayer();
+
+	const handleClick = () => {
+		if (!media) return;
+		if (media.paused) {
+			store.play();
+		} else {
+			store.pause();
+		}
+	};
+
+	const handleDoubleClick = () => {
+		if (!document.fullscreenElement) {
+			media?.closest("[data-media-root]")?.requestFullscreen?.();
+		} else {
+			document.exitFullscreen?.();
+		}
+	};
+
+	return (
+		<div
+			onClick={handleClick}
+			onDoubleClick={handleDoubleClick}
+			style={{
+				position: "absolute",
+				inset: 0,
+				zIndex: 1,
+				cursor: "pointer",
+			}}
+		/>
 	);
 };
 
