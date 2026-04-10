@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import NavBar from "../../../components/molecules/NavBar/NavBar";
-import VideoJS from "../../../components/molecules/VideoPlayer/VideoJS";
+import VideoPlayer from "../../../components/molecules/VideoPlayer/VideoJS";
 import { formatSecondToRunTime } from "@/data/utils/utils";
 import Link from "next/link";
 import SidebarEpisodeCard from "../../components/SidebarEpisodeCard";
@@ -14,23 +14,10 @@ import {
 } from "../../utils/episodeUtils";
 import { getProperShowName } from "../../data/utils";
 
-const IGVideoPlayer = ({ videoUrl, onReady }) => {
-	const videoJsOptions = {
-		autoplay: true,
-		controls: true,
-		responsive: true,
-		fluid: true,
-		sources: [
-			{
-				src: videoUrl,
-				type: "video/mp4",
-			},
-		],
-	};
-
+const IGVideoPlayer = ({ videoUrl }) => {
 	return (
-		<div className='video-wrapper mt-2 rounded-lg'>
-			<VideoJS options={videoJsOptions} onReady={onReady} />
+		<div className="video-wrapper mt-2 rounded-lg overflow-hidden" style={{ "--media-border-radius": "0.5rem" }}>
+			<VideoPlayer src={videoUrl} autoPlay={true} />
 		</div>
 	);
 };
@@ -102,12 +89,7 @@ const EpisodePage = ({ params }) => {
 			<div className='flex flex-col md:flex-row gap-2'>
 				<div className='md:w-8/12'>
 					{videoUrl && (
-						<IGVideoPlayer
-							videoUrl={videoUrl}
-							onReady={(player) => {
-								console.log("Player ready:", player);
-							}}
-						/>
+						<IGVideoPlayer videoUrl={videoUrl} />
 					)}
 
 					{/* Video Info */}

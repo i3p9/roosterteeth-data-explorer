@@ -1,61 +1,132 @@
-import React, { useEffect, useRef } from "react";
-import videojs from "video.js";
-// import "./VideoJS.css";
-//todo: fix the custom play button for loading on first load bug
-import "video.js/dist/video-js.css";
+"use client";
 
-export const VideoJS = (props) => {
-	const videoRef = useRef(null);
-	const playerRef = useRef(null);
-	const { options, onReady } = props;
+import "@videojs/react/video/skin.css";
+import { createPlayer, videoFeatures } from "@videojs/react";
+import { VideoSkin, Video } from "@videojs/react/video";
+import { useEffect, useRef } from "react";
 
-	useEffect(() => {
-		if (!playerRef.current) {
-			const videoElement = document.createElement("video-js");
-			videoElement.classList.add(
-				"vjs-big-play-centered",
-				"shadow-xl",
-				"rounded-lg",
-			);
-			videoElement.style.borderRadius = "0.5rem"; //rounded-lg
-			videoElement.style.boxShadow =
-				"0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)"; //shadow-xl
+const Player = createPlayer({ features: videoFeatures });
 
-			videoRef.current.appendChild(videoElement);
+export { Player };
 
-			const player = (playerRef.current = videojs(
-				videoElement,
-				options,
-				() => {
-					// videojs.log("player is ready");
-					if (onReady) {
-						onReady(player);
-					}
-				},
-			));
-		} else {
-			const player = playerRef.current;
-			player.autoplay(options.autoplay);
-			player.src(options.sources);
-		}
-	}, [options, onReady]);
-
-	useEffect(() => {
-		const player = playerRef.current;
-		// Clean up function to dispose the player after the component unmounts
-		return () => {
-			if (player && !player.isDisposed()) {
-				player.dispose();
-				playerRef.current = null;
-			}
-		};
-	}, []);
-
+export const VideoPlayer = ({
+	src,
+	subtitles = [],
+	autoPlay = true,
+	onTimeUpdate,
+	onEnded,
+	onLoadedMetadata,
+}) => {
 	return (
-		<div className='video-player' data-vjs-player>
-			<div ref={videoRef} />
-		</div>
+		<Player.Provider>
+			<VideoSkin>
+				<Video src={src} autoPlay={autoPlay} playsInline>
+					{subtitles.map((track, index) => (
+						<track
+							key={track.src}
+							kind="subtitles"
+							src={track.src}
+							srcLang={track.lang || "en"}
+							label={track.label || `Subtitles ${index + 1}`}
+						/>
+					))}
+				</Video>
+				<ClickToPlay />
+			</VideoSkin>
+			<PlayerEventBridge
+				onTimeUpdate={onTimeUpdate}
+				onEnded={onEnded}
+				onLoadedMetadata={onLoadedMetadata}
+			/>
+		</Player.Provider>
 	);
 };
 
-export default VideoJS;
+const ClickToPlay = () => {
+	const media = Player.useMedia();
+	const store = Player.usePlayer();
+
+	const handleClick = () => {
+		if (!media) return;
+		if (media.paused) {
+			store.play();
+		} else {
+			store.pause();
+		}
+	};
+
+	const handleDoubleClick = () => {
+		if (!document.fullscreenElement) {
+			media?.closest("[data-media-root]")?.requestFullscreen?.();
+		} else {
+			document.exitFullscreen?.();
+		}
+	};
+
+	return (
+		<div
+			onClick={handleClick}
+			onDoubleClick={handleDoubleClick}
+			style={{
+				position: "absolute",
+				inset: 0,
+				zIndex: 1,
+				cursor: "pointer",
+			}}
+		/>
+	);
+};
+
+const PlayerEventBridge = ({ onTimeUpdate, onEnded, onLoadedMetadata }) => {
+	const media = Player.useMedia();
+	const intervalRef = useRef(null);
+	const onTimeUpdateRef = useRef(onTimeUpdate);
+	const onEndedRef = useRef(onEnded);
+	const onLoadedMetadataRef = useRef(onLoadedMetadata);
+
+	useEffect(() => {
+		onTimeUpdateRef.current = onTimeUpdate;
+		onEndedRef.current = onEnded;
+		onLoadedMetadataRef.current = onLoadedMetadata;
+	}, [onTimeUpdate, onEnded, onLoadedMetadata]);
+
+	useEffect(() => {
+		if (!media) return;
+
+		const handleLoadedMetadata = () => {
+			if (onLoadedMetadataRef.current) {
+				onLoadedMetadataRef.current(media);
+			}
+		};
+
+		const handleEnded = () => {
+			if (onEndedRef.current) {
+				onEndedRef.current();
+			}
+		};
+
+		media.addEventListener("loadedmetadata", handleLoadedMetadata);
+		media.addEventListener("ended", handleEnded);
+
+		// Progress reporting interval (every 10s)
+		if (onTimeUpdateRef.current) {
+			intervalRef.current = setInterval(() => {
+				if (!media.paused && onTimeUpdateRef.current) {
+					onTimeUpdateRef.current(media.currentTime, media.duration);
+				}
+			}, 10000);
+		}
+
+		return () => {
+			media.removeEventListener("loadedmetadata", handleLoadedMetadata);
+			media.removeEventListener("ended", handleEnded);
+			if (intervalRef.current) {
+				clearInterval(intervalRef.current);
+			}
+		};
+	}, [media]);
+
+	return null;
+};
+
+export default VideoPlayer;
