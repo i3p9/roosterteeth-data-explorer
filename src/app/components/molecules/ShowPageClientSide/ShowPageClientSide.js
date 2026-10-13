@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { config } from "@/app/Constants";
+import { cacheSeason, getCachedSeason, loadSeason } from "@/app/utils/seasonCache";
 import SeasonContainer from "@/app/components/molecules/SeasonContainer/SeasonContainer";
 import SeasonSelector from "@/app/components/atoms/SeasonSelector/SeasonSelector";
 import SortSelector from "@/app/components/atoms/SortSelector/SortSelector";
@@ -9,13 +9,18 @@ import { episodeSortOptions } from "@/data/utils/data";
 import BulkDownloadButton from "@/app/components/atoms/BulkDownloadButton/BulkDownloadButton";
 import { firstSeriesInNewSite } from "@/data/utils/data";
 
-const baseUrl = config.url.BASE_URL;
-
-export default function ShowPageClientSide({ showSlug }) {
-	const [showData, setShowData] = useState();
+export default function ShowPageClientSide({
+	showSlug,
+	initialShowData,
+	initialEpisodes,
+}) {
+	const seasons = [...initialShowData.data].reverse();
+	const initialSeason = initialShowData.data[0];
 	const [loading, setLoading] = useState(false);
-	const [seasonData, setSeasonData] = useState();
-	const [selectedSeason, setSelectedSeason] = useState({});
+	const [seasonData, setSeasonData] = useState(initialEpisodes);
+	const [selectedSeason, setSelectedSeason] = useState(initialSeason);
+	const [networkError, setNetworkError] = useState(false);
+	const [retryCount, setRetryCount] = useState(0);
 	const [selectedSortOption, setSelectedSortOption] = useState(
 		episodeSortOptions[0]
 	);
@@ -23,37 +28,72 @@ export default function ShowPageClientSide({ showSlug }) {
 	const isOnNewSite = firstSeriesInNewSite.includes(showSlug);
 
 	useEffect(() => {
-		const fetchSeasonData = async () => {
-			try {
-				setLoading(true);
-				const response = await fetch(
-					`${baseUrl}/shows_by_slug/${showSlug}/seasons_data_${showSlug}.json`
-				);
-				const data = await response.json();
-				const reversedData = [...data.data].reverse();
-				setShowData({ ...data, data: reversedData });
-				setSelectedSeason(data.data[0]);
-				setLoading(false);
-			} catch (error) {
-				console.error("Error loading season data:", error);
-			}
-		};
-
-		if (showSlug) {
-			fetchSeasonData();
+		if (initialSeason) {
+			cacheSeason(initialSeason.uuid, initialEpisodes);
 		}
-	}, [showSlug]);
+	}, [initialSeason, initialEpisodes]);
+
+	const seasonUuid = selectedSeason?.uuid;
+
+	useEffect(() => {
+		if (!seasonUuid) return;
+
+		const cached = getCachedSeason(seasonUuid);
+		if (cached) {
+			setSeasonData(cached);
+			setLoading(false);
+			return;
+		}
+
+		let cancelled = false;
+		setLoading(true);
+		setNetworkError(false);
+		loadSeason(seasonUuid)
+			.then((episodes) => {
+				if (!cancelled) setSeasonData(episodes);
+			})
+			.catch((error) => {
+				console.error("Error loading season data:", error);
+				if (!cancelled) setNetworkError(true);
+			})
+			.finally(() => {
+				if (!cancelled) setLoading(false);
+			});
+
+		// A slower response must not overwrite a more recently selected season.
+		return () => {
+			cancelled = true;
+		};
+	}, [seasonUuid, retryCount]);
+
+	const selectSeason = (season) => {
+		const cached = getCachedSeason(season.uuid);
+		setSelectedSeason(season);
+		setSeasonData(cached);
+		setLoading(!cached);
+		setNetworkError(false);
+		if (season.uuid === seasonUuid && !cached) {
+			setRetryCount((count) => count + 1);
+		}
+	};
+
+	const prefetchSeason = (seasonUuid) => {
+		loadSeason(seasonUuid).catch(() => {
+			// Selecting the season will retry a failed prefetch.
+		});
+	};
 
 	return (
 		<>
 			<div className='my-4'>
-				{showData && selectedSeason && (
+				{selectedSeason && (
 					<div className='flex flex-col-reverse md:flex-row gap-2'>
 						<div className='flex gap-2 h-10'>
 							<SeasonSelector
-								data={showData.data}
+								data={seasons}
 								selected={selectedSeason}
-								setSelected={setSelectedSeason}
+								setSelected={selectSeason}
+								onPrefetch={prefetchSeason}
 							/>
 							<SortSelector
 								data={episodeSortOptions}
@@ -65,7 +105,7 @@ export default function ShowPageClientSide({ showSlug }) {
 							<BulkDownloadButton
 								data={seasonData}
 								loading={loading}
-								disabled={isOnNewSite}
+								disabled={isOnNewSite || loading || networkError}
 							/>
 							<input
 								type='search'
@@ -85,8 +125,9 @@ export default function ShowPageClientSide({ showSlug }) {
 			<div>
 				<SeasonContainer
 					seasonData={seasonData}
-					setSeasonData={setSeasonData}
-					seasonUuid={selectedSeason.uuid}
+					loading={loading}
+					networkError={networkError}
+					onRetry={() => setRetryCount((count) => count + 1)}
 					selectedSortOption={selectedSortOption}
 					searchTerm={searchTerm}
 				/>

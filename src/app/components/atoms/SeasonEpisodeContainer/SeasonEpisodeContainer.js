@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
 	makeTitle,
 	formatSecondsToDuration,
@@ -13,6 +13,14 @@ const SeasonEpisodeContainer = (props) => {
 	const episodeId = `${episode?.attributes.slug}`;
 
 	const [imageLoaded, setImageLoaded] = useState(false);
+	const imageRef = useRef();
+
+	useEffect(() => {
+		// A cached image can load before React attaches its onLoad handler.
+		if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) {
+			setImageLoaded(true);
+		}
+	}, [episode?.uuid]);
 
 	const handleImageLoad = () => {
 		setImageLoaded(true);
@@ -41,6 +49,7 @@ const SeasonEpisodeContainer = (props) => {
 							className={`relative aspect-video overflow-hidden rounded-lg object-cover-w-full mb-1`}
 						>
 							<img
+								ref={imageRef}
 								alt='thumbnail'
 								className='aspect-video overflow-hidden rounded-lg object-cover-w-full'
 								src={`https://cdn.rtarchive.xyz/thumbs_small_webp/${episode?.uuid}.webp`}

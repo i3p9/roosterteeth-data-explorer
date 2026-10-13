@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useRef } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -7,7 +7,20 @@ function classNames(...classes) {
 }
 
 export default function SeasonSelector(props) {
-	const { data, selected, setSelected } = props;
+	const { data, selected, setSelected, onPrefetch } = props;
+	const prefetchTimeout = useRef();
+
+	const cancelPrefetch = () => clearTimeout(prefetchTimeout.current);
+
+	const prefetchOnHover = (seasonUuid) => {
+		cancelPrefetch();
+		// A brief pause avoids fetching seasons the pointer only passes over.
+		prefetchTimeout.current = setTimeout(() => onPrefetch?.(seasonUuid), 150);
+	};
+
+	useEffect(() => {
+		return () => clearTimeout(prefetchTimeout.current);
+	}, []);
 
 	return (
 		<Listbox value={selected} onChange={setSelected}>
@@ -62,6 +75,10 @@ export default function SeasonSelector(props) {
 											)
 										}
 										value={season}
+										onMouseEnter={() => prefetchOnHover(season.uuid)}
+										onMouseLeave={cancelPrefetch}
+										onClick={cancelPrefetch}
+										onFocus={() => onPrefetch?.(season.uuid)}
 									>
 										{({ selected, active }) => (
 											<>
