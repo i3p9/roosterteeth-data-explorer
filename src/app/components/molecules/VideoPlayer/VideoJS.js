@@ -19,7 +19,7 @@ export const VideoPlayer = ({
 }) => {
 	return (
 		<Player.Provider>
-			<VideoSkin>
+			<VideoSkin className='aspect-video'>
 				<Video src={src} autoPlay={autoPlay} playsInline>
 					{subtitles.map((track, index) => (
 						<track
