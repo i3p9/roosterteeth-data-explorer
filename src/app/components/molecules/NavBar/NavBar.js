@@ -1,5 +1,7 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
+import styles from "./NavBar.module.css";
 import { usePathname } from "next/navigation";
 import { IoMdArrowBack } from "react-icons/io";
 import PropTypes from "prop-types";
@@ -126,7 +128,15 @@ const NavBar = ({
 					</Link>
 				) : (
 					<span className='flex items-center justify-center w-8 h-11 shrink-0' aria-hidden='true'>
-						<IoHomeOutline size={28} />
+						<Image
+							src='/apple-icon.png'
+							alt=''
+							width={28}
+							height={28}
+							priority
+							unoptimized
+							className={styles.homeLogo}
+						/>
 					</span>
 				)}
 				<span className='text-color-primary select-none truncate min-w-0'>

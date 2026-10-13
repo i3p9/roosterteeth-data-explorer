@@ -1,3 +1,12 @@
+.homeLogo {
+	filter: grayscale(1) brightness(1.8) invert(1);
+	image-rendering: pixelated;
+}
+
+:global(.dark) .homeLogo {
+	filter: grayscale(1) brightness(1.8);
+}
+
 .loadingWaveContainer {
 	position: relative;
 	width: 100%;
