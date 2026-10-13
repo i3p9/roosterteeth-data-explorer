@@ -134,7 +134,8 @@ const SeasonSideBar = ({
 																ref.offsetTop -
 																container.offsetTop -
 																container.clientHeight / 2,
-															behavior: "smooth",
+															// Avoid loading every thumbnail on the way to the current episode.
+															behavior: "auto",
 														});
 													}
 												}
@@ -150,6 +151,7 @@ const SeasonSideBar = ({
 											<div className='relative w-24 h-[54px] flex-shrink-0 overflow-hidden rounded-lg border bg-zinc-900'>
 												<img
 													alt='Episode thumbnail'
+													loading='lazy'
 													className='w-full h-full object-cover'
 													src={`https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`}
 												/>

@@ -28,6 +28,7 @@ const EpisodeCard = ({
 			>
 				<img
 					alt='Episode thumbnail'
+					loading='lazy'
 					className='w-full h-full object-cover rounded-lg'
 					src={`https://cdn.rtarchive.xyz/thumbs_medium/${episode?.uuid}.jpg`}
 				/>
