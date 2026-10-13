@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import styles from "./NavBar.module.css";
 import { usePathname } from "next/navigation";
@@ -11,6 +12,40 @@ import { IoDownloadOutline } from "react-icons/io5";
 import { MdOutlineAccountCircle } from "react-icons/md";
 import InsideGamingIcon from "../../icons/InsideGamingIcon";
 import ThemeToggle from "../../atoms/ThemeToggle/ThemeToggle";
+
+// Remember the last icon across navbar mounts during client navigation.
+let previousIconIsBack;
+
+const NavigationIcon = ({ isBack }) => {
+	const [morph, setMorph] = useState("");
+
+	// Start from the outgoing icon before the new navbar is painted.
+	useLayoutEffect(() => {
+		if (previousIconIsBack !== undefined && previousIconIsBack !== isBack) {
+			setMorph(isBack ? styles.toBack : styles.toHome);
+		}
+		previousIconIsBack = isBack;
+	}, [isBack]);
+
+	return (
+		<span
+			className={`${styles.navigationIcon} ${isBack ? styles.backIcon : ""} ${morph}`}
+			aria-hidden='true'
+			onAnimationEnd={() => setMorph("")}
+		>
+			<Image
+				src='/apple-icon.png'
+				alt=''
+				width={28}
+				height={28}
+				priority
+				unoptimized
+				className={`${styles.homeLogo} ${styles.cassette}`}
+			/>
+			<IoMdArrowBack size={28} className={styles.arrow} />
+		</span>
+	);
+};
 
 const additionalMenu = [
 	{
@@ -124,19 +159,11 @@ const NavBar = ({
 						aria-label='Back'
 						className='flex items-center justify-center w-8 h-11 shrink-0 rounded-md text-color-primary'
 					>
-						<IoMdArrowBack size={28} />
+						<NavigationIcon isBack />
 					</Link>
 				) : (
 					<span className='flex items-center justify-center w-8 h-11 shrink-0' aria-hidden='true'>
-						<Image
-							src='/apple-icon.png'
-							alt=''
-							width={28}
-							height={28}
-							priority
-							unoptimized
-							className={styles.homeLogo}
-						/>
+						<NavigationIcon isBack={false} />
 					</span>
 				)}
 				<span className='text-color-primary select-none truncate min-w-0'>
