@@ -47,25 +47,23 @@ const homeMenu = [
 
 const HomeMenuComponent = ({ pathname }) => {
 	return (
-		<div className='flex flex-row gap-2 px-2'>
+		<div className='flex flex-row gap-1 md:gap-2 shrink-0'>
 			{homeMenu.map((menu, index) => {
 				if (menu.path === pathname) {
 					return null;
 				}
 				return (
 					<div
-						className='relative transition ease-in-out duration-150 hover:scale-110 ml-2'
+						className='relative'
 						key={index}
 					>
-						<Link href={menu.path}>
-							<button className='flex items-center gap-1 p-2 rounded-md'>
-								<span className='text-xl bg-color-reverse text-color-reverse md:hidden p-2 rounded-md'>
+						<Link href={menu.path} aria-label={menu.title} className='flex items-center justify-center gap-1 w-8 h-8 md:w-auto md:px-2 rounded-md'>
+								<span className='text-xl md:hidden'>
 									{menu.icon}
 								</span>
 								<span className='hidden md:inline text-base font-mono'>
 									{menu.title}
 								</span>
-							</button>
 						</Link>
 						{pathname === menu.path && (
 							<div className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2' />
@@ -79,25 +77,23 @@ const HomeMenuComponent = ({ pathname }) => {
 
 const AdditionalMenuComponent = ({ pathname }) => {
 	return (
-		<div className='flex flex-row gap-2 px-2'>
+		<div className='flex flex-row gap-1 md:gap-2 shrink-0'>
 			{additionalMenu.map((menu, index) => {
 				if (menu.path === pathname) {
 					return null;
 				}
 				return (
 					<div
-						className='relative transition ease-in-out duration-150 hover:scale-110 ml-2'
+						className='relative'
 						key={index}
 					>
-						<Link href={menu.path}>
-							<button className='flex items-center gap-1 p-2 rounded-md'>
-								<span className='text-xl bg-color-reverse text-color-reverse md:hidden p-2 rounded-md'>
+						<Link href={menu.path} aria-label={menu.title} className='flex items-center justify-center gap-1 w-8 h-8 md:w-auto md:px-2 rounded-md'>
+								<span className='text-xl md:hidden'>
 									{menu.icon}
 								</span>
 								<span className='hidden md:inline text-base font-mono'>
 									{menu.title}
 								</span>
-							</button>
 						</Link>
 						{pathname === menu.path && (
 							<div className='absolute w-full bg-zinc-950 dark:bg-zinc-100 h-0.5 transform -translate-y-1/2' />
@@ -114,40 +110,41 @@ const NavBar = ({
 	previousLink,
 	renderAdditionalMenu = false,
 	renderHome = false,
+	hideBorder = false,
 }) => {
 	const pathname = usePathname();
 	return (
 		<div className='w-full'>
-			<nav className='flex items-center font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 border-color-primary min-h-[70px] md:min-h-[50px] relative'>
-				{previousLink && (
-					<div className='relative transition ease-in-out duration-150 hover:scale-110'>
-						<Link
-							href={previousLink}
-							className='font-black text-color-primary text-xl p2'
-						>
-							<IoMdArrowBack
-								size={"1.5em"}
-								style={{ display: "inline" }}
-							/>
-						</Link>
-					</div>
+			<nav className={`flex items-center gap-2 font-semibold stretch-125 text-xl text-color-primary p-2 border-b-2 ${hideBorder ? "border-transparent" : "border-color-primary"} h-[76px] md:h-16 relative`}>
+				{previousLink ? (
+					<Link
+						href={previousLink}
+						aria-label='Back'
+						className='flex items-center justify-center w-8 h-11 shrink-0 rounded-md text-color-primary'
+					>
+						<IoMdArrowBack size={28} />
+					</Link>
+				) : (
+					<span className='flex items-center justify-center w-8 h-11 shrink-0' aria-hidden='true'>
+						<IoHomeOutline size={28} />
+					</span>
 				)}
-				<span className='text-color-primary select-none'>
+				<span className='text-color-primary select-none truncate min-w-0'>
 					{title || ""}
 				</span>
 				{renderAdditionalMenu && (
-					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
+					<div className='xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:w-fit ml-auto xl:ml-0 shrink-0'>
 						<AdditionalMenuComponent pathname={pathname} />
 					</div>
 				)}
 				{renderHome && (
-					<div className='md:absolute md:left-1/2 md:-translate-x-1/2 md:w-fit ml-auto md:ml-0'>
+					<div className='xl:absolute xl:left-1/2 xl:-translate-x-1/2 xl:w-fit ml-auto xl:ml-0 shrink-0'>
 						<HomeMenuComponent pathname={pathname} />
 					</div>
 				)}
-				<div className='hidden sm:flex ml-auto gap-4 items-center'>
+				<div className='hidden sm:flex ml-auto gap-4 items-center shrink-0'>
 					<ThemeToggle />
-					<div className='flex gap-1 items-center transition ease-in-out duration-150 hover:scale-[1.02]'>
+					<div className='hidden xl:flex gap-1 items-center'>
 						<AiOutlineMail />{" "}
 						<a
 							href='mailto:info@rtarchive.xyz'
@@ -167,6 +164,7 @@ NavBar.propTypes = {
 	title: PropTypes.string,
 	previousLink: PropTypes.any,
 	renderAdditionalMenu: PropTypes.bool,
+	hideBorder: PropTypes.bool,
 };
 
 export default NavBar;

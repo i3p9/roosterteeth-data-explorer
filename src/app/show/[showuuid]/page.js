@@ -44,7 +44,7 @@ export default async function ShowPage({ params }) {
 
 	return (
 		<>
-			<NavBar previousLink='/' title='rt-archive / show' />
+			<NavBar previousLink='/' title='rt-archive / show' hideBorder />
 			<ShowInfo show={showInfo} />
 			<ShowPageClientSide
 				key={params.showuuid}

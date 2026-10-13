@@ -54,9 +54,12 @@ const ShowGridSkeleton = () => {
 
 const BrowseAllShows = () => {
 	return (
-		<Suspense fallback={<ShowGridSkeleton />}>
-			<BrowseAllShowsContent />
-		</Suspense>
+		<>
+			<NavBar title={"rt-archive"} renderAdditionalMenu />
+			<Suspense fallback={<ShowGridSkeleton />}>
+				<BrowseAllShowsContent />
+			</Suspense>
+		</>
 	);
 };
 
@@ -135,7 +138,6 @@ const BrowseAllShowsContent = () => {
 	]);
 	return (
 		<>
-			<NavBar title={"rt-archive"} renderAdditionalMenu />
 			<ContinueWatchingHome />
 			<div className='my-4 flex flex-col md:flex-row gap-2 md:gap-4'>
 				<div className='basis-1/5'>

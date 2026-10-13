@@ -1,29 +1,120 @@
-.container {
-	width: 100%;
-	height: 100%;
+.hero {
+	--surface: 245, 245, 244;
+	--ink: 24, 24, 27;
+	position: relative;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	min-height: 400px;
+	background: rgb(var(--surface));
+	isolation: isolate;
+}
+
+:global(.dark) .hero {
+	--surface: 23, 23, 23;
+	--ink: 244, 244, 245;
+}
+
+.artwork {
+	object-fit: cover;
+	object-position: center 25%;
+	z-index: -2;
+}
+
+.fade {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
 	background: linear-gradient(
 		to bottom,
-		rgba(23, 23, 23, 0) 0%,
-		rgba(23, 23, 23, 1) 100%
+		rgba(var(--surface), 0.05) 0%,
+		rgba(var(--surface), 0.25) 30%,
+		rgba(var(--surface), 0.96) 62%,
+		rgb(var(--surface)) 100%
 	);
 }
 
+.content {
+	min-height: inherit;
+	display: flex;
+	align-items: flex-end;
+	padding-top: 150px;
+	padding-bottom: 24px;
+	color: rgb(var(--ink));
+}
+
+.details {
+	width: 100%;
+	max-width: 580px;
+}
+
+.logo {
+	position: relative;
+	width: 240px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 16px;
+	color: rgb(var(--ink));
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.logoImage {
+	object-fit: contain;
+	object-position: left center;
+	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
+}
+
+.metadata {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	font-size: 14px;
+	font-weight: 600;
+	margin-bottom: 16px;
+}
+
+.summary {
+	font-size: 16px;
+	line-height: 1.65;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+
 @media (min-width: 768px) {
-	.container {
-		background: linear-gradient(
-			to right,
-			rgba(23, 23, 23, 1) 10%,
-			rgba(0, 0, 0, 0) 40%,
-			rgba(23, 23, 23, 1) 100%
-		) !important;
+	.hero {
+		min-height: 420px;
 	}
-}
 
-.loading img {
-	opacity: 0;
-}
+	.artwork {
+		object-position: center 35%;
+	}
 
-.loaded img {
-	opacity: 1;
-	transition: opacity 0.5s ease;
+	.fade {
+		background:
+			linear-gradient(to top, rgb(var(--surface)), rgba(var(--surface), 0) 75%),
+			linear-gradient(to right, rgba(var(--surface), 0.98), rgba(var(--surface), 0.88) 28%, rgba(var(--surface), 0.1) 75%);
+	}
+
+	.content {
+		padding-top: 100px;
+		padding-bottom: 32px;
+	}
+
+	.logo {
+		width: 320px;
+		height: 128px;
+		font-size: 32px;
+	}
+
+	.metadata {
+		font-size: 16px;
+	}
+
+	.summary {
+		font-size: 18px;
+	}
 }
