@@ -19,7 +19,7 @@ const VideoInfo = ({
 				<div className='flex flex-col'>
 					<h1
 						key={episode?.attributes.title}
-						className='font-semibold text-xl text-color-primary animate-fade-in'
+						className='font-semibold text-xl text-color-primary'
 					>
 						{episode?.attributes.title}
 					</h1>
@@ -28,7 +28,7 @@ const VideoInfo = ({
 							episode?.attributes.show_title +
 							episode?.attributes.season_number
 						}
-						className='font-medium text-md text-color-secondary hover:underline animate-fade-in'
+						className='font-medium text-md text-color-secondary hover:underline'
 					>
 						<Link href={`/show/${episode?.attributes.show_slug}`}>
 							{episode?.attributes.show_title}{" "}

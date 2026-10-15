@@ -1,84 +1,40 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import SeasonEpisodeContainer from "../../atoms/SeasonEpisodeContainer/SeasonEpisodeContainer";
-import axios from "axios";
-import SeasonEpisodeSkeleton from "../../atoms/Skeleton/SeasonEpisodeSkeleton/SeasonEpisodeSkeleton";
 import Fuse from "fuse.js";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const SkeletonLoader = () => {
-	return (
-		<div className='flex flex-col'>
-			<div className='aspect-video overflow-hidden rounded-lg object-cover-w-full mb-1'>
-				<div className='bg-gray-300 animate-pulse w-full h-40'></div>
-			</div>
-			<div className='animate-pulse bg-gray-300 h-5 w-4/5 rounded'></div>
-			<div className='animate-pulse bg-gray-300 h-3 w-3/5 rounded mt-1'></div>
-			<div className='animate-pulse bg-gray-300 h-3 w-2/5 rounded mt-1'></div>
-		</div>
-	);
-};
-
 const SeasonContainer = (props) => {
 	const {
-		seasonUuid,
 		selectedSortOption,
 		seasonData,
-		setSeasonData,
 		searchTerm,
+		loading,
+		networkError,
+		onRetry,
 	} = props;
-	const [seasonLoading, setSeasonLoading] = useState(false);
-	const [seasonNetworkError, setSeasonNetworkError] = useState(false);
 
-	useEffect(() => {
-		const fetchSeasonDataNext = async () => {
-			try {
-				setSeasonLoading(true);
-				const response = await axios.get("/api/v1/episodes", {
-					params: { season_id: seasonUuid },
-				});
-				if (response) {
-					setSeasonData(response.data.documents);
-					setAllFilteredData(response.data.documents);
-				}
-			} catch (error) {
-				console.error(error);
-				setSeasonLoading(false);
-				setSeasonNetworkError(true);
-			} finally {
-				setSeasonNetworkError(false);
-				setSeasonLoading(false);
-			}
-		};
+	const fuse = useMemo(
+		() =>
+			new Fuse(seasonData || [], {
+				keys: ["attributes.title"],
+				includeScore: true,
+				threshold: 0.4,
+			}),
+		[seasonData],
+	);
 
-		if (seasonUuid) {
-			fetchSeasonDataNext();
-		}
-		//eslint-disable-next-line
-	}, [seasonUuid]);
+	const allFilteredData = useMemo(() => {
+		const episodes = searchTerm
+			? fuse.search(searchTerm.toLowerCase()).map((item) => item.item)
+			: seasonData || [];
 
-	const [allFilteredData, setAllFilteredData] = useState([]);
+		return selectedSortOption.value === "new"
+			? episodes
+			: [...episodes].reverse();
+	}, [seasonData, searchTerm, selectedSortOption.value, fuse]);
 
-	useEffect(() => {
-		if (seasonData) {
-			let filteredData = [...seasonData];
-			if (searchTerm) {
-				const fuse = new Fuse(filteredData, {
-					keys: ["attributes.title"],
-					includeScore: true,
-					threshold: 0.4,
-				});
-				const result = fuse.search(searchTerm.toLowerCase());
-				filteredData = result.map((item) => item.item);
-				setAllFilteredData(filteredData);
-			} else {
-				setAllFilteredData(seasonData);
-			}
-		}
-		//eslint-disable-next-line
-	}, [searchTerm]);
-
-	if (seasonLoading) {
+	if (loading) {
 		return (
 			<div className='container flex flex-col items-center justify-center mx-auto mt-10	'>
 				<AiOutlineLoading3Quarters
@@ -89,25 +45,27 @@ const SeasonContainer = (props) => {
 		);
 	}
 
+	if (networkError) {
+		return (
+			<div className='text-color-primary text-center my-8'>
+				<p>Could not load this season.</p>
+				<button className='underline mt-2' onClick={onRetry}>
+					Try again
+				</button>
+			</div>
+		);
+	}
+
 	return (
 		<>
 			<div className='container mx-auto'>
 				<div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8'>
-					{selectedSortOption.value === "new"
-						? allFilteredData?.map((episode, index) => (
-								<SeasonEpisodeContainer
-									key={episode.id}
-									episode={episode}
-								/>
-						  ))
-						: allFilteredData
-								?.toReversed()
-								.map((episode, index) => (
-									<SeasonEpisodeContainer
-										key={episode.id}
-										episode={episode}
-									/>
-								))}
+					{allFilteredData.map((episode) => (
+						<SeasonEpisodeContainer
+							key={episode.uuid}
+							episode={episode}
+						/>
+					))}
 				</div>
 			</div>
 		</>

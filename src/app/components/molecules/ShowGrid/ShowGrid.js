@@ -2,6 +2,7 @@ import React, { useMemo, useRef, useState } from "react";
 import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FirstBadgeOnPoster } from "../../atoms/Badges/Badges";
 import LazyImage from "../../atoms/LazyImage/LazyImage";
 
@@ -12,6 +13,7 @@ const ShowGrid = ({
 	channelFilterValue,
 	searchTerm,
 }) => {
+	const router = useRouter();
 	const allShowData = useMemo(() => {
 		let filteredData = [...masterList.data];
 
@@ -72,7 +74,16 @@ const ShowGrid = ({
 							transition={{ duration: 0.3, delay: 0.1 }}
 							className='relative shadow-lg dark:shadow-none'
 						>
-							<Link href={`/show/${item?.attributes.slug}`}>
+							<Link
+								href={`/show/${item?.attributes.slug}`}
+								prefetch={false}
+								onMouseEnter={() =>
+									router.prefetch(`/show/${item.attributes.slug}`)
+								}
+								onFocus={() =>
+									router.prefetch(`/show/${item.attributes.slug}`)
+								}
+							>
 								<LazyImage
 									mobileSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/poster_300.webp`}
 									desktopSrc={`https://cdn.rtarchive.xyz/shows/${item.uuid}/title_card_400.webp`}
