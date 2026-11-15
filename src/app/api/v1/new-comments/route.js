@@ -1,13 +1,8 @@
-import { Pool } from "pg";
+import { queryPostgres } from "@/lib/postgres";
 import { verifyJWT } from "@/lib/auth";
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
+
+export const dynamic = "force-dynamic";
 
 export async function POST(req) {
 	try {
@@ -50,7 +45,7 @@ export async function POST(req) {
 			values: [comment, video_id, user_id, user_name, 0], // likes_count starts at 0
 		};
 
-		const result = await pool.query(query);
+		const result = await queryPostgres(query);
 
 		return new Response(
 			JSON.stringify({
@@ -115,8 +110,8 @@ export async function GET(req) {
 		};
 
 		const [commentsResult, countResult] = await Promise.all([
-			pool.query(commentsQuery),
-			pool.query(countQuery),
+			queryPostgres(commentsQuery),
+			queryPostgres(countQuery),
 		]);
 
 		const totalComments = parseInt(countResult.rows[0].count);

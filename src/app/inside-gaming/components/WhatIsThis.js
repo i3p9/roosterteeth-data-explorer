@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-const {
+import {
 	FaInfoCircle,
 	FaChevronDown,
 	FaChevronUp,
-} = require("react-icons/fa");
+} from "react-icons/fa";
 
 const WhatIsThis = () => {
 	const [isExpanded, setIsExpanded] = useState(false);

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import NavBar from "../../../components/molecules/NavBar/NavBar";
 import VideoPlayer from "../../../components/molecules/VideoPlayer/VideoJS";
 import { formatSecondToRunTime } from "@/data/utils/utils";
@@ -22,7 +23,8 @@ const IGVideoPlayer = ({ videoUrl }) => {
 	);
 };
 
-const EpisodePage = ({ params }) => {
+const EpisodePage = () => {
+	const params = useParams();
 	const [currentEpisode, setCurrentEpisode] = useState(null);
 	const [currentShow, setCurrentShow] = useState(null);
 	const [videoUrl, setVideoUrl] = useState("");

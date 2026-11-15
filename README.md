@@ -31,3 +31,6 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Cloudflare Workers setup, local testing, and deployment preparation are documented
+in [CLOUDFLARE.md](./CLOUDFLARE.md).

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useParams } from "next/navigation";
 import NavBar from "../../../components/molecules/NavBar/NavBar";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -7,7 +8,8 @@ import EpisodeCard from "../../components/EpisodeCard";
 import { findShowBySlug } from "../../utils/episodeUtils";
 import { getProperShowName } from "../../data/utils";
 
-const ShowPage = ({ params }) => {
+const ShowPage = () => {
+	const params = useParams();
 	// Find the show data by slug
 	const showData = findShowBySlug(params.show_slug);
 

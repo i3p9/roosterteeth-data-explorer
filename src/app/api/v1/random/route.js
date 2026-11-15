@@ -1,5 +1,7 @@
-import { getDatabase } from "@/lib/mongodb";
+import { withDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request, { params }) {
     const channel_id = request.nextUrl.searchParams.get('channel_id')
@@ -25,11 +27,11 @@ export async function GET(request, { params }) {
     ];
 
     try {
-        const db = await getDatabase();
-        const result = await db
+        const result = await withDatabase((db) => db
             .collection("episodes")
             .aggregate(RandomEpisodepipeline)
-            .toArray();
+            .toArray(),
+        );
 
         return NextResponse.json({ documents: result }, { status: 200 })
     } catch (error) {

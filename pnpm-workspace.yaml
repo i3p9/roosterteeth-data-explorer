@@ -1,0 +1,2 @@
+patchedDependencies:
+  tr46@5.1.1: patches/tr46@5.1.1.patch

@@ -1,11 +1,7 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { mona } from "./fonts";
 import { UserContextProvider } from "./hooks/UserContext";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { Toaster } from "react-hot-toast";
-import { Analytics } from "@vercel/analytics/next";
-const inter = Inter({ subsets: ["latin"] });
+import ClientServices from "./components/ClientServices";
 
 export const metadata = {
 	metadataBase: new URL("https://rtarchive.xyz"),
@@ -31,10 +27,8 @@ export default function RootLayout({ children }) {
 				<div className='container mx-auto px-2 md:px-3 py-2 mb-32'>
 					<UserContextProvider>{children}</UserContextProvider>
 				</div>
-				<Toaster />
-				<Analytics />
+				<ClientServices />
 			</body>
-			<GoogleAnalytics gaId='G-RBMWJ5WGSM' />
 		</html>
 	);
 }

@@ -1,12 +1,7 @@
-import { Pool } from "pg";
+import { queryPostgres } from "@/lib/postgres";
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
 	const video_id = req.nextUrl.searchParams.get("video_id");
@@ -40,13 +35,13 @@ export async function GET(req) {
 	};
 
 	try {
-		const result = await pool.query(query);
+		const result = await queryPostgres(query);
 
 		const totalQuery = {
 			text: "SELECT COUNT(*) FROM comments WHERE video_id = $1 AND parent_id IS NULL",
 			values: [video_id],
 		};
-		const totalResult = await pool.query(totalQuery);
+		const totalResult = await queryPostgres(totalQuery);
 		const totalComments = totalResult.rows[0].count;
 
 		return new Response(

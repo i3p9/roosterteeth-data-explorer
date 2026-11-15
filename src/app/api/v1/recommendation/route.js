@@ -1,6 +1,8 @@
-import { getDatabase } from "@/lib/mongodb";
+import { withDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import { Pinecone } from "@pinecone-database/pinecone";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request) {
 	const requestUuid = request.nextUrl.searchParams.get("uuid");
@@ -59,11 +61,12 @@ export async function GET(request) {
 			);
 		}
 
-		const db = await getDatabase();
-		const result = await db
+		const result = await withDatabase((db) => db
 			.collection("episodes")
 			.find({ uuid: { $in: similarIds } })
-			.toArray();
+			.toArray(),
+
+		);
 
 		if (!result || result.length === 0) {
 			return NextResponse.json(
@@ -79,7 +82,6 @@ export async function GET(request) {
 				headers: {
 					"Cache-Control": "public, s-maxage=31536000",
 					"CDN-Cache-Control": "public, s-maxage=31536000",
-					"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
 				},
 			}
 		);

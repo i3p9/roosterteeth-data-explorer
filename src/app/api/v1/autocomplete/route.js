@@ -1,4 +1,4 @@
-import { getDatabase } from "@/lib/mongodb";
+import { withDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 function getSearchPipeline(query, limit) {
@@ -20,6 +20,8 @@ function getSearchPipeline(query, limit) {
     return pipeline;
 }
 
+export const dynamic = "force-dynamic";
+
 export async function GET(request, { params }) {
     const query = request.nextUrl.searchParams.get('q')
     const limit = request.nextUrl.searchParams.get('limit')
@@ -32,11 +34,11 @@ export async function GET(request, { params }) {
     }
 
     try {
-        const db = await getDatabase();
-        const result = await db
+        const result = await withDatabase((db) => db
             .collection("episodes")
             .aggregate(getSearchPipeline(query, limit))
-            .toArray();
+            .toArray(),
+        );
 
         return NextResponse.json({ documents: result }, { status: 200 })
     } catch (error) {
