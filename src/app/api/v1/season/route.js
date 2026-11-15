@@ -1,5 +1,7 @@
-import { getDatabase } from "@/lib/mongodb";
+import { withDatabase } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request, { params }) {
 	const uuid = request.nextUrl.searchParams.get("uuid");
@@ -25,12 +27,12 @@ export async function GET(request, { params }) {
 	}
 
 	try {
-		const db = await getDatabase();
-		const result = await db
+		const result = await withDatabase((db) => db
 			.collection("episodes")
 			.find(filter)
 			.sort({ "attributes.original_air_date": -1 })
-			.toArray();
+			.toArray(),
+		);
 
 		return NextResponse.json(
 			{ documents: result },
@@ -39,7 +41,6 @@ export async function GET(request, { params }) {
 				headers: {
 					"Cache-Control": "public, s-maxage=31536000",
 					"CDN-Cache-Control": "public, s-maxage=31536000",
-					"Vercel-CDN-Cache-Control": "public, s-maxage=31536000",
 				},
 			}
 		);

@@ -2,6 +2,7 @@
   "name": "browse-rt",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.15.1",
   "engines": {
     "node": "24.x"
   },
@@ -9,41 +10,63 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "dev:vinext": "vite dev --port 3001",
+    "build:vinext": "vite build && node scripts/check-prerender.mjs",
+    "start:vinext": "vite preview",
+    "deploy:vinext": "pnpm run build:vinext && vinext-cloudflare deploy --skip-build",
+    "check:vinext": "vinext check",
+    "test:cloudflare": "node tests/cloudflare-smoke.mjs",
+    "test:cache": "node --test tests/public-api-cache.test.mjs"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.18",
-    "@next/third-parties": "^15.0.3",
+    "@headlessui/react": "2.2.10",
     "@pinecone-database/pinecone": "^4.1.0",
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.44.3",
-    "@types/react": "^18.3.11",
-    "@vercel/analytics": "^1.6.1",
+    "@types/react": "^19.3.0",
     "@videojs/react": "10.0.0-beta.11",
     "axios": "^1.6.8",
     "clsx": "^2.1.0",
     "date-fns": "^4.1.0",
-    "framer-motion": "^11.0.28",
+    "framer-motion": "^11.18.2",
     "fuse.js": "^7.0.0",
     "lodash": "^4.17.21",
     "mongodb": "^6.20.0",
-    "next": "14.1.3",
-    "next-themes": "^0.3.0",
-    "pg": "^8.13.1",
+    "next": "15.5.29",
+    "next-themes": "0.4.6",
+    "pg": "^8.16.3",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "19.3.1",
     "react-custom-roulette": "^1.4.1",
-    "react-dom": "^18.2.0",
+    "react-dom": "19.3.1",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
     "react-infinite-scroll-component": "^6.1.0",
-    "reactjs-popup": "^2.0.6"
+    "reactjs-popup": "^2.0.6",
+    "vinext": "1.4.5",
+    "react-server-dom-webpack": "19.3.1",
+    "@vinext/cloudflare": "1.3.4"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.1.3",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.3"
+    "eslint-config-next": "15.5.29",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.3",
+    "vite": "8.3.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "@vitejs/plugin-rsc": "0.5.39",
+    "@cloudflare/vite-plugin": "2.0.0-beta.v.17",
+    "cf": "1.0.0-beta.32",
+    "vite-css-modules": "1.16.1",
+    "@typescript-eslint/parser": "^8.72.2",
+    "playwright": "1.65.1"
+  },
+  "type": "module",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "workerd"
+    ]
   }
 }

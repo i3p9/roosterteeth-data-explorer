@@ -1,4 +1,4 @@
-const { FaInfoCircle } = require("react-icons/fa")
+import { FaInfoCircle } from "react-icons/fa";
 
 const DownloadHelp = () => {
     return (

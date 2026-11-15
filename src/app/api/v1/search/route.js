@@ -1,6 +1,6 @@
-import { getDatabase } from "@/lib/mongodb";
-import { NextResponse } from "next/server";
-import { Pool } from "pg";
+import { withDatabase } from "@/lib/mongodb";
+import { after, NextResponse } from "next/server";
+import { queryPostgres } from "@/lib/postgres";
 import { verifyJWT } from "@/lib/auth";
 
 function getSearchPipeline(query, channelKey, limit) {
@@ -39,13 +39,6 @@ function getSearchPipeline(query, channelKey, limit) {
 	return pipeline;
 }
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
 
 async function saveSearchKeyword(keyword) {
 	console.log("Saving search keyword:", keyword);
@@ -55,11 +48,13 @@ async function saveSearchKeyword(keyword) {
             INSERT INTO search_history (keyword) VALUES ($1)`,
 			values: [keyword],
 		};
-		await pool.query(query);
+		await queryPostgres(query);
 	} catch (error) {
 		console.error("Error saving search keyword:", error);
 	}
 }
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request, { params }) {
 	const query = request.nextUrl.searchParams.get("q");
@@ -78,13 +73,13 @@ export async function GET(request, { params }) {
 	}
 
 	// Save the search keyword asynchronously (do not block the main flow)
-	void saveSearchKeyword(query);
+	after(() => saveSearchKeyword(query));
 	try {
-		const db = await getDatabase();
-		const result = await db
+		const result = await withDatabase((db) => db
 			.collection("episodes")
 			.aggregate(getSearchPipeline(query, channelKey, limit))
-			.toArray();
+			.toArray(),
+		);
 
 		return NextResponse.json({ documents: result }, { status: 200 });
 	} catch (error) {

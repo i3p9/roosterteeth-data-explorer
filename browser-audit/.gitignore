@@ -1,0 +1,3 @@
+# Raw local diagnostics are large and can contain transient anonymous session data.
+*
+!.gitignore

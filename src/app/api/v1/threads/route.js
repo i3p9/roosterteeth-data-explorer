@@ -1,12 +1,7 @@
-import { Pool } from "pg";
+import { queryPostgres } from "@/lib/postgres";
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
 	const parent_id = req.nextUrl.searchParams.get("parent_id");
@@ -38,7 +33,7 @@ export async function GET(req) {
 			values: [parent_id, limit, offset],
 		};
 
-		const result = await pool.query(query);
+		const result = await queryPostgres(query);
 
 		if (result.rows.length === 0) {
 			return new Response(
@@ -58,7 +53,7 @@ export async function GET(req) {
 			values: [parent_id],
 		};
 
-		const totalResult = await pool.query(totalQuery);
+		const totalResult = await queryPostgres(totalQuery);
 		const totalReplies = totalResult.rows[0].count;
 
 		return new Response(

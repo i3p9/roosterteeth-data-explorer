@@ -1,13 +1,8 @@
 import { NextResponse } from "next/server";
-import { Pool } from "pg";
+import { queryPostgres } from "@/lib/postgres";
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request, { params }) {
 	const user_id = request.nextUrl.searchParams.get("user_id");
@@ -24,7 +19,7 @@ export async function GET(request, { params }) {
 				LIMIT 1
 			`;
 			const values = [user_id, video_id];
-			const result = await pool.query(query, values);
+			const result = await queryPostgres(query, values);
 
 			return NextResponse.json(
 				{
@@ -51,7 +46,7 @@ export async function GET(request, { params }) {
 				RETURNING *
 			`;
 			const values = [video_id, user_id, action === "liked"];
-			const result = await pool.query(query, values);
+			const result = await queryPostgres(query, values);
 
 			if (result.rows.length > 0) {
 				return NextResponse.json(result.rows[0], { status: 200 });

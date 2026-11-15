@@ -1,13 +1,8 @@
-import { Pool } from "pg";
+import { queryPostgres } from "@/lib/postgres";
 import { NextResponse } from "next/server";
 
-const pool = new Pool({
-	user: process.env.PG_DB_USER,
-	host: process.env.PG_DB_HOST,
-	database: process.env.PG_DB_NAME,
-	password: process.env.PG_DB_PASSWORD,
-	port: process.env.PG_DB_PORT,
-});
+
+export const dynamic = "force-dynamic";
 
 export async function GET(request) {
 	try {
@@ -21,7 +16,7 @@ export async function GET(request) {
 			);
 		}
 
-		const result = await pool.query(
+		const result = await queryPostgres(
 			"SELECT video_id FROM liked_videos WHERE user_id = $1 LIMIT 8",
 			[userId]
 		);

@@ -1,57 +1,39 @@
 import { MongoClient } from "mongodb";
 
-if (!process.env.MONGODB_URI) {
-	throw new Error(
-		'Invalid/Missing environment variable: "MONGODB_URI"'
-	);
+let nodeClientPromise;
+
+function createClient() {
+	return new MongoClient(process.env.MONGODB_URI, {
+		maxPoolSize: 10,
+		minPoolSize: 0,
+		serverSelectionTimeoutMS: 5000,
+		connectTimeoutMS: 10000,
+	});
 }
 
-const uri = process.env.MONGODB_URI;
-const options = {
-	maxPoolSize: 10,
-	minPoolSize: 2,
-	maxIdleTimeMS: 60000,
-	serverSelectionTimeoutMS: 5000,
-};
-
-let client;
-let clientPromise;
-
-if (process.env.NODE_ENV === "development") {
-	// In development mode, use a global variable so that the value
-	// is preserved across module reloads caused by HMR (Hot Module Replacement).
-	let globalWithMongo = global;
-
-	if (!globalWithMongo._mongoClientPromise) {
-		client = new MongoClient(uri, options);
-		globalWithMongo._mongoClientPromise = client.connect();
+// Workers use request-scoped connections; Node builds and servers reuse a pool.
+export async function withDatabase(operation) {
+	if (!process.env.MONGODB_URI) {
+		throw new Error('Missing environment variable: "MONGODB_URI"');
 	}
-	clientPromise = globalWithMongo._mongoClientPromise;
-} else {
-	// In production mode, it's best to not use a global variable.
-	client = new MongoClient(uri, options);
-	clientPromise = client.connect();
-}
 
-// Export a module-scoped MongoClient promise. By doing this in a
-// separate module, the client can be shared across functions.
-export default clientPromise;
+	const requestScoped = process.env.DATABASE_CONNECTION_MODE === "request";
+	let client;
+	if (requestScoped) {
+		client = createClient();
+	} else {
+		// Node builds and the Next.js server can safely reuse a pool.
+		nodeClientPromise ??= createClient().connect().catch((error) => {
+			nodeClientPromise = undefined;
+			throw error;
+		});
+		client = await nodeClientPromise;
+	}
 
-/**
- * Get the MongoDB database instance
- * @returns {Promise<import('mongodb').Db>}
- */
-export async function getDatabase() {
-	const client = await clientPromise;
-	return client.db("roosterteeth_site");
-}
-
-/**
- * Get a MongoDB collection
- * @param {string} collectionName
- * @returns {Promise<import('mongodb').Collection>}
- */
-export async function getCollection(collectionName) {
-	const db = await getDatabase();
-	return db.collection(collectionName);
+	try {
+		if (requestScoped) await client.connect();
+		return await operation(client.db("roosterteeth_site"));
+	} finally {
+		if (requestScoped) await client.close();
+	}
 }
