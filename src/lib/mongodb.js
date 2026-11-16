@@ -1,6 +1,37 @@
 import { MongoClient } from "mongodb";
 
-let nodeClientPromise;
+let nodePool;
+
+function acquireNodePool() {
+	if (!nodePool) {
+		const pool = { users: 0, idleTimer: undefined };
+		pool.promise = createClient().connect().catch((error) => {
+			if (nodePool === pool) nodePool = undefined;
+			throw error;
+		});
+		nodePool = pool;
+	}
+
+	clearTimeout(nodePool.idleTimer);
+	nodePool.users += 1;
+	return nodePool;
+}
+
+function releaseNodePool(pool, prerendering) {
+	pool.users -= 1;
+	if (!prerendering || pool.users !== 0) return;
+
+	// Reuse the pool across page renders, then release its sockets so the build
+	// can exit. A new operation cancels this timer before borrowing the pool.
+	pool.idleTimer = setTimeout(() => {
+		if (pool.users !== 0) return;
+		if (nodePool === pool) nodePool = undefined;
+		pool.promise.then((client) => client.close()).catch((error) => {
+			console.error("Could not close the prerender database pool:", error);
+		});
+	}, 1000);
+	pool.idleTimer.unref();
+}
 
 function createClient() {
 	return new MongoClient(process.env.MONGODB_URI, {
@@ -18,22 +49,22 @@ export async function withDatabase(operation) {
 	}
 
 	const requestScoped = process.env.DATABASE_CONNECTION_MODE === "request";
+	const prerendering = process.env.VINEXT_PRERENDER === "1";
 	let client;
+	let pool;
 	if (requestScoped) {
 		client = createClient();
 	} else {
 		// Node builds and the Next.js server can safely reuse a pool.
-		nodeClientPromise ??= createClient().connect().catch((error) => {
-			nodeClientPromise = undefined;
-			throw error;
-		});
-		client = await nodeClientPromise;
+		pool = acquireNodePool();
 	}
 
 	try {
 		if (requestScoped) await client.connect();
+		else client = await pool.promise;
 		return await operation(client.db("roosterteeth_site"));
 	} finally {
 		if (requestScoped) await client.close();
+		else releaseNodePool(pool, prerendering);
 	}
 }
