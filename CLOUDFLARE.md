@@ -25,6 +25,7 @@ pnpm start:vinext --host 127.0.0.1 --port 4173
 
 ```sh
 pnpm test:cache
+pnpm test:database
 pnpm test:cloudflare
 ```
 
@@ -57,8 +58,11 @@ spin and result-popup flow passed browser testing with the pinned React 19 versi
 - MongoDB and Postgres remain at their current providers. No data was migrated.
   `DATABASE_CONNECTION_MODE` is set to `request` in the Worker configuration:
   MongoDB connections close after each operation, while Node builds reuse a
-  pool. Postgres queries also close their connections. Keep this binding when
-  deploying to Workers.
+  pool. During vinext prerendering, the Node pool waits for active operations,
+  then closes after one second idle so the build process can exit on CI machines
+  that render in a single process. Normal Node servers retain their pool.
+  Postgres queries also close their connections. Keep this binding when deploying
+  to Workers. The database lifecycle tests use read-only MongoDB ping commands.
 - The image CDN already provides appropriately sized files, so Cloudflare Images
   is unnecessary for this setup. Unused Google font loads and Vercel Analytics
   were removed. Google Analytics remains enabled through `next/script`.
@@ -71,16 +75,27 @@ does not currently apply the `reactStrictMode` setting to App Router development
 
 ## Deployment preparation
 
-The source configuration is `cloudflare.config.ts`, with Worker name `rtarchive`.
+The source configuration is `cloudflare.config.ts`, with Worker name
+`roosterteeth-data-explorer`, matching the connected Cloudflare project.
 The native integration currently uses pinned beta versions of Cloudflare's Vite
 plugin and `cf` CLI. Review the name and account before the first deployment.
 
-1. Set the three `NEXT_PUBLIC_*` values in the build environment. They are public
-   and are embedded at build time. Set `NEXT_PUBLIC_BASE_URL` to the actual origin
-   being tested or deployed. MongoDB credentials are also needed during builds.
+1. In the Worker's **Settings > Build > Build variables and secrets**, add
+   `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+   `NEXT_PUBLIC_BASE_URL`, and `MONGODB_URI` (as a secret). Set them in the production
+   or preview build settings used by the branch being deployed. The public values
+   are embedded at build time; `NEXT_PUBLIC_BASE_URL` must match the actual origin
+   being tested or deployed. Runtime secrets do not supply this build environment.
+   Missing build variables now stop the build before prerendering starts and list
+   the missing names without printing their values.
 2. Configure the nine runtime secrets declared in `cloudflare.config.ts` on the
    selected Worker: MongoDB, the five Postgres settings, and the three Pinecone
-   settings. Do not put secret values into source config or commit `.env.local`.
+   settings. Their runtime type must be **Secret**, matching `bindings.secret()`;
+   a plaintext variable with the same name is a different binding type. Do not
+   put secret values into source config or commit `.env.local`.
+   `NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY` is not used by this app and must not
+   be added to the build environment. A Supabase service-role key belongs only
+   in server-side code, without the `NEXT_PUBLIC_` prefix.
 3. Authenticate the `cf` CLI and select the intended Cloudflare account. Follow
    the current [vinext deployment instructions](https://vinext.dev/docs/deploying/cloudflare).
 4. Deploy a separate preview and verify real Supabase login, logout, session

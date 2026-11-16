@@ -2,7 +2,7 @@ import { bindings, defineConfig, defineWorker } from "cf/config";
 
 export default defineConfig({
   worker: defineWorker({
-    name: "rtarchive",
+    name: "roosterteeth-data-explorer",
     entrypoint: "./cloudflare.worker.js",
     compatibilityDate: "2026-11-14",
     assets: {
