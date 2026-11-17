@@ -1,7 +1,8 @@
 # Cloudflare migration with vinext
 
-This branch prepares RTArchive for Cloudflare Workers using vinext. No Worker,
-Cloudflare resource, domain, or DNS record has been created or changed.
+RTArchive uses vinext to build for Cloudflare Workers. The source configuration
+targets the existing `roosterteeth-data-explorer` Worker and its `rtarchive.xyz`
+custom domain.
 
 ## Local use
 
@@ -86,6 +87,9 @@ plugin and `cf` CLI. Review the name and account before the first deployment.
    or preview build settings used by the branch being deployed. The public values
    are embedded at build time; `NEXT_PUBLIC_BASE_URL` must match the actual origin
    being tested or deployed. Runtime secrets do not supply this build environment.
+   Production uses `https://rtarchive.xyz`. The config also copies these three
+   public values into runtime bindings from the same build environment; other
+   `NEXT_PUBLIC_` values are excluded.
    Missing build variables now stop the build before prerendering starts and list
    the missing names without printing their values.
 2. Configure the nine runtime secrets declared in `cloudflare.config.ts` on the
@@ -108,6 +112,32 @@ plugin and `cf` CLI. Review the name and account before the first deployment.
 For Workers Builds, leave the build command empty and set the deploy command to
 `pnpm run deploy:vinext`. The command already builds and checks the snapshots.
 Use the preview command documented by vinext for pull requests.
+
+### First deployment over the dashboard-managed Worker
+
+`cf` stops a noninteractive deployment when the Worker was last managed through
+the dashboard and the local config differs. Review that difference before the
+first upload. The config preserves the existing compatibility date, disabled
+version preview URLs, and `rtarchive.xyz` domain. It adds the `ASSETS` binding,
+sets `DATABASE_CONNECTION_MODE=request`, and omits the unused legacy `DB_API`
+and `DB_HOST` variables. Existing runtime secrets remain declared by name.
+
+1. Ensure all nine runtime settings declared with `bindings.secret()` have the
+   **Secret** type, including `PG_DB_HOST`.
+2. Merge/push this config and the `deploy:bootstrap` script to `main`.
+3. Temporarily set the Workers Builds deploy command to
+   `pnpm run deploy:bootstrap`, then retry the build. This builds and verifies the
+   catalog before running `cf deploy --prebuilt --force` to accept the reviewed
+   configuration takeover. The pinned vinext deploy wrapper does not accept or
+   forward `--force`, so this one-time command calls `cf` directly.
+4. After that deployment succeeds, restore the deploy command to
+   `pnpm run deploy:vinext` so future unexpected dashboard changes stop deployment
+   for review.
+
+For a local upload-free validation of the generated output, use
+`pnpm exec cf deploy --prebuilt --dry-run --force` after `pnpm build:vinext`.
+A dry run does not perform the remote conflict check and does not prove that a
+real deployment will be accepted.
 
 Cloudflare's [static asset pricing](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/)
 and [Worker pricing](https://developers.cloudflare.com/workers/platform/pricing/)

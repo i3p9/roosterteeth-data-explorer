@@ -15,6 +15,7 @@
     "build:vinext": "vite build && node scripts/check-prerender.mjs",
     "start:vinext": "vite preview",
     "deploy:vinext": "pnpm run build:vinext && vinext-cloudflare deploy --skip-build",
+    "deploy:bootstrap": "pnpm run build:vinext && cf deploy --prebuilt --force",
     "check:vinext": "vinext check",
     "test:cloudflare": "node tests/cloudflare-smoke.mjs",
     "test:cache": "node --test tests/public-api-cache.test.mjs",
