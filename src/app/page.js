@@ -11,7 +11,7 @@ import ChannelSelector from "./components/atoms/ChannelSelector/ChannelSelector"
 import Fuse from "fuse.js";
 import { motion } from "framer-motion";
 import ShowGrid from "./components/molecules/ShowGrid/ShowGrid";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import ContinueWatchingHome from "./components/molecules/ContinueWatchingHome/ContinueWatchingHome";
 
 const ShowGridSkeleton = () => {
@@ -65,8 +65,8 @@ const BrowseAllShows = () => {
 
 const BrowseAllShowsContent = () => {
 	const masterShowData = masterList.data;
-	const router = useRouter();
 	const searchParams = useSearchParams();
+	const queryString = searchParams.toString();
 
 	const [exclusiveFilterValue, setExclusiveFilterValue] = useState(
 		() => {
@@ -98,9 +98,10 @@ const BrowseAllShowsContent = () => {
 		searchParams.get("search") || "",
 	);
 
-	// Update URL when filters change
+	// These filters use the bundled catalog, so changing them only updates the URL.
 	useEffect(() => {
-		const params = new URLSearchParams(searchParams.toString());
+		if (window.location.pathname !== "/") return;
+		const params = new URLSearchParams(queryString);
 
 		if (exclusiveFilterValue.value !== firstOrNoOptions[0].value) {
 			params.set("exclusive", exclusiveFilterValue.value);
@@ -126,15 +127,18 @@ const BrowseAllShowsContent = () => {
 			params.delete("search");
 		}
 
-		const newUrl = params.toString() ? `?${params.toString()}` : "/";
-		router.push(newUrl, { scroll: false });
-		//eslint-disable-next-line
+		const nextQuery = params.toString();
+		if (nextQuery === window.location.search.slice(1)) return;
+
+		// A router navigation re-fetches this page and can retrigger this effect.
+		const newUrl = `/${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+		window.history.replaceState(null, "", newUrl);
 	}, [
 		exclusiveFilterValue,
 		channelFilterValue,
 		sortFilterValue,
 		searchTerm,
-		searchParams,
+		queryString,
 	]);
 	return (
 		<>
